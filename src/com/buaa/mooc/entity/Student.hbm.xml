@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC   
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">  
+      
+<hibernate-mapping>  
+    <class name="com.buaa.mooc.entity.Student" lazy="false" table="student">
+        <id name="sid" type="integer" column="sid">
+            <generator class="assigned"/>
+        </id>  
+        <property name="sname" type="string" column="sname"/>  
+        <property name="password" type="string" column="password"/>
+    </class>  
+</hibernate-mapping>  

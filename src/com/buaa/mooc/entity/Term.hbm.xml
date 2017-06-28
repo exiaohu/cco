@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC   
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">  
+      
+<hibernate-mapping>  
+    <class name="com.buaa.mooc.entity.Term" lazy="false" table="term">
+        <id name="termId" type="integer" column="term_id">
+            <generator class="native"/>
+        </id>  
+        <property name="startDate" type="date" column="start_date"/>  
+        <property name="endDate" type="date" column="end_date"/>
+        <property name="year" type="integer" column="year" />
+        <property name="quarter" type="string" column="quarter" />
+        <property name="weeks" type="integer" column="weeks" />
+    </class>  
+</hibernate-mapping>  

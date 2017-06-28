@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC   
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">  
+      
+<hibernate-mapping>  
+    <class name="com.buaa.mooc.entity.StudentCourse" lazy="false" table="student_course">
+    	<composite-id name="pk" class="com.buaa.mooc.entity.StudentCoursePK" >
+    		<key-property name="sid" type="integer" column="sid"></key-property>
+    		<key-property name="cid" type="integer" column="cid"></key-property>
+    	</composite-id>
+        <property name="score" type="double" column="score"/>
+    </class>  
+</hibernate-mapping>  

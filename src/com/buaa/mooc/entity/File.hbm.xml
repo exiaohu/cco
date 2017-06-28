@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.buaa.mooc.entity.File" lazy="false" table="file">
+        <id name="id" type="integer" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="filename" type="string" column="filename"/>
+        <property name="uploadby" type="integer" column="uploadby"/>
+    </class>
+</hibernate-mapping>
