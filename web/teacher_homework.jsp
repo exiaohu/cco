@@ -1,27 +1,26 @@
-<%@ page import="com.buaa.mooc.entity.Term" %>
+<%@ page import="com.buaa.mooc.entity.Homework" %>
 <%@ page import="java.util.List" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!-->
-<html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
 
-    <title>学期管理</title>
+    <title>作业管理</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <meta content="" name="description"/>
+    <meta content="" name="description" />
 
-    <meta content="" name="author"/>
+    <meta content="" name="author" />
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -45,14 +44,13 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
 
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css"/>
-
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+    <link rel="shortcut icon" href="media/image/favicon.ico" />
 
 </head>
 
@@ -62,13 +60,17 @@
 
 <body class="page-header-fixed">
 
-<jsp:include page="admin_header.jsp"></jsp:include>
+<!-- BEGIN HEADER -->
+
+<jsp:include page="teacher_header.jsp"></jsp:include>
+
+<!-- END HEADER -->
 
 <!-- BEGIN CONTAINER -->
 
 <div class="page-container row-fluid">
 
-    <jsp:include page="admin_sidebar.jsp"></jsp:include>
+    <jsp:include page="teacher_sidebar.jsp"></jsp:include>
 
     <!-- BEGIN PAGE -->
 
@@ -110,7 +112,7 @@
 
                     <h3 class="page-title">
 
-                        学期管理
+                        作业管理 <small>课程作业添加、修改、批正</small>
 
                     </h3>
 
@@ -120,7 +122,7 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="eduadmin">主页</a>
+                            <a href="teacher">主页</a>
 
                             <i class="icon-angle-right"></i>
 
@@ -128,8 +130,7 @@
 
                         <li>
 
-                            <a href="semester">学期管理</a>
-
+                            <a href="TeacherHomework">作业管理</a>
 
                         </li>
 
@@ -151,11 +152,11 @@
 
                     <!-- BEGIN SAMPLE TABLE PORTLET-->
 
-                    <div class="portlet box red">
+                    <div class="portlet box purple">
 
                         <div class="portlet-title">
 
-                            <div class="caption"><i class="icon-cogs"></i>学期列表</div>
+                            <div class="caption"><i class="icon-table"></i>作业列表</div>
 
                             <div class="tools">
 
@@ -173,38 +174,38 @@
 
                         <div class="portlet-body">
 
-
                             <div class="btn-group">
 
-                                <a href="AddSemester">
+                                <a href="AddHomework">
 
-                                    <button class="btn green">
+                                    <button id="sample_editable_1_new" class="btn green">
 
-                                        添加新学期 <i class="icon-plus"></i>
+                                        添加 <i class="icon-plus"></i>
 
                                     </button>
                                 </a>
 
                             </div>
 
-
-                            <table class="table table-striped table-bordered table-hover" id="sample_editable_1">
+                            <table class="table table-striped table-bordered table-hover" id="sample_2">
 
                                 <thead>
 
                                 <tr>
 
-                                    <th>学年</th>
+                                    <th><i class="icon-file-text"></i> 作业名称</th>
 
-                                    <th>季度</th>
+                                    <th class="hidden-phone"><i class="icon-time"></i> 发布时间</th>
 
-                                    <th>开学日</th>
+                                    <th><i class="icon-bell"></i> 结束时间</th>
+                                    <!--
 
-                                    <th>结束日</th>
+                                    <th></th>
 
-                                    <th>周数</th>
+                                    <th></th>
 
-                                    <th>删除</th>
+                                    <th></th>
+                                    -->
 
                                 </tr>
 
@@ -212,33 +213,39 @@
 
                                 <tbody>
 
-                                <% List<Term> terms = (List<Term>) request.getAttribute("terms"); %>
+                                <%  List<Homework> homeworks = (List<Homework>)request.getAttribute("homeworks"); %>
 
                                 <%
-                                    if (terms != null) {
-                                        for (Term term : terms) {
+                                    if (homeworks != null && homeworks.size()>0) {
+                                        for (Homework homework : homeworks) {
                                 %>
 
                                 <tr>
 
-                                    <td><%=(term.getYear() != null ? term.getYear() : "未设置")%></td>
+                                    <td class="highlight">
 
-                                    <td><%=(term.getQuarter() != null ? term.getQuarter() : "未设置")%></td>
+                                        <a href="#"><%=homework.getHomeworkName()%></a>
 
-                                    <td><%=term.getStartDate().toLocalDate().toString()%></td>
+                                    </td>
 
-                                    <td><%=term.getEndDate().toLocalDate().toString()%></td>
+                                    <td class="hidden-phone"><%=homework.getStartTime().toLocalDateTime().toString()%></td>
 
-                                    <td><%=(term.getWeeks() != null ? term.getWeeks() : "未设置")%></td
+                                    <td><%=homework.getDeadLine().toLocalDateTime().toString()%></td>
+                                    <!--
 
-                                    <td><a href="DeleteSemester?termId=<%=term.getTermId()%>" class="btn mini black"><i class="icon-trash"></i> 删除</a></td>
+                                    <td><a href="teacher_homework_edit.html" class="btn mini purple"><i class="icon-edit"></i> 编辑</a></td>
 
+                                    <td><a href="teacher_homework_check.html" class="btn mini blue"><i class="icon-pencil"></i> 批改</a></td>
+
+                                    <td><a href="#" class="btn mini black"><i class="icon-trash"></i> 删除</a></td>
+                                    -->
                                 </tr>
 
                                 <%
                                         }
                                     }
                                 %>
+
                                 </tbody>
 
                             </table>
@@ -252,21 +259,19 @@
                 </div>
 
                 <!-- END SAMPLE TABLE PORTLET-->
-
             </div>
-
-
-            <!-- END BORDERED TABLE PORTLET-->
-
         </div>
+
+        <!-- END PAGE CONTENT-->
 
     </div>
 
-    <!-- END PAGE CONTENT-->
+    <!-- END PAGE CONTAINER-->
 
 </div>
 
-<!-- END PAGE CONTAINER-->
+<!-- END PAGE -->
+
 
 <!-- END CONTAINER -->
 
@@ -322,33 +327,34 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
 
 <!-- END CORE PLUGINS -->
+
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 
 <script type="text/javascript" src="media/js/select2.min.js"></script>
 
-<script type="text/javascript" src="media/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="media/js/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript" src="media/js/DT_bootstrap.js"></script>
 
 <!-- END PAGE LEVEL PLUGINS -->
 
-
 <script src="media/js/app.js"></script>
 
-<script src="media/js/table-editable.js"></script>
+<script src="media/js/table-advanced.js"></script>
 
 <script>
 
-    jQuery(document).ready(function () {
+    jQuery(document).ready(function() {
 
         // initiate layout and plugins
 
         App.init();
 
-        TableEditable.init();
+        TableAdvanced.init();
+
     });
 
 </script>

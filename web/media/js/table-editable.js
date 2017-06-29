@@ -24,7 +24,7 @@ var TableEditable = function () {
                 jqTds[3].innerHTML = '<input type="text" class="m-wrap small" value="' + aData[3] + '">';
                 jqTds[4].innerHTML = '<input type="text" class="m-wrap small" value="' + aData[4] + '">';
                 jqTds[5].innerHTML = '<a class="edit" href="">保存</a>';
-                jqTds[6].innerHTML = '<a class="cancel" href="">取消</a>';
+                jqTds[5].innerHTML = '<a class="cancel" href="">取消</a>';
             }
 
             function saveRow(oTable, nRow) {
@@ -35,7 +35,7 @@ var TableEditable = function () {
                 oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
                 oTable.fnUpdate(jqInputs[4].value, nRow, 4, false);
                 oTable.fnUpdate('<a class="edit" href="">编辑</a>', nRow, 5, false);
-                oTable.fnUpdate('<a class="delete" href="">删除</a>', nRow, 6, false);
+                oTable.fnUpdate('<a class="delete" href="">删除</a>', nRow, 5, false);
                 oTable.fnDraw();
             }
 

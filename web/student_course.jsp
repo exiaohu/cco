@@ -116,7 +116,7 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="student_homepage.jsp">主页</a>
+                            <a href="student">主页</a>
 
                             <i class="icon-angle-right"></i>
 
@@ -124,7 +124,7 @@
 
                         <li>
 
-                            <a href="/student_course.jsp">课程管理</a>
+                            <a href="student_course.jsp">课程管理</a>
 
                         </li>
 
@@ -141,7 +141,30 @@
             <!-- BEGIN PAGE CONTENT-->
 
             <div class="tiles">
-                <a href="student_homework.jsp">
+                <div class="tile double bg-blue">
+
+                    <div class="corner"></div>
+
+                    <div class="check"></div>
+
+                    <div class="tile-body">
+
+                        <div style="margin:20px"></div>
+
+                        <h2 style=" font-weight:bolder">敏捷开发</h2>
+
+                        <div style="margin:15px"></div>
+
+                        <h4>学分：2</h4>
+
+                        <div style="margin:15px"></div>
+
+                        <h4>任课老师：林广艳</h4>
+
+                    </div>
+
+                </div>
+                <a href="studentHomework">
                     <div class="tile double-down bg-green">
 
                         <div class="tile-body">
@@ -164,7 +187,7 @@
                     </div>
                 </a>
 
-
+<!--
                 <a href="student_resources.jsp">
                     <div class="tile double-down bg-purple">
 
@@ -189,11 +212,11 @@
                 </a>
 
                 <a href="student_chat.jsp">
-                    <div class="tile double-down bg-yellow">
+                    <div class="tile double-down2 bg-yellow">
 
                         <div class="tile-body">
 
-                            <i class="icon-comments-alt"></i>
+                            <i class="icon-comments-alt" style=" padding-top:75px"></i>
 
                         </div>
 
@@ -211,7 +234,7 @@
                     </div>
                 </a>
 
-
+-->
 
                 <!-- END PAGE CONTENT-->
 

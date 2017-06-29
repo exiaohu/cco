@@ -116,17 +116,18 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="/teacher">主页</a>
+                            <a href="teacher">主页</a>
 
                             <i class="icon-angle-right"></i>
 
                         </li>
-
+                        <!--
                         <li>
 
-                            <a href="/teacherCourse">课程管理</a>
+                            <a href="/">课程管理</a>
 
                         </li>
+                        -->
 
                     </ul>
 
@@ -199,7 +200,7 @@
 
                                         <td><%=course.getAddress()%></td>
 
-                                        <td><a href="#" class="btn mini green" style="margin-right:10px"><i class="icon-folder-open"></i> 查看信息</a><a href="/addCourseInfo?cid=<%=course.getCid()%>" class="btn mini green"><i class="icon-plus"></i> 添加信息</a></td>
+                                        <td><a href="#" class="btn mini green" style="margin-right:10px"><i class="icon-folder-open"></i> 查看信息</a><a href="addCourseInfo?cid=<%=course.getCid()%>" class="btn mini green"><i class="icon-plus"></i> 添加信息</a></td>
 
                                     </tr>
                                     <%
@@ -232,12 +233,6 @@
 
 <!-- END PAGE CONTAINER-->
 
-</div>
-
-<!-- END PAGE -->
-
-</div>
-
 <!-- END CONTAINER -->
 
 <!-- BEGIN FOOTER -->
@@ -246,7 +241,7 @@
 
     <div class="footer-inner">
 
-        2016 BuaaSoftware Best Group Null
+        GAD group 16
 
     </div>
 

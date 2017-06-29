@@ -141,7 +141,7 @@
 
 		<div class="footer-inner">
 
-			2017 BuaaSoftware Best Group GAD
+			GAD group 16
 
 		</div>
 

@@ -1,3 +1,6 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.buaa.mooc.entity.Course" %>
+<%@ page import="com.buaa.mooc.entity.Homework" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -12,7 +15,7 @@
 
     <meta charset="utf-8" />
 
-    <title>课程管理</title>
+    <title>作业管理</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
@@ -56,39 +59,17 @@
 
 <body class="page-header-fixed">
 
-<jsp:include page="admin_header.jsp"></jsp:include>
+<jsp:include page="student_header.jsp"></jsp:include>
 
 <!-- BEGIN CONTAINER -->
 
 <div class="page-container row-fluid">
 
-    <jsp:include page="admin_sidebar.jsp"></jsp:include>
+    <jsp:include page="student_sidebar.jsp"></jsp:include>
 
     <!-- BEGIN PAGE -->
 
     <div class="page-content">
-
-        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-
-        <div id="portlet-config" class="modal hide">
-
-            <div class="modal-header">
-
-                <button data-dismiss="modal" class="close" type="button"></button>
-
-                <h3>portlet Settings</h3>
-
-            </div>
-
-            <div class="modal-body">
-
-                <p>Here will be a configuration form</p>
-
-            </div>
-
-        </div>
-
-        <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
         <!-- BEGIN PAGE CONTAINER-->
 
@@ -104,7 +85,7 @@
 
                     <h3 class="page-title">
 
-                        课程管理 <small></small>
+                        作业管理 <small>课程作业提交</small>
 
                     </h3>
 
@@ -114,19 +95,30 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="eduadmin">主页</a>
+                            <a href="index.jsp">主页</a>
 
                             <i class="icon-angle-right"></i>
 
                         </li>
-                        <!--
+
+
 
                         <li>
 
-                            <a href="">课程管理</a>
+                            <a href="student_course.jsp">敏捷开发</a>
+
+                            <!-- 数据库获取该课程名 -->
+
+                            <i class="icon-angle-right"></i>
 
                         </li>
--->
+
+                        <li>
+
+                            <a href="studentHomework">作业管理</a>
+
+                        </li>
+
                     </ul>
 
                     <!-- END PAGE TITLE & BREADCRUMB-->
@@ -139,36 +131,59 @@
 
             <!-- BEGIN PAGE CONTENT-->
 
-            <div class="tiles">
-                <a href="#">
-                    <div class="tile bg-green">
-
-                        <div class="tile-body">
-
-                            <i class="icon-bar-chart"></i>
-
+            <div class="row-fluid">
+                <div class="span12">
+                    <!-- BEGIN SAMPLE TABLE PORTLET-->
+                    <div class="portlet box green">
+                        <div class="portlet-title">
+                            <div class="caption"><i class="icon-bell"></i>作业列表</div>
                         </div>
+                        <div class="portlet-body">
+                            <table class="table table-striped table-bordered table-advance table-hover">
+                                <tr style="align: center">
+                                    <th><i class="icon-file-text"></i> 作业名称</th>
+                                    <th class="hidden-phone"><i class="icon-time"></i> 开始时间</th>
+                                    <th><i class="icon-bell"></i> 截止时间</th>
+                                    <th>得分(最高分)</th>
+                                    <!--
+                                    <th>操作</th>
+                                    -->
+                                </tr>
+                                <tbody>
 
-                        <div class="tile-object">
+                                <% List<Homework> homeworks = (List<Homework>)request.getAttribute("homeworks"); %>
 
-                            <div class="name">
+                                <%
+                                    if (homeworks != null) {
+                                        for (Homework homework : homeworks) {
+                                %>
+                                <tr class="">
 
-                                敏捷开发实践
+                                    <td><%=homework.getHomeworkName()%></td>
 
-                            </div>
+                                    <td><%=homework.getStartTime().toLocalDateTime().toString()%></td>
 
-                            <div class="number">
+                                    <td><%=homework.getDeadLine().toLocalDateTime().toString()%></td>
 
-                                5
+                                    <td></td>
+                                    <!--
+                                    <td><a href="student_hwview.jsp" class="btn mini green"><i class="icon-eye-open"></i> 查看</a>-->
 
-                            </div>
+                                </tr>
+                                <%
+                                        }
+                                    }
+                                %>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </a>
+                    <!-- END SAMPLE TABLE PORTLET-->
+                </div>
+
+                <!-- END SAMPLE TABLE PORTLET-->
             </div>
         </div>
-
-
 
         <!-- END PAGE CONTENT-->
 
@@ -178,33 +193,10 @@
 
 </div>
 
-<!-- END PAGE -->
 
 <!-- END CONTAINER -->
 
-<!-- BEGIN FOOTER -->
-
-<div class="footer">
-
-    <div class="footer-inner">
-
-        GAD group 16
-
-    </div>
-
-    <div class="footer-tools">
-
-			<span class="go-top">
-
-			<i class="icon-angle-up"></i>
-
-			</span>
-
-    </div>
-
-</div>
-
-<!-- END FOOTER -->
+<jsp:include page="footer.jsp"></jsp:include>
 
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 

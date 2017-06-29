@@ -17,7 +17,7 @@
 
             <!-- BEGIN LOGO -->
 
-            <a class="brand" href="/teacher" >
+            <a class="brand" href="teacher" >
 
                 <img src="media/image/logo.png" alt="logo" />
 

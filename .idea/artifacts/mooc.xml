@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="mooc:war exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/mooc_war_exploded.war</output-path>
-    <root id="root">
+  <artifact type="war" name="mooc">
+    <output-path>$PROJECT_DIR$/out/artifacts/mooc.war</output-path>
+    <root id="archive" name="mooc.war">
       <element id="javaee-facet-resources" facet="mooc/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">

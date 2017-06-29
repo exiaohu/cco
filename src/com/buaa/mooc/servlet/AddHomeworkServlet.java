@@ -1,7 +1,6 @@
 package com.buaa.mooc.servlet;
 
-import com.buaa.mooc.dao.TermDao;
-import com.buaa.mooc.utils.Validation;
+import com.buaa.mooc.dao.HomeworkDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,31 +8,30 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.IllegalFormatException;
 
 /**
- * Created by huxia on 2017/6/28.
+ * Created by huxia on 2017/6/29.
  */
-public class AddSemesterServlet extends HttpServlet {
+public class AddHomeworkServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            Integer year = Integer.parseInt(request.getParameter("course"));
-            String quarter = new String( request.getParameter("quarter").getBytes("iso-8859-1"), "utf-8");
+            Integer _limit = Integer.parseInt(request.getParameter("_limit"));
+            String hname = new String( request.getParameter("assign_name").getBytes("iso-8859-1"), "utf-8");
             ParsePosition pos = new ParsePosition(0);
             SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
             java.util.Date startDate = formatter.parse(request.getParameter("startDate"), pos);
             formatter = new SimpleDateFormat("MM/dd/yyyy");
             pos = new ParsePosition(0);
             java.util.Date endDate = formatter.parse(request.getParameter("endDate"), pos);
-            Integer weeks = Integer.parseInt(request.getParameter("weeks"));
 
-            TermDao termDao = new TermDao();
-            termDao.AddTerm(new Date(startDate.getTime()), new Date(endDate.getTime()), year, quarter, weeks);
+            HomeworkDao homeworkDao = new HomeworkDao();
+            homeworkDao.AddHomework(1, hname, new Timestamp(startDate.getTime()), new Timestamp(endDate.getTime()), _limit);
 
-            response.sendRedirect("/semester");
+            response.sendRedirect("/TeacherHomework");
         } catch (IllegalFormatException e) {
             e.printStackTrace();
             response.sendRedirect("/AddSemester");
@@ -41,11 +39,7 @@ public class AddSemesterServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (!Validation.checkEduAdmin(request)) {
-            response.sendRedirect("/login");
-            return;
-        }
-        RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/admin_addsemester.jsp");
+        RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/teacher_homework_new.jsp");
         rd.forward(request, response);
     }
 }

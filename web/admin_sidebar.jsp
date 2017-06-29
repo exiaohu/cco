@@ -27,7 +27,7 @@
         </li>
         <li class="start active ">
 
-            <a href="index.html">
+            <a href="eduadmin">
 
                 <i class="icon-home"></i>
 
@@ -39,7 +39,7 @@
 
         <li class="">
 
-            <a href="/semester">
+            <a href="semester">
 
                 <i class="icon-table"></i>
 
@@ -49,6 +49,7 @@
 
 
         </li>
+        <!--
         <li class="">
 
             <a href="admin_course.html">
@@ -60,7 +61,7 @@
             </a>
 
 
-        </li>
+        </li>-->
 
     </ul>
 

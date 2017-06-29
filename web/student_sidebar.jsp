@@ -34,7 +34,7 @@
 
         <li class="start active ">
 
-            <a href="student_homepage.jsp">
+            <a href="student">
 
                 <i class="icon-home"></i>
 
@@ -73,6 +73,7 @@
             </ul>
 
         </li>
+        <!--
         <li class=" ">
 
             <a href="#">
@@ -92,26 +93,26 @@
 
                 <li class="active">
 
-                    <a href="student_team_apply.jsp">团队申报</a>
+                    <a href="student_team_apply.html">团队申报</a>
 
                 </li>
 
                 <li >
 
-                    <a href="student_team_join.jsp">加入团队</a>
+                    <a href="student_team_join.html">加入团队</a>
 
                 </li>
 
                 <li >
 
-                    <a href="student_team_manage.jsp">团队信息</a>
+                    <a href="student_team_manage.html">团队信息</a>
 
                 </li>
 
             </ul>
 
         </li>
-
+-->
 
 
     </ul>

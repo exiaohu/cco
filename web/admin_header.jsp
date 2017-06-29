@@ -11,7 +11,7 @@
 
             <!-- BEGIN LOGO -->
 
-            <a class="brand" href="teacher_homepage.html">
+            <a class="brand" href="teacher">
 
                 <img src="media/image/logo.png" alt="logo"/>
 
@@ -21,7 +21,7 @@
 
             <!-- BEGIN RESPONSIVE MENU TOGGLER -->
 
-            <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+            <a href="javascript:" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
 
                 <img src="media/image/menu-toggler.png" alt="" />
 

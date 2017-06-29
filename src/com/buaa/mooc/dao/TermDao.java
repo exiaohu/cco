@@ -20,13 +20,13 @@ public class TermDao {
         Session session = HibernateUtils.getSession();
         try {
             session.beginTransaction();
-
             Term term = new Term();
             term.setStartDate(startTime);
             term.setEndDate(endTime);
             term.setYear(year);
             term.setQuarter(quarter);
             term.setWeeks(weeks);
+            session.save(term);
             session.getTransaction().commit();
             return true;
         } catch (Exception e) {

@@ -25,7 +25,7 @@
 
             <ul class="dropdown-menu">
 
-                <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+                <li><a href="login.html"><i class="icon-key"></i>登出</a></li>
 
             </ul>
 
@@ -33,7 +33,7 @@
 
         <li class=" ">
 
-            <a href="admin_homepage.html">
+            <a href="teacher">
 
                 <i class="icon-home"></i>
 
@@ -43,6 +43,7 @@
 
         </li>
 
+        <!--
         <li class="">
 
             <a href="teacher_semester.html">
@@ -53,23 +54,22 @@
 
             </a>
         </li>
+        -->
 
-        <li class="start active ">
+        <li class="">
 
-            <a href="/teacherCourse">
+            <a href="teacherCourse">
 
-                <i class="icon-cogs"></i>
+                <i class="icon-file-text"></i>
 
                 <span class="title">课程管理</span>
-
-                <span class="selected"></span>
 
             </a>
         </li>
 
         <li class="">
 
-            <a href="teacher_homework.html">
+            <a href="TeacherHomework">
 
                 <i class="icon-file-text"></i>
 
@@ -79,6 +79,7 @@
 
 
         </li>
+        <!--
 
         <li class="last ">
 
@@ -91,6 +92,7 @@
             </a>
 
         </li>
+        -->
     </ul>
 
     <!-- END SIDEBAR MENU -->

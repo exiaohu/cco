@@ -118,7 +118,7 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="/teacher">主页</a>
+                            <a href="teacher">主页</a>
 
                             <span class="icon-angle-right"></span>
 
@@ -126,7 +126,7 @@
 
                         <li>
 
-                            <a href="/teacherCourse">课程管理</a>
+                            <a href="teacherCourse">课程管理</a>
 
                             <span class="icon-angle-right"></span>
 
@@ -175,7 +175,7 @@
 
                             <!-- BEGIN FORM-->
 
-                            <form action="/addCourseInfo" class="form-horizontal" method="post" enctype="multipart/form-data">
+                            <form action="addCourseInfo" class="form-horizontal" method="post" enctype="multipart/form-data">
 
                                 <div class="alert alert-error hide">
 
@@ -226,7 +226,7 @@
 
                                         <button type="submit" class="btn blue">确定</button>
 
-                                        <a href="/teacher"><button type="button" class="btn">取消</button></a>
+                                        <a href="teacher"><button type="button" class="btn">取消</button></a>
 
                                     </div>
 
@@ -265,6 +265,8 @@
 <div class="footer">
 
     <div class="footer-inner">
+
+        GAD group 16
 
     </div>
 

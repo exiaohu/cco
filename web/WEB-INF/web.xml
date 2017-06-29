@@ -3,6 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <welcome-file-list>
+        <welcome-file></welcome-file>
+    </welcome-file-list>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.LoginServlet</servlet-class>
@@ -31,10 +34,26 @@
         <servlet-name>AddSemester</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.AddSemesterServlet</servlet-class>
     </servlet>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/login</url-pattern>
-    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteSemester</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.DeleteSemesterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherHomework</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherHomeworkServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddHomework</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.AddHomeworkServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentHomework</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.StudentHomeworkServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentHome</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.StudentHomeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddCourseInfo</servlet-name>
         <url-pattern>/addCourseInfo</url-pattern>
@@ -58,5 +77,29 @@
     <servlet-mapping>
         <servlet-name>AddSemester</servlet-name>
         <url-pattern>/AddSemester</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteSemester</servlet-name>
+        <url-pattern>/DeleteSemester</url-pattern>
+    </servlet-mapping>e
+    <servlet-mapping>
+        <servlet-name>TeacherHomework</servlet-name>
+        <url-pattern>/TeacherHomework</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddHomework</servlet-name>
+        <url-pattern>/AddHomework</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentHomework</servlet-name>
+        <url-pattern>/studentHomework</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentHome</servlet-name>
+        <url-pattern>/student</url-pattern>
     </servlet-mapping>
 </web-app>

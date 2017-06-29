@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>欢迎页面</title>
   </head>
   <body>
-  $END$
+  <a href="login" >登录</a>
   </body>
 </html>

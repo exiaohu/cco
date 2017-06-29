@@ -125,7 +125,7 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="student_homepage.jsp">主页</a>
+                            <a href="student">主页</a>
 
                             <i class="icon-angle-right"></i>
 
@@ -170,7 +170,7 @@
 
     <div class="footer-inner">
 
-        2017 BuaaSoftware Best Group GAD
+        GAD group 16
 
     </div>
 

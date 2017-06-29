@@ -102,7 +102,7 @@
             </li>
             <li class=" ">
 
-                <a href="/eduadmin">
+                <a href="eduadmin">
 
                     <i class="icon-home"></i>
 
@@ -114,7 +114,7 @@
 
             <li class="start active ">
 
-                <a href="/semester">
+                <a href="semester">
 
                     <i class="icon-table"></i>
 
@@ -126,6 +126,7 @@
 
 
             </li>
+            <!--
             <li class="">
 
                 <a href="admin_course.html">
@@ -138,8 +139,9 @@
 
 
             </li>
+
             <li class="">
-            </li>
+            </li>-->
 
         </ul>
 
@@ -197,7 +199,7 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="teacher_homepage.html">主页</a>
+                            <a href="teacher">主页</a>
 
                             <span class="icon-angle-right"></span>
 
@@ -205,13 +207,13 @@
 
                         <li>
 
-                            <a href="admin_course.html">学期管理</a>
+                            <a href="semester">学期管理</a>
 
                             <span class="icon-angle-right"></span>
 
                         </li>
 
-                        <li><a href=/AddSemester">添加学期</a></li>
+                        <li><a href="AddSemester">添加学期</a></li>
 
                     </ul>
 
@@ -238,13 +240,13 @@
 
                             <div class="tools">
 
-                                <a href="javascript:;" class="collapse"></a>
+                                <a href="javascript:" class="collapse"></a>
 
                                 <a href="#portlet-config" data-toggle="modal" class="config"></a>
 
-                                <a href="javascript:;" class="reload"></a>
+                                <a href="javascript:" class="reload"></a>
 
-                                <a href="javascript:;" class="remove"></a>
+                                <a href="javascript:" class="remove"></a>
 
                             </div>
 
@@ -254,7 +256,7 @@
 
                             <!-- BEGIN FORM-->
 
-                            <form action="/AddSemester" method="post" class="form-horizontal">
+                            <form action="AddSemester" method="post" class="form-horizontal">
 
                                 <div class="alert alert-error hide">
 
@@ -335,7 +337,7 @@
 
                                     <button type="submit" class="btn blue">确定</button>
 
-                                    <a href="/semester"><button type="button" class="btn">取消</button><a>
+                                    <a href="semester"><button type="button" class="btn">取消</button></a>
 
                                 </div>
 
@@ -373,7 +375,7 @@
 
     <div class="footer-inner">
 
-
+      GAD group 16
 
     </div>
 

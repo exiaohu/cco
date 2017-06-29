@@ -86,7 +86,7 @@
 
 								<i class="icon-home"></i>
 
-								<a href="/teacher">主页</a>
+								<a href="teacher">主页</a>
 
 								<i class="icon-angle-right"></i>
 
@@ -101,6 +101,11 @@
 				</div>
 
 				<!-- END PAGE HEADER-->
+			</div>
+
+		</div>
+
+	</div>
 
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 

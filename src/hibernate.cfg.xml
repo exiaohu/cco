@@ -18,5 +18,6 @@
         <mapping resource="com/buaa/mooc/entity/TeacherCourse.hbm.xml" />
         <mapping resource="com/buaa/mooc/entity/StudentCourse.hbm.xml" />
         <mapping resource="com/buaa/mooc/entity/File.hbm.xml" />
+        <mapping resource="com/buaa/mooc/entity/Homework.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

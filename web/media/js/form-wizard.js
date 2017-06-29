@@ -104,6 +104,7 @@ var FormWizard = function () {
                 submitHandler: function (form) {
                     success.show();
                     error.hide();
+                    form.submit();
                     //add here some ajax code to submit your form or just call form.submit() if you want to submit the form without ajax
                 }
 
@@ -221,7 +222,7 @@ var FormWizard = function () {
 
             $('#form_wizard_1').find('.button-previous').hide();
             $('#form_wizard_1 .button-submit').click(function () {
-                alert('Finished! Hope you like it :)');
+                form.submit();
             }).hide();
         }
 
