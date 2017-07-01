@@ -1,13 +1,14 @@
 <%@ page import="com.buaa.mooc.entity.Homework" %>
 <%@ page import="java.util.List" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page import="com.buaa.mooc.entity.Course" %>
+<%@ page import="com.buaa.mooc.dao.CourseDao" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!-->
-<html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
@@ -113,8 +114,7 @@
 
                     <h3 class="page-title">
 
-                        作业管理
-                        <small>课程作业添加、修改、批正</small>
+                        作业管理 <small>课程作业添加、修改、批正</small>
 
                     </h3>
 
@@ -197,9 +197,13 @@
 
                                     <th><i class="icon-file-text"></i> 作业名称</th>
 
+                                    <th><i class="icon-file-text"></i>课程名称</th>
+
                                     <th class="hidden-phone"><i class="icon-time"></i> 发布时间</th>
 
                                     <th><i class="icon-bell"></i> 结束时间</th>
+
+                                    <th></th>
 
                                     <th></th>
                                     <!--
@@ -217,8 +221,7 @@
 
                                 <tbody>
 
-                                <% List<Homework> homeworks = (List<Homework>) request.getAttribute("homeworks"); %>
-
+                                <%  List<Homework> homeworks = (List<Homework>)request.getAttribute("homeworks"); %>
                                 <%
                                     if (homeworks != null && homeworks.size() > 0) {
                                         for (Homework homework : homeworks) {
@@ -226,21 +229,17 @@
 
                                 <tr>
 
-                                    <td class="highlight">
+                                    <td class="highlight"> <%=homework.getHomeworkName()%></td>
 
-                                        <a href="#"><%=homework.getHomeworkName()%>
-                                        </a>
+                                    <td class="highlight"> <%=new CourseDao().findByCid(homework.getCourseId()).getCname()%>                     </td>
 
-                                    </td>
+                                    <td class="hidden-phone"><%=homework.getStartTime().toLocalDateTime().toString()%></td>
 
-                                    <td class="hidden-phone"><%=homework.getStartTime().toLocalDateTime().toString()%>
-                                    </td>
+                                    <td><%=homework.getDeadLine().toLocalDateTime().toString()%></td>
 
-                                    <td><%=homework.getDeadLine().toLocalDateTime().toString()%>
-                                    </td>
+                                    <td><a href="TeacherHomeworkEdit?hid=<%=homework.getId()%>" class="btn mini purple"><i class="icon-edit"></i> 编辑</a></td>
 
-                                    <td><a href="TeacherHomeworkEdit?hid=<%=homework.getId()%>" class="btn mini purple"><i
-                                            class="icon-edit"></i> 编辑</a></td>
+                                    <td><a href="TeacherHomeworkDel?hid=<%=homework.getId()%>" class="icon-trash"><i class="icon-edit">删除</i></a></td>
                                     <!--
 
                                     <td><a href="teacher_homework_edit.html" class="btn mini purple"><i class="icon-edit"></i> 编辑</a></td>
@@ -337,7 +336,7 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -357,7 +356,7 @@
 
 <script>
 
-    jQuery(document).ready(function () {
+    jQuery(document).ready(function() {
 
         // initiate layout and plugins
 
