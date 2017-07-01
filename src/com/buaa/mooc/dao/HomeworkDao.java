@@ -74,6 +74,22 @@ public class HomeworkDao {
         }
     }
 
+    public void delHomework(Integer hid){
+        Session session = HibernateUtils.getSession();
+        try{
+            session.beginTransaction();
+            Homework homework=new Homework();
+            homework.setHomeworkId(hid);
+            session.delete(homework);
+            session.getTransaction().commit();
+        }catch(Exception e){
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }finally{
+            HibernateUtils.closeSession(session);
+        }
+    }
+
     public Homework findByHid(Integer hid) {
         Session session = HibernateUtils.getSession();
         try{

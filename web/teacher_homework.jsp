@@ -1,5 +1,7 @@
 <%@ page import="com.buaa.mooc.entity.Homework" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.buaa.mooc.entity.Course" %>
+<%@ page import="com.buaa.mooc.dao.CourseDao" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -195,9 +197,13 @@
 
                                     <th><i class="icon-file-text"></i> 作业名称</th>
 
+                                    <th><i class="icon-file-text"></i>课程名称</th>
+
                                     <th class="hidden-phone"><i class="icon-time"></i> 发布时间</th>
 
                                     <th><i class="icon-bell"></i> 结束时间</th>
+
+                                    <th></th>
 
                                     <th></th>
                                     <!--
@@ -216,7 +222,6 @@
                                 <tbody>
 
                                 <%  List<Homework> homeworks = (List<Homework>)request.getAttribute("homeworks"); %>
-
                                 <%
                                     if (homeworks != null && homeworks.size()>0) {
                                         for (Homework homework : homeworks) {
@@ -224,17 +229,17 @@
 
                                 <tr>
 
-                                    <td class="highlight">
+                                    <td class="highlight"> <%=homework.getHomeworkName()%></td>
 
-                                        <a href="#"><%=homework.getHomeworkName()%></a>
-
-                                    </td>
+                                    <td class="highlight"> <%=new CourseDao().findByCid(homework.getCourseId()).getCname()%>                     </td>
 
                                     <td class="hidden-phone"><%=homework.getStartTime().toLocalDateTime().toString()%></td>
 
                                     <td><%=homework.getDeadLine().toLocalDateTime().toString()%></td>
 
                                     <td><a href="TeacherHomeworkEdit?hid=<%=homework.getId()%>" class="btn mini purple"><i class="icon-edit"></i> 编辑</a></td>
+
+                                    <td><a href="TeacherHomeworkDel?hid=<%=homework.getId()%>" class="icon-trash"><i class="icon-edit">删除</i></a></td>
                                     <!--
 
                                     <td><a href="teacher_homework_edit.html" class="btn mini purple"><i class="icon-edit"></i> 编辑</a></td>
