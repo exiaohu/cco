@@ -13,5 +13,6 @@
 		<property name="startTime" type="timestamp" column="start_time"/>
 		<property name="deadLine" type="timestamp" column="deadline"/>
 		<property name="submitMaxTimes" type="integer" column="submit_max_times"/>
+		<property name="homeworkInformation" type="string" column="information"/>
 	</class>
 </hibernate-mapping>

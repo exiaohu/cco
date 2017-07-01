@@ -46,7 +46,9 @@
 
     <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/chosen.css" />
+
+    <link rel="stylesheet" type="text/css" href="media/css/jquery-ui-1.10.1.custom.min.css"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
@@ -71,7 +73,6 @@
 <div class="page-container row-fluid">
 
     <jsp:include page="teacher_sidebar.jsp"></jsp:include>
-
     <!-- BEGIN PAGE -->
 
     <div class="page-content">
@@ -108,11 +109,11 @@
 
                 <div class="span12">
 
-                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-
                     <h3 class="page-title">
 
-                        作业管理 <small>课程作业添加、修改、批正</small>
+                        编辑作业
+
+                        <small>编辑当前作业详细信息</small>
 
                     </h3>
 
@@ -122,9 +123,9 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="teacher">主页</a>
+                            <a href="teacher_homepage.jsp">主页</a>
 
-                            <i class="icon-angle-right"></i>
+                            <span class="icon-angle-right"></span>
 
                         </li>
 
@@ -132,11 +133,13 @@
 
                             <a href="TeacherHomework">作业管理</a>
 
+                            <span class="icon-angle-right"></span>
+
                         </li>
 
-                    </ul>
+                        <li><a href="TeacherHomeworkEdit">编辑作业</a></li>
 
-                    <!-- END PAGE TITLE & BREADCRUMB-->
+                    </ul>
 
                 </div>
 
@@ -146,136 +149,127 @@
 
             <!-- BEGIN PAGE CONTENT-->
 
+
             <div class="row-fluid">
 
                 <div class="span12">
 
-                    <!-- BEGIN SAMPLE TABLE PORTLET-->
+                    <!-- BEGIN VALIDATION STATES-->
 
                     <div class="portlet box purple">
 
                         <div class="portlet-title">
 
-                            <div class="caption"><i class="icon-table"></i>作业列表</div>
+                            <div class="caption"><i class="icon-edit"></i>作业详情</div>
 
                             <div class="tools">
 
-                                <a href="javascript:" class="collapse"></a>
+                                <a href="javascript:;" class="collapse"></a>
 
                                 <a href="#portlet-config" data-toggle="modal" class="config"></a>
 
-                                <a href="javascript:" class="reload"></a>
+                                <a href="javascript:;" class="reload"></a>
 
-                                <a href="javascript:" class="remove"></a>
+                                <a href="javascript:;" class="remove"></a>
 
                             </div>
 
                         </div>
 
-                        <div class="portlet-body">
+                        <div class="portlet-body form">
 
-                            <div class="btn-group">
+                            <!-- BEGIN FORM-->
 
-                                <a href="AddHomework">
+                            <form action="TeacherHomeworkEdit?hid=<%=request.getAttribute("hid")%>" method="post" id="form_sample_1"  class="form-horizontal">
 
-                                    <button id="sample_editable_1_new" class="btn green">
+                                <div class="alert alert-error hide">
 
-                                        添加 <i class="icon-plus"></i>
+                                    <button class="close" data-dismiss="alert"></button>
 
-                                    </button>
-                                </a>
+                                    You have some form errors. Please check below.
 
-                            </div>
+                                </div>
 
-                            <table class="table table-striped table-bordered table-hover" id="sample_2">
+                                <div class="alert alert-success hide">
 
-                                <thead>
+                                    <button class="close" data-dismiss="alert"></button>
 
-                                <tr>
+                                    Your form validation is successful!
 
-                                    <th><i class="icon-file-text"></i> 作业名称</th>
+                                </div>
 
-                                    <th class="hidden-phone"><i class="icon-time"></i> 发布时间</th>
+                                <input name="id" type="hidden" value="<%=request.getAttribute("hid")%>" />
 
-                                    <th><i class="icon-bell"></i> 结束时间</th>
+                                <div class="control-group">
 
-                                    <th></th>
-                                    <!--
+                                    <label class="control-label">作业名称：<span class="required">*</span></label>
 
-                                    <th></th>
+                                    <div class="controls" >
 
-                                    <th></th>
+                                       <!--<input value="软件开发实习" name="assign_name" type="text" class="span6 m-wrap"/>*/-->
+                                       <%=request.getAttribute("hname")%>
+                                    </div>
 
-                                    <th></th>
-                                    -->
+                                </div>
 
-                                </tr>
+                                <div class="control-group">
 
-                                </thead>
+                                    <label class="control-label">起止日期<span class="required">*</span></label>
 
-                                <tbody>
+                                    <div class="controls">
 
-                                <%  List<Homework> homeworks = (List<Homework>)request.getAttribute("homeworks"); %>
+                                        <%=request.getAttribute("startDate")%>
+                                        &nbsp;&nbsp;至
+                                        <%=request.getAttribute("deadLine")%>
+                                    </div>
 
-                                <%
-                                    if (homeworks != null && homeworks.size()>0) {
-                                        for (Homework homework : homeworks) {
-                                %>
+                                </div>
 
-                                <tr>
+                                <div class="control-group">
 
-                                    <td class="highlight">
+                                    <label class="control-label">详细需求<span class="required">*</span></label>
 
-                                        <a href="#"><%=homework.getHomeworkName()%></a>
+                                    <div class="controls">
 
-                                    </td>
+                                        <textarea class="span6 m-wrap" rows="3"	name="request" ><%=request.getAttribute("imformation")%></textarea>
 
-                                    <td class="hidden-phone"><%=homework.getStartTime().toLocalDateTime().toString()%></td>
+                                    </div>
 
-                                    <td><%=homework.getDeadLine().toLocalDateTime().toString()%></td>
+                                </div>
 
-                                    <td><a href="TeacherHomeworkEdit?hid=<%=homework.getId()%>" class="btn mini purple"><i class="icon-edit"></i> 编辑</a></td>
-                                    <!--
+                                <div class="form-actions">
 
-                                    <td><a href="teacher_homework_edit.html" class="btn mini purple"><i class="icon-edit"></i> 编辑</a></td>
+                                     <button type="submit" class="btn purple">更改</button>
 
-                                    <td><a href="teacher_homework_check.html" class="btn mini blue"><i class="icon-pencil"></i> 批改</a></td>
+                                    <a href="TeacherHomework"><button type="button" class="btn">取消</button></a>
 
-                                    <td><a href="#" class="btn mini black"><i class="icon-trash"></i> 删除</a></td>
-                                    -->
-                                </tr>
+                                </div>
 
-                                <%
-                                        }
-                                    }
-                                %>
+                            </form>
 
-                                </tbody>
-
-                            </table>
+                            <!-- END FORM-->
 
                         </div>
 
                     </div>
 
-                    <!-- END SAMPLE TABLE PORTLET-->
+                    <!-- END VALIDATION STATES-->
 
                 </div>
 
-                <!-- END SAMPLE TABLE PORTLET-->
             </div>
+
+            <!-- END PAGE CONTENT-->
+
         </div>
 
-        <!-- END PAGE CONTENT-->
+        <!-- END PAGE CONTAINER-->
 
     </div>
 
-    <!-- END PAGE CONTAINER-->
+    <!-- END PAGE -->
 
 </div>
-
-<!-- END PAGE -->
-
 
 <!-- END CONTAINER -->
 
@@ -285,7 +279,7 @@
 
     <div class="footer-inner">
 
-        GAD group 16
+        2016 BuaaSoftware Best Group Null
 
     </div>
 
@@ -337,17 +331,25 @@
 
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 
+<script type="text/javascript" src="media/js/jquery.validate.min.js"></script>
+
+<script type="text/javascript" src="media/js/additional-methods.min.js"></script>
+
 <script type="text/javascript" src="media/js/select2.min.js"></script>
 
-<script type="text/javascript" src="media/js/jquery.dataTables.min.js"></script>
-
-<script type="text/javascript" src="media/js/DT_bootstrap.js"></script>
+<script type="text/javascript" src="media/js/chosen.jquery.min.js"></script>
 
 <!-- END PAGE LEVEL PLUGINS -->
 
+<!-- BEGIN PAGE LEVEL STYLES -->
+
 <script src="media/js/app.js"></script>
 
-<script src="media/js/table-advanced.js"></script>
+<script src="media/js/form-validation.js"></script>
+
+<script src="media/js/ui-jqueryui.js"></script>
+
+<!-- END PAGE LEVEL STYLES -->
 
 <script>
 
@@ -357,13 +359,17 @@
 
         App.init();
 
-        TableAdvanced.init();
+        FormValidation.init();
+
+        UIJQueryUI.init();
 
     });
 
 </script>
 
-</body>
+<!-- END JAVASCRIPTS -->
+
+<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
 
 <!-- END BODY -->
 

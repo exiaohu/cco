@@ -12,6 +12,7 @@ public class Homework {
     private Timestamp startTime;
     private Timestamp deadLine;
     private int submitMaxTimes;
+    private String homeworkInformation;
     public Homework() {
         super();
     }
@@ -46,4 +47,11 @@ public class Homework {
     }
     public void setSubmitMaxTimes(int times) {this.submitMaxTimes = times; }
 
+    public String getHomeworkInformation() {
+        return homeworkInformation;
+    }
+
+    public void setHomeworkInformation(String homeworkInformation) {
+        this.homeworkInformation = homeworkInformation;
+    }
 }

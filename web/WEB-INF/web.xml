@@ -55,6 +55,10 @@
         <servlet-class>com.buaa.mooc.servlet.StudentHomeServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>TeacherHomeworkEdit</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherHomeworkEditServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>EduAdminCourse</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.EduAdminCourseServlet</servlet-class>
     </servlet>
@@ -93,7 +97,7 @@
     <servlet-mapping>
         <servlet-name>DeleteSemester</servlet-name>
         <url-pattern>/DeleteSemester</url-pattern>
-    </servlet-mapping>e
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>TeacherHomework</servlet-name>
         <url-pattern>/TeacherHomework</url-pattern>
@@ -125,5 +129,9 @@
     <servlet-mapping>
         <servlet-name>AddStudentInfo</servlet-name>
         <url-pattern>/AddStudentInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherHomeworkEdit</servlet-name>
+        <url-pattern>/TeacherHomeworkEdit</url-pattern>
     </servlet-mapping>
 </web-app>

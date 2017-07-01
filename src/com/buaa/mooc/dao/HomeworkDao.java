@@ -58,4 +58,32 @@ public class HomeworkDao {
             HibernateUtils.closeSession(session);
         }
     }
+    public void EditHomework(Integer hid, String imformation) {
+        Session session = HibernateUtils.getSession();
+        try{
+            session.beginTransaction();
+            Homework homework = findByHid(hid);
+            homework.setHomeworkInformation(imformation);
+            session.update(homework);
+            session.getTransaction().commit();
+        }catch(Exception e){
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }finally{
+            HibernateUtils.closeSession(session);
+        }
+    }
+
+    public Homework findByHid(Integer hid) {
+        Session session = HibernateUtils.getSession();
+        try{
+            return session.load(Homework.class,hid);
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }finally{
+            HibernateUtils.closeSession(session);
+
+        }
+    }
 }
