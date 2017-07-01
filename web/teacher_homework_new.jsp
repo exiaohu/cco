@@ -63,13 +63,13 @@
 
 <body class="page-header-fixed">
 
-<jsp:include page="teacher_header.jsp"></jsp:include>
+<jsp:include page="teacher_header.jsp"/>
 
 <!-- BEGIN CONTAINER -->
 
 <div class="page-container row-fluid">
 
-    <jsp:include page="teacher_sidebar.jsp"></jsp:include>
+    <jsp:include page="teacher_sidebar.jsp"/>
 
 
     <div class="page-content">
@@ -421,25 +421,7 @@
 
 <!-- BEGIN FOOTER -->
 
-<div class="footer">
-
-    <div class="footer-inner">
-
-        GAD group 16
-
-    </div>
-
-    <div class="footer-tools">
-
-			<span class="go-top">
-
-			<i class="icon-angle-up"></i>
-
-			</span>
-
-    </div>
-
-</div>
+<jsp:include page="footer.jsp"/>
 
 <!-- END FOOTER -->
 

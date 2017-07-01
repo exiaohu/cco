@@ -16,9 +16,6 @@ import java.util.List;
  * Created by huxia on 2017/7/1.
  */
 public class EduAdminCourseServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (!Validation.checkEduAdmin(request)) {

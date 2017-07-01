@@ -1,6 +1,7 @@
 package com.buaa.mooc.servlet;
 
 import com.buaa.mooc.dao.HomeworkDao;
+import com.buaa.mooc.utils.Validation;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,6 +40,10 @@ public class AddHomeworkServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (!Validation.checkTeacher(request)) {
+            response.sendRedirect("/login");
+            return;
+        }
         RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/teacher_homework_new.jsp");
         rd.forward(request, response);
     }

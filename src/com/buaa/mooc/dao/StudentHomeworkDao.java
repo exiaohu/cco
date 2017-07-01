@@ -7,26 +7,20 @@ import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by windrises on 2017/6/28.
  */
 public class StudentHomeworkDao {
-    public List<Integer> getHomeworkByCid(Integer cid){
+    public List<Homework> getHomeworkByCid(Integer cid){
 
         Session session = HibernateUtils.getSession();
-        List<Homework> studentHomeworks = null;
-        List<Integer> homeworks = new ArrayList<Integer>();
+        List<Homework> homeworks = new ArrayList<>();
         try{
-            String hql="from Homework";
+            String hql="select h from Homework as h where h.courseId = :cid";
             Query query=session.createQuery(hql);
-            studentHomeworks = query.list();
-            for(Homework sh: studentHomeworks){
-                if (Objects.equals(sh.getCourseId(), cid)) {
-                    homeworks.add(sh.getHomeworkId());
-                }
-            }
+            query.setParameter("cid", cid);
+            homeworks = query.list();
             return homeworks;
         }catch(Exception e){
             e.printStackTrace();

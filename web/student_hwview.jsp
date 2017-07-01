@@ -92,13 +92,13 @@
 
 <body class="page-header-fixed">
 
-<jsp:include page="student_header.jsp"></jsp:include>
+<jsp:include page="student_header.jsp"/>
 
 <!-- BEGIN CONTAINER -->
 
 <div class="page-container row-fluid">
 
-    <jsp:include page="student_sidebar.jsp"></jsp:include>
+    <jsp:include page="student_sidebar.jsp"/>
 
     <!-- BEGIN PAGE -->
 
@@ -158,7 +158,7 @@
 
                         <li>
                             <!--赶时间 写死了 -->
-                            <a href="student_course.jsp">敏捷开发</a>
+                            <a href="student_course.jsp"><%=request.getAttribute("cname")%></a>
 
                             <!-- 数据库获取该课程名 -->
 
@@ -335,7 +335,7 @@
 
                             <button type="submit" class="btn blue"><i class="icon-upload-alt"></i> 提交</button>
 
-                            <a href="/studentHomework"><button type="button" class="btn">返回</button></a>
+                            <a href="studentHomework"><button type="button" class="btn">返回</button></a>
 
                         </div>
 
@@ -361,25 +361,7 @@
 
 <!-- BEGIN FOOTER -->
 
-<div class="footer">
-
-    <div class="footer-inner">
-
-        GAD group 16
-
-    </div>
-
-    <div class="footer-tools">
-
-			<span class="go-top">
-
-			<i class="icon-angle-up"></i>
-
-			</span>
-
-    </div>
-
-</div>
+<jsp:include page="footer.jsp"/>
 
 <!-- END FOOTER -->
 

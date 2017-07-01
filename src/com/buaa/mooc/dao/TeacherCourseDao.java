@@ -121,12 +121,12 @@ public class TeacherCourseDao {
             TeacherCoursePK tcPK = new TeacherCoursePK();
             tcPK.setCid(cid);
             tcPK.setTid(tid);
+            session.beginTransaction();
             TeacherCourse tc = session.load(TeacherCourse.class, tcPK);
             if (tc != null) {
-                session.beginTransaction();
                 session.delete(tc);
-                session.getTransaction().commit();
             }
+            session.getTransaction().commit();
             return true;
         } catch (Exception e) {
             e.printStackTrace();

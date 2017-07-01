@@ -1,31 +1,30 @@
 <%@ page import="com.buaa.mooc.entity.Course" %>
-<%@ page import="com.buaa.mooc.entity.Term" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.buaa.mooc.entity.Student" %>
-<%@ page import="java.util.Objects" %>
 <%@ page import="com.buaa.mooc.entity.Teacher" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Objects" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <title>课程信息</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -49,11 +48,41 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+
+    <script language="JavaScript">
+        function confirmSid(){
+            var StudentIds = $("StudentIds").val;
+            $.ajax({
+                url: "AddStudentInfo",
+                type: "POST",
+                data: {
+                    'StudentIds': StudentIds
+                },
+                dataType: "json",
+                success: function (data) {
+                    alert("ssssss\n" + data);
+                    $.each(data, function(val){
+                        var html = "";
+                        html += '<tr><td>'
+                            + val.sid + '</td><td>'
+                            + val.sname + '</td><td>'
+                            + val.sex + '</td><td>'
+                            + val.className + '</td><td>'
+                            + val.major + '</td></tr>';
+                    });
+                    $('#table tbody').append(html);
+                },
+                error:function (err) {
+                    alert("error" + err);
+                }
+            });
+        });
+    </script>
 
 </head>
 
@@ -105,7 +134,7 @@
 
         <% List<Teacher> teachersFalse = (List<Teacher>) request.getAttribute("teachersFalse"); %>
 
-        <% List<Teacher> teachersTrue = (List<Teacher>) request.getAttribute("teachersTrue");  %>
+        <% List<Teacher> teachersTrue = (List<Teacher>) request.getAttribute("teachersTrue"); %>
 
         <div class="container-fluid">
 
@@ -179,7 +208,6 @@
                                 <ul class="nav nav-tabs">
 
 
-
                                     <li class="active"><a href="#portlet_tab1" data-toggle="tab">查看</a></li>
                                 </ul>
 
@@ -199,7 +227,8 @@
 
                                                 <div class="controls">
 
-                                                    <input name="cname" type="text" placeholder="" class="m-wrap large" value="<%=course.getCname()%>" />
+                                                    <input name="cname" type="text" placeholder="" class="m-wrap large"
+                                                           value="<%=course.getCname()%>"/>
 
                                                     <span class="help-inline"></span>
 
@@ -213,8 +242,9 @@
 
                                                 <div class="controls">
 
-                                                    <input name="beginDate" type="text" placeholder="" class="m-wrap small"
-                                                           value="<%=course.getBeginDate().toLocalDate().getMonthValue()%>/<%=course.getBeginDate().toLocalDate().getDayOfMonth()%>/<%=course.getBeginDate().toLocalDate().getYear()%>" />
+                                                    <input name="beginDate" type="text" placeholder=""
+                                                           class="m-wrap small"
+                                                           value="<%=course.getBeginDate().toLocalDate().getMonthValue()%>/<%=course.getBeginDate().toLocalDate().getDayOfMonth()%>/<%=course.getBeginDate().toLocalDate().getYear()%>"/>
 
                                                     <span class="help-inline"></span>
 
@@ -225,8 +255,9 @@
 
                                                     <div class="controls">
 
-                                                        <input name="endDate" type="date" placeholder="" class="m-wrap small"
-                                                               value="<%=course.getEndDate().toLocalDate().getMonthValue()%>/<%=course.getEndDate().toLocalDate().getDayOfMonth()%>/<%=course.getEndDate().toLocalDate().getYear()%>" />
+                                                        <input name="endDate" type="date" placeholder=""
+                                                               class="m-wrap small"
+                                                               value="<%=course.getEndDate().toLocalDate().getMonthValue()%>/<%=course.getEndDate().toLocalDate().getDayOfMonth()%>/<%=course.getEndDate().toLocalDate().getYear()%>"/>
 
                                                         <span class="help-inline"></span>
 
@@ -239,7 +270,8 @@
 
                                                     <div class="controls">
 
-                                                        <input name="credit" type="date" placeholder="" class="m-wrap small" value="<%=course.getCredit()%>" />
+                                                        <input name="credit" type="date" placeholder=""
+                                                               class="m-wrap small" value="<%=course.getCredit()%>"/>
 
                                                         <span class="help-inline"></span>
 
@@ -254,12 +286,13 @@
                                                     <div class="controls">
 
                                                         <%
-                                                            if (teachersFalse != null && teachersFalse.size()>0) {
+                                                            if (teachersFalse != null && teachersFalse.size() > 0) {
                                                                 for (Teacher teacher : teachersFalse) {
                                                         %>
 
                                                         <label class="control-label">
-                                                            <input name="teacher" type="checkbox" class="m-wrap small" value="<%=teacher.getTid()%>" /><%=teacher.getTname()%>
+                                                            <input name="teacher" type="checkbox" class="m-wrap small"
+                                                                   value="<%=teacher.getTid()%>"/><%=teacher.getTname()%>
                                                         </label>
 
                                                         <%
@@ -268,12 +301,14 @@
                                                         %>
 
                                                         <%
-                                                            if (teachersTrue != null && teachersTrue.size()>0) {
+                                                            if (teachersTrue != null && teachersTrue.size() > 0) {
                                                                 for (Teacher teacher : teachersTrue) {
                                                         %>
 
                                                         <label class="control-label">
-                                                            <input name="teacher" type="checkbox" class="m-wrap small" value="<%=teacher.getTid()%>" checked="checked" /><%=teacher.getTname()%>
+                                                            <input name="teacher" type="checkbox" class="m-wrap small"
+                                                                   value="<%=teacher.getTid()%>"
+                                                                   checked="checked"/><%=teacher.getTname()%>
                                                         </label>
 
                                                         <%
@@ -290,7 +325,8 @@
 
                                                     <div class="controls">
 
-                                                        <input name="address" type="text" placeholder="" class="m-wrap small" value="<%=course.getAddress()%>" />
+                                                        <input name="address" type="text" placeholder=""
+                                                               class="m-wrap small" value="<%=course.getAddress()%>"/>
 
                                                         <span class="help-inline"></span>
 
@@ -299,96 +335,121 @@
                                                 </div>
 
                                                 <div class="portlet box blue">
-
                                                     <div class="portlet-title">
-
-                                                        <div class="caption"><i class="icon-cogs"></i>学生信息</div>
-
+                                                        <div class="caption"><i class="icon-cogs"></i>参与学生学号</div>
                                                         <div class="actions">
-
-                                                            <a href="AddStudentInfo?cid=<%=course.getCid()%>" class="btn green"><i class="icon-plus"></i>导入学生信息</a>
+                                                            <button onclick="confirmSid()" type="button" class="btn green">
+                                                                <i class="icon-plus"></i>确认导入学生学号
+                                                            </button>
                                                         </div>
-                                                        <div class="tools">
-                                                            <a href="javascript:" class="collapse"></a>
-
-                                                            <a href="#portlet-config" data-toggle="modal" class="config"></a>
-
-                                                            <a href="javascript:" class="reload"></a>
-
-                                                            <a href="javascript:" class=""></a>
-
-                                                        </div>
-
                                                     </div>
+                                                    <div class="portlet-body">
+                                                        <div class="control-group">
+                                                            <label class="control-label">参与学生学号：</label>
+                                                            <div class="controls">
+                                                                <textarea id="StudentIds" class="m-wrap" rows="10" cols="100"
+                                                                          style="width:80%"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                                    <div class="portlet-body flip-scroll">
+                                            </div>
 
-                                                        <table class="table-bordered table-striped table-condensed flip-content">
 
-                                                            <thead class="flip-content">
+                                            <div class="portlet box blue">
 
-                                                            <tr>
+                                                <div class="portlet-title">
 
-                                                                <th class="numeric">学号</th>
+                                                    <div class="caption"><i class="icon-cogs"></i>学生信息</div>
 
-                                                                <th>姓名</th>
+                                                    <div class="tools">
 
-                                                                <th class="numeric">性别</th>
+                                                        <a href="javascript:" class="collapse"></a>
 
-                                                                <th class="numeric">班级</th>
+                                                        <a href="#portlet-config" data-toggle="modal"
+                                                           class="config"></a>
 
-                                                                <th class="numeric">专业</th>
+                                                        <a href="javascript:" class="reload"></a>
 
-                                                            </tr>
-
-                                                            </thead>
-
-                                                            <tbody>
-
-                                                            <%
-                                                                if (students != null && students.size()>0) {
-                                                                    for (Student student : students) {
-                                                            %>
-
-                                                            <tr>
-
-                                                                <td><%=student.getSid()%>></td>
-
-                                                                <td><%=student.getSname()%></td>
-
-                                                                <td class="numeric"><%=(Objects.equals(student.getSex(), "f") ? "女" : "男")%></td>
-
-                                                                <td class="numeric"><%=student.getClassName()%></td>
-
-                                                                <td class="numeric"><%=student.getMajor()%></td>
-
-                                                            </tr>
-
-                                                            <%
-                                                                    }
-                                                                }
-                                                            %>
-
-                                                            </tbody>
-
-                                                        </table>
+                                                        <a href="javascript:" class=""></a>
 
                                                     </div>
 
                                                 </div>
 
+                                                <div class="portlet-body flip-scroll">
+
+                                                    <table class="table-bordered table-striped table-condensed flip-content">
+
+                                                        <thead class="flip-content">
+
+                                                        <tr>
+
+                                                            <th class="numeric">学号</th>
+
+                                                            <th>姓名</th>
+
+                                                            <th class="numeric">性别</th>
+
+                                                            <th class="numeric">班级</th>
+
+                                                            <th class="numeric">专业</th>
+
+                                                        </tr>
+
+                                                        </thead>
+
+                                                        <tbody>
+
+                                                        <%
+                                                            if (students != null && students.size() > 0) {
+                                                                for (Student student : students) {
+                                                        %>
+
+                                                        <tr>
+
+                                                            <td><%=student.getSid()%></td>
+
+                                                            <td><%=student.getSname()%>
+                                                            </td>
+
+                                                            <td class="numeric"><%=(Objects.equals(student.getSex(), "f") ? "女" : "男")%>
+                                                            </td>
+
+                                                            <td class="numeric"><%=student.getClassName()%>
+                                                            </td>
+
+                                                            <td class="numeric"><%=student.getMajor()%>
+                                                            </td>
+
+                                                        </tr>
+
+                                                        <%
+                                                                }
+                                                            }
+                                                        %>
+
+                                                        </tbody>
+
+                                                    </table>
+
+                                                </div>
+
                                             </div>
 
-                                            <!-- END SAMPLE FORM PORTLET-->
-                                            <div class="form-actions">
+                                    </div>
 
-                                                <button type="submit" class="btn blue"><i class="icon-ok"></i>Save</button>
+                                    <!-- END SAMPLE FORM PORTLET-->
+                                    <div class="form-actions">
 
-                                                <button type="button" class="btn">Cancel</button>
+                                        <button type="submit" class="btn blue"><i class="icon-ok"></i>Save</button>
 
-                                            </div>
+                                        <button type="button" class="btn">Cancel</button>
 
-                                        </form>
+                                    </div>
+
+                                    </form>
 
                                 </div>
 
@@ -461,7 +522,7 @@
 
         <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-        <script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+        <script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
         <!-- END CORE PLUGINS -->
 
@@ -469,7 +530,7 @@
 
         <script>
 
-            jQuery(document).ready(function() {
+            jQuery(document).ready(function () {
 
                 // initiate layout and plugins
 
@@ -479,9 +540,9 @@
 
         </script>
 
-        </div>
-
     </div>
+
+</div>
 
 </div>
 

@@ -187,8 +187,7 @@
                     </div>
                 </a>
 
-<!--
-                <a href="student_resources.jsp">
+                <a href="">
                     <div class="tile double-down bg-purple">
 
                         <div class="tile-body">
@@ -210,7 +209,7 @@
 
                     </div>
                 </a>
-
+<!--
                 <a href="student_chat.jsp">
                     <div class="tile double-down2 bg-yellow">
 

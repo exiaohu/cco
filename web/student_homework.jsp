@@ -59,13 +59,13 @@
 
 <body class="page-header-fixed">
 
-<jsp:include page="student_header.jsp"></jsp:include>
+<jsp:include page="student_header.jsp"/>
 
 <!-- BEGIN CONTAINER -->
 
 <div class="page-container row-fluid">
 
-    <jsp:include page="student_sidebar.jsp"></jsp:include>
+    <jsp:include page="student_sidebar.jsp"/>
 
     <!-- BEGIN PAGE -->
 
@@ -105,9 +105,7 @@
 
                         <li>
 
-                            <a href="student_course.jsp">敏捷开发</a>
-
-                            <!-- 数据库获取该课程名 -->
+                            <a href="student_course.jsp"><%=request.getAttribute("cname")%></a>
 
                             <i class="icon-angle-right"></i>
 
@@ -166,8 +164,8 @@
                                     <td><%=homework.getDeadLine().toLocalDateTime().toString()%></td>
 
                                     <td></td>
-                                    <!--
-                                    <td><a href="student_hwview.jsp" class="btn mini green"><i class="icon-eye-open"></i> 查看</a>-->
+
+                                    <td><a href="" class="btn mini green"><i class="icon-eye-open"></i> 查看</a>
 
                                 </tr>
                                 <%
@@ -196,7 +194,7 @@
 
 <!-- END CONTAINER -->
 
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"/>
 
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 

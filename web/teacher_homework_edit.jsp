@@ -64,7 +64,7 @@
 
 <!-- BEGIN HEADER -->
 
-<jsp:include page="teacher_header.jsp"></jsp:include>
+<jsp:include page="teacher_header.jsp"/>
 
 <!-- END HEADER -->
 
@@ -72,7 +72,7 @@
 
 <div class="page-container row-fluid">
 
-    <jsp:include page="teacher_sidebar.jsp"></jsp:include>
+    <jsp:include page="teacher_sidebar.jsp"/>
     <!-- BEGIN PAGE -->
 
     <div class="page-content">
@@ -164,13 +164,13 @@
 
                             <div class="tools">
 
-                                <a href="javascript:;" class="collapse"></a>
+                                <a href="javascript:" class="collapse"></a>
 
                                 <a href="#portlet-config" data-toggle="modal" class="config"></a>
 
-                                <a href="javascript:;" class="reload"></a>
+                                <a href="javascript:" class="reload"></a>
 
-                                <a href="javascript:;" class="remove"></a>
+                                <a href="javascript:" class="remove"></a>
 
                             </div>
 
@@ -231,7 +231,9 @@
 
                                     <div class="controls">
 
-                                        <textarea class="span6 m-wrap" rows="3"	name="request" ><%=request.getAttribute("imformation")%></textarea>
+                                        <textarea class="span6 m-wrap" rows="3"	name="request" >
+                                            <%=request.getAttribute("imformation")!=null?request.getAttribute("imformation"):""%>
+                                        </textarea>
 
                                     </div>
 
@@ -275,25 +277,7 @@
 
 <!-- BEGIN FOOTER -->
 
-<div class="footer">
-
-    <div class="footer-inner">
-
-        2016 BuaaSoftware Best Group Null
-
-    </div>
-
-    <div class="footer-tools">
-
-			<span class="go-top">
-
-			<i class="icon-angle-up"></i>
-
-			</span>
-
-    </div>
-
-</div>
+<jsp:include page="footer.jsp"/>
 
 <!-- END FOOTER -->
 

@@ -13,9 +13,6 @@ import java.io.IOException;
  * Created by huxia on 2017/6/28.
  */
 public class EduAdminHomeServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (!Validation.checkEduAdmin(request)) {

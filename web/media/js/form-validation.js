@@ -100,7 +100,7 @@ var FormValidation = function () {
                         required: true
                     },
                     occupation: {
-                        minlength: 5,
+                        minlength: 5
                     },
                     membership: {
                         required: true
@@ -166,6 +166,7 @@ var FormValidation = function () {
                 submitHandler: function (form) {
                     success2.show();
                     error2.hide();
+                    form.submit();
                 }
 
             });

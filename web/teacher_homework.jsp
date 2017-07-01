@@ -1,26 +1,27 @@
 <%@ page import="com.buaa.mooc.entity.Homework" %>
 <%@ page import="java.util.List" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <title>作业管理</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -44,13 +45,13 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css"/>
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -62,7 +63,7 @@
 
 <!-- BEGIN HEADER -->
 
-<jsp:include page="teacher_header.jsp"></jsp:include>
+<jsp:include page="teacher_header.jsp"/>
 
 <!-- END HEADER -->
 
@@ -70,7 +71,7 @@
 
 <div class="page-container row-fluid">
 
-    <jsp:include page="teacher_sidebar.jsp"></jsp:include>
+    <jsp:include page="teacher_sidebar.jsp"/>
 
     <!-- BEGIN PAGE -->
 
@@ -112,7 +113,8 @@
 
                     <h3 class="page-title">
 
-                        作业管理 <small>课程作业添加、修改、批正</small>
+                        作业管理
+                        <small>课程作业添加、修改、批正</small>
 
                     </h3>
 
@@ -215,10 +217,10 @@
 
                                 <tbody>
 
-                                <%  List<Homework> homeworks = (List<Homework>)request.getAttribute("homeworks"); %>
+                                <% List<Homework> homeworks = (List<Homework>) request.getAttribute("homeworks"); %>
 
                                 <%
-                                    if (homeworks != null && homeworks.size()>0) {
+                                    if (homeworks != null && homeworks.size() > 0) {
                                         for (Homework homework : homeworks) {
                                 %>
 
@@ -226,15 +228,19 @@
 
                                     <td class="highlight">
 
-                                        <a href="#"><%=homework.getHomeworkName()%></a>
+                                        <a href="#"><%=homework.getHomeworkName()%>
+                                        </a>
 
                                     </td>
 
-                                    <td class="hidden-phone"><%=homework.getStartTime().toLocalDateTime().toString()%></td>
+                                    <td class="hidden-phone"><%=homework.getStartTime().toLocalDateTime().toString()%>
+                                    </td>
 
-                                    <td><%=homework.getDeadLine().toLocalDateTime().toString()%></td>
+                                    <td><%=homework.getDeadLine().toLocalDateTime().toString()%>
+                                    </td>
 
-                                    <td><a href="TeacherHomeworkEdit?hid=<%=homework.getId()%>" class="btn mini purple"><i class="icon-edit"></i> 编辑</a></td>
+                                    <td><a href="TeacherHomeworkEdit?hid=<%=homework.getId()%>" class="btn mini purple"><i
+                                            class="icon-edit"></i> 编辑</a></td>
                                     <!--
 
                                     <td><a href="teacher_homework_edit.html" class="btn mini purple"><i class="icon-edit"></i> 编辑</a></td>
@@ -331,7 +337,7 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -351,7 +357,7 @@
 
 <script>
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         // initiate layout and plugins
 
