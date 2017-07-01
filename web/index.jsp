@@ -7,10 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>欢迎页面</title>
-  </head>
-  <body>
-  <a href="login" >登录</a>
-  </body>
+</head>
+<body>
+<a href="login">登录</a>
+</body>
 </html>

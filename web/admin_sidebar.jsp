@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!-- BEGIN SIDEBAR -->
 <span class="icon-dark"></span>
 <div class="page-sidebar nav-collapse collapse">
@@ -20,7 +20,7 @@
 
             <ul class="dropdown-menu">
 
-                <li><a href="login.html"><i class="icon-key"></i>登出</a></li>
+                <li><a href="logout"><i class="icon-key"></i>登出</a></li>
 
             </ul>
 
@@ -59,7 +59,8 @@
 
             </a>
 
-        </li>-->
+        </li>
+        -->
 
     </ul>
 

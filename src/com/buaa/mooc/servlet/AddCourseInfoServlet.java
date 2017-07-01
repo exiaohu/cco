@@ -30,11 +30,11 @@ public class AddCourseInfoServlet extends HttpServlet {
 
         try {
             DiskFileItemFactory factory = new DiskFileItemFactory();
-            factory.setSizeThreshold(2048*1024);
+            factory.setSizeThreshold(2048 * 1024);
             factory.setRepository(new File(savePath));
 
             ServletFileUpload upload = new ServletFileUpload(factory);
-            upload.setSizeMax(2048*1024*1024);
+            upload.setSizeMax(2048 * 1024 * 1024);
             List<FileItem> fileItems = upload.parseRequest(request);
             for (FileItem item : fileItems) {
                 if (!item.isFormField()) {

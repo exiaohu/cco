@@ -21,7 +21,7 @@ public class AddSemesterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Integer year = Integer.parseInt(request.getParameter("course"));
-            String quarter = new String( request.getParameter("quarter").getBytes("iso-8859-1"), "utf-8");
+            String quarter = new String(request.getParameter("quarter").getBytes("iso-8859-1"), "utf-8");
             ParsePosition pos = new ParsePosition(0);
             SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
             java.util.Date startDate = formatter.parse(request.getParameter("startDate"), pos);

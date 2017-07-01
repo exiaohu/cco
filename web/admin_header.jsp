@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <!-- BEGIN HEADER -->
 
 <div class="header navbar navbar-inverse navbar-fixed-top">
@@ -23,7 +23,7 @@
 
             <a href="javascript:" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
 
-                <img src="media/image/menu-toggler.png" alt="" />
+                <img src="media/image/menu-toggler.png" alt=""/>
 
             </a>
 
@@ -46,7 +46,7 @@
 
                     <ul class="dropdown-menu">
 
-                        <li><a href="login.html"><i class="icon-key"></i>登出</a></li>
+                        <li><a href="logout"><i class="icon-key"></i>登出</a></li>
 
                     </ul>
 

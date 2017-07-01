@@ -17,6 +17,7 @@ import java.util.List;
  */
 public class TeacherCourseServlet extends HttpServlet {
     private TeacherCourseDao teacherCourseDao = new TeacherCourseDao();
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

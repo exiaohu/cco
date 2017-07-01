@@ -2,8 +2,8 @@ package com.buaa.mooc.servlet;
 
 import com.buaa.mooc.dao.StudentDao;
 import com.buaa.mooc.entity.Student;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,22 +16,12 @@ import java.io.IOException;
  */
 public class AddStudentInfoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String StudentIds = request.getParameter("StudentIds");
-        System.out.println(StudentIds);
-        JSONArray jsonArray = new JSONArray();
+        String studentIds = request.getParameter("StudentIds");
         try {
-            String[] sids = null;
             StudentDao studentDao = new StudentDao();
-            if (StudentIds.contains("\n")) {
-                sids = StudentIds.split("\n");
-            } else if (StudentIds.contains(" ")) {
-                sids = StudentIds.split(" ");
-            } else if (StudentIds.contains(",")) {
-                sids = StudentIds.split(",");
-            } else if (StudentIds.contains(";")) {
-                sids = StudentIds.split(";");
-            }
-            if (sids != null && sids.length > 0) {
+            String[] sids = studentIds.split(" |\n|,|;");
+            JSONArray jsonArray = new JSONArray();
+            if (sids.length > 0) {
                 for (String sid_s : sids) {
                     if (sid_s != null && !sid_s.isEmpty()) {
                         try {
@@ -44,16 +34,17 @@ public class AddStudentInfoServlet extends HttpServlet {
                                 obj.put("sex", student.getSex());
                                 obj.put("major", student.getMajor());
                                 obj.put("sid", student.getSid());
-                                jsonArray.add(obj);
+                                jsonArray.put(obj);
                             }
-                        } catch (Throwable ignored) {}
+                        } catch (Throwable ignored) {
+                        }
                     }
                 }
             }
             response.getWriter().print(jsonArray.toString());
         } catch (Throwable e) {
             e.printStackTrace();
-            response.getWriter().print(jsonArray.toString());
+            response.getWriter().print("[]");
         }
     }
 }

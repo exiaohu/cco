@@ -21,7 +21,7 @@ public class AddHomeworkServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Integer _limit = Integer.parseInt(request.getParameter("_limit"));
-            String hname = new String( request.getParameter("assign_name").getBytes("iso-8859-1"), "utf-8");
+            String hname = new String(request.getParameter("assign_name").getBytes("iso-8859-1"), "utf-8");
             ParsePosition pos = new ParsePosition(0);
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             java.util.Date startDate = formatter.parse(request.getParameter("startDate").trim(), pos);

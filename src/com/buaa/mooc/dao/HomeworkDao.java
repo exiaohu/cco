@@ -17,13 +17,13 @@ public class HomeworkDao {
         Session session = HibernateUtils.getSession();
         List results = null;
         List<Homework> homeworks = null;
-        try{
+        try {
             homeworks = new ArrayList<>();
-            String hql="select h from Homework as h, Course as c, TeacherCourse as tc where h.courseId = c.cid and c.cid = tc.pk.cid and tc.pk.tid = :tid";
+            String hql = "select h from Homework as h, Course as c, TeacherCourse as tc where h.courseId = c.cid and c.cid = tc.pk.cid and tc.pk.tid = :tid";
             Query query = session.createQuery(hql);
             query.setParameter("tid", tid);
             results = query.list();
-            if (results != null && results.size()>0) {
+            if (results != null && results.size() > 0) {
                 Homework c;
                 for (Object obj : results) {
                     c = (Homework) obj;
@@ -31,17 +31,17 @@ public class HomeworkDao {
                 }
             }
             return homeworks;
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
-        }finally{
+        } finally {
             HibernateUtils.closeSession(session);
         }
     }
 
     public void AddHomework(Integer cid, String hname, Timestamp startDate, Timestamp deadline, Integer _limit) {
         Session session = HibernateUtils.getSession();
-        try{
+        try {
             session.beginTransaction();
             Homework homework = new Homework();
             homework.setCourseId(cid);
@@ -51,53 +51,54 @@ public class HomeworkDao {
             homework.setSubmitMaxTimes(_limit);
             session.save(homework);
             session.getTransaction().commit();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
-        }finally{
+        } finally {
             HibernateUtils.closeSession(session);
         }
     }
+
     public void EditHomework(Integer hid, String imformation) {
         Session session = HibernateUtils.getSession();
-        try{
+        try {
             session.beginTransaction();
             Homework homework = findByHid(hid);
             homework.setHomeworkInformation(imformation);
             session.update(homework);
             session.getTransaction().commit();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
-        }finally{
+        } finally {
             HibernateUtils.closeSession(session);
         }
     }
 
-    public void delHomework(Integer hid){
+    public void delHomework(Integer hid) {
         Session session = HibernateUtils.getSession();
-        try{
+        try {
             session.beginTransaction();
-            Homework homework=new Homework();
+            Homework homework = new Homework();
             homework.setHomeworkId(hid);
             session.delete(homework);
             session.getTransaction().commit();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
-        }finally{
+        } finally {
             HibernateUtils.closeSession(session);
         }
     }
 
     public Homework findByHid(Integer hid) {
         Session session = HibernateUtils.getSession();
-        try{
-            return session.load(Homework.class,hid);
-        }catch(Exception e){
+        try {
+            return session.load(Homework.class, hid);
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
-        }finally{
+        } finally {
             HibernateUtils.closeSession(session);
 
         }

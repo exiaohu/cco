@@ -1,26 +1,27 @@
 <%@ page import="com.buaa.mooc.entity.Course" %>
 <%@ page import="java.util.List" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <title>课程管理</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -44,11 +45,11 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -58,13 +59,13 @@
 
 <body class="page-header-fixed">
 
-<jsp:include page="admin_header.jsp" />
+<jsp:include page="admin_header.jsp"/>
 
 <!-- BEGIN CONTAINER -->
 
 <div class="page-container row-fluid">
 
-    <jsp:include page="admin_sidebar.jsp" />
+    <jsp:include page="admin_sidebar.jsp"/>
 
     <!-- BEGIN PAGE -->
 
@@ -106,7 +107,8 @@
 
                     <h3 class="page-title">
 
-                        课程管理 <small></small>
+                        课程管理
+                        <small></small>
 
                     </h3>
 
@@ -144,7 +146,7 @@
             <% List<Course> courses = (List<Course>) request.getAttribute("courses"); %>
 
             <%
-                if (courses != null && courses.size()>0) {
+                if (courses != null && courses.size() > 0) {
                     for (Course course : courses) {
             %>
 
@@ -187,7 +189,6 @@
         </div>
 
 
-
         <!-- END PAGE CONTENT-->
 
     </div>
@@ -202,25 +203,7 @@
 
 <!-- BEGIN FOOTER -->
 
-<div class="footer">
-
-    <div class="footer-inner">
-
-        GAD group 16
-
-    </div>
-
-    <div class="footer-tools">
-
-			<span class="go-top">
-
-			<i class="icon-angle-up"></i>
-
-			</span>
-
-    </div>
-
-</div>
+<jsp:include page="footer.jsp"/>
 
 <!-- END FOOTER -->
 
@@ -252,7 +235,7 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -260,7 +243,7 @@
 
 <script>
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         // initiate layout and plugins
 

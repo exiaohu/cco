@@ -1,26 +1,28 @@
-<%@ page import="java.util.List" %>
 <%@ page import="com.buaa.mooc.entity.Course" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page import="com.buaa.mooc.entity.Teacher" %>
+<%@ page import="java.util.List" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <title>课程管理</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -44,11 +46,11 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -58,13 +60,13 @@
 
 <body class="page-header-fixed">
 
-<jsp:include page="student_header.jsp"></jsp:include>
+<jsp:include page="student_header.jsp"/>
 
 <!-- BEGIN CONTAINER -->
 
 <div class="page-container row-fluid">
 
-    <jsp:include page="student_sidebar.jsp"></jsp:include>
+    <jsp:include page="student_sidebar.jsp"/>
 
     <!-- BEGIN PAGE -->
 
@@ -92,6 +94,8 @@
 
         <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
+        <% Course course = (Course) request.getAttribute("course"); %>
+
         <!-- BEGIN PAGE CONTAINER-->
 
         <div class="container-fluid">
@@ -106,7 +110,8 @@
 
                     <h3 class="page-title">
 
-                        课程管理 <small> 学生管理课程作业、资源、讨论组</small>
+                        课程管理
+                        <small> 学生管理课程作业、资源、讨论组</small>
 
                     </h3>
 
@@ -124,7 +129,7 @@
 
                         <li>
 
-                            <a href="student_course.jsp">课程管理</a>
+                            <a href="StudentCourse?cid=<%=course.getCid()%>">课程管理</a>
 
                         </li>
 
@@ -141,6 +146,7 @@
             <!-- BEGIN PAGE CONTENT-->
 
             <div class="tiles">
+
                 <div class="tile double bg-blue">
 
                     <div class="corner"></div>
@@ -151,20 +157,37 @@
 
                         <div style="margin:20px"></div>
 
-                        <h2 style=" font-weight:bolder">敏捷开发</h2>
+                        <h2 style=" font-weight:bolder"><%=course.getCname()%>
+                        </h2>
 
                         <div style="margin:15px"></div>
 
-                        <h4>学分：2</h4>
+                        <h4>学分：<%=course.getCredit()%>
+                        </h4>
 
                         <div style="margin:15px"></div>
 
-                        <h4>任课老师：林广艳</h4>
+                        <% List<Teacher> teachers = (List<Teacher>) request.getAttribute("teachers"); %>
+
+                        <h4>
+                            任课老师：
+                            <%
+                                if (teachers != null && teachers.size() > 0) {
+                                    for (Teacher teacher : teachers) {
+                            %>
+                            <%=(teachers.get(0).getTid().equals(teacher.getTid()) ? teacher.getTname() : ", " + teacher.getTname())%>
+                            <%
+                                    }
+                                }
+                            %>
+                        </h4>
 
                     </div>
 
                 </div>
-                <a href="studentHomework">
+
+                <a href="StudentHomework?cid=<%=course.getCid()%>">
+
                     <div class="tile double-down bg-green">
 
                         <div class="tile-body">
@@ -181,13 +204,13 @@
 
                             </div>
 
-
                         </div>
 
                     </div>
                 </a>
 
-                <a href="">
+                <a href="StudentRecourse?cid=<%=course.getCid()%>">
+
                     <div class="tile double-down bg-purple">
 
                         <div class="tile-body">
@@ -209,8 +232,9 @@
 
                     </div>
                 </a>
-<!--
+                <!--
                 <a href="student_chat.jsp">
+
                     <div class="tile double-down2 bg-yellow">
 
                         <div class="tile-body">
@@ -232,8 +256,7 @@
 
                     </div>
                 </a>
-
--->
+                -->
 
                 <!-- END PAGE CONTENT-->
 
@@ -247,79 +270,61 @@
 
     </div>
 
-        <!-- END CONTAINER -->
+    <!-- END CONTAINER -->
 
-        <!-- BEGIN FOOTER -->
+    <!-- BEGIN FOOTER -->
 
-        <div class="footer">
+    <jsp:include page="footer.jsp"/>
 
-            <div class="footer-inner">
+    <!-- END FOOTER -->
 
-                2017 BuaaSoftware Best Group GAD
+    <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 
-            </div>
+    <!-- BEGIN CORE PLUGINS -->
 
-            <div class="footer-tools">
+    <script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
 
-			<span class="go-top">
+    <script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 
-			<i class="icon-angle-up"></i>
+    <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
 
-			</span>
+    <script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 
-            </div>
+    <script src="media/js/bootstrap.min.js" type="text/javascript"></script>
 
-        </div>
+    <!--[if lt IE 9]>
 
-        <!-- END FOOTER -->
+    <script src="media/js/excanvas.min.js"></script>
 
-        <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+    <script src="media/js/respond.min.js"></script>
 
-        <!-- BEGIN CORE PLUGINS -->
+    <![endif]-->
 
-        <script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+    <script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
 
-        <script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
 
-        <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+    <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-        <script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+    <script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
-        <script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- END CORE PLUGINS -->
 
-        <!--[if lt IE 9]>
+    <script src="media/js/app.js"></script>
 
-        <script src="media/js/excanvas.min.js"></script>
+    <script>
 
-        <script src="media/js/respond.min.js"></script>
+        jQuery(document).ready(function () {
 
-        <![endif]-->
+            // initiate layout and plugins
 
-        <script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+            App.init();
 
-        <script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+        });
 
-        <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+    </script>
 
-        <script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
-
-        <!-- END CORE PLUGINS -->
-
-        <script src="media/js/app.js"></script>
-
-        <script>
-
-            jQuery(document).ready(function() {
-
-                // initiate layout and plugins
-
-                App.init();
-
-            });
-
-        </script>
-
-        <!-- END JAVASCRIPTS -->
+    <!-- END JAVASCRIPTS -->
 
 </body>
 

@@ -39,9 +39,9 @@ public class EduAdminCourseInfoServlet extends HttpServlet {
             TermDao termDao = new TermDao();
             courseDao.editCourseByAdmin(cid, termDao.FindLast().getTermId(), cname, new Date(beginDate.getTime()), new Date(endDate.getTime()), credit, address);
 
-            String[] tids_s =  request.getParameterValues("teacher");
+            String[] tids_s = request.getParameterValues("teacher");
             List<Integer> tids_true = new ArrayList<>();
-            if (tids_s != null && tids_s.length>0) {
+            if (tids_s != null && tids_s.length > 0) {
                 for (String tid_s : tids_s) {
                     tids_true.add(Integer.parseInt(tid_s));
                 }

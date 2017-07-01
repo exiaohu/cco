@@ -1,70 +1,70 @@
 var Login = function () {
-    
+
     return {
         //main function to initiate the module
         init: function () {
-        	
-           $('.login-form').validate({
-	            errorElement: 'label', //default input error message container
-	            errorClass: 'help-inline', // default input error message class
-	            focusInvalid: false, // do not focus the last invalid input
-	            rules: {
-	                username: {
-	                    required: true
-	                },
-	                password: {
-	                    required: true
-	                },
-	                remember: {
-	                    required: false
-	                }
-	            },
 
-	            messages: {
-	                username: {
-	                    required: "请输入用户名"
-	                },
-	                password: {
-	                    required: "请输入密码"
-	                }
-	            },
+            $('.login-form').validate({
+                errorElement: 'label', //default input error message container
+                errorClass: 'help-inline', // default input error message class
+                focusInvalid: false, // do not focus the last invalid input
+                rules: {
+                    username: {
+                        required: true
+                    },
+                    password: {
+                        required: true
+                    },
+                    remember: {
+                        required: false
+                    }
+                },
 
-	            invalidHandler: function (event, validator) { //display error alert on form submit   
-	                $('.alert-error', $('.login-form')).show();
-	            },
+                messages: {
+                    username: {
+                        required: "请输入用户名"
+                    },
+                    password: {
+                        required: "请输入密码"
+                    }
+                },
 
-	            highlight: function (element) { // hightlight error inputs
-	                $(element)
-	                    .closest('.control-group').addClass('error'); // set error class to the control group
-	            },
+                invalidHandler: function (event, validator) { //display error alert on form submit   
+                    $('.alert-error', $('.login-form')).show();
+                },
 
-	            success: function (label) {
-	                label.closest('.control-group').removeClass('error');
-	                label.remove();
-	            },
+                highlight: function (element) { // hightlight error inputs
+                    $(element)
+                        .closest('.control-group').addClass('error'); // set error class to the control group
+                },
 
-	            errorPlacement: function (error, element) {
-	                error.addClass('help-small no-left-padding').insertAfter(element.closest('.input-icon'));
-	            },
+                success: function (label) {
+                    label.closest('.control-group').removeClass('error');
+                    label.remove();
+                },
 
-	            submitHandler: function (form) {
-	                window.location.href = "index.html";
-	            }
-	        });
+                errorPlacement: function (error, element) {
+                    error.addClass('help-small no-left-padding').insertAfter(element.closest('.input-icon'));
+                },
 
-	        $('.login-form input').keypress(function (e) {
-	            if (e.which == 13) {
-	                if ($('.login-form').validate().form()) {
-	                    window.location.href = "index.html";
-	                }
-	                return false;
-	            }
-	        });
+                submitHandler: function (form) {
+                    window.location.href = "index.html";
+                }
+            });
 
-	        jQuery('#back-btn').click(function () {
-	            jQuery('.login-form').show();
-	            jQuery('.forget-form').hide();
-	        });
+            $('.login-form input').keypress(function (e) {
+                if (e.which == 13) {
+                    if ($('.login-form').validate().form()) {
+                        window.location.href = "index.html";
+                    }
+                    return false;
+                }
+            });
+
+            jQuery('#back-btn').click(function () {
+                jQuery('.login-form').show();
+                jQuery('.forget-form').hide();
+            });
         }
 
     };

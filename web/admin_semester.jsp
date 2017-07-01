@@ -6,8 +6,7 @@
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!-->
-<html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!--><html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
@@ -173,7 +172,6 @@
 
                         <div class="portlet-body">
 
-
                             <div class="btn-group">
 
                                 <a href="AddSemester">
@@ -221,17 +219,23 @@
 
                                 <tr>
 
-                                    <td><%=(term.getYear() != null ? term.getYear() : "未设置")%></td>
+                                    <td><%=(term.getYear() != null ? term.getYear() : "未设置")%>
+                                    </td>
 
-                                    <td><%=(term.getQuarter() != null ? term.getQuarter() : "未设置")%></td>
+                                    <td><%=(term.getQuarter() != null ? term.getQuarter() : "未设置")%>
+                                    </td>
 
-                                    <td><%=term.getStartDate().toLocalDate().toString()%></td>
+                                    <td><%=term.getStartDate().toLocalDate().toString()%>
+                                    </td>
 
-                                    <td><%=term.getEndDate().toLocalDate().toString()%></td>
+                                    <td><%=term.getEndDate().toLocalDate().toString()%>
+                                    </td>
 
-                                    <td><%=(term.getWeeks() != null ? term.getWeeks() : "未设置")%></td
+                                    <td><%=(term.getWeeks() != null ? term.getWeeks() : "未设置")%>
+                                    </td
 
-                                    <td><a href="DeleteSemester?termId=<%=term.getTermId()%>" class="btn mini black"><i class="icon-trash"></i> 删除</a></td>
+                                    <td><a href="DeleteSemester?termId=<%=term.getTermId()%>" class="btn mini black"><i
+                                            class="icon-trash"></i> 删除</a></td>
 
                                 </tr>
 
@@ -272,25 +276,7 @@
 
 <!-- BEGIN FOOTER -->
 
-<div class="footer">
-
-    <div class="footer-inner">
-
-        GAD group 16
-
-    </div>
-
-    <div class="footer-tools">
-
-			<span class="go-top">
-
-			<i class="icon-angle-up"></i>
-
-			</span>
-
-    </div>
-
-</div>
+<jsp:include page="footer.jsp"/>
 
 <!-- END FOOTER -->
 

@@ -30,7 +30,7 @@ var Calendar = function () {
             var h = {};
 
             if (App.isRTL()) {
-                 if ($('#calendar').parents(".portlet").width() <= 720) {
+                if ($('#calendar').parents(".portlet").width() <= 720) {
                     $('#calendar').addClass("mobile");
                     h = {
                         right: 'title, prev, next',
@@ -44,9 +44,9 @@ var Calendar = function () {
                         center: '',
                         left: 'agendaDay, agendaWeek, month, today, prev,next'
                     };
-                }                
+                }
             } else {
-                 if ($('#calendar').parents(".portlet").width() <= 720) {
+                if ($('#calendar').parents(".portlet").width() <= 720) {
                     $('#calendar').addClass("mobile");
                     h = {
                         left: 'title, prev, next',
@@ -62,7 +62,7 @@ var Calendar = function () {
                     };
                 }
             }
-           
+
 
             var initDrag = function (el) {
                 // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
@@ -134,41 +134,41 @@ var Calendar = function () {
                     }
                 },
                 events: [{
-                        title: '全天',                        
-                        start: new Date(y, m, 1),
-                        backgroundColor: App.getLayoutColorCode('yellow')
-                    }, {
-                        title: '长事件',
-                        start: new Date(y, m, d - 5),
-                        end: new Date(y, m, d - 2),
-                        backgroundColor: App.getLayoutColorCode('green')
-                    }, {
-                        title: '重复事件',
-                        start: new Date(y, m, d - 3, 16, 0),
-                        allDay: false,
-                        backgroundColor: App.getLayoutColorCode('red')
-                    }, {
-                        title: '重复事件',
-                        start: new Date(y, m, d + 4, 16, 0),
-                        allDay: false,
-                        backgroundColor: App.getLayoutColorCode('green')
-                    }, {
-                        title: '会议',
-                        start: new Date(y, m, d, 10, 30),
-                        allDay: false,
-                    }, {
-                        title: '午饭',
-                        start: new Date(y, m, d, 12, 0),
-                        end: new Date(y, m, d, 14, 0),
-                        backgroundColor: App.getLayoutColorCode('grey'),
-                        allDay: false,
-                    }, {
-                        title: '生日',
-                        start: new Date(y, m, d + 1, 19, 0),
-                        end: new Date(y, m, d + 1, 22, 30),
-                        backgroundColor: App.getLayoutColorCode('purple'),
-                        allDay: false,
-                    }
+                    title: '全天',
+                    start: new Date(y, m, 1),
+                    backgroundColor: App.getLayoutColorCode('yellow')
+                }, {
+                    title: '长事件',
+                    start: new Date(y, m, d - 5),
+                    end: new Date(y, m, d - 2),
+                    backgroundColor: App.getLayoutColorCode('green')
+                }, {
+                    title: '重复事件',
+                    start: new Date(y, m, d - 3, 16, 0),
+                    allDay: false,
+                    backgroundColor: App.getLayoutColorCode('red')
+                }, {
+                    title: '重复事件',
+                    start: new Date(y, m, d + 4, 16, 0),
+                    allDay: false,
+                    backgroundColor: App.getLayoutColorCode('green')
+                }, {
+                    title: '会议',
+                    start: new Date(y, m, d, 10, 30),
+                    allDay: false,
+                }, {
+                    title: '午饭',
+                    start: new Date(y, m, d, 12, 0),
+                    end: new Date(y, m, d, 14, 0),
+                    backgroundColor: App.getLayoutColorCode('grey'),
+                    allDay: false,
+                }, {
+                    title: '生日',
+                    start: new Date(y, m, d + 1, 19, 0),
+                    end: new Date(y, m, d + 1, 22, 30),
+                    backgroundColor: App.getLayoutColorCode('purple'),
+                    allDay: false,
+                }
                 ]
             });
 

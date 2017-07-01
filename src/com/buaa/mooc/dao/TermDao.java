@@ -137,16 +137,16 @@ public class TermDao {
         try {
             session = HibernateUtils.getSession();
             return session.load(Term.class, termId);
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
-        }finally {
+        } finally {
             HibernateUtils.closeSession(session);
         }
     }
-	
+
 	/*
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 		TermDao termDao = new TermDao();
 		List allTerm = termDao.FindAll();
 		Term lastTerm = termDao.FindLast();

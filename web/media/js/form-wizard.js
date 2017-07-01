@@ -41,17 +41,17 @@ var FormWizard = function () {
                         required: true
                     },
                     startDate: {
-						required: true
-					},
-					endDate: {
-						required: true
-					},
-					assign_name: {
-						required: true
-					},
-					request: {
-						required: true
-					},
+                        required: true
+                    },
+                    endDate: {
+                        required: true
+                    },
+                    assign_name: {
+                        required: true
+                    },
+                    request: {
+                        required: true
+                    },
                 },
 
                 messages: { // custom messages for radio buttons and checkboxes
@@ -97,7 +97,7 @@ var FormWizard = function () {
                     } else { // display success icon for other inputs
                         label
                             .addClass('valid ok') // mark the current input as valid and display OK icon
-                        .closest('.control-group').removeClass('error').addClass('success'); // set success class to the control group
+                            .closest('.control-group').removeClass('error').addClass('success'); // set success class to the control group
                     }
                 },
 
@@ -110,25 +110,25 @@ var FormWizard = function () {
 
             });
 
-            var displayConfirm = function() {
-                $('.display-value', form).each(function(){
-                    var input = $('[name="'+$(this).attr("data-display")+'"]', form);
+            var displayConfirm = function () {
+                $('.display-value', form).each(function () {
+                    var input = $('[name="' + $(this).attr("data-display") + '"]', form);
                     if (input.is(":text") || input.is("textarea")) {
                         $(this).html(input.val());
                     } else if (input.is("select")) {
                         $(this).html(input.find('option:selected').text());
                     } else if (input.is(":radio") && input.is(":checked")) {
                         $(this).html(input.attr("data-title"));
-                    } else if(input.is(":file")) {
-                          var file = input.attr("value");
-                          var strFileName=file.replace(/^.+?\\([^\\]+?)(\.[^\.\\]*?)?$/gi,"$1");  //正则表达式获取文件名，不带后缀
-                          var FileExt=file.replace(/.+\./,"");   //正则表达式获取后缀
-                          $(this).html(strFileName+FileExt);
+                    } else if (input.is(":file")) {
+                        var file = input.attr("value");
+                        var strFileName = file.replace(/^.+?\\([^\\]+?)(\.[^\.\\]*?)?$/gi, "$1");  //正则表达式获取文件名，不带后缀
+                        var FileExt = file.replace(/.+\./, "");   //正则表达式获取后缀
+                        $(this).html(strFileName + FileExt);
                     } else if ($(this).attr("data-display") == 'card_expiry') {
                         $(this).html($('[name="card_expiry_mm"]', form).val() + '/' + $('[name="card_expiry_yyyy"]', form).val());
                     } else if ($(this).attr("data-display") == 'payment') {
                         var payment = [];
-                        $('[name="payment[]"]').each(function(){
+                        $('[name="payment[]"]').each(function () {
                             payment.push($(this).attr('data-title'));
                         });
                         $(this).html(payment.join("<br>"));

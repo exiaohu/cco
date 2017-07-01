@@ -16,13 +16,13 @@ public class TeacherCourseDao {
         Session session = HibernateUtils.getSession();
         List results = null;
         List<Course> courses = null;
-        try{
+        try {
             courses = new ArrayList<>();
-            String hql="select c from Course as c, TeacherCourse as tc where tc.pk.cid = c.cid and tc.pk.tid = :tid";
-            Query query=session.createQuery(hql);
+            String hql = "select c from Course as c, TeacherCourse as tc where tc.pk.cid = c.cid and tc.pk.tid = :tid";
+            Query query = session.createQuery(hql);
             query.setParameter("tid", tid);
             results = query.list();
-            if (results != null && results.size()>0) {
+            if (results != null && results.size() > 0) {
                 Course c;
                 for (Object obj : results) {
                     c = (Course) obj;
@@ -30,10 +30,10 @@ public class TeacherCourseDao {
                 }
             }
             return courses;
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
-        }finally{
+        } finally {
             HibernateUtils.closeSession(session);
         }
     }
@@ -42,13 +42,13 @@ public class TeacherCourseDao {
         Session session = HibernateUtils.getSession();
         List results = null;
         List<Teacher> teachers = null;
-        try{
+        try {
             teachers = new ArrayList<>();
-            String hql="select t from Teacher as t, TeacherCourse as tc where tc.pk.tid = t.tid and tc.pk.cid = :cid";
-            Query query=session.createQuery(hql);
+            String hql = "select t from Teacher as t, TeacherCourse as tc where tc.pk.tid = t.tid and tc.pk.cid = :cid";
+            Query query = session.createQuery(hql);
             query.setParameter("cid", cid);
             results = query.list();
-            if (results != null && results.size()>0) {
+            if (results != null && results.size() > 0) {
                 Teacher t;
                 for (Object obj : results) {
                     t = (Teacher) obj;
@@ -56,10 +56,10 @@ public class TeacherCourseDao {
                 }
             }
             return teachers;
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
-        }finally{
+        } finally {
             HibernateUtils.closeSession(session);
         }
     }
@@ -68,13 +68,13 @@ public class TeacherCourseDao {
         Session session = HibernateUtils.getSession();
         List results = null;
         List<Integer> teachers = null;
-        try{
+        try {
             teachers = new ArrayList<>();
-            String hql="select t.tid from Teacher as t, TeacherCourse as tc where tc.pk.tid = t.tid and tc.pk.cid = :cid";
-            Query query=session.createQuery(hql);
+            String hql = "select t.tid from Teacher as t, TeacherCourse as tc where tc.pk.tid = t.tid and tc.pk.cid = :cid";
+            Query query = session.createQuery(hql);
             query.setParameter("cid", cid);
             results = query.list();
-            if (results != null && results.size()>0) {
+            if (results != null && results.size() > 0) {
                 Integer t;
                 for (Object obj : results) {
                     t = (Integer) obj;
@@ -82,10 +82,10 @@ public class TeacherCourseDao {
                 }
             }
             return teachers;
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
-        }finally{
+        } finally {
             HibernateUtils.closeSession(session);
         }
     }

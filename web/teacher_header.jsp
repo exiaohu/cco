@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <!-- BEGIN HEADER -->
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
 <div class="header navbar navbar-inverse navbar-fixed-top">
 
     <!-- BEGIN TOP NAVIGATION BAR -->
@@ -17,9 +18,9 @@
 
             <!-- BEGIN LOGO -->
 
-            <a class="brand" href="teacher" >
+            <a class="brand" href="teacher">
 
-                <img src="media/image/logo.png" alt="logo" />
+                <img src="media/image/logo.png" alt="logo"/>
 
             </a>
 
@@ -29,7 +30,7 @@
 
             <a href="javascript:" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
 
-                <img src="media/image/menu-toggler.png" alt="" />
+                <img src="media/image/menu-toggler.png" alt=""/>
 
             </a>
 
@@ -39,7 +40,6 @@
             <ul class="nav pull-right">
 
                 <!-- BEGIN USER LOGIN DROPDOWN -->
-
 
 
                 <!-- END USER LOGIN DROPDOWN -->

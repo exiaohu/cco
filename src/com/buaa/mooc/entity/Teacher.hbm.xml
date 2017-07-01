@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC   
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
-    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">  
-      
-<hibernate-mapping>  
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
     <class name="com.buaa.mooc.entity.Teacher" lazy="false" table="teacher">
         <id name="tid" type="integer" column="tid">
             <generator class="assigned"/>
-        </id>  
+        </id>
         <property name="tname" type="string" column="tname"/>
         <property name="password" type="string" column="password"/>
-    </class>  
+    </class>
 </hibernate-mapping>  

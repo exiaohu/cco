@@ -12,21 +12,22 @@
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <title>source</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -50,15 +51,15 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
 
-    <link href="media/css/jquery.fancybox.css" rel="stylesheet" />
+    <link href="media/css/jquery.fancybox.css" rel="stylesheet"/>
 
-    <link href="media/css/jquery.fileupload-ui.css" rel="stylesheet" />
+    <link href="media/css/jquery.fileupload-ui.css" rel="stylesheet"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -170,7 +171,7 @@
 
                         <div class="portlet-title">
 
-                            <div class="caption"><i class="icon-edit"></i>资源列表 </div>
+                            <div class="caption"><i class="icon-edit"></i>资源列表</div>
 
                         </div>
 
@@ -204,7 +205,10 @@
 
                                     <td>2017-3-5</td>
 
-                                    <td><a href="student_sourceInfo.html" class="btn mini blue" style="margin-right:10px"><i class="icon-eye-open"></i>  查看</a><a href="#" class="btn mini green"><i class="icon-download"></i> 下载</a></td>
+                                    <td><a href="student_sourceInfo.html" class="btn mini blue"
+                                           style="margin-right:10px"><i class="icon-eye-open"></i> 查看</a><a href="#"
+                                                                                                            class="btn mini green"><i
+                                            class="icon-download"></i> 下载</a></td>
 
                                 </tr>
 
@@ -217,7 +221,9 @@
 
                                     <td>2017-3-5</td>
 
-                                    <td><a href="#" class="btn mini blue" style="margin-right:10px"><i class="icon-eye-open"></i>  查看</a><a href="#" class="btn mini green"><i class="icon-download"></i> 下载</a></td>
+                                    <td><a href="#" class="btn mini blue" style="margin-right:10px"><i
+                                            class="icon-eye-open"></i> 查看</a><a href="#" class="btn mini green"><i
+                                            class="icon-download"></i> 下载</a></td>
 
                                 </tr>
 
@@ -229,7 +235,9 @@
 
                                     <td>2017-3-5</td>
 
-                                    <td><a href="#" class="btn mini blue" style="margin-right:10px"><i class="icon-eye-open"></i>  查看</a><a href="#" class="btn mini green"><i class="icon-download"></i> 下载</a></td>
+                                    <td><a href="#" class="btn mini blue" style="margin-right:10px"><i
+                                            class="icon-eye-open"></i> 查看</a><a href="#" class="btn mini green"><i
+                                            class="icon-download"></i> 下载</a></td>
 
                                 </tr>
 
@@ -241,7 +249,9 @@
 
                                     <td>2017-3-5</td>
 
-                                    <td><a href="#" class="btn mini blue" style="margin-right:10px"><i class="icon-eye-open"></i>  查看</a><a href="#" class="btn mini green"><i class="icon-download"></i> 下载</a></td>
+                                    <td><a href="#" class="btn mini blue" style="margin-right:10px"><i
+                                            class="icon-eye-open"></i> 查看</a><a href="#" class="btn mini green"><i
+                                            class="icon-download"></i> 下载</a></td>
 
                                 </tr>
                                 </tbody>
@@ -259,7 +269,8 @@
             </div>
             <!-- END SAMPLE TABLE PORTLET-->
 
-        </div></div>
+        </div>
+    </div>
 
     <!-- END PAGE CONTENT-->
 
@@ -309,7 +320,7 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -317,7 +328,7 @@
 
 <script>
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         // initiate layout and plugins
 

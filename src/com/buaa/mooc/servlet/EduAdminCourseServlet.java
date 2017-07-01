@@ -25,7 +25,7 @@ public class EduAdminCourseServlet extends HttpServlet {
 
         CourseDao courseDao = new CourseDao();
         List<Course> courses = courseDao.FindAll();
-        courses.sort((o1, o2) -> ((o1.getTermId()<o2.getTermId()) ? 1: 0));
+        courses.sort((o1, o2) -> ((o1.getTermId() < o2.getTermId()) ? 1 : 0));
 
         request.setAttribute("courses", courses);
 

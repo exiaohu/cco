@@ -10,7 +10,8 @@ import org.hibernate.Session;
 public class FileDao {
 
     public boolean AddFile(String filename, Integer id) {
-        Session session = HibernateUtils.getSession();;
+        Session session = HibernateUtils.getSession();
+        ;
         try {
             session.beginTransaction();
             File file = new File();
@@ -18,11 +19,11 @@ public class FileDao {
             file.setUploadby(id);
             session.getTransaction().commit();
             return true;
-        }catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
             return false;
-        }finally {
+        } finally {
             HibernateUtils.closeSession(session);
         }
     }

@@ -17,10 +17,10 @@ public class Service {
     private EduAdminDao eduAdminDao = new EduAdminDao();
 
     /**
-     * @功能 验证登陆
-     * @param id 登录名
+     * @param id       登录名
      * @param password 密码
      * @return 返回用户
+     * @功能 验证登陆
      */
     public User login(Integer id, String password) {
         User user;

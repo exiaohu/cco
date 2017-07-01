@@ -1,26 +1,26 @@
-<%@ page import="com.buaa.mooc.entity.Homework" %>
-<%@ page import="java.util.List" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <title>作业管理</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -44,15 +44,15 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/chosen.css"/>
 
     <link rel="stylesheet" type="text/css" href="media/css/jquery-ui-1.10.1.custom.min.css"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -123,7 +123,7 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="teacher_homepage.jsp">主页</a>
+                            <a href="teacher">主页</a>
 
                             <span class="icon-angle-right"></span>
 
@@ -137,7 +137,7 @@
 
                         </li>
 
-                        <li><a href="TeacherHomeworkEdit">编辑作业</a></li>
+                        <li><a href="TeacherHomeworkEdit?hid=<%=request.getAttribute("hid")%>">编辑作业</a></li>
 
                     </ul>
 
@@ -180,7 +180,9 @@
 
                             <!-- BEGIN FORM-->
 
-                            <form action="TeacherHomeworkEdit?hid=<%=request.getAttribute("hid")%>" method="post" id="form_sample_1"  class="form-horizontal">
+                            <form action="TeacherHomeworkEdit?hid=<%=request.getAttribute("hid")%>" method="post"
+
+                                  id="form_sample_1" class="form-horizontal">
 
                                 <div class="alert alert-error hide">
 
@@ -198,16 +200,16 @@
 
                                 </div>
 
-                                <input name="id" type="hidden" value="<%=request.getAttribute("hid")%>" />
+                                <input name="id" type="hidden" value="<%=request.getAttribute("hid")%>"/>
 
                                 <div class="control-group">
 
                                     <label class="control-label">作业名称：<span class="required">*</span></label>
 
-                                    <div class="controls" >
+                                    <div class="controls">
 
-                                       <!--<input value="软件开发实习" name="assign_name" type="text" class="span6 m-wrap"/>*/-->
-                                       <%=request.getAttribute("hname")%>
+                                        <!--<input value="软件开发实习" name="assign_name" type="text" class="span6 m-wrap"/>*/-->
+                                        <%=request.getAttribute("hname")%>
                                     </div>
 
                                 </div>
@@ -231,8 +233,8 @@
 
                                     <div class="controls">
 
-                                        <textarea class="span6 m-wrap" rows="3"	name="request" >
-                                            <%=request.getAttribute("imformation")!=null?request.getAttribute("imformation"):""%>
+                                        <textarea class="span6 m-wrap" rows="3" name="request">
+                                            <%=request.getAttribute("imformation") != null ? request.getAttribute("imformation") : ""%>
                                         </textarea>
 
                                     </div>
@@ -241,9 +243,11 @@
 
                                 <div class="form-actions">
 
-                                     <button type="submit" class="btn purple">更改</button>
+                                    <button type="submit" class="btn purple">更改</button>
 
-                                    <a href="TeacherHomework"><button type="button" class="btn">取消</button></a>
+                                    <a href="TeacherHomework">
+                                        <button type="button" class="btn">取消</button>
+                                    </a>
 
                                 </div>
 
@@ -309,7 +313,7 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -337,7 +341,7 @@
 
 <script>
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         // initiate layout and plugins
 
@@ -353,7 +357,20 @@
 
 <!-- END JAVASCRIPTS -->
 
-<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
+<script type="text/javascript">  var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37564768-1']);
+_gaq.push(['_setDomainName', 'keenthemes.com']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+(function () {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();</script>
+</body>
 
 <!-- END BODY -->
 

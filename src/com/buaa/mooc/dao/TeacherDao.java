@@ -1,9 +1,8 @@
 package com.buaa.mooc.dao;
 
-import org.hibernate.Session;
-import com.buaa.mooc.utils.HibernateUtils;
-
 import com.buaa.mooc.entity.Teacher;
+import com.buaa.mooc.utils.HibernateUtils;
+import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -11,36 +10,36 @@ import java.util.List;
 
 public class TeacherDao {
 
-	public boolean isExistByTidAndPassword(Integer tid, String password) {
-		Session session = HibernateUtils.getSession();
-		Teacher tea = null;
+    public boolean isExistByTidAndPassword(Integer tid, String password) {
+        Session session = HibernateUtils.getSession();
+        Teacher tea = null;
         try {
-            session.beginTransaction();  
-              
-            tea = (Teacher)session.get(Teacher.class, tid);
+            session.beginTransaction();
+
+            tea = (Teacher) session.get(Teacher.class, tid);
             session.getTransaction().commit();
-        }catch(Exception e) {  
-            e.printStackTrace();  
-            session.getTransaction().rollback();  
-        }finally {  
-        	HibernateUtils.closeSession(session);
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        } finally {
+            HibernateUtils.closeSession(session);
         }
-        
-        if(tea == null || !tea.getPassword().trim().equals(password.trim())) {
-        	return false;
+
+        if (tea == null || !tea.getPassword().trim().equals(password.trim())) {
+            return false;
         } else {
-        	return true;
+            return true;
         }
-	}
+    }
 
     public Teacher findById(Integer tid) {
         Session session = null;
         try {
             session = HibernateUtils.getSession();
             return session.load(Teacher.class, tid) != null ? session.load(Teacher.class, tid) : null;
-        }catch(Exception e) {
+        } catch (Exception e) {
             return null;
-        }finally {
+        } finally {
             HibernateUtils.closeSession(session);
         }
     }
@@ -76,7 +75,7 @@ public class TeacherDao {
     }
 
 	/*
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 		TeacherDao teacherDao = new TeacherDao();
 		boolean flag = teacherDao.isExistByTidAndPassword(14211106, "huxiao");
 		System.out.println(flag);

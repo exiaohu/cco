@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.buaa.mooc.entity.Course" %>
+<%@ page import="com.buaa.mooc.entity.Homework" %><%--
   Created by IntelliJ IDEA.
   User: windrises
   Date: 2017/6/29
@@ -11,21 +12,23 @@
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <title>作业上传</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -47,42 +50,43 @@
 
     <!-- END GLOBAL MANDATORY STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="media/css/bootstrap-fileupload.css" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/bootstrap-fileupload.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/jquery.gritter.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/chosen.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/jquery.tagsinput.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/clockface.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/jquery.tagsinput.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/bootstrap-wysihtml5.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/clockface.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/bootstrap-wysihtml5.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/datepicker.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/timepicker.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/bootstrap-toggle-buttons.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/colorpicker.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/bootstrap-toggle-buttons.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/datetimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/daterangepicker.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/multi-select-metro.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/datetimepicker.css"/>
+
+    <link rel="stylesheet" type="text/css" href="media/css/multi-select-metro.css"/>
 
     <link href="media/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
 
-    <link href="media/css/jquery.fancybox.css" rel="stylesheet" />
+    <link href="media/css/jquery.fancybox.css" rel="stylesheet"/>
 
-    <link href="media/css/jquery.fileupload-ui.css" rel="stylesheet" />
+    <link href="media/css/jquery.fileupload-ui.css" rel="stylesheet"/>
 
 </head>
 
@@ -140,7 +144,8 @@
 
                     <h3 class="page-title">
 
-                        作业管理 <small>学生提交课程作业</small>
+                        作业管理
+                        <small>学生提交课程作业</small>
 
                     </h3>
 
@@ -157,10 +162,11 @@
                         </li>
 
                         <li>
-                            <!--赶时间 写死了 -->
-                            <a href="student_course.jsp"><%=request.getAttribute("cname")%></a>
 
-                            <!-- 数据库获取该课程名 -->
+                            <% Course course = (Course) request.getAttribute("course"); %>
+
+                            <a href="StudentCourse?cid=<%=course.getCid()%>"><%=course.getCname()%>
+                            </a>
 
                             <i class="icon-angle-right"></i>
 
@@ -168,7 +174,7 @@
 
                         <li>
 
-                            <a href="studentHomework">作业管理</a>
+                            <a href="studentHomework?cid=<%=course.getCid()%>">作业管理</a>
 
                             <i class="icon-angle-right"></i>
 
@@ -200,11 +206,14 @@
 
                     <div class="portlet-body form">
 
+                        <% Homework homework = (Homework) request.getAttribute("homework"); %>
+
                         <!-- BEGIN FORM-->
 
                         <div class="form-horizontal form-view">
 
-                            <h3> 软件开发实践: 作业</h3>
+                            <h3><%=homework.getHomeworkName()%>
+                            </h3>
 
                             <h3 class="form-section"></h3>
 
@@ -218,7 +227,7 @@
 
                                         <div class="controls">
 
-                                            <span class="text">2017-7-12 下午12:00</span>
+                                            <span class="text"><%=homework.getDeadLine().toLocalDateTime().toString()%></span>
 
                                         </div>
 
@@ -242,7 +251,7 @@
 
                                         <div class="controls">
 
-                                            <span class="text">正在进行</span>
+                                            <span class="text"><%=(homework.get)%></span>
 
                                         </div>
 
@@ -264,7 +273,7 @@
 
                                         <div class="controls">
 
-                                            <span class="text">第二次作业...</span>
+                                            <span class="text"><%=homework.getHomeworkInformation()%></span>
 
                                         </div>
 
@@ -324,7 +333,6 @@
                             <!--/row-->
 
 
-
                             <!--/span-->
 
                         </div>
@@ -335,7 +343,9 @@
 
                             <button type="submit" class="btn blue"><i class="icon-upload-alt"></i> 提交</button>
 
-                            <a href="studentHomework"><button type="button" class="btn">返回</button></a>
+                            <a href="studentHomework">
+                                <button type="button" class="btn">返回</button>
+                            </a>
 
                         </div>
 
@@ -393,7 +403,7 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -406,7 +416,7 @@
 
 <script>
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         // initiate layout and plugins
 

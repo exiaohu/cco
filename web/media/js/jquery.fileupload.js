@@ -276,16 +276,16 @@
                     total,
                     loaded;
                 if (data._time && data.progressInterval &&
-                        (now - data._time < data.progressInterval) &&
-                        e.loaded !== e.total) {
+                    (now - data._time < data.progressInterval) &&
+                    e.loaded !== e.total) {
                     return;
                 }
                 data._time = now;
                 total = data.total || this._getTotal(data.files);
                 loaded = parseInt(
-                    e.loaded / e.total * (data.chunkSize || total),
-                    10
-                ) + (data.uploadedBytes || 0);
+                        e.loaded / e.total * (data.chunkSize || total),
+                        10
+                    ) + (data.uploadedBytes || 0);
                 this._loaded += loaded - (data.loaded || data.uploadedBytes || 0);
                 data.lengthComputable = true;
                 data.loaded = loaded;
@@ -389,7 +389,7 @@
                             // This check allows the tests to run with
                             // dummy objects:
                             if ((window.Blob && file instanceof Blob) ||
-                                    (window.File && file instanceof File)) {
+                                (window.File && file instanceof File)) {
                                 formData.append(
                                     options.paramName[index] || paramName,
                                     file,
@@ -480,7 +480,7 @@
             options.type = (options.type || options.form.prop('method') || '')
                 .toUpperCase();
             if (options.type !== 'POST' && options.type !== 'PUT' &&
-                    options.type !== 'PATCH') {
+                options.type !== 'PATCH') {
                 options.type = 'POST';
             }
             if (!options.formAcceptCharset) {
@@ -546,7 +546,7 @@
                 jqXHR,
                 upload;
             if (!(this._isXHRUpload(options) && slice && (ub || mcs < fs)) ||
-                    options.data) {
+                options.data) {
                 return false;
             }
             if (testOnly) {
@@ -581,7 +581,7 @@
                 // Add progress listeners for this chunk upload:
                 that._initProgressListener(o);
                 jqXHR = ((that._trigger('chunksend', null, o) !== false && $.ajax(o)) ||
-                        that._getXHRPromise(false, o.context))
+                that._getXHRPromise(false, o.context))
                     .done(function (result, textStatus, jqXHR) {
                         ub = that._getUploadedBytes(jqXHR) ||
                             (ub + o.chunkSize);
@@ -649,7 +649,7 @@
 
         _onDone: function (result, textStatus, jqXHR, options) {
             if (!this._isXHRUpload(options) || !options.loaded ||
-                    options.loaded < options.total) {
+                options.loaded < options.total) {
                 var total = this._getTotal(options.files) || 1;
                 // Create a progress event for each iframe load,
                 // or if there has been no progress event with
@@ -706,47 +706,47 @@
                     // Set timer for bitrate progress calculation:
                     options._bitrateTimer = new that._BitrateTimer();
                     jqXHR = jqXHR || (
-                        ((aborted || that._trigger('send', e, options) === false) &&
-                        that._getXHRPromise(false, options.context, aborted)) ||
-                        that._chunkedUpload(options) || $.ajax(options)
-                    ).done(function (result, textStatus, jqXHR) {
-                        that._onDone(result, textStatus, jqXHR, options);
-                    }).fail(function (jqXHR, textStatus, errorThrown) {
-                        that._onFail(jqXHR, textStatus, errorThrown, options);
-                    }).always(function (jqXHRorResult, textStatus, jqXHRorError) {
-                        that._sending -= 1;
-                        that._onAlways(
-                            jqXHRorResult,
-                            textStatus,
-                            jqXHRorError,
-                            options
-                        );
-                        if (options.limitConcurrentUploads &&
+                            ((aborted || that._trigger('send', e, options) === false) &&
+                            that._getXHRPromise(false, options.context, aborted)) ||
+                            that._chunkedUpload(options) || $.ajax(options)
+                        ).done(function (result, textStatus, jqXHR) {
+                            that._onDone(result, textStatus, jqXHR, options);
+                        }).fail(function (jqXHR, textStatus, errorThrown) {
+                            that._onFail(jqXHR, textStatus, errorThrown, options);
+                        }).always(function (jqXHRorResult, textStatus, jqXHRorError) {
+                            that._sending -= 1;
+                            that._onAlways(
+                                jqXHRorResult,
+                                textStatus,
+                                jqXHRorError,
+                                options
+                            );
+                            if (options.limitConcurrentUploads &&
                                 options.limitConcurrentUploads > that._sending) {
-                            // Start the next queued upload,
-                            // that has not been aborted:
-                            var nextSlot = that._slots.shift(),
-                                isPending;
-                            while (nextSlot) {
-                                // jQuery 1.6 doesn't provide .state(),
-                                // while jQuery 1.8+ removed .isRejected():
-                                isPending = nextSlot.state ?
+                                // Start the next queued upload,
+                                // that has not been aborted:
+                                var nextSlot = that._slots.shift(),
+                                    isPending;
+                                while (nextSlot) {
+                                    // jQuery 1.6 doesn't provide .state(),
+                                    // while jQuery 1.8+ removed .isRejected():
+                                    isPending = nextSlot.state ?
                                         nextSlot.state() === 'pending' :
                                         !nextSlot.isRejected();
-                                if (isPending) {
-                                    nextSlot.resolve();
-                                    break;
+                                    if (isPending) {
+                                        nextSlot.resolve();
+                                        break;
+                                    }
+                                    nextSlot = that._slots.shift();
                                 }
-                                nextSlot = that._slots.shift();
                             }
-                        }
-                    });
+                        });
                     return jqXHR;
                 };
             this._beforeSend(e, options);
             if (this.options.sequentialUploads ||
-                    (this.options.limitConcurrentUploads &&
-                    this.options.limitConcurrentUploads <= this._sending)) {
+                (this.options.limitConcurrentUploads &&
+                this.options.limitConcurrentUploads <= this._sending)) {
                 if (this.options.limitConcurrentUploads > 1) {
                     slot = $.Deferred();
                     this._slots.push(slot);
@@ -782,8 +782,7 @@
                 paramNameSlice,
                 fileSet,
                 i;
-            if (!(options.singleFileUploads || limit) ||
-                    !this._isXHRUpload(options)) {
+            if (!(options.singleFileUploads || limit) || !this._isXHRUpload(options)) {
                 fileSet = [data.files];
                 paramNameSet = [paramName];
             } else if (!options.singleFileUploads && limit) {
@@ -904,7 +903,7 @@
             dataTransfer = dataTransfer || {};
             var items = dataTransfer.items;
             if (items && items.length && (items[0].webkitGetAsEntry ||
-                    items[0].getAsEntry)) {
+                items[0].getAsEntry)) {
                 return this._handleFileTreeEntries(
                     $.map(items, function (item) {
                         var entry;
@@ -997,7 +996,7 @@
                 }
             });
             if (this._trigger('paste', e, data) === false ||
-                    this._onAdd(e, data) === false) {
+                this._onAdd(e, data) === false) {
                 return false;
             }
         },
@@ -1065,7 +1064,7 @@
             var options = this.options;
             if (options.fileInput === undefined) {
                 options.fileInput = this.element.is('input[type="file"]') ?
-                        this.element : this.element.find('input[type="file"]');
+                    this.element : this.element.find('input[type="file"]');
             } else if (!(options.fileInput instanceof $)) {
                 options.fileInput = $(options.fileInput);
             }

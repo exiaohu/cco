@@ -13,39 +13,66 @@ public class Homework {
     private Timestamp deadLine;
     private int submitMaxTimes;
     private String homeworkInformation;
+
     public Homework() {
         super();
     }
+
     public int getId() {
         return homeworkId;
     }
+
     public void setId(int id) {
         this.homeworkId = id;
     }
+
     public int getHomeworkId() {
         return homeworkId;
     }
-    public void setHomeworkId(int id) {this.homeworkId = id; }
+
+    public void setHomeworkId(int id) {
+        this.homeworkId = id;
+    }
+
     public int getCourseId() {
         return courseId;
     }
-    public void setCourseId(int id) {this.courseId = id; }
+
+    public void setCourseId(int id) {
+        this.courseId = id;
+    }
+
     public String getHomeworkName() {
         return homeworkName;
     }
-    public void setHomeworkName(String name) {this.homeworkName = name; }
-    public Timestamp getStartTime(){
+
+    public void setHomeworkName(String name) {
+        this.homeworkName = name;
+    }
+
+    public Timestamp getStartTime() {
         return startTime;
     }
-    public void setStartTime(Timestamp date) {this.startTime = date; }
-    public Timestamp getDeadLine(){
+
+    public void setStartTime(Timestamp date) {
+        this.startTime = date;
+    }
+
+    public Timestamp getDeadLine() {
         return deadLine;
     }
-    public void setDeadLine(Timestamp date) {this.deadLine = date; }
-    public int getSubmitMaxTimes(){
+
+    public void setDeadLine(Timestamp date) {
+        this.deadLine = date;
+    }
+
+    public int getSubmitMaxTimes() {
         return submitMaxTimes;
     }
-    public void setSubmitMaxTimes(int times) {this.submitMaxTimes = times; }
+
+    public void setSubmitMaxTimes(int times) {
+        this.submitMaxTimes = times;
+    }
 
     public String getHomeworkInformation() {
         return homeworkInformation;

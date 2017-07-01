@@ -4,21 +4,22 @@
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <title>添加新学期</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -42,15 +43,15 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/chosen.css"/>
 
     <link rel="stylesheet" type="text/css" href="media/css/jquery-ui-1.10.1.custom.min.css"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -60,7 +61,7 @@
 
 <body class="page-header-fixed">
 
-<jsp:include page="admin_header.jsp" />
+<jsp:include page="admin_header.jsp"/>
 
 <!-- BEGIN CONTAINER -->
 
@@ -68,7 +69,7 @@
 
     <!-- BEGIN SIDEBAR -->
 
-    <jsp:include page="admin_sidebar.jsp" />
+    <jsp:include page="admin_sidebar.jsp"/>
 
     <!-- END SIDEBAR -->
 
@@ -229,11 +230,13 @@
 
                                     <div class="controls">
 
-                                        <input name="startDate" class="m-wrap small" size="16" type="text" value="07/01/2016" id="ui_date_picker_range_from"/>
+                                        <input name="startDate" class="m-wrap small" size="16" type="text"
+                                               value="07/01/2016" id="ui_date_picker_range_from"/>
 
                                         <span class="text-inline">&nbsp;至&nbsp;</span>
 
-                                        <input name="endDate" class="m-wrap small" size="16" type="text" value="07/12/2016" id="ui_date_picker_range_to"/>
+                                        <input name="endDate" class="m-wrap small" size="16" type="text"
+                                               value="07/12/2016" id="ui_date_picker_range_to"/>
 
                                     </div>
 
@@ -245,7 +248,7 @@
 
                                     <div class="controls">
 
-                                        <input type="text" name="weeks" placeholder="" class="m-wrap large" value="" />
+                                        <input type="text" name="weeks" placeholder="" class="m-wrap large" value=""/>
 
                                         <span class="help-inline"></span>
 
@@ -257,7 +260,9 @@
 
                                     <button type="submit" class="btn blue">确定</button>
 
-                                    <a href="semester"><button type="button" class="btn">取消</button></a>
+                                    <a href="semester">
+                                        <button type="button" class="btn">取消</button>
+                                    </a>
 
                                 </div>
 
@@ -291,25 +296,7 @@
 
 <!-- BEGIN FOOTER -->
 
-<div class="footer">
-
-    <div class="footer-inner">
-
-      GAD group 16
-
-    </div>
-
-    <div class="footer-tools">
-
-			<span class="go-top">
-
-			<i class="icon-angle-up"></i>
-
-			</span>
-
-    </div>
-
-</div>
+<jsp:include page="footer.jsp"/>
 
 <!-- END FOOTER -->
 
@@ -341,7 +328,7 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -369,7 +356,7 @@
 
 <script>
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         // initiate layout and plugins
 
@@ -385,7 +372,20 @@
 
 <!-- END JAVASCRIPTS -->
 
-<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
+<script type="text/javascript">  var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37564768-1']);
+_gaq.push(['_setDomainName', 'keenthemes.com']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+(function () {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();</script>
+</body>
 
 <!-- END BODY -->
 

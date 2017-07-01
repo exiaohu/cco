@@ -1,24 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <title>作业管理</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -42,18 +44,18 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/chosen.css"/>
 
     <link rel="stylesheet" type="text/css" href="media/css/jquery-ui-1.10.1.custom.min.css"/>
 
-    <link rel="stylesheet" type="text/css" href="media/css/bootstrap-toggle-buttons.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/bootstrap-toggle-buttons.css"/>
     <!-- <link rel="stylesheet" type="text/css" href="media/css/jquery.datetimepicker.css" /> -->
     <link href="media/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -263,11 +265,13 @@
 
                                                 <div class="controls">
 
-                                                    <input name="startDate" class="m-wrap" type="text" value="" id="ui_date_picker_range_from"/>
+                                                    <input name="startDate" class="m-wrap" type="text" value=""
+                                                           id="ui_date_picker_range_from"/>
 
                                                     <span class="text-inline">&nbsp;至&nbsp;</span>
 
-                                                    <input name="endDate" class="m-wrap" type="text" value="" id="ui_date_picker_range_to"/>
+                                                    <input name="endDate" class="m-wrap" type="text" value=""
+                                                           id="ui_date_picker_range_to"/>
 
                                                 </div>
 
@@ -282,11 +286,12 @@
 
                                             <div class="control-group">
 
-                                                <label class="control-label">作业名称<span class="required"> *</span></label>
+                                                <label class="control-label">作业名称<span
+                                                        class="required"> *</span></label>
 
                                                 <div class="controls">
 
-                                                    <input type="text" class="span6 m-wrap" name="assign_name" />
+                                                    <input type="text" class="span6 m-wrap" name="assign_name"/>
 
                                                     <span class="help-inline"></span>
 
@@ -296,11 +301,12 @@
 
                                             <div class="control-group">
 
-                                                <label class="control-label">提交次数上限<span class="required"> *</span></label>
+                                                <label class="control-label">提交次数上限<span
+                                                        class="required"> *</span></label>
 
                                                 <div class="controls">
 
-                                                    <input class="span1" type="text" name="_limit" />
+                                                    <input class="span1" type="text" name="_limit"/>
 
                                                     <span class="help-inline"></span>
 
@@ -453,7 +459,7 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -491,7 +497,7 @@
 
 <script>
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         // initiate layout and plugins
 
@@ -507,10 +513,10 @@
         });
 
         $('#ui_date_picker_range_from').datetimepicker({
-            language:  'zh-CN',
+            language: 'zh-CN',
             format: 'yyyy-mm-dd hh:ii',
             weekStart: 1,
-            todayBtn:  1,
+            todayBtn: 1,
             autoclose: 1,
             todayHighlight: 1,
             startView: 2,
@@ -519,10 +525,10 @@
         });
 
         $('#ui_date_picker_range_to').datetimepicker({
-            language:  'zh-CN',
+            language: 'zh-CN',
             format: 'yyyy-mm-dd hh:ii',
             weekStart: 1,
-            todayBtn:  1,
+            todayBtn: 1,
             autoclose: 1,
             todayHighlight: 1,
             startView: 2,
@@ -535,7 +541,20 @@
 
 <!-- END JAVASCRIPTS -->
 
-<script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-37564768-1']);  _gaq.push(['_setDomainName', 'keenthemes.com']);  _gaq.push(['_setAllowLinker', true]);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script></body>
+<script type="text/javascript">  var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37564768-1']);
+_gaq.push(['_setDomainName', 'keenthemes.com']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+(function () {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();</script>
+</body>
 
 <!-- END BODY -->
 

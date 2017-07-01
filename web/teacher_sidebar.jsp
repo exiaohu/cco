@@ -5,18 +5,20 @@
   Time: 12:49
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<<!-- BEGIN SIDEBAR -->
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
+<<!-- BEGIN SIDEBAR -->
 
 <div class="page-sidebar nav-collapse collapse">
 
     <!-- BEGIN SIDEBAR MENU -->
 
     <ul class="page-sidebar-menu">
+
         <li class="dropdown user">
 
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+
                 <span class="username">欢迎您，<%=request.getSession().getAttribute("tname")%></span>
 
                 <i class="icon-angle-down"></i>
@@ -25,7 +27,7 @@
 
             <ul class="dropdown-menu">
 
-                <li><a href="login.html"><i class="icon-key"></i>登出</a></li>
+                <li><a href="logout"><i class="icon-key"></i>登出</a></li>
 
             </ul>
 

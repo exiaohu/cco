@@ -1,27 +1,29 @@
-<%@ page import="java.util.List" %>
 <%@ page import="com.buaa.mooc.entity.Course" %>
 <%@ page import="com.buaa.mooc.entity.Homework" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page import="java.util.List" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <title>作业管理</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -45,11 +47,11 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -66,6 +68,8 @@
 <div class="page-container row-fluid">
 
     <jsp:include page="student_sidebar.jsp"/>
+
+    <% Course course = (Course) request.getAttribute("course"); %>
 
     <!-- BEGIN PAGE -->
 
@@ -85,7 +89,8 @@
 
                     <h3 class="page-title">
 
-                        作业管理 <small>课程作业提交</small>
+                        作业管理
+                        <small>课程作业提交</small>
 
                     </h3>
 
@@ -95,17 +100,17 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="index.jsp">主页</a>
+                            <a href="student">主页</a>
 
                             <i class="icon-angle-right"></i>
 
                         </li>
 
 
-
                         <li>
 
-                            <a href="student_course.jsp"><%=request.getAttribute("cname")%></a>
+                            <a href="StudentCourse?cid=<%=course.getCid()%>"><%=course.getCname()%>
+                            </a>
 
                             <i class="icon-angle-right"></i>
 
@@ -113,7 +118,7 @@
 
                         <li>
 
-                            <a href="studentHomework">作业管理</a>
+                            <a href="studentHomework?cid=<%=course.getCid()%>">作业管理</a>
 
                         </li>
 
@@ -130,57 +135,86 @@
             <!-- BEGIN PAGE CONTENT-->
 
             <div class="row-fluid">
+
                 <div class="span12">
+
                     <!-- BEGIN SAMPLE TABLE PORTLET-->
+
                     <div class="portlet box green">
+
                         <div class="portlet-title">
+
                             <div class="caption"><i class="icon-bell"></i>作业列表</div>
+
                         </div>
+
                         <div class="portlet-body">
+
                             <table class="table table-striped table-bordered table-advance table-hover">
+
                                 <tr style="align: center">
+
                                     <th><i class="icon-file-text"></i> 作业名称</th>
+
                                     <th class="hidden-phone"><i class="icon-time"></i> 开始时间</th>
+
                                     <th><i class="icon-bell"></i> 截止时间</th>
+
                                     <th>得分(最高分)</th>
                                     <!--
                                     <th>操作</th>
                                     -->
                                 </tr>
+
                                 <tbody>
 
-                                <% List<Homework> homeworks = (List<Homework>)request.getAttribute("homeworks"); %>
+                                <% List<Homework> homeworks = (List<Homework>) request.getAttribute("homeworks"); %>
 
                                 <%
-                                    if (homeworks != null) {
+                                    if (homeworks != null && homeworks.size() > 0) {
                                         for (Homework homework : homeworks) {
                                 %>
                                 <tr class="">
 
-                                    <td><%=homework.getHomeworkName()%></td>
+                                    <td>
+                                        <%=homework.getHomeworkName()%>
+                                    </td>
 
-                                    <td><%=homework.getStartTime().toLocalDateTime().toString()%></td>
+                                    <td>
+                                        <%=homework.getStartTime().toLocalDateTime().toString()%>
+                                    </td>
 
-                                    <td><%=homework.getDeadLine().toLocalDateTime().toString()%></td>
+                                    <td>
+                                        <%=homework.getDeadLine().toLocalDateTime().toString()%>
+                                    </td>
 
                                     <td></td>
 
-                                    <td><a href="" class="btn mini green"><i class="icon-eye-open"></i> 查看</a>
+                                    <td><a href="StudentHomeworkView?hid=<%=homework.getId()%>"
+                                           class="btn mini green"><i class="icon-eye-open"></i> 查看</a>
 
                                 </tr>
                                 <%
                                         }
                                     }
                                 %>
+
                                 </tbody>
+
                             </table>
+
                         </div>
+
                     </div>
+
                     <!-- END SAMPLE TABLE PORTLET-->
+
                 </div>
 
                 <!-- END SAMPLE TABLE PORTLET-->
+
             </div>
+
         </div>
 
         <!-- END PAGE CONTENT-->
@@ -224,7 +258,7 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -232,7 +266,7 @@
 
 <script>
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         // initiate layout and plugins
 

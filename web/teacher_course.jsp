@@ -1,26 +1,27 @@
-<%@ page import="java.util.List" %>
 <%@ page import="com.buaa.mooc.entity.Course" %>
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page import="java.util.List" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <title>课程管理</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -44,11 +45,11 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -58,13 +59,13 @@
 
 <body class="page-header-fixed">
 
-<jsp:include page="teacher_header.jsp"></jsp:include>
+<jsp:include page="teacher_header.jsp"/>
 
 <!-- BEGIN CONTAINER -->
 
 <div class="page-container row-fluid">
 
-    <jsp:include page="teacher_sidebar.jsp"></jsp:include>
+    <jsp:include page="teacher_sidebar.jsp"/>
 
     <!-- BEGIN PAGE -->
 
@@ -106,7 +107,8 @@
 
                     <h3 class="page-title">
 
-                        课程管理 <small> 教师管理个人授课课程</small>
+                        课程管理
+                        <small> 教师管理个人授课课程</small>
 
                     </h3>
 
@@ -154,7 +156,7 @@
 
                             <div class="portlet-title">
 
-                                <div class="caption"><i class="icon-edit"></i>课程列表 </div>
+                                <div class="caption"><i class="icon-edit"></i>课程列表</div>
 
                             </div>
 
@@ -184,7 +186,7 @@
 
                                     <tbody>
 
-                                    <% List<Course> courses = (List<Course>)request.getAttribute("courses"); %>
+                                    <% List<Course> courses = (List<Course>) request.getAttribute("courses"); %>
 
                                     <%
                                         if (courses != null) {
@@ -192,15 +194,24 @@
                                     %>
                                     <tr class="">
 
-                                        <td><%=course.getCname()%></td>
+                                        <td><%=course.getCname()%>
+                                        </td>
 
-                                        <td><%=course.getCredit()%></td>
+                                        <td><%=course.getCredit()%>
+                                        </td>
 
-                                        <td><%=course.getBeginDate().toLocalDate().toString()%></td>
+                                        <td><%=course.getBeginDate().toLocalDate().toString()%>
+                                        </td>
 
-                                        <td><%=course.getAddress()%></td>
+                                        <td><%=course.getAddress()%>
+                                        </td>
 
-                                        <td><a href="#" class="btn mini green" style="margin-right:10px"><i class="icon-folder-open"></i> 查看信息</a><a href="addCourseInfo?cid=<%=course.getCid()%>" class="btn mini green"><i class="icon-plus"></i> 添加信息</a></td>
+                                        <td>
+                                            <a href="#" class="btn mini green" style="margin-right:10px"><i
+                                                    class="icon-folder-open"></i> 查看信息</a>
+                                            <a href="addCourseInfo?cid=<%=course.getCid()%>" class="btn mini green"><i
+                                                    class="icon-plus"></i> 添加信息</a>
+                                        </td>
 
                                     </tr>
                                     <%
@@ -222,7 +233,8 @@
                 </div>
                 <!-- END SAMPLE TABLE PORTLET-->
 
-            </div></div>
+            </div>
+        </div>
 
         <!-- END PAGE CONTENT-->
 
@@ -237,25 +249,7 @@
 
 <!-- BEGIN FOOTER -->
 
-<div class="footer">
-
-    <div class="footer-inner">
-
-        GAD group 16
-
-    </div>
-
-    <div class="footer-tools">
-
-			<span class="go-top">
-
-			<i class="icon-angle-up"></i>
-
-			</span>
-
-    </div>
-
-</div>
+<jsp:include page="footer.jsp"/>
 
 <!-- END FOOTER -->
 
@@ -287,7 +281,7 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -295,7 +289,7 @@
 
 <script>
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         // initiate layout and plugins
 

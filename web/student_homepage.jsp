@@ -1,15 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
 <html>
+
 <head>
+
     <title>主页</title>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -35,7 +38,7 @@
 
     <link href="media/css/jquery.gritter.css" rel="stylesheet" type="text/css"/>
 
-    <link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css" />
+    <link href="media/css/daterangepicker.css" rel="stylesheet" type="text/css"/>
 
     <link href="media/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
 
@@ -45,7 +48,7 @@
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
     <style>
         div.icon_head {
@@ -65,13 +68,13 @@
 
 <body class="page-header-fixed">
 
-<jsp:include page="student_header.jsp"></jsp:include>
+<jsp:include page="student_header.jsp"/>
 
 <!-- BEGIN CONTAINER -->
 
 <div class="page-container">
 
-    <jsp:include page="student_sidebar.jsp"></jsp:include>
+    <jsp:include page="student_sidebar.jsp"/>
 
     <!-- BEGIN PAGE -->
 
@@ -113,10 +116,11 @@
 
                     <h3 class="page-title">
 
-                        主页 <small>学生课程中心页面</small>
+                        主页
+
+                        <small>学生课程中心页面</small>
 
                     </h3>
-
 
 
                     <ul class="breadcrumb">
@@ -146,7 +150,7 @@
 
             <div class="row-fluid">
 
-                <div class="portlet box blue calendar"> </div>
+                <div class="portlet box blue calendar"></div>
 
             </div>
 
@@ -166,25 +170,7 @@
 
 <!-- BEGIN FOOTER -->
 
-<div class="footer">
-
-    <div class="footer-inner">
-
-        GAD group 16
-
-    </div>
-
-    <div class="footer-tools">
-
-			<span class="go-top">
-
-			<i class="icon-angle-up"></i>
-
-			</span>
-
-    </div>
-
-</div>
+<jsp:include page="footer.jsp"/>
 
 <!-- END FOOTER -->
 
@@ -216,7 +202,7 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -268,7 +254,7 @@
 
 <script>
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         App.init(); // initlayout and core plugins
 

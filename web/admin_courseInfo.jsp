@@ -9,8 +9,7 @@
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!-->
-<html lang="en"> <!--<![endif]-->
+<!--[if !IE]><html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
@@ -55,8 +54,8 @@
     <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
     <script language="JavaScript">
-        function confirmSid(){
-            var StudentIds = $("StudentIds").val;
+        function confirmSid() {
+            var StudentIds = $("#StudentIds").val();
             $.ajax({
                 url: "AddStudentInfo",
                 type: "POST",
@@ -65,23 +64,24 @@
                 },
                 dataType: "json",
                 success: function (data) {
-                    alert("ssssss\n" + data);
-                    $.each(data, function(val){
-                        var html = "";
-                        html += '<tr><td>'
+                    alert("ssssssss" + data);
+                    $.each(data, function (val) {
+                        var extra = "";
+                        extra += '<tr><td>'
                             + val.sid + '</td><td>'
                             + val.sname + '</td><td>'
                             + val.sex + '</td><td>'
                             + val.className + '</td><td>'
                             + val.major + '</td></tr>';
                     });
-                    $('#table tbody').append(html);
+                    $('#table').find('tbody').append(extra);
+                    alert("ssssssssssssss");
                 },
-                error:function (err) {
+                error: function (err) {
                     alert("error" + err);
                 }
             });
-        });
+        }
     </script>
 
 </head>
@@ -338,7 +338,8 @@
                                                     <div class="portlet-title">
                                                         <div class="caption"><i class="icon-cogs"></i>参与学生学号</div>
                                                         <div class="actions">
-                                                            <button onclick="confirmSid()" type="button" class="btn green">
+                                                            <button onclick="confirmSid()" type="button"
+                                                                    class="btn green">
                                                                 <i class="icon-plus"></i>确认导入学生学号
                                                             </button>
                                                         </div>
@@ -347,7 +348,8 @@
                                                         <div class="control-group">
                                                             <label class="control-label">参与学生学号：</label>
                                                             <div class="controls">
-                                                                <textarea id="StudentIds" class="m-wrap" rows="10" cols="100"
+                                                                <textarea id="StudentIds" class="m-wrap" rows="10"
+                                                                          cols="100"
                                                                           style="width:80%"></textarea>
                                                             </div>
                                                         </div>
@@ -409,7 +411,8 @@
 
                                                         <tr>
 
-                                                            <td><%=student.getSid()%></td>
+                                                            <td><%=student.getSid()%>
+                                                            </td>
 
                                                             <td><%=student.getSname()%>
                                                             </td>
@@ -438,6 +441,8 @@
 
                                             </div>
 
+                                        </form>
+
                                     </div>
 
                                     <!-- END SAMPLE FORM PORTLET-->
@@ -448,8 +453,6 @@
                                         <button type="button" class="btn">Cancel</button>
 
                                     </div>
-
-                                    </form>
 
                                 </div>
 
@@ -472,25 +475,7 @@
 
         <!-- BEGIN FOOTER -->
 
-        <div class="footer">
-
-            <div class="footer-inner">
-
-                2016 BuaaSoftware Best Group Null
-
-            </div>
-
-            <div class="footer-tools">
-
-			<span class="go-top">
-
-			<i class="icon-angle-up"></i>
-
-			</span>
-
-            </div>
-
-        </div>
+        <jsp:include page="footer.jsp"/>
 
         <!-- END FOOTER -->
 
@@ -544,10 +529,6 @@
 
 </div>
 
-</div>
-
 </body>
 
 <!-- END BODY -->
-
-</html>

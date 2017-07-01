@@ -1,55 +1,59 @@
 <!DOCTYPE html>
 
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="ie8">
+<![endif]-->
 
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if IE 9]>
+<html lang="en" class="ie9">
+<![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 
-
-
 <head>
 
-	<meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
-	<title>课程中心登录页面</title>
+    <title>课程中心登录页面</title>
 
-	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-	<meta content="" name="description" />
+    <meta content="" name="description"/>
 
-	<meta content="" name="author" />
+    <meta content="" name="author"/>
 
-	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
-	<link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
-	<link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+    <link href="media/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
 
-	<link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 
-	<link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+    <link href="media/css/style-metro.css" rel="stylesheet" type="text/css"/>
 
-	<link href="media/css/style.css" rel="stylesheet" type="text/css"/>
+    <link href="media/css/style.css" rel="stylesheet" type="text/css"/>
 
-	<link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+    <link href="media/css/style-responsive.css" rel="stylesheet" type="text/css"/>
 
-	<link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+    <link href="media/css/default.css" rel="stylesheet" type="text/css" id="style_color"/>
 
-	<link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+    <link href="media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 
-	<!-- END GLOBAL MANDATORY STYLES -->
+    <!-- END GLOBAL MANDATORY STYLES -->
 
-	<!-- BEGIN PAGE LEVEL STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
 
-	<link href="media/css/login.css" rel="stylesheet" type="text/css"/>
+    <link href="media/css/login.css" rel="stylesheet" type="text/css"/>
 
-	<!-- END PAGE LEVEL STYLES -->
+    <!-- END PAGE LEVEL STYLES -->
 
-	<link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -57,110 +61,111 @@
 
 <!-- BEGIN BODY -->
 
-<body class="login" style= "background-image:url(./media/image/bg1.jpg)">
+<body class="login" style="background-image:url(./media/image/bg1.jpg)">
 
-	<!-- BEGIN LOGO -->
-	
-	<div style="text-align:center">
-	
-		<img src="media/image/login.png" align="center">
-		
-	</div>
-		
-	<!-- END LOGO -->
+<!-- BEGIN LOGO -->
 
-	<!-- BEGIN LOGIN -->
+<div style="text-align:center">
 
-	<div class="content" style="background-color:rgba(255, 255, 255, 0.3)">
+    <img src="media/image/login.png" align="center">
 
-		<!-- BEGIN LOGIN FORM -->
+</div>
 
-		<form class="form-vertical login-form"  action="/login" method="post">
+<!-- END LOGO -->
 
-			<img src="media/image/login-logo5.png" width= "300px" height= "30px" alt="" /> 
-					
-			<div style="height:25px">
+<!-- BEGIN LOGIN -->
 
-			</div>
+<div class="content" style="background-color:rgba(255, 255, 255, 0.3)">
 
-			<div class="alert alert-error hide">
+    <!-- BEGIN LOGIN FORM -->
 
-				<button class="close" data-dismiss="alert"></button>
+    <form class="form-vertical login-form" action="/login" method="post">
 
-				<span>用户名或密码不能为空！</span>
+        <img src="media/image/login-logo5.png" width="300px" height="30px" alt=""/>
 
-			</div>
+        <div style="height:25px">
 
-			<div class="control-group">
+        </div>
 
-				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+        <div class="alert alert-error hide">
 
-				<label class="control-label visible-ie8 visible-ie9">Username</label>
+            <button class="close" data-dismiss="alert"></button>
 
-				<div class="controls">
+            <span>用户名或密码不能为空！</span>
 
-					<div class="input-icon left">
+        </div>
 
-						<i class="icon-user"></i>
+        <div class="control-group">
 
-						<input class="m-wrap placeholder-no-fix" style="color:white" type="text" placeholder="Username" name="username"/>
+            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
 
-					</div>
+            <label class="control-label visible-ie8 visible-ie9">Username</label>
 
-				</div>
+            <div class="controls">
 
-			</div>
+                <div class="input-icon left">
 
-			<div class="control-group">
+                    <i class="icon-user"></i>
 
-				<label class="control-label visible-ie8 visible-ie9">Password</label>
+                    <input class="m-wrap placeholder-no-fix" style="color:white" type="text" placeholder="Username"
+                           name="username"/>
 
-				<div class="controls">
+                </div>
 
-					<div class="input-icon left">
+            </div>
 
-						<i class="icon-lock"></i>
+        </div>
 
-						<input class="m-wrap placeholder-no-fix" type="password" placeholder="Password" name="password"/>
+        <div class="control-group">
 
-					</div>
+            <label class="control-label visible-ie8 visible-ie9">Password</label>
 
-				</div>
+            <div class="controls">
 
-			</div>
-			
+                <div class="input-icon left">
 
-			<div class="form-actions" style="background-color:rgba(255, 255, 255, 0); text-align:center; margin:30px">
+                    <i class="icon-lock"></i>
 
-				<button type="submit" class="btn green" style="width:100%;">
+                    <input class="m-wrap placeholder-no-fix" type="password" placeholder="Password" name="password"/>
 
-				<strong><big>登录</big></strong>
+                </div>
 
-				</button>            
+            </div>
 
-			</div>
+        </div>
 
-		</form>
 
-		<!-- END LOGIN FORM -->
-	</div>
+        <div class="form-actions" style="background-color:rgba(255, 255, 255, 0); text-align:center; margin:30px">
 
-	<!-- END LOGIN -->
+            <button type="submit" class="btn green" style="width:100%;">
 
-	<!-- BEGIN COPYRIGHT -->
+                <strong><big>登录</big></strong>
 
-	<div class="copyright"></div>
+            </button>
 
-	<script>
+        </div>
 
-		jQuery(document).ready(function() {
-            App.init();
-            Login.init();
-        });
+    </form>
 
-	</script>
+    <!-- END LOGIN FORM -->
+</div>
 
-	<!-- END JAVASCRIPTS -->
+<!-- END LOGIN -->
+
+<!-- BEGIN COPYRIGHT -->
+
+<div class="copyright"></div>
+
+<script>
+
+    jQuery(document).ready(function () {
+        App.init();
+        Login.init();
+    });
+
+</script>
+
+<!-- END JAVASCRIPTS -->
 
 </body>
 

@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by windrises on 2017/6/28.
  */
-public class StudentHomeServlet extends HttpServlet{
+public class StudentHomeServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 

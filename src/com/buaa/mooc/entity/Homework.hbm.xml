@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC
-		"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-		"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.buaa.mooc.entity.Homework" lazy="false" table="homework">
-		<id name="homeworkId" type="integer" column="hid">
-			<generator class="native"/>
-		</id>
-		<property name="courseId" type="integer" column="cid"/>
-		<property name="homeworkName" type="string" column="hname"/>
-		<property name="startTime" type="timestamp" column="start_time"/>
-		<property name="deadLine" type="timestamp" column="deadline"/>
-		<property name="submitMaxTimes" type="integer" column="submit_max_times"/>
-		<property name="homeworkInformation" type="string" column="information"/>
-	</class>
+    <class name="com.buaa.mooc.entity.Homework" lazy="false" table="homework">
+        <id name="homeworkId" type="integer" column="hid">
+            <generator class="native"/>
+        </id>
+        <property name="courseId" type="integer" column="cid"/>
+        <property name="homeworkName" type="string" column="hname"/>
+        <property name="startTime" type="timestamp" column="start_time"/>
+        <property name="deadLine" type="timestamp" column="deadline"/>
+        <property name="submitMaxTimes" type="integer" column="submit_max_times"/>
+        <property name="homeworkInformation" type="string" column="information"/>
+    </class>
 </hibernate-mapping>

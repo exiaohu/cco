@@ -18,17 +18,17 @@ public class HibernateUtils {
         sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
     }
 
-    public static SessionFactory getSessionFactory(){
+    public static SessionFactory getSessionFactory() {
         return sessionFactory;
     }
 
-    public static Session getSession(){
+    public static Session getSession() {
         return sessionFactory.openSession();
     }
 
-    public static void closeSession(Session session){
-        if (session != null){
-            if (session.isOpen()){
+    public static void closeSession(Session session) {
+        if (session != null) {
+            if (session.isOpen()) {
                 session.close();
             }
         }
