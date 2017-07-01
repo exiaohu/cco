@@ -4,6 +4,9 @@ import org.hibernate.Session;
 import com.buaa.mooc.utils.HibernateUtils;
 
 import com.buaa.mooc.entity.Teacher;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 
 public class TeacherDao {
@@ -38,6 +41,36 @@ public class TeacherDao {
         }catch(Exception e) {
             return null;
         }finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
+
+    public List<Teacher> findAll() {
+        Session session = null;
+        try {
+            session = HibernateUtils.getSession();
+            String hql = "from Teacher";
+            Query query = session.createQuery(hql);
+            return query.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
+
+    public List<Integer> findAllTid() {
+        Session session = null;
+        try {
+            session = HibernateUtils.getSession();
+            String hql = "select tid from Teacher";
+            Query query = session.createQuery(hql);
+            return query.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
             HibernateUtils.closeSession(session);
         }
     }

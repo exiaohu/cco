@@ -5,6 +5,9 @@ public class Student implements User {
 	private Integer sid;
 	private String sname;
 	private String password;
+	private String sex; // 为"f"/"m"
+	private String className;
+	private String major;
 	
 	public Integer getSid() {
 		return sid;
@@ -24,6 +27,29 @@ public class Student implements User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public String getClassName() {
+		return className;
+	}
+
+	public void setClassName(String className) {
+		this.className = className;
+	}
+
+	public String getMajor() {
+		return major;
+	}
+
+	public void setMajor(String major) {
+		this.major = major;
+	}
 }

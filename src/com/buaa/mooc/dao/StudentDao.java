@@ -4,6 +4,10 @@ import org.hibernate.Session;
 
 import com.buaa.mooc.entity.Student;
 import com.buaa.mooc.utils.HibernateUtils;
+import org.hibernate.query.Query;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentDao {
 	public boolean isExistBySidAndPassword(Integer sid, String password) {
@@ -32,6 +36,32 @@ public class StudentDao {
         }catch(Exception e) {
             return null;
         }finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
+
+    public List<Student> findByCourseId(Integer cid) {
+        Session session = HibernateUtils.getSession();
+        List results = null;
+        List<Student> students = null;
+        try{
+            students = new ArrayList<>();
+            String hql="select s from Student as s, StudentCourse as sc where s.sid =  sc.pk.sid and sc.pk.cid = :cid";
+            Query query = session.createQuery(hql);
+            query.setParameter("cid", cid);
+            results = query.list();
+            if (results != null && results.size()>0) {
+                Student s;
+                for (Object obj : results) {
+                    s = (Student) obj;
+                    students.add(s);
+                }
+            }
+            return students;
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }finally{
             HibernateUtils.closeSession(session);
         }
     }

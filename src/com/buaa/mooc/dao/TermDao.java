@@ -131,6 +131,19 @@ public class TermDao {
             HibernateUtils.closeSession(session);
         }
     }
+
+    public Term findByTermId(Integer termId) {
+        Session session = null;
+        try {
+            session = HibernateUtils.getSession();
+            return session.load(Term.class, termId);
+        }catch(Exception e) {
+            e.printStackTrace();
+            return null;
+        }finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
 	
 	/*
 	public static void main(String[] args) {

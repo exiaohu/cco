@@ -49,17 +49,15 @@
 
 
         </li>
-        <!--
         <li class="">
 
-            <a href="admin_course.html">
+            <a href="EduAdminCourse">
 
                 <i class="icon-cogs"></i>
 
                 <span class="title">课程管理</span>
 
             </a>
-
 
         </li>-->
 

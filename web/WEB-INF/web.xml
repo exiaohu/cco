@@ -54,6 +54,18 @@
         <servlet-name>StudentHome</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.StudentHomeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EduAdminCourse</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.EduAdminCourseServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EduAdminCourseInfo</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.EduAdminCourseInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddStudentInfo</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.AddStudentInfoServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddCourseInfo</servlet-name>
         <url-pattern>/addCourseInfo</url-pattern>
@@ -101,5 +113,17 @@
     <servlet-mapping>
         <servlet-name>StudentHome</servlet-name>
         <url-pattern>/student</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EduAdminCourse</servlet-name>
+        <url-pattern>/EduAdminCourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EduAdminCourseInfo</servlet-name>
+        <url-pattern>/EduAdminCourseInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddStudentInfo</servlet-name>
+        <url-pattern>/AddStudentInfo</url-pattern>
     </servlet-mapping>
 </web-app>

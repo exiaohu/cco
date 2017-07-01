@@ -1,3 +1,5 @@
+<%@ page import="com.buaa.mooc.entity.Course" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -56,13 +58,13 @@
 
 <body class="page-header-fixed">
 
-<jsp:include page="admin_header.jsp"></jsp:include>
+<jsp:include page="admin_header.jsp" />
 
 <!-- BEGIN CONTAINER -->
 
 <div class="page-container row-fluid">
 
-    <jsp:include page="admin_sidebar.jsp"></jsp:include>
+    <jsp:include page="admin_sidebar.jsp" />
 
     <!-- BEGIN PAGE -->
 
@@ -139,8 +141,17 @@
 
             <!-- BEGIN PAGE CONTENT-->
 
+            <% List<Course> courses = (List<Course>) request.getAttribute("courses"); %>
+
+            <%
+                if (courses != null && courses.size()>0) {
+                    for (Course course : courses) {
+            %>
+
             <div class="tiles">
-                <a href="#">
+
+                <a href="EduAdminCourseInfo?cid=<%=course.getCid()%>">
+
                     <div class="tile bg-green">
 
                         <div class="tile-body">
@@ -153,19 +164,26 @@
 
                             <div class="name">
 
-                                敏捷开发实践
+                                <%=course.getCname()%>
 
                             </div>
 
                             <div class="number">
 
-                                5
+                                <%=course.getCredit()%>
 
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
+
+            <%
+                    }
+                }
+            %>
+
+
         </div>
 
 

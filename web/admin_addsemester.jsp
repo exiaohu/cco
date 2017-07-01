@@ -60,7 +60,7 @@
 
 <body class="page-header-fixed">
 
-<jsp:include page="admin_header.jsp"></jsp:include>
+<jsp:include page="admin_header.jsp" />
 
 <!-- BEGIN CONTAINER -->
 
@@ -68,87 +68,7 @@
 
     <!-- BEGIN SIDEBAR -->
 
-    <div class="page-sidebar nav-collapse collapse">
-
-        <!-- BEGIN SIDEBAR MENU -->
-
-        <ul class="page-sidebar-menu">
-
-            <li>
-
-                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-
-                <div class="sidebar-toggler hidden-phone"></div>
-
-                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-
-            </li>
-            <li class="dropdown user">
-
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-
-                    <span class="username"><%=request.getSession().getAttribute("ename")%></span>
-
-                    <i class="icon-angle-down"></i>
-
-                </a>
-
-                <ul class="dropdown-menu">
-
-                    <li><a href="login.html"><i class="icon-key"></i>登出</a></li>
-
-                </ul>
-
-            </li>
-            <li class=" ">
-
-                <a href="eduadmin">
-
-                    <i class="icon-home"></i>
-
-                    <span class="title">主页</span>
-
-                </a>
-
-            </li>
-
-            <li class="start active ">
-
-                <a href="semester">
-
-                    <i class="icon-table"></i>
-
-                    <span class="title">学期管理</span>
-
-                    <span class="selected"></span>
-
-                </a>
-
-
-            </li>
-            <!--
-            <li class="">
-
-                <a href="admin_course.html">
-
-                    <i class="icon-cogs"></i>
-
-                    <span class="title">课程管理</span>
-
-                </a>
-
-
-            </li>
-
-            <li class="">
-            </li>-->
-
-        </ul>
-
-        <!-- END SIDEBAR MENU -->
-
-    </div>
-
+    <jsp:include page="admin_sidebar.jsp" />
 
     <!-- END SIDEBAR -->
 

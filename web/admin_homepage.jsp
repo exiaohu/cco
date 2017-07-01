@@ -47,13 +47,13 @@
 
 <body class="page-header-fixed">
 
-	<jsp:include page="admin_header.jsp"></jsp:include>
+	<jsp:include page="admin_header.jsp"/>
 
 	<!-- BEGIN CONTAINER -->
 
 	<div class="page-container">
 
-		<jsp:include page="admin_sidebar.jsp"></jsp:include>
+		<jsp:include page="admin_sidebar.jsp"/>
 
 		<!-- BEGIN PAGE -->
 
