@@ -22,11 +22,11 @@ public class AddHomeworkServlet extends HttpServlet {
             Integer _limit = Integer.parseInt(request.getParameter("_limit"));
             String hname = new String( request.getParameter("assign_name").getBytes("iso-8859-1"), "utf-8");
             ParsePosition pos = new ParsePosition(0);
-            SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-            java.util.Date startDate = formatter.parse(request.getParameter("startDate"), pos);
-            formatter = new SimpleDateFormat("MM/dd/yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            java.util.Date startDate = formatter.parse(request.getParameter("startDate").trim(), pos);
+            formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             pos = new ParsePosition(0);
-            java.util.Date endDate = formatter.parse(request.getParameter("endDate"), pos);
+            java.util.Date endDate = formatter.parse(request.getParameter("endDate").trim(), pos);
 
             HomeworkDao homeworkDao = new HomeworkDao();
             homeworkDao.AddHomework(1, hname, new Timestamp(startDate.getTime()), new Timestamp(endDate.getTime()), _limit);
