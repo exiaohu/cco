@@ -185,6 +185,29 @@
                 }
             %>
 
+            <div class="tiles">
+
+                <a href="EduAdminCourseInfo">
+
+                    <div class="tile bg-green">
+
+                        <div class="tile-body">
+
+                            <i class="icon-plus"></i>
+
+                        </div>
+
+                        <div class="tile-object">
+
+                            <div class="name">添加</div>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+            </div>
 
         </div>
 

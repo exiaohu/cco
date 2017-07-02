@@ -63,22 +63,19 @@
                     'StudentIds': StudentIds
                 },
                 dataType: "json",
-                success: function (data) {
-                    alert("ssssssss" + data);
-                    $.each(data, function (val) {
-                        var extra = "";
+                success: function (res) {
+                    var extra = "";
+                    var data = eval('[' + res + ']');
+                    for (var i = 0; i < data.length; i++) {
+                        var item = data[i];
                         extra += '<tr><td>'
-                            + val.sid + '</td><td>'
-                            + val.sname + '</td><td>'
-                            + val.sex + '</td><td>'
-                            + val.className + '</td><td>'
-                            + val.major + '</td></tr>';
-                    });
-                    $('#table').find('tbody').append(extra);
-                    alert("ssssssssssssss");
-                },
-                error: function (err) {
-                    alert("error" + err);
+                            + item.sid + '</td><td>'
+                            + item.sname + '</td><td>'
+                            + (item.sex == "f" ? "女" : "男") + '</td><td>'
+                            + item.className + '</td><td>'
+                            + item.major + '</td></tr>';
+                    }
+                    $('#stu_tbody').append(extra);
                 }
             });
         }
@@ -207,8 +204,9 @@
 
                                 <ul class="nav nav-tabs">
 
+                                    <li><a class="btn green"
+                                           href="EduAdminDeleteCourse?cid=<%=course.getCid()%>">删除此课程</a></li>
 
-                                    <li class="active"><a href="#portlet_tab1" data-toggle="tab">查看</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -348,9 +346,9 @@
                                                         <div class="control-group">
                                                             <label class="control-label">参与学生学号：</label>
                                                             <div class="controls">
-                                                                <textarea id="StudentIds" class="m-wrap" rows="10"
-                                                                          cols="100"
-                                                                          style="width:80%"></textarea>
+                                                                <textarea name="sids" id="StudentIds" class="m-wrap"
+                                                                          rows="10"
+                                                                          cols="100" style="width:80%"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -402,7 +400,7 @@
 
                                                         </thead>
 
-                                                        <tbody>
+                                                        <tbody id="stu_tbody">
 
                                                         <%
                                                             if (students != null && students.size() > 0) {
@@ -441,16 +439,17 @@
 
                                             </div>
 
+                                            <!-- END SAMPLE FORM PORTLET-->
+                                            <div class="form-actions">
+
+                                                <button type="submit" class="btn blue"><i class="icon-ok"></i>Save
+                                                </button>
+
+                                                <button type="button" class="btn">Cancel</button>
+
+                                            </div>
+
                                         </form>
-
-                                    </div>
-
-                                    <!-- END SAMPLE FORM PORTLET-->
-                                    <div class="form-actions">
-
-                                        <button type="submit" class="btn blue"><i class="icon-ok"></i>Save</button>
-
-                                        <button type="button" class="btn">Cancel</button>
 
                                     </div>
 

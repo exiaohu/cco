@@ -90,6 +90,10 @@
         <servlet-name>StudentHomeworkView</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.StudentHomeworkViewServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EduAdminDeleteCourse</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.EduAdminDeleteCourseServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddCourseInfo</servlet-name>
         <url-pattern>/addCourseInfo</url-pattern>
@@ -173,5 +177,9 @@
     <servlet-mapping>
         <servlet-name>TeacherHomeworkDel</servlet-name>
         <url-pattern>/TeacherHomeworkDel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EduAdminDeleteCourse</servlet-name>
+        <url-pattern>/EduAdminDeleteCourse</url-pattern>
     </servlet-mapping>
 </web-app>

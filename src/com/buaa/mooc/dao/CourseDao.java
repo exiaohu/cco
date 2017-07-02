@@ -11,7 +11,7 @@ import java.util.List;
 public class CourseDao {
 
     //�������ӿγ�
-    public void addCourse(String cname, Integer credit, Date beginDate, Date endDate, String address, Integer termId) {
+    public Course addCourse(String cname, Integer credit, Date beginDate, Date endDate, String address, Integer termId) {
         Session session = HibernateUtils.getSession();
         Course course = new Course();
         course.setCname(cname);
@@ -24,9 +24,11 @@ public class CourseDao {
             session.beginTransaction();
             session.save(course);
             session.getTransaction().commit();
+            return course;
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
+            return null;
         } finally {
             HibernateUtils.closeSession(session);
         }
@@ -101,6 +103,22 @@ public class CourseDao {
             return true;
         } catch (Exception e) {
             e.printStackTrace();
+            session.getTransaction().rollback();
+            return false;
+        } finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
+
+    public boolean deleteCourse(Integer cid) {
+        Session session = HibernateUtils.getSession();
+        try {
+            session.beginTransaction();
+            Course course = session.load(Course.class, cid);
+            session.delete(course);
+            session.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
             session.getTransaction().rollback();
             return false;
         } finally {

@@ -2,6 +2,8 @@ package com.buaa.mooc.dao;
 
 
 import com.buaa.mooc.entity.Course;
+import com.buaa.mooc.entity.StudentCourse;
+import com.buaa.mooc.entity.StudentCoursePK;
 import com.buaa.mooc.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -24,6 +26,31 @@ public class StudentCourseDao {
         } catch (Exception e) {
             e.printStackTrace();
             return courses;
+        } finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
+
+    public boolean AddRelationSC(Integer sid, Integer cid) {
+        Session session = HibernateUtils.getSession();
+        try {
+            StudentCourse tc = new StudentCourse();
+            StudentCoursePK tcPK = new StudentCoursePK();
+            tcPK.setCid(cid);
+            tcPK.setSid(sid);
+            tc.setPk(tcPK);
+            try {
+                session.load(StudentCourse.class, tcPK);
+            } catch (Throwable e) {
+                session.beginTransaction();
+                session.save(tc);
+                session.getTransaction().commit();
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+            return false;
         } finally {
             HibernateUtils.closeSession(session);
         }
