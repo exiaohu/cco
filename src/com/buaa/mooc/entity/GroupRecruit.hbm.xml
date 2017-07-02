@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.buaa.mooc.entity.GroupRecruit" lazy="false" table="group_recruit">
+        <id name="grid" type="integer" column="grid">
+            <generator class="native"/>
+        </id>
+        <property name="convener" type="integer" column="convener"/>
+        <property name="recruit_information" type="string" column="recruit_information"/>
+        <property name="group_name" type="string" column="group_name"/>
+        <property name="cid" type="integer" column="cid"/>
+    </class>
+</hibernate-mapping>

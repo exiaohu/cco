@@ -14,7 +14,6 @@ import java.util.List;
 public class StudentCourseDao {
 
     public List<Course> getCourses(Integer sid) {
-
         Session session = HibernateUtils.getSession();
         List<Course> courses = new ArrayList<>();
         try {
@@ -51,6 +50,21 @@ public class StudentCourseDao {
             e.printStackTrace();
             session.getTransaction().rollback();
             return false;
+        } finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
+
+    public StudentCourse findBySidAndCid(Integer sid, Integer cid) {
+        Session session = HibernateUtils.getSession();
+        try {
+            StudentCoursePK tcPK = new StudentCoursePK();
+            tcPK.setCid(cid);
+            tcPK.setSid(sid);
+            return session.load(StudentCourse.class, tcPK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         } finally {
             HibernateUtils.closeSession(session);
         }

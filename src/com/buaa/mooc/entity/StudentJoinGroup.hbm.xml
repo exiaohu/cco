@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.buaa.mooc.entity.StudentJoinGroup" lazy="false" table="student_join_group">
+        <composite-id class="com.buaa.mooc.entity.StudentJoinGroupPK" name="pk">
+            <key-property name="sid" type="integer" column="sid" />
+            <key-property name="grid" type="integer" column="grid" />
+        </composite-id>
+        <property name="granted" type="integer" column="granted" />
+    </class>
+</hibernate-mapping>
