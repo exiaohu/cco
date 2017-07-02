@@ -55,11 +55,10 @@ public class AddCourseInfoServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        CourseDao courseDao = new CourseDao();
-        courseDao.editCourse(cid, outline, filename);
-
         FileDao fileDao = new FileDao();
-        fileDao.AddFile(filename, (Integer) request.getSession().getAttribute("tid"));
+        Integer fid = fileDao.AddFile(filename, (Integer) request.getSession().getAttribute("tid"));
+        CourseDao courseDao = new CourseDao();
+        courseDao.editCourse(cid, outline, fid);
 
         response.sendRedirect("/teacherCourse");
     }

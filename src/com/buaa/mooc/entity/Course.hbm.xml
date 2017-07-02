@@ -15,6 +15,6 @@
         <property name="endDate" type="date" column="end_date"/>
         <property name="address" type="string" column="address"/>
         <property name="outline" type="string" column="outline"/>
-        <property name="accessory" type="string" column="accessory"/>
+        <property name="fid" type="integer" column="fid"/>
     </class>
 </hibernate-mapping>  

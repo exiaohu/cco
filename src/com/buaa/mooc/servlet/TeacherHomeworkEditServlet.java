@@ -25,7 +25,7 @@ public class TeacherHomeworkEditServlet extends HttpServlet {
 
             // homeworkDao.EditHomework(hid, hname, new Timestamp(startDate.getTime()), new Timestamp(endDate.getTime()), imformation);
             homeworkDao.EditHomework(hid, imformation);
-            System.out.print(123413);
+            //System.out.print(123413);
             response.sendRedirect("TeacherHomework");
         } catch (IllegalFormatException e) {
             e.printStackTrace();

@@ -1,5 +1,6 @@
 <%@ page import="com.buaa.mooc.entity.Course" %>
-<%@ page import="com.buaa.mooc.entity.Homework" %><%--
+<%@ page import="com.buaa.mooc.entity.Homework" %>
+<%@ page import="com.buaa.mooc.entity.HomeworkSubmit" %><%--
   Created by IntelliJ IDEA.
   User: windrises
   Date: 2017/6/29
@@ -174,7 +175,7 @@
 
                         <li>
 
-                            <a href="studentHomework?cid=<%=course.getCid()%>">作业管理</a>
+                            <a href="StudentHomework?cid=<%=course.getCid()%>">作业管理</a>
 
                             <i class="icon-angle-right"></i>
 
@@ -206,9 +207,14 @@
 
                     <div class="portlet-body form">
 
-                        <% Homework homework = (Homework) request.getAttribute("homework"); %>
+                        <%  Homework homework = (Homework) request.getAttribute("homework");
+                            String submitContent = (String) request.getAttribute("submitContent");
+                        %>
 
                         <!-- BEGIN FORM-->
+
+                        <form action="StudentHomeworkView?cid=<%=homework.getCourseId()%>&hid=<%=homework.getId()%>"
+                              method="post" enctype="multipart/form-data">
 
                         <div class="form-horizontal form-view">
 
@@ -251,7 +257,7 @@
 
                                         <div class="controls">
 
-                                            <span class="text"><%=(homework.get)%></span>
+                                            <span class="text"></span>
 
                                         </div>
 
@@ -296,7 +302,9 @@
 
                                         <div class="controls">
 
-                                            <textarea class="span12 wysihtml5 m-wrap" rows="6" name="_work"></textarea>
+                                            <textarea class="span12 wysihtml5 m-wrap" rows="6" name="studentHWText">
+                                                <%=submitContent%>
+                                            </textarea>
 
                                         </div>
 
@@ -304,19 +312,13 @@
 
                                     <div class="control-group">
 
-                                        <label class="control-label" style=" font-weight:bolder">上传</label>
+                                        <label class="control-label">附件：</label>
 
                                         <div class="controls">
 
-																 <span class="btn green fileinput-button">
+                                            <input type="file" name="files" class="display-value" size="2048"/>
 
-																<i class="icon-plus icon-white"></i>
-
-															<span>添加附件</span>
-
-														<input type="file" name="files[]" multiple>
-
-																</span>
+                                            <span class="help-inline"></span>
 
                                         </div>
 
@@ -341,20 +343,21 @@
 
                         <div class="form-actions">
 
-                            <button type="submit" class="btn blue"><i class="icon-upload-alt"></i> 提交</button>
+                            <button type="submit" class="btn blue"><i class="icon-upload-alt"></i>提交</button>
 
-                            <a href="studentHomework">
+                            <a href="StudentHomework">
                                 <button type="button" class="btn">返回</button>
                             </a>
 
                         </div>
 
-                    </div>
+                    </form>
 
                     <!-- END FORM-->
 
                 </div>
 
+            </div>
             </div>
 
         </div>
@@ -409,9 +412,9 @@
 
 <script src="media/js/app.js"></script>
 
-<script src="ckeditor/ckeditor.js"></script>
+<script src="media/js/ckeditor/ckeditor.js"></script>
 
-<script> CKEDITOR.replace('_work');</script>
+<script> CKEDITOR.replace('studentHWText');</script>
 
 
 <script>
@@ -423,6 +426,14 @@
         App.init();
 
     });
+    var errori ='<%=request.getParameter("error")%>';
+    if(errori=='exceed'){
+        alert("提交失败，您的提交次数已达上限！");
+    }else if(errori=='early'){
+        alert("提交失败，作业还没有开始！");
+    }else if(errori=='late'){
+        alert("提交失败，作业已经结束！");
+    }
 
 </script>
 

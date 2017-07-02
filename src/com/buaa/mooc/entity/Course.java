@@ -12,7 +12,7 @@ public class Course {
     private Date endDate;
     private String address;
     private String outline;
-    private String accessory;
+    private Integer fid;
 
     public Integer getCid() {
         return cid;
@@ -78,11 +78,9 @@ public class Course {
         this.endDate = endDate;
     }
 
-    public String getAccessory() {
-        return accessory;
+    public Integer getFid() {
+        return fid;
     }
 
-    public void setAccessory(String accessory) {
-        this.accessory = accessory;
-    }
+    public void setFid(Integer fid) {this.fid = fid; }
 }

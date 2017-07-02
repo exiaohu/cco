@@ -9,22 +9,43 @@ import org.hibernate.Session;
  */
 public class FileDao {
 
-    public boolean AddFile(String filename, Integer id) {
+    public Integer AddFile(String filename, Integer id) {
         Session session = HibernateUtils.getSession();
-        ;
+
         try {
             session.beginTransaction();
             File file = new File();
             file.setFilename(filename);
             file.setUploadby(id);
+            session.save(file);
             session.getTransaction().commit();
-            return true;
+            //System.out.println("fid===" + file.getId());
+            return file.getId();
         } catch (Exception e) {
             e.printStackTrace();
             session.getTransaction().rollback();
-            return false;
+            return null;
         } finally {
             HibernateUtils.closeSession(session);
         }
+    }
+
+    public File getFileById(Integer fid){
+        Session session = null;
+        try {
+            session = HibernateUtils.getSession();
+            return session.load(File.class, fid);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
+
+    static public void main(String[] args) {
+        FileDao fileDao =new FileDao();
+        Integer id = fileDao.AddFile("gehsa", 1);
+        System.out.println(id);
     }
 }

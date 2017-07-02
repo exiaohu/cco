@@ -233,8 +233,7 @@
 
                                     <div class="controls">
 
-                                        <textarea class="span6 m-wrap" rows="3" name="request">
-                                            <%=request.getAttribute("imformation") != null ? request.getAttribute("imformation") : ""%>
+                                        <textarea class="span6 m-wrap" rows="3" name="request"><%=request.getAttribute("imformation") != null ? request.getAttribute("imformation") : ""%>
                                         </textarea>
 
                                     </div>

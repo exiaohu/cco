@@ -5,6 +5,7 @@ import com.buaa.mooc.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.sql.Date;
 import java.util.List;
 
@@ -33,14 +34,14 @@ public class CourseDao {
     }
 
     //��ʦ�༭�γ̴��
-    public void editCourse(Integer cid, String outline, String filename) {
+    public void editCourse(Integer cid, String outline, Integer fid) {
         Session session = HibernateUtils.getSession();
         try {
             Course course;
             session.beginTransaction();
             course = (Course) session.get(Course.class, cid);
             course.setOutline(outline);
-            course.setAccessory(filename);
+            course.setFid(fid);
             session.update(course);
             session.getTransaction().commit();
         } catch (Exception e) {

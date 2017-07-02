@@ -1,6 +1,8 @@
 <%@ page import="com.buaa.mooc.entity.Course" %>
 <%@ page import="com.buaa.mooc.entity.Homework" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.buaa.mooc.dao.StudentHWSubmitDao" %>
+<%@ page import="com.buaa.mooc.entity.HomeworkSubmit" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -160,19 +162,36 @@
 
                                     <th><i class="icon-bell"></i> 截止时间</th>
 
+                                    <th>已提交/最多提交</th>
+
                                     <th>得分(最高分)</th>
-                                    <!--
+
                                     <th>操作</th>
-                                    -->
+
                                 </tr>
 
                                 <tbody>
 
-                                <% List<Homework> homeworks = (List<Homework>) request.getAttribute("homeworks"); %>
+                                <% List<Homework> homeworks = (List<Homework>) request.getAttribute("homeworks");
+                                    StudentHWSubmitDao studentHWSubmitDao = new StudentHWSubmitDao();
+                                    Integer sid = (Integer) request.getSession().getAttribute("sid");
+                                    //System.out.println(sid);
+                                %>
 
                                 <%
                                     if (homeworks != null && homeworks.size() > 0) {
                                         for (Homework homework : homeworks) {
+                                            HomeworkSubmit homeworkSubmit = studentHWSubmitDao.findHKSubmitByHidSid(homework.getId(),sid);
+                                            Integer submitTimes = null;
+                                            if(homeworkSubmit == null){
+                                                submitTimes = 0;
+                                                System.out.println("-------------");
+                                            }
+                                            else{
+                                                submitTimes = homeworkSubmit.getSubmitTimes();
+                                                System.out.println("-------" + submitTimes);
+                                            }
+                                            Integer submitMaxTimes = homework.getSubmitMaxTimes();
                                 %>
                                 <tr class="">
 
@@ -188,9 +207,11 @@
                                         <%=homework.getDeadLine().toLocalDateTime().toString()%>
                                     </td>
 
+                                    <td><%=submitTimes%>/<%=submitMaxTimes%></td>
+
                                     <td></td>
 
-                                    <td><a href="StudentHomeworkView?hid=<%=homework.getId()%>"
+                                    <td><a href="StudentHomeworkView?cid=<%=course.getCid()%>&hid=<%=homework.getId()%>"
                                            class="btn mini green"><i class="icon-eye-open"></i> 查看</a>
 
                                 </tr>
