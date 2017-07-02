@@ -29,19 +29,22 @@ public class AddStudentInfoServlet extends HttpServlet {
                             Student student = studentDao.findById(sid);
                             if (student != null) {
                                 JSONObject obj = new JSONObject();
+                                obj.put("sid", student.getSid().toString());
                                 obj.put("sname", student.getSname());
-                                obj.put("className", student.getClassName());
                                 obj.put("sex", student.getSex());
+                                obj.put("className", student.getClassName());
                                 obj.put("major", student.getMajor());
-                                obj.put("sid", student.getSid());
-                                jsonArray.put(obj);
+                                jsonArray.put(obj.toString());
                             }
                         } catch (Throwable ignored) {
                         }
                     }
                 }
             }
-            response.getWriter().print(jsonArray.toString());
+            response.setCharacterEncoding("utf-8");
+            response.getWriter().print(jsonArray);
+            response.getWriter().flush();
+            response.getWriter().close();
         } catch (Throwable e) {
             e.printStackTrace();
             response.getWriter().print("[]");

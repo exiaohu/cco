@@ -4,6 +4,8 @@ public class StudentCourse {
 
     private StudentCoursePK pk;
     private Double score;
+    private Integer gid;
+    private Double group_contribute;
 
     public StudentCoursePK getPk() {
         return pk;
@@ -22,4 +24,19 @@ public class StudentCourse {
     }
 
 
+    public Integer getGid() {
+        return gid;
+    }
+
+    public void setGid(Integer gid) {
+        this.gid = gid;
+    }
+
+    public Double getGroup_contribute() {
+        return group_contribute;
+    }
+
+    public void setGroup_contribute(Double group_contribute) {
+        this.group_contribute = group_contribute;
+    }
 }

@@ -122,7 +122,12 @@ public class TeacherCourseDao {
             tcPK.setCid(cid);
             tcPK.setTid(tid);
             session.beginTransaction();
-            TeacherCourse tc = session.load(TeacherCourse.class, tcPK);
+            TeacherCourse tc = null;
+            try {
+                tc = session.load(TeacherCourse.class, tcPK);
+            } catch (Throwable ignored) {
+
+            }
             if (tc != null) {
                 session.delete(tc);
             }

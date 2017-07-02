@@ -3,6 +3,10 @@
          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+    <context-param>
+        <param-name>javax.faces.CONFIG_FILES</param-name>
+        <param-value>/com/buaa/mooc/entity/Group.hbm.xml</param-value>
+    </context-param>
     <welcome-file-list>
         <welcome-file/>
     </welcome-file-list>
@@ -90,6 +94,26 @@
         <servlet-name>StudentHomeworkView</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.StudentHomeworkViewServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EduAdminDeleteCourse</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.EduAdminDeleteCourseServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentGroupHome</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.StudentGroupHomeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentMyGroup</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.StudentMyGroupServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentJoinGroup</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.StudentJoinGroupServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentJoinToGroup</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.StudentJoinToGroupServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddCourseInfo</servlet-name>
         <url-pattern>/addCourseInfo</url-pattern>
@@ -173,5 +197,25 @@
     <servlet-mapping>
         <servlet-name>TeacherHomeworkDel</servlet-name>
         <url-pattern>/TeacherHomeworkDel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EduAdminDeleteCourse</servlet-name>
+        <url-pattern>/EduAdminDeleteCourse</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentGroupHome</servlet-name>
+        <url-pattern>/StudentGroupHome</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentMyGroup</servlet-name>
+        <url-pattern>/StudentMyGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentJoinGroup</servlet-name>
+        <url-pattern>/StudentJoinGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentJoinToGroup</servlet-name>
+        <url-pattern>/StudentJoinToGroup</url-pattern>
     </servlet-mapping>
 </web-app>

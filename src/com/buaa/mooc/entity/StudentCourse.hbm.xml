@@ -10,5 +10,7 @@
             <key-property name="cid" type="integer" column="cid"/>
         </composite-id>
         <property name="score" type="double" column="score"/>
+        <property name="gid" type="integer" column="gid"/>
+        <property name="group_contribute" type="java.lang.Double" column="group_contribute"/>
     </class>
 </hibernate-mapping>  

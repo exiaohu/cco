@@ -1,27 +1,26 @@
-<%@ page import="com.buaa.mooc.entity.Course" %>
-<%@ page import="java.util.List" %>
+<%@ page import="com.buaa.mooc.entity.GroupRecruit" %>
+<%@ page import="java.util.Map" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!-->
-<html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
 
-    <title>课程管理</title>
+    <title>加入团队</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <meta content="" name="description"/>
+    <meta content="" name="description" />
 
-    <meta content="" name="author"/>
+    <meta content="" name="author" />
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -45,11 +44,13 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+
+    <link href="media/css/jquery.fileupload-ui.css" rel="stylesheet" />
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+    <link rel="shortcut icon" href="media/image/favicon.ico" />
 
 </head>
 
@@ -59,13 +60,21 @@
 
 <body class="page-header-fixed">
 
-<jsp:include page="admin_header.jsp"/>
+<!-- BEGIN HEADER -->
+
+<jsp:include page="student_header.jsp"/>
+
+<!-- END HEADER -->
 
 <!-- BEGIN CONTAINER -->
 
 <div class="page-container row-fluid">
 
-    <jsp:include page="admin_sidebar.jsp"/>
+    <!-- BEGIN SIDEBAR -->
+
+    <jsp:include page="student_sidebar.jsp"/>
+
+    <!-- END SIDEBAR -->
 
     <!-- BEGIN PAGE -->
 
@@ -107,8 +116,7 @@
 
                     <h3 class="page-title">
 
-                        课程管理
-                        <small></small>
+                        团队列表
 
                     </h3>
 
@@ -118,19 +126,25 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="eduadmin">主页</a>
+                            <a href="student">主页</a>
 
                             <i class="icon-angle-right"></i>
 
                         </li>
-                        <!--
 
                         <li>
 
-                            <a href="">课程管理</a>
+                            <a href="StudentGroupHome">团队管理</a>
+
+                            <i class="icon-angle-right"></i>
 
                         </li>
--->
+                        <li>
+
+                            <a href="StudentJoinToGroup">加入团队</a>
+
+                        </li>
+
                     </ul>
 
                     <!-- END PAGE TITLE & BREADCRUMB-->
@@ -142,85 +156,95 @@
             <!-- END PAGE HEADER-->
 
             <!-- BEGIN PAGE CONTENT-->
+            <div class="row-fluid">
 
-            <% List<Course> courses = (List<Course>) request.getAttribute("courses"); %>
+                <div class="span12">
 
-            <%
-                if (courses != null && courses.size() > 0) {
-                    for (Course course : courses) {
-            %>
+                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
 
-            <div class="tiles">
+                    <div class="portlet box blue">
 
-                <a href="EduAdminCourseInfo?cid=<%=course.getCid()%>">
+                        <div class="portlet-title">
 
-                    <div class="tile bg-green">
-
-                        <div class="tile-body">
-
-                            <i class="icon-bar-chart"></i>
+                            <div class="caption"><i class="icon-table"></i>团队列表</div>
 
                         </div>
 
-                        <div class="tile-object">
+                        <div class="portlet-body">
+                            <table class="table table-striped table-hover table-bordered">
 
-                            <div class="name">
+                                <thead>
 
-                                <%=course.getCname()%>
+                                <tr>
 
-                            </div>
+                                    <th class="span2" style="text-align:center">团队名称</th>
 
-                            <div class="number">
+                                    <th class="span6" style="text-align:center">招募信息</th>
 
-                                <%=course.getCredit()%>
+                                    <th class="span6" style="text-align:center">团队人数</th>
 
-                            </div>
+                                    <th class="span2" style="text-align:center">操作</th>
+
+                                </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                <%
+                                    Map<GroupRecruit, Long> groupRecruitswithMemCount = (Map<GroupRecruit, Long>) request.getAttribute("groupRecruitswithMemCount");
+
+                                    if (groupRecruitswithMemCount != null && groupRecruitswithMemCount.size() > 0) {
+
+                                        for (GroupRecruit item : groupRecruitswithMemCount.keySet()) {
+
+                                            if (item != null) {
+
+                                %>
+
+                                <tr>
+
+                                    <td style="text-align:center"><%=item.getGroup_name()%></td>
+
+                                    <td style="text-align:center"><%=item.getRecruit_information()%></td>
+
+                                    <td style="text-align:center"><%=groupRecruitswithMemCount.get(item)%></td>
+
+                                    <td style="text-align:center"><a href="StudentJoinToGroup?grid=<%=item.getGrid()%>" class="btn mini green"><i class="icon-ok-sign"></i>申请加入</a></td>
+
+                                </tr>
+
+                                <%
+                                            }
+                                        }
+                                    }
+                                %>
+
+                                </tbody>
+
+                            </table>
+
                         </div>
+
                     </div>
-                </a>
+
+                    <!-- END EXAMPLE TABLE PORTLET-->
+
+                </div>
+
             </div>
 
-            <%
-                    }
-                }
-            %>
-
-            <div class="tiles">
-
-                <a href="EduAdminCourseInfo">
-
-                    <div class="tile bg-green">
-
-                        <div class="tile-body">
-
-                            <i class="icon-plus"></i>
-
-                        </div>
-
-                        <div class="tile-object">
-
-                            <div class="name">添加</div>
-
-                        </div>
-
-                    </div>
-
-                </a>
-
-            </div>
+            <!-- END SAMPLE TABLE PORTLET-->
 
         </div>
 
-
-        <!-- END PAGE CONTENT-->
-
     </div>
 
-    <!-- END PAGE CONTAINER-->
+    <!-- END PAGE CONTENT-->
 
 </div>
 
-<!-- END PAGE -->
+<!-- END PAGE CONTAINER-->
 
 <!-- END CONTAINER -->
 
@@ -258,7 +282,7 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -266,7 +290,7 @@
 
 <script>
 
-    jQuery(document).ready(function () {
+    jQuery(document).ready(function() {
 
         // initiate layout and plugins
 

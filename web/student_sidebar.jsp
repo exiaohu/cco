@@ -90,7 +90,7 @@
             </ul>
 
         </li>
-        <!--
+
         <li class=" ">
 
             <a href="#">
@@ -108,29 +108,24 @@
 
             <ul class="sub-menu">
 
+                <%
+                    if (courses != null && courses.size() > 0) {
+                        for (Course course : courses) {
+                %>
                 <li class="active">
 
-                    <a href="student_team_apply.html">团队申报</a>
+                    <a href="StudentGroupHome?cid=<%=course.getCid()%>"><%=course.getCname()%>
+                    </a>
 
                 </li>
-
-                <li >
-
-                    <a href="student_team_join.html">加入团队</a>
-
-                </li>
-
-                <li >
-
-                    <a href="student_team_manage.html">团队信息</a>
-
-                </li>
+                <%
+                        }
+                    }
+                %>
 
             </ul>
 
         </li>
--->
-
 
     </ul>
 

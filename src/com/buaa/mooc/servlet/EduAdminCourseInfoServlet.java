@@ -34,6 +34,25 @@ public class EduAdminCourseInfoServlet extends HttpServlet {
             java.util.Date endDate = formatter.parse(request.getParameter("endDate"), pos);
             Integer credit = Integer.parseInt(request.getParameter("credit"));
             String address = new String(request.getParameter("address").getBytes("iso-8859-1"), "utf-8");
+            String sids_s = request.getParameter("sids");
+            System.out.println(sids_s);
+            StudentDao studentDao = new StudentDao();
+            String[] sids = sids_s.split(" |\n|,|;");
+            if (sids.length > 0) {
+                for (String sid_s : sids) {
+                    if (sid_s != null && !sid_s.isEmpty()) {
+                        try {
+                            Integer sid = Integer.parseInt(sid_s);
+                            Student student = studentDao.findById(sid);
+                            if (student != null) {
+                                StudentCourseDao studentCourseDao = new StudentCourseDao();
+                                studentCourseDao.AddRelationSC(sid, cid);
+                            }
+                        } catch (Throwable ignored) {
+                        }
+                    }
+                }
+            }
 
             CourseDao courseDao = new CourseDao();
             TermDao termDao = new TermDao();
@@ -73,19 +92,30 @@ public class EduAdminCourseInfoServlet extends HttpServlet {
         }
 
         try {
-            int cid = Integer.parseInt(request.getParameterMap().get("cid")[0]);
-
+            int cid;
+            Course course;
+            List<Teacher> teachersFalse;
+            List<Student> students;
+            List<Teacher> teachersTrue;
+            List<Integer> tidTrue;
             CourseDao courseDao = new CourseDao();
-            Course course = courseDao.findByCid(cid);
+            ;
+            try {
+                cid = Integer.parseInt(request.getParameterMap().get("cid")[0]);
+                course = courseDao.findByCid(cid);
+            } catch (Exception e) {
+                course = courseDao.addCourse("默认名称", 0, new Date(System.currentTimeMillis()), new Date(System.currentTimeMillis()), "", new TermDao().FindLast().getTermId());
+                cid = course.getCid();
+            }
+
             TeacherDao teacherDao = new TeacherDao();
-            List<Teacher> teachersFalse = teacherDao.findAll();
+            teachersFalse = teacherDao.findAll();
             StudentDao studentDao = new StudentDao();
-            List<Student> students = studentDao.findByCourseId(cid);
+            students = studentDao.findByCourseId(cid);
 
             TeacherCourseDao teacherCourseDao = new TeacherCourseDao();
-            List<Teacher> teachersTrue = teacherCourseDao.findByCid(cid);
-            List<Integer> tidTrue = teacherCourseDao.findTidByCid(cid);
-
+            teachersTrue = teacherCourseDao.findByCid(cid);
+            tidTrue = teacherCourseDao.findTidByCid(cid);
             teachersFalse.removeIf((t) -> tidTrue.contains(t.getTid()));
 
             request.setAttribute("course", course);
