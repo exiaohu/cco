@@ -6,8 +6,8 @@
 <hibernate-mapping>
 	<class name="com.buaa.mooc.entity.HomeworkSubmit" lazy="false" table="homework_submit">
 		<composite-id name="pk" class="com.buaa.mooc.entity.HomeworkSubmitPK" >
-			<key-property name="hid" type="integer" column="hid"></key-property>
-			<key-property name="sid" type="integer" column="sid"></key-property>
+			<key-property name="hid" type="integer" column="hid"/>
+			<key-property name="sid" type="integer" column="sid"/>
 		</composite-id>
 		<property name="fid" type="integer" column="fid"/>
 		<property name="submitTime" type="timestamp" column="submit_time"/>

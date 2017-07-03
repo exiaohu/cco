@@ -21,6 +21,7 @@ public class AddHomeworkServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Integer _limit = Integer.parseInt(request.getParameter("_limit"));
+            Integer proportion = Integer.parseInt(request.getParameter("proportion"));
             String hname = new String(request.getParameter("assign_name").getBytes("iso-8859-1"), "utf-8");
             ParsePosition pos = new ParsePosition(0);
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -30,7 +31,7 @@ public class AddHomeworkServlet extends HttpServlet {
             java.util.Date endDate = formatter.parse(request.getParameter("endDate").trim(), pos);
 
             HomeworkDao homeworkDao = new HomeworkDao();
-            homeworkDao.AddHomework(1, hname, new Timestamp(startDate.getTime()), new Timestamp(endDate.getTime()), _limit);
+            homeworkDao.AddHomework(1, hname, new Timestamp(startDate.getTime()), new Timestamp(endDate.getTime()), _limit,proportion);
 
             response.sendRedirect("/TeacherHomework");
         } catch (IllegalFormatException e) {

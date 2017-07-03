@@ -306,7 +306,22 @@
 
                                                 <div class="controls">
 
-                                                    <input class="span1" type="text" name="_limit"/>
+                                                    <input class="span1" type="number" name="_limit"/>
+
+                                                    <span class="help-inline"></span>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="control-group">
+
+                                                <label class="control-label">占分比例<span
+                                                        class="required"> *</span></label>
+
+                                                <div class="controls">
+
+                                                    <input class="span1" type="number" name="proportion"/>
 
                                                     <span class="help-inline"></span>
 
@@ -343,19 +358,6 @@
                                                 <div class="controls">
 
                                                     <span class="text display-value" data-display="assign_name"></span>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="control-group">
-
-                                                <label class="control-label">提交次数上限：</label>
-
-                                                <div class="controls">
-
-                                                    <span class="text display-value" data-display="_limit"></span>
-
 
                                                 </div>
 

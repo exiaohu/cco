@@ -118,20 +118,46 @@ public class StudentHomeworkViewServlet extends HttpServlet {
         try {
             Integer sid = (Integer) request.getSession().getAttribute("sid");
             Integer hid = Integer.parseInt(request.getParameterMap().get("hid")[0]);
+            Integer cid = Integer.parseInt(request.getParameterMap().get("cid")[0]);
             StudentHWSubmitDao submitDao = new StudentHWSubmitDao();
             HomeworkSubmit homeworkSubmit = submitDao.findHKSubmitByHidSid(hid,sid);
             HomeworkDao homeworkDao = new HomeworkDao();
             Homework homework = homeworkDao.findByHid(hid);
+            Timestamp startTime = homework.getStartTime();
+            Timestamp deadLine = homework.getDeadLine();
+            Timestamp now = new Timestamp(System.currentTimeMillis());
+            if(now.before(startTime)){
+                request.setAttribute("status","作业还未开始");
+            }
+            else if(now.after(deadLine)){
+                request.setAttribute("status","作业已经结束");
+            }
+            else{
+                request.setAttribute("status","作业正在进行");
+            }
 
             if(homeworkSubmit != null){
                 request.setAttribute("submitContent", homeworkSubmit.getSubmitContent());
+                request.setAttribute("submitStatus", "已经提交");
+                FileDao fileDao = new FileDao();
+                String fname = fileDao.getFileById(homeworkSubmit.getFid()).getFilename();
+                request.setAttribute("fname",fname);
             }
             else{
                 request.setAttribute("submitContent", "");
+                request.setAttribute("submitStatus", "未提交");
+                request.setAttribute("fname","没有附件");
             }
             request.setAttribute("homework", homework);
             request.setAttribute("course", new CourseDao().findByCid(homework.getCourseId()));
-            RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/student_hwview.jsp");
+            RequestDispatcher rd = null;
+            if(homeworkSubmit == null || homeworkSubmit.getIsCorrect() == 0){
+                rd = getServletConfig().getServletContext().getRequestDispatcher("/student_hwview.jsp");
+            }
+            else{
+                request.setAttribute("comment",homeworkSubmit.getRemark());
+                rd = getServletConfig().getServletContext().getRequestDispatcher("/student_hw_submitInfo.jsp");
+            }
             rd.forward(request, response);
 
         } catch (Throwable e) {

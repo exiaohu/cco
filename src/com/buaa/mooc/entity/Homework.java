@@ -13,6 +13,8 @@ public class Homework {
     private Timestamp deadLine;
     private int submitMaxTimes;
     private String homeworkInformation;
+    private Integer proportion;
+
 
     public Homework() {
         super();
@@ -80,5 +82,13 @@ public class Homework {
 
     public void setHomeworkInformation(String homeworkInformation) {
         this.homeworkInformation = homeworkInformation;
+    }
+
+    public Integer getProportion() {
+        return proportion;
+    }
+
+    public void setProportion(Integer proportion) {
+        this.proportion = proportion;
     }
 }

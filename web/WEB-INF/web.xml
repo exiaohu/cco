@@ -3,10 +3,10 @@
          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-    <context-param>
-        <param-name>javax.faces.CONFIG_FILES</param-name>
-        <param-value>/com/buaa/mooc/entity/Group.hbm.xml</param-value>
-    </context-param>
+    <!--<context-param>-->
+        <!--<param-name>javax.faces.CONFIG_FILES</param-name>-->
+        <!--&lt;!&ndash;<param-value>/com/buaa/mooc/entity/Group.hbm.xml</param-value>&ndash;&gt;-->
+    <!--</context-param>-->
     <welcome-file-list>
         <welcome-file/>
     </welcome-file-list>
@@ -88,7 +88,7 @@
     </servlet>
     <servlet>
         <servlet-name>StudentRecourse</servlet-name>
-        <servlet-class>com.buaa.mooc.servlet.StudentRecourseServlet</servlet-class>
+        <servlet-class>com.buaa.mooc.servlet.StudentResourcesServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>StudentHomeworkView</servlet-name>
@@ -114,6 +114,31 @@
         <servlet-name>StudentJoinToGroup</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.StudentJoinToGroupServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TeacherHomeworkCheck</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherHomeworkCheckServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherHomeworkChecking</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherHomeworkCheckingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherCourseInfo</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherCourseInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherGrade</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherGradeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherGradeAll</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherGradeAllServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DownloadFile</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.DownloadFileServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>AddCourseInfo</servlet-name>
         <url-pattern>/addCourseInfo</url-pattern>
@@ -217,5 +242,29 @@
     <servlet-mapping>
         <servlet-name>StudentJoinToGroup</servlet-name>
         <url-pattern>/StudentJoinToGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherHomeworkCheck</servlet-name>
+        <url-pattern>/TeacherHomeworkCheck</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherHomeworkChecking</servlet-name>
+        <url-pattern>/TeacherHomeworkChecking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherCourseInfo</servlet-name>
+        <url-pattern>/TeacherCourseInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherGrade</servlet-name>
+        <url-pattern>/TeacherGrade</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherGradeAll</servlet-name>
+        <url-pattern>/TeacherGradeAll</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DownloadFile</servlet-name>
+        <url-pattern>/DownloadFile</url-pattern>
     </servlet-mapping>
 </web-app>

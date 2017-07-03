@@ -246,6 +246,9 @@
                                     <td><a href="TeacherHomeworkEdit?hid=<%=homework.getId()%>" class="btn mini purple"><i
                                             class="icon-edit"></i> 编辑</a></td>
 
+                                    <td><a href="TeacherHomeworkCheck?hid=<%=homework.getId()%>" class="btn mini blue"><i class="icon-pencil"></i> 批改</a></td>
+
+
                                     <td><a href="TeacherHomeworkDel?hid=<%=homework.getId()%>" class="icon-trash"><i
                                             class="icon-edit">删除</i></a></td>
                                     <!--

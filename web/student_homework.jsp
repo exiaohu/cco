@@ -192,6 +192,13 @@
                                                 System.out.println("-------" + submitTimes);
                                             }
                                             Integer submitMaxTimes = homework.getSubmitMaxTimes();
+                                            String score = null;
+                                            if(homeworkSubmit.getIsCorrect() == 0){
+                                                score = "未批改";
+                                            }
+                                            else if(homeworkSubmit.getIsCorrect() == 1){
+                                                score = homeworkSubmit.getScore().toString();
+                                            }
                                 %>
                                 <tr class="">
 
@@ -209,7 +216,7 @@
 
                                     <td><%=submitTimes%>/<%=submitMaxTimes%></td>
 
-                                    <td></td>
+                                    <td><%=score%></td>
 
                                     <td><a href="StudentHomeworkView?cid=<%=course.getCid()%>&hid=<%=homework.getId()%>"
                                            class="btn mini green"><i class="icon-eye-open"></i> 查看</a>

@@ -38,8 +38,33 @@ public class HomeworkDao {
             HibernateUtils.closeSession(session);
         }
     }
+    public List<Homework> findByCid(Integer cid) {
+        Session session = HibernateUtils.getSession();
+        List results = null;
+        List<Homework> homeworks = null;
+        try {
+            homeworks = new ArrayList<>();
+            String hql = "select h from Homework as h where h.cid = :cid";
+            Query query = session.createQuery(hql);
+            query.setParameter("cid",cid);
+            results = query.list();
+            if (results != null && results.size() > 0) {
+                Homework c;
+                for (Object obj : results) {
+                    c = (Homework) obj;
+                    homeworks.add(c);
+                }
+            }
+            return homeworks;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
 
-    public void AddHomework(Integer cid, String hname, Timestamp startDate, Timestamp deadline, Integer _limit) {
+    public void AddHomework(Integer cid, String hname, Timestamp startDate, Timestamp deadline, Integer _limit,Integer proportion) {
         Session session = HibernateUtils.getSession();
         try {
             session.beginTransaction();
@@ -49,6 +74,7 @@ public class HomeworkDao {
             homework.setStartTime(startDate);
             homework.setDeadLine(deadline);
             homework.setSubmitMaxTimes(_limit);
+            homework.setProportion(proportion);
             session.save(homework);
             session.getTransaction().commit();
         } catch (Exception e) {
