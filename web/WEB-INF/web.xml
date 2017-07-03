@@ -122,6 +122,10 @@
         <servlet-name>StudentUpdateGroupContribute</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.StudentUpdateGroupContributeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StudentGroupAdmApl</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.StudentGroupAdmAplServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddCourseInfo</servlet-name>
         <url-pattern>/addCourseInfo</url-pattern>
@@ -233,5 +237,9 @@
     <servlet-mapping>
         <servlet-name>StudentUpdateGroupContribute</servlet-name>
         <url-pattern>/StudentUpdateGroupContribute</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentGroupAdmApl</servlet-name>
+        <url-pattern>/StudentGroupAdmApl</url-pattern>
     </servlet-mapping>
 </web-app>

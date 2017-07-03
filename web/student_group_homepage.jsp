@@ -247,7 +247,7 @@
 
                 <% } else { %>
 
-                <a href="student_group_admApl.html">
+                <a href="StudentGroupAdmApl?cid=<%=course.getCid()%>">
 
                     <div class="tile double bg-green">
 

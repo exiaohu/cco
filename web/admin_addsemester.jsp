@@ -112,6 +112,7 @@
                     <h3 class="page-title">
 
                         添加学期
+
                     </h3>
 
                     <ul class="breadcrumb">
@@ -197,11 +198,11 @@
 
                                 <div class="control-group">
 
-                                    <label class="control-label">学期：</label>
+                                    <label class="control-label">学年：</label>
 
                                     <div class="controls">
 
-                                        <input type="text" name="course" class="span6 m-wrap"/>
+                                        <input type="number" name="course" class="span6 m-wrap"/>
 
                                     </div>
 

@@ -77,6 +77,28 @@ public class GroupRecruitDao {
         }
     }
 
+    public GroupRecruit AddGroupRecruit(Integer convener_sid, String group_name, String information, Integer cid) {
+        Session session = HibernateUtils.getSession();
+        try {
+            session.beginTransaction();
+            GroupRecruit groupRecruit = new GroupRecruit();
+            groupRecruit.setCid(cid);
+            groupRecruit.setConvener(convener_sid);
+            groupRecruit.setGroup_name(group_name);
+            groupRecruit.setRecruit_information(information);
+            groupRecruit.setIsSubmitted(0);
+            session.save(groupRecruit);
+            session.getTransaction().commit();
+            return groupRecruit;
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+            return null;
+        } finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
+
     public static void main(String[] args) {
         GroupRecruitDao groupRecruitDao = new GroupRecruitDao();
         List<StudentRecruitView> studentRecruitViews = groupRecruitDao.findByGridSRV(1);

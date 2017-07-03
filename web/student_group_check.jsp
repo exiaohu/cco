@@ -211,7 +211,7 @@
 
                                         <div class="progress">
 
-                                            <span class="orange" style="width: 100%;text-align:center">
+                                            <span class="<%=studentRecruitView.getGranted().equals(0) ? "orange" : "blue"%>" style="width: <%=studentRecruitView.getGranted().equals(0)?60:100%>%;text-align:cente">
 
 											<span>
                                                 <%=studentRecruitView.getGranted().equals(0) ? "待负责人批准" : "已被负责人批准"%>
