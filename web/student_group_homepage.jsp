@@ -2,6 +2,7 @@
 <%@ page import="com.buaa.mooc.entity.Group" %>
 <%@ page import="com.buaa.mooc.entity.Teacher" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.buaa.mooc.entity.StudentRecruitView" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -95,6 +96,8 @@
         <% Course course = (Course) request.getAttribute("course"); %>
 
         <% Group group = (Group) request.getAttribute("group"); %>
+
+        <% StudentRecruitView studentRecruitView = (StudentRecruitView) request.getAttribute("studentRecruitView"); %>
 
         <div class="container-fluid">
 
@@ -211,9 +214,40 @@
 
                 </a>
 
+                <%
+                } else if (studentRecruitView != null &&
+                        studentRecruitView.getCid().equals(course.getCid()) &&
+                        studentRecruitView.getPk().getSid().equals(request.getSession().getAttribute("sid"))) {
+                %>
+
+                <a href="StudentGroupCheck?grid=<%=studentRecruitView.getPk().getGrid()%>">
+
+                    <div class="tile double-down bg-green">
+
+                        <div class="tile-body">
+
+                            <i class="icon-group"></i>
+
+                        </div>
+
+                        <div class="tile-object">
+
+                            <div class="name" style="font-size:large">
+
+                                申请进度
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </a>
+
                 <% } else { %>
 
-                <a href="student_group_admApl.html">
+                <a href="StudentGroupAdmApl?cid=<%=course.getCid()%>">
 
                     <div class="tile double bg-green">
 

@@ -7,6 +7,7 @@ import com.buaa.mooc.entity.Teacher;
 import com.buaa.mooc.entity.User;
 import com.buaa.mooc.utils.Validation;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,7 +46,8 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         if (!checkLoginState(request, response)) {
             return;
         }
-        response.sendRedirect("/login.html");
+        RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/WEB-INF/login.html");
+        rd.forward(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,7 +59,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
 
             // 验证非法
             if (user == null) {
-                response.sendRedirect("/login.html?message=wrongIdorPassword");
+                response.sendRedirect("login?message=wrongIdorPassword");
             } else if (user instanceof Student) {
                 // 学生用户
                 request.getSession().setAttribute("sid", id);
@@ -77,7 +79,7 @@ public class LoginServlet extends javax.servlet.http.HttpServlet {
         } catch (IllegalFormatException e) {
             // 用户名无法转换为数字
             e.printStackTrace();
-            response.sendRedirect("/login.html");
+            response.sendRedirect("/login");
         }
     }
 }

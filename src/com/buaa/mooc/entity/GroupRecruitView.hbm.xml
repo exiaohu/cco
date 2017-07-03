@@ -4,14 +4,13 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.buaa.mooc.entity.GroupRecruit" lazy="false" table="group_recruit">
+    <class name="com.buaa.mooc.entity.GroupRecruitView" lazy="false" table="group_recruit_view">
         <id name="grid" type="integer" column="grid">
             <generator class="native"/>
         </id>
-        <property name="convener" type="integer" column="convener"/>
+        <property name="s_count" type="java.lang.Long" column="s_count"/>
         <property name="recruit_information" type="string" column="recruit_information"/>
         <property name="group_name" type="string" column="group_name"/>
         <property name="cid" type="integer" column="cid"/>
-        <property name="isSubmitted" type="integer" column="isSubmitted" />
     </class>
 </hibernate-mapping>

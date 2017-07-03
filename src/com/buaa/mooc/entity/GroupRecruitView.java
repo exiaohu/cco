@@ -1,15 +1,14 @@
 package com.buaa.mooc.entity;
 
 /**
- * Created by huxia on 2017/7/2.
+ * Created by huxia on 2017/7/3.
  */
-public class GroupRecruit {
+public class GroupRecruitView {
     private Integer grid;
-    private Integer convener;
     private String recruit_information;
     private String group_name;
     private Integer cid;
-    private Integer isSubmitted; // 0为未提交批准 1为已被老师批准
+    private Long s_count;
 
     public Integer getGrid() {
         return grid;
@@ -17,14 +16,6 @@ public class GroupRecruit {
 
     public void setGrid(Integer grid) {
         this.grid = grid;
-    }
-
-    public Integer getConvener() {
-        return convener;
-    }
-
-    public void setConvener(Integer convener) {
-        this.convener = convener;
     }
 
     public String getRecruit_information() {
@@ -51,11 +42,11 @@ public class GroupRecruit {
         this.cid = cid;
     }
 
-    public Integer getIsSubmitted() {
-        return isSubmitted;
+    public Long getS_count() {
+        return s_count;
     }
 
-    public void setIsSubmitted(Integer isSubmitted) {
-        this.isSubmitted = isSubmitted;
+    public void setS_count(Long s_count) {
+        this.s_count = s_count;
     }
 }
