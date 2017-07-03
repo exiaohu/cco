@@ -21,6 +21,7 @@ public class StudentJoinGroupDao {
                 session.load(StudentJoinGroup.class, pk);
             } catch (Throwable e) {
                 session.beginTransaction();
+                sg.setGranted(0);
                 session.save(sg);
                 session.getTransaction().commit();
             }

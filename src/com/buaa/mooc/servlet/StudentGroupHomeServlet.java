@@ -2,10 +2,9 @@ package com.buaa.mooc.servlet;
 
 import com.buaa.mooc.dao.CourseDao;
 import com.buaa.mooc.dao.GroupDao;
+import com.buaa.mooc.dao.GroupRecruitDao;
 import com.buaa.mooc.dao.StudentCourseDao;
-import com.buaa.mooc.entity.Course;
-import com.buaa.mooc.entity.Group;
-import com.buaa.mooc.entity.StudentCourse;
+import com.buaa.mooc.entity.*;
 import com.buaa.mooc.utils.Validation;
 
 import javax.servlet.RequestDispatcher;
@@ -35,13 +34,16 @@ public class StudentGroupHomeServlet extends HttpServlet {
             CourseDao courseDao = new CourseDao();
             StudentCourseDao studentCourseDao = new StudentCourseDao();
             GroupDao groupDao = new GroupDao();
+            GroupRecruitDao groupRecruitDao = new GroupRecruitDao();
             Course course = courseDao.findByCid(cid);
             StudentCourse studentCourse = studentCourseDao.findBySidAndCid(sid, cid);
             Integer gid = studentCourse.getGid();
             Group group = groupDao.findById(gid);
+            StudentRecruitView studentRecruitView = groupRecruitDao.findBySidandCidSRV(sid, cid);
 
             request.setAttribute("group", group);
             request.setAttribute("course", course);
+            request.setAttribute("studentRecruitView", studentRecruitView);
 
             RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/student_group_homepage.jsp");
             rd.forward(request, response);

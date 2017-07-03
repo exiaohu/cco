@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.buaa.mooc.entity.StudentRecruitView" lazy="false" table="student_recruit_view">
+        <composite-id name="pk" class="com.buaa.mooc.entity.StudentRecruitViewPK">
+            <key-property name="grid" type="integer" column="grid" />
+            <key-property name="sid" type="integer" column="sid" />
+        </composite-id>
+        <property name="recruit_information" type="string" column="recruit_information"/>
+        <property name="group_name" type="string" column="group_name"/>
+        <property name="cid" type="integer" column="cid"/>
+        <property name="convener" type="integer" column="convener"/>
+        <property name="granted" type="integer" column="granted"/>
+    </class>
+</hibernate-mapping>

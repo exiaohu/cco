@@ -114,6 +114,14 @@
         <servlet-name>StudentJoinToGroup</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.StudentJoinToGroupServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>StudentGroupCheck</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.StudentGroupCheckServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentUpdateGroupContribute</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.StudentUpdateGroupContributeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddCourseInfo</servlet-name>
         <url-pattern>/addCourseInfo</url-pattern>
@@ -217,5 +225,13 @@
     <servlet-mapping>
         <servlet-name>StudentJoinToGroup</servlet-name>
         <url-pattern>/StudentJoinToGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentGroupCheck</servlet-name>
+        <url-pattern>/StudentGroupCheck</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentUpdateGroupContribute</servlet-name>
+        <url-pattern>/StudentUpdateGroupContribute</url-pattern>
     </servlet-mapping>
 </web-app>

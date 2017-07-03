@@ -8,7 +8,7 @@
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="connection.url">jdbc:mysql://localhost:3306/mooc</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">1234</property>
+        <property name="connection.password">huxiao19960614</property>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <mapping resource="com/buaa/mooc/entity/Course.hbm.xml"/>
         <mapping resource="com/buaa/mooc/entity/EduAdmin.hbm.xml"/>
@@ -22,6 +22,8 @@
         <mapping resource="com/buaa/mooc/entity/Group.hbm.xml"/>
         <mapping resource="com/buaa/mooc/entity/GroupRecruit.hbm.xml"/>
         <mapping resource="com/buaa/mooc/entity/StudentJoinGroup.hbm.xml"/>
+        <mapping resource="com/buaa/mooc/entity/GroupRecruitView.hbm.xml" />
+        <mapping resource="com/buaa/mooc/entity/StudentRecruitView.hbm.xml"/>
         <mapping resource="com/buaa/mooc/entity/HomeworkSubmit.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

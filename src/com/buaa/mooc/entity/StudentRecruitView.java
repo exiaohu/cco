@@ -1,23 +1,15 @@
 package com.buaa.mooc.entity;
 
 /**
- * Created by huxia on 2017/7/2.
+ * Created by huxia on 2017/7/3.
  */
-public class GroupRecruit {
-    private Integer grid;
+public class StudentRecruitView {
+    private Integer granted; // 0为未确定 1为同意
     private Integer convener;
     private String recruit_information;
     private String group_name;
     private Integer cid;
-    private Integer isSubmitted; // 0为未提交批准 1为已被老师批准
-
-    public Integer getGrid() {
-        return grid;
-    }
-
-    public void setGrid(Integer grid) {
-        this.grid = grid;
-    }
+    private StudentRecruitViewPK pk;
 
     public Integer getConvener() {
         return convener;
@@ -51,11 +43,19 @@ public class GroupRecruit {
         this.cid = cid;
     }
 
-    public Integer getIsSubmitted() {
-        return isSubmitted;
+    public Integer getGranted() {
+        return granted;
     }
 
-    public void setIsSubmitted(Integer isSubmitted) {
-        this.isSubmitted = isSubmitted;
+    public void setGranted(Integer granted) {
+        this.granted = granted;
+    }
+
+    public StudentRecruitViewPK getPk() {
+        return pk;
+    }
+
+    public void setPk(StudentRecruitViewPK pk) {
+        this.pk = pk;
     }
 }

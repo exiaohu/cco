@@ -1,5 +1,8 @@
-<%@ page import="com.buaa.mooc.entity.GroupRecruitView" %>
+<%@ page import="com.buaa.mooc.entity.GroupRecruit" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.buaa.mooc.entity.StudentRecruitView" %>
+<%@ page import="com.buaa.mooc.entity.Student" %>
+<%@ page import="com.buaa.mooc.dao.StudentDao" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -14,7 +17,7 @@
 
     <meta charset="utf-8" />
 
-    <title>加入团队</title>
+    <title>申请进度</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
@@ -47,6 +50,8 @@
     <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
 
     <link href="media/css/jquery.fileupload-ui.css" rel="stylesheet" />
+
+    <link href="media/css/progress.css" rel="stylesheet" />
 
     <!-- END PAGE LEVEL STYLES -->
 
@@ -104,15 +109,11 @@
 
         <!-- BEGIN PAGE CONTAINER-->
 
+        <% GroupRecruit groupRecruit = (GroupRecruit) request.getAttribute("groupRecruit"); %>
+
         <div class="container-fluid">
 
             <!-- BEGIN PAGE HEADER-->
-
-            <%
-                List<GroupRecruitView> groupRecruitView = (List<GroupRecruitView>) request.getAttribute("groupRecruitView");
-
-                if (groupRecruitView != null && groupRecruitView.size() > 0) {
-            %>
 
             <div class="row-fluid">
 
@@ -120,11 +121,7 @@
 
                     <!-- BEGIN PAGE TITLE & BREADCRUMB-->
 
-                    <h3 class="page-title">
-
-                        团队列表
-
-                    </h3>
+                    <h3 class="page-title">申请进度</h3>
 
                     <ul class="breadcrumb">
 
@@ -140,14 +137,14 @@
 
                         <li>
 
-                            <a href="StudentGroupHome?cid=<%=groupRecruitView.get(0).getCid()%>">团队管理</a>
+                            <a href="StudentGroupHome?cid=<%=groupRecruit.getCid()%>">团队管理</a>
 
                             <i class="icon-angle-right"></i>
 
                         </li>
                         <li>
 
-                            <a href="StudentJoinToGroup">加入团队</a>
+                            <a href="StudentGroupCheck?grid=<%=groupRecruit.getGrid()%>">个人申请进度</a>
 
                         </li>
 
@@ -172,7 +169,7 @@
 
                         <div class="portlet-title">
 
-                            <div class="caption"><i class="icon-table"></i>团队列表</div>
+                            <div class="caption"><i class="icon-table"></i>申请列表</div>
 
                         </div>
 
@@ -183,13 +180,11 @@
 
                                 <tr>
 
-                                    <th class="span2" style="text-align:center">团队名称</th>
+                                    <th class="span2" style="text-align:center">姓名</th>
 
-                                    <th class="span6" style="text-align:center">招募信息</th>
+                                    <th class="span6" style="text-align:center">申请内容</th>
 
-                                    <th class="span6" style="text-align:center">团队人数</th>
-
-                                    <th class="span2" style="text-align:center">操作</th>
+                                    <th class="span6" style="text-align:center">申请结果</th>
 
                                 </tr>
 
@@ -197,26 +192,41 @@
 
                                 <tbody>
 
+                                <% List<StudentRecruitView> studentRecruitViews = (List<StudentRecruitView>) request.getAttribute("studentRecruitViews"); %>
+
                                 <%
-                                    for (GroupRecruitView item : groupRecruitView) {
+                                    if (studentRecruitViews != null && studentRecruitViews.size() > 0) {
+                                        for (StudentRecruitView studentRecruitView : studentRecruitViews) {
                                 %>
 
                                 <tr>
 
-                                    <td style="text-align:center"><%=item.getGroup_name()%></td>
+                                    <td style="text-align:center"><%=new StudentDao().findById(studentRecruitView.getPk().getSid()).getSname()%></td>
 
-                                    <td style="text-align:center"><%=item.getRecruit_information()%></td>
-
-                                    <td style="text-align:center"><%=item.getS_count()%>
+                                    <td style="text-align:center">
+                                        <%=groupRecruit.getIsSubmitted().equals(0) ? "申请加入"+studentRecruitView.getGroup_name():studentRecruitView.getGroup_name()+"组队申请已提交老师审核"%>
                                     </td>
 
-                                    <td style="text-align:center"><a
-                                            href="StudentJoinToGroup?grid=<%=item.getGrid()%>&cid=<%=item.getCid()%>"
-                                            class="btn mini green"><i class="icon-ok-sign"></i>申请加入</a></td>
+                                    <td style="text-align:center">
+
+                                        <div class="progress">
+
+                                            <span class="orange" style="width: 100%;text-align:center">
+
+											<span>
+                                                <%=studentRecruitView.getGranted().equals(0) ? "待负责人批准" : "已被负责人批准"%>
+                                            </span>
+
+											</span>
+
+                                        </div>
+
+                                    </td>
 
                                 </tr>
 
                                 <%
+                                        }
                                     }
                                 %>
 
@@ -234,13 +244,10 @@
 
             </div>
 
-            <% } %>
 
             <!-- END SAMPLE TABLE PORTLET-->
 
-        </div>
-
-    </div>
+        </div></div>
 
     <!-- END PAGE CONTENT-->
 
