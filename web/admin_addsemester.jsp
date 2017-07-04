@@ -217,7 +217,9 @@
                                         <select class="large m-wrap" name="quarter" tabindex="17">
 
                                             <option value="春">春</option>
+                                            <option value="夏">夏</option>
                                             <option value="秋">秋</option>
+                                            <option value="冬">冬</option>
 
                                         </select>
 
@@ -232,12 +234,12 @@
                                     <div class="controls">
 
                                         <input name="startDate" class="m-wrap small" size="16" type="text"
-                                               value="07/01/2016" id="ui_date_picker_range_from"/>
+                                               value="07/01/2017" id="ui_date_picker_range_from"/>
 
                                         <span class="text-inline">&nbsp;至&nbsp;</span>
 
                                         <input name="endDate" class="m-wrap small" size="16" type="text"
-                                               value="07/12/2016" id="ui_date_picker_range_to"/>
+                                               value="07/12/2017" id="ui_date_picker_range_to"/>
 
                                     </div>
 
@@ -249,7 +251,7 @@
 
                                     <div class="controls">
 
-                                        <input type="text" name="weeks" placeholder="" class="m-wrap large" value=""/>
+                                        <input type="number" name="weeks" class="span6 m-wrap"/>
 
                                         <span class="help-inline"></span>
 

@@ -34,8 +34,9 @@ public class MessageDao {
     public List<Message> findBySid(Integer sid) {
         Session session = HibernateUtils.getSession();
         try {
-            String hql = "select Message from Message where pk.sid = :sid";
+            String hql = "from Message where pk.sid = :sid";
             Query query = session.createQuery(hql);
+            query.setParameter("sid", sid);
             return query.list();
         }catch (Throwable e) {
             e.printStackTrace();

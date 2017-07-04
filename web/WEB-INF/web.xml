@@ -190,10 +190,6 @@
         <servlet-class>com.buaa.mooc.servlet.TeacherGroupInfo</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DownloadFile</servlet-name>
-        <servlet-class>com.buaa.mooc.servlet.DownloadFileServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>StudentGrade</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.StudentGradeServlet</servlet-class>
     </servlet>
@@ -320,10 +316,6 @@
     <servlet-mapping>
         <servlet-name>TeacherGradeAll</servlet-name>
         <url-pattern>/TeacherGradeAll</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DownloadFile</servlet-name>
-        <url-pattern>/DownloadFile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>StudentGroupCheck</servlet-name>
