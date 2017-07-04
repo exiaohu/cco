@@ -25,10 +25,12 @@ public class TeacherHomeworkServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        Integer tid = (Integer) request.getSession().getAttribute("tid");
+//        Integer tid = (Integer) request.getSession().getAttribute("tid");
+        Integer cid = Integer.parseInt(request.getParameterMap().get("cid")[0]);
         HomeworkDao homeworkDao = new HomeworkDao();
-        List<Homework> homeworks = homeworkDao.findByTid(tid);
+        List<Homework> homeworks = homeworkDao.findByCid(cid);
         request.setAttribute("homeworks", homeworks);
+        request.setAttribute("cid",cid);
 
         RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/teacher_homework.jsp");
         rd.forward(request, response);

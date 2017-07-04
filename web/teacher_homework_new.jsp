@@ -130,13 +130,13 @@
 
                         <li>
 
-                            <a href="TeacherHomework">作业管理</a>
+                            <a href="TeacherHomework?cid=<%=request.getAttribute("cid")%>">作业管理</a>
 
                             <span class="icon-angle-right"></span>
 
                         </li>
 
-                        <li><a href="AddHomework">添加作业</a></li>
+                        <li><a href="AddHomework?cid=<%=request.getAttribute("cid")%>">添加作业</a></li>
 
                     </ul>
 
@@ -178,7 +178,7 @@
 
                         <div class="portlet-body form">
 
-                            <form action="AddHomework" method="post" class="form-horizontal" id="submit_form">
+                            <form action="AddHomework?cid=<%=request.getAttribute("cid")%>" method="post" class="form-horizontal" id="submit_form">
 
                                 <div class="form-wizard">
 
@@ -306,7 +306,22 @@
 
                                                 <div class="controls">
 
-                                                    <input class="span1" type="text" name="_limit"/>
+                                                    <input class="span1" type="number" name="_limit"/>
+
+                                                    <span class="help-inline"></span>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="control-group">
+
+                                                <label class="control-label">占分比例<span
+                                                        class="required"> *</span></label>
+
+                                                <div class="controls">
+
+                                                    <input class="span1" type="number" name="proportion"/>
 
                                                     <span class="help-inline"></span>
 
@@ -343,19 +358,6 @@
                                                 <div class="controls">
 
                                                     <span class="text display-value" data-display="assign_name"></span>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="control-group">
-
-                                                <label class="control-label">提交次数上限：</label>
-
-                                                <div class="controls">
-
-                                                    <span class="text display-value" data-display="_limit"></span>
-
 
                                                 </div>
 

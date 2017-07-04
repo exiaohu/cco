@@ -3,10 +3,10 @@
          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
-    <context-param>
-        <param-name>javax.faces.CONFIG_FILES</param-name>
-        <param-value>/com/buaa/mooc/entity/Group.hbm.xml</param-value>
-    </context-param>
+    <!--<context-param>-->
+        <!--<param-name>javax.faces.CONFIG_FILES</param-name>-->
+        <!--&lt;!&ndash;<param-value>/com/buaa/mooc/entity/Group.hbm.xml</param-value>&ndash;&gt;-->
+    <!--</context-param>-->
     <welcome-file-list>
         <welcome-file/>
     </welcome-file-list>
@@ -87,6 +87,10 @@
         <servlet-class>com.buaa.mooc.servlet.StudentCourseServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>StudentTeamLeader</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.StudentTeamLeaderServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>StudentResources</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.StudentResourcesServlet</servlet-class>
     </servlet>
@@ -113,6 +117,77 @@
     <servlet>
         <servlet-name>StudentJoinToGroup</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.StudentJoinToGroupServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherHomeworkCheck</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherHomeworkCheckServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherHomeworkChecking</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherHomeworkCheckingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherCourseInfo</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherCourseInfoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherGrade</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherGradeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherGradeAll</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherGradeAllServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DownloadFile</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.DownloadFileServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>StudentGroupCheck</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.StudentGroupCheckServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentUpdateGroupContribute</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.StudentUpdateGroupContributeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StudentGroupAdmApl</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.StudentGroupAdmAplServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubmitGroupRecruit</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.SubmitGroupRecruitServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DownExcel</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.DownExcelServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherCourceHomework</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherCourceHomeworkServlet</servlet-class>
+    </servlet>
+
+
+    <servlet>
+        <servlet-name>TeacherManGroup</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherManGroup</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherRefuseGroup</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherRefuseGroup</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherAgreeGroup</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherAgreeGroup</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherGroup</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherGroupServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherGroupInfo</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherGroupInfo</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DownloadFile</servlet-name>
@@ -225,6 +300,78 @@
     <servlet-mapping>
         <servlet-name>StudentJoinToGroup</servlet-name>
         <url-pattern>/StudentJoinToGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherHomeworkCheck</servlet-name>
+        <url-pattern>/TeacherHomeworkCheck</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherHomeworkChecking</servlet-name>
+        <url-pattern>/TeacherHomeworkChecking</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherCourseInfo</servlet-name>
+        <url-pattern>/TeacherCourseInfo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherGrade</servlet-name>
+        <url-pattern>/TeacherGrade</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherGradeAll</servlet-name>
+        <url-pattern>/TeacherGradeAll</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DownloadFile</servlet-name>
+        <url-pattern>/DownloadFile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentGroupCheck</servlet-name>
+        <url-pattern>/StudentGroupCheck</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentUpdateGroupContribute</servlet-name>
+        <url-pattern>/StudentUpdateGroupContribute</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentGroupAdmApl</servlet-name>
+        <url-pattern>/StudentGroupAdmApl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentTeamLeader</servlet-name>
+        <url-pattern>/StudentTeamLeader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubmitGroupRecruit</servlet-name>
+        <url-pattern>/SubmitGroupRecruit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DownExcel</servlet-name>
+        <url-pattern>/DownExcel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherCourceHomework</servlet-name>
+        <url-pattern>/TeacherCourceHomework</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherManGroup</servlet-name>
+        <url-pattern>/TeacherManGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherAgreeGroup</servlet-name>
+        <url-pattern>/TeacherAgreeGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherRefuseGroup</servlet-name>
+        <url-pattern>/TeacherRefuseGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherGroup</servlet-name>
+        <url-pattern>/TeacherGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherGroupInfo</servlet-name>
+        <url-pattern>/TeacherGroupInfo</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DownloadFile</servlet-name>

@@ -180,7 +180,7 @@
 
                             <!-- BEGIN FORM-->
 
-                            <form action="TeacherHomeworkEdit?hid=<%=request.getAttribute("hid")%>" method="post"
+                            <form action="TeacherHomeworkEdit?hid=<%=request.getAttribute("hid")%>&cid=<%=request.getAttribute("cid")%>" method="post"
 
                                   id="form_sample_1" class="form-horizontal">
 
@@ -244,7 +244,7 @@
 
                                     <button type="submit" class="btn purple">更改</button>
 
-                                    <a href="TeacherHomework">
+                                    <a href="TeacherHomework?cid=<%=request.getAttribute("cid")%>">
                                         <button type="button" class="btn">取消</button>
                                     </a>
 

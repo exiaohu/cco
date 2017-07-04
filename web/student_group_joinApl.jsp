@@ -1,5 +1,5 @@
-<%@ page import="com.buaa.mooc.entity.GroupRecruit" %>
-<%@ page import="java.util.Map" %>
+<%@ page import="com.buaa.mooc.entity.GroupRecruitView" %>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -108,6 +108,12 @@
 
             <!-- BEGIN PAGE HEADER-->
 
+            <%
+                List<GroupRecruitView> groupRecruitView = (List<GroupRecruitView>) request.getAttribute("groupRecruitView");
+
+                if (groupRecruitView != null && groupRecruitView.size() > 0) {
+            %>
+
             <div class="row-fluid">
 
                 <div class="span12">
@@ -134,7 +140,7 @@
 
                         <li>
 
-                            <a href="StudentGroupHome">团队管理</a>
+                            <a href="StudentGroupHome?cid=<%=groupRecruitView.get(0).getCid()%>">团队管理</a>
 
                             <i class="icon-angle-right"></i>
 
@@ -192,14 +198,7 @@
                                 <tbody>
 
                                 <%
-                                    Map<GroupRecruit, Long> groupRecruitswithMemCount = (Map<GroupRecruit, Long>) request.getAttribute("groupRecruitswithMemCount");
-
-                                    if (groupRecruitswithMemCount != null && groupRecruitswithMemCount.size() > 0) {
-
-                                        for (GroupRecruit item : groupRecruitswithMemCount.keySet()) {
-
-                                            if (item != null) {
-
+                                    for (GroupRecruitView item : groupRecruitView) {
                                 %>
 
                                 <tr>
@@ -208,15 +207,16 @@
 
                                     <td style="text-align:center"><%=item.getRecruit_information()%></td>
 
-                                    <td style="text-align:center"><%=groupRecruitswithMemCount.get(item)%></td>
+                                    <td style="text-align:center"><%=item.getS_count()%>
+                                    </td>
 
-                                    <td style="text-align:center"><a href="StudentJoinToGroup?grid=<%=item.getGrid()%>" class="btn mini green"><i class="icon-ok-sign"></i>申请加入</a></td>
+                                    <td style="text-align:center"><a
+                                            href="StudentJoinToGroup?grid=<%=item.getGrid()%>&cid=<%=item.getCid()%>"
+                                            class="btn mini green"><i class="icon-ok-sign"></i>申请加入</a></td>
 
                                 </tr>
 
                                 <%
-                                            }
-                                        }
                                     }
                                 %>
 
@@ -233,6 +233,8 @@
                 </div>
 
             </div>
+
+            <% } %>
 
             <!-- END SAMPLE TABLE PORTLET-->
 

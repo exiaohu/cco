@@ -24,11 +24,12 @@ public class StudentJoinToGroupServlet extends HttpServlet {
         try {
             Integer grid = Integer.parseInt(request.getParameterMap().get("grid")[0]);
             Integer sid = (Integer) request.getSession().getAttribute("sid");
+            Integer cid = Integer.parseInt(request.getParameterMap().get("cid")[0]);
 
             StudentJoinGroupDao studentJoinGroupDao = new StudentJoinGroupDao();
-            studentJoinGroupDao.AddRelationSGR(sid, grid);
+            studentJoinGroupDao.AddRelationSGR(sid, grid, 0);
 
-            response.sendRedirect("StudentGroupHome");
+            response.sendRedirect("StudentGroupHome?cid="+cid);
         } catch (Throwable e) {
             e.printStackTrace();
             response.sendRedirect("student");

@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.buaa.mooc.entity.Group" lazy="false" table="group">
+    <class name="com.buaa.mooc.entity.Group" lazy="false" table="`group`">
         <id name="gid" type="integer" column="gid">
             <generator class="native"/>
         </id>

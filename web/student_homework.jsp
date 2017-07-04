@@ -103,7 +103,7 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="student">主页</a>
+                            <a href="teacher">主页</a>
 
                             <i class="icon-angle-right"></i>
 

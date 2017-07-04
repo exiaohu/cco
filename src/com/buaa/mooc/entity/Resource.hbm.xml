@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.buaa.mooc.entity.Resource" lazy="false" table="resource">
+        <id name="rid" type="integer" column="rid">
+            <generator class="native"/>
+        </id>
+        <property name="rname" type="string" column="rname"/>
+        <property name="attendTime" type="timestamp" column="attend_time"/>
+        <property name="cid" type="integer" column="cid"/>
+        <property name="uploadby" type="integer" column="uploadby"/>
+    </class>
+</hibernate-mapping>  

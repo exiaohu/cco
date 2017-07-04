@@ -1,4 +1,4 @@
-<%@ page import="com.buaa.mooc.dao.CourseDao" %>
+    <%@ page import="com.buaa.mooc.dao.CourseDao" %>
 <%@ page import="com.buaa.mooc.entity.Homework" %>
 <%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
@@ -130,11 +130,11 @@
 
                             <i class="icon-angle-right"></i>
 
-                        </li>
+                            <a href="TeacherCourceHomework">作业管理</a>
 
-                        <li>
+                            <i class="icon-angle-right"></i>
 
-                            <a href="TeacherHomework">作业管理</a>
+                            <a href="TeacherHomework?cid=<%=request.getAttribute("cid")%>">该科作业管理</a>
 
                         </li>
 
@@ -180,7 +180,7 @@
 
                             <div class="btn-group">
 
-                                <a href="AddHomework">
+                                <a href="AddHomework?cid=<%=request.getAttribute("cid")%>">
 
                                     <button id="sample_editable_1_new" class="btn green">
 
@@ -208,14 +208,7 @@
                                     <th></th>
 
                                     <th></th>
-                                    <!--
 
-                                    <th></th>
-
-                                    <th></th>
-
-                                    <th></th>
-                                    -->
 
                                 </tr>
 
@@ -246,16 +239,12 @@
                                     <td><a href="TeacherHomeworkEdit?hid=<%=homework.getId()%>" class="btn mini purple"><i
                                             class="icon-edit"></i> 编辑</a></td>
 
-                                    <td><a href="TeacherHomeworkDel?hid=<%=homework.getId()%>" class="icon-trash"><i
+                                    <td><a href="TeacherHomeworkCheck?hid=<%=homework.getId()%>&cid=<%=homework.getCourseId()%>" class="btn mini blue"><i class="icon-pencil"></i> 批改</a></td>
+
+
+                                    <td><a href="TeacherHomeworkDel?hid=<%=homework.getId()%>&cid=<%=request.getAttribute("cid")%>" class="icon-trash"><i
                                             class="icon-edit">删除</i></a></td>
-                                    <!--
 
-                                    <td><a href="teacher_homework_edit.html" class="btn mini purple"><i class="icon-edit"></i> 编辑</a></td>
-
-                                    <td><a href="teacher_homework_check.html" class="btn mini blue"><i class="icon-pencil"></i> 批改</a></td>
-
-                                    <td><a href="#" class="btn mini black"><i class="icon-trash"></i> 删除</a></td>
-                                    -->
                                 </tr>
 
                                 <%

@@ -24,7 +24,7 @@ public class DownloadFileServlet extends HttpServlet{
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (!Validation.checkStudent(request)) {
+        if (!Validation.checkStudent(request) && !Validation.checkTeacher(request)) {
             response.sendRedirect("login");
             return;
         }

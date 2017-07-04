@@ -20,7 +20,9 @@ import java.util.IllegalFormatException;
 public class AddHomeworkServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+            Integer cid = Integer.parseInt(request.getParameterMap().get("cid")[0]);
             Integer _limit = Integer.parseInt(request.getParameter("_limit"));
+            Integer proportion = Integer.parseInt(request.getParameter("proportion"));
             String hname = new String(request.getParameter("assign_name").getBytes("iso-8859-1"), "utf-8");
             ParsePosition pos = new ParsePosition(0);
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -29,10 +31,11 @@ public class AddHomeworkServlet extends HttpServlet {
             pos = new ParsePosition(0);
             java.util.Date endDate = formatter.parse(request.getParameter("endDate").trim(), pos);
 
-            HomeworkDao homeworkDao = new HomeworkDao();
-            homeworkDao.AddHomework(1, hname, new Timestamp(startDate.getTime()), new Timestamp(endDate.getTime()), _limit);
 
-            response.sendRedirect("/TeacherHomework");
+            HomeworkDao homeworkDao = new HomeworkDao();
+            homeworkDao.AddHomework(cid, hname, new Timestamp(startDate.getTime()), new Timestamp(endDate.getTime()), _limit,proportion);
+
+            response.sendRedirect("/TeacherHomework?cid="+cid);
         } catch (IllegalFormatException e) {
             e.printStackTrace();
             response.sendRedirect("/AddSemester");
@@ -44,6 +47,8 @@ public class AddHomeworkServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
+        Integer cid = Integer.parseInt(request.getParameterMap().get("cid")[0]);
+        request.setAttribute("cid",cid);
         RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/teacher_homework_new.jsp");
         rd.forward(request, response);
     }

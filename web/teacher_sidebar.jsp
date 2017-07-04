@@ -71,7 +71,7 @@
 
         <li class="">
 
-            <a href="TeacherHomework">
+            <a href="TeacherCourceHomework">
 
                 <i class="icon-file-text"></i>
 
@@ -81,20 +81,31 @@
 
 
         </li>
-        <!--
 
-        <li class="last ">
+        <li class="">
 
-            <a href="teacher_resources.html">
+            <a href = "TeacherGrade">
 
-                <i class="icon-folder-open"></i>
+                <i class ="icon-file-text"></i>
 
-                <span class="title">资源管理</span>
+                <span class="title">成绩管理</span>
 
             </a>
 
         </li>
-        -->
+
+        <li class="">
+
+            <a href = "TeacherGroup">
+
+                <i class ="icon-file-text"></i>
+
+                <span class="title">团队管理</span>
+
+            </a>
+
+        </li>
+
     </ul>
 
     <!-- END SIDEBAR MENU -->

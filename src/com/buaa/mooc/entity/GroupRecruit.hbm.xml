@@ -12,5 +12,6 @@
         <property name="recruit_information" type="string" column="recruit_information"/>
         <property name="group_name" type="string" column="group_name"/>
         <property name="cid" type="integer" column="cid"/>
+        <property name="isSubmitted" type="integer" column="isSubmitted" />
     </class>
 </hibernate-mapping>

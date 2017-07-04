@@ -1,3 +1,10 @@
+<%@ page import="com.buaa.mooc.dao.CourseDao" %>
+<%@ page import="com.buaa.mooc.dao.StudentDao" %>
+<%@ page import="com.buaa.mooc.entity.Group" %>
+<%@ page import="com.buaa.mooc.entity.Student" %>
+<%@ page import="java.util.Map" %>
+<% Group group = (Group) request.getAttribute("group"); %>
+<% Map<Student, Double> students = (Map<Student, Double>) request.getAttribute("students"); %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -50,6 +57,34 @@
 
     <link rel="shortcut icon" href="media/image/favicon.ico" />
 
+    <script language="JavaScript">
+        function updateStudentContribute() {
+            var data;
+            data.gid = <%=group.getGid()%>;
+            <%
+            if (students != null && students.size() > 0) {
+                for (Student student : students.keySet()) {
+            %>
+            data.<%=student.getSid()%> = $("#<%=student.getSid()%>").val();
+            <%
+                }
+            }
+            %>
+            $.ajax({
+                url: "StudentUpdateGroupContribute",
+                type: "POST",
+                data: data,
+                dataType: "json",
+                success: function (res) {
+                    alert(res);
+                },
+                error: function (err) {
+                    alert(err);
+                }
+            });
+        }
+    </script>
+
 </head>
 
 <!-- END HEAD -->
@@ -60,56 +95,7 @@
 
 <!-- BEGIN HEADER -->
 
-<div class="header navbar navbar-inverse navbar-fixed-top">
-
-    <!-- BEGIN TOP NAVIGATION BAR -->
-
-    <div class="navbar-inner">
-
-        <div class="container-fluid">
-
-            <!-- BEGIN LOGO -->
-
-            <a class="brand" href="index.html">
-
-                <img src="media/image/logo.png" alt="logo" />
-
-            </a>
-
-            <!-- END LOGO -->
-
-            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-
-            <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
-
-                <img src="media/image/menu-toggler.png" alt="" />
-
-            </a>
-
-            <!-- END RESPONSIVE MENU TOGGLER -->
-
-            <!-- BEGIN TOP NAVIGATION MENU -->
-
-            <ul class="nav pull-right">
-                <!-- END TODO DROPDOWN -->
-
-                <!-- BEGIN USER LOGIN DROPDOWN -->
-
-
-                <!-- END USER LOGIN DROPDOWN -->
-
-            </ul>
-
-            <!-- END TOP NAVIGATION MENU -->
-
-        </div>
-
-    </div>
-
-    <!-- END TOP NAVIGATION BAR -->
-
-
-</div>
+<jsp:include page="student_header.jsp"/>
 
 <!-- END HEADER -->
 
@@ -119,70 +105,7 @@
 
     <!-- BEGIN SIDEBAR -->
 
-    <div class="page-sidebar nav-collapse collapse">
-
-        <!-- BEGIN SIDEBAR MENU -->
-
-        <ul class="page-sidebar-menu">
-
-            <li>
-
-                <div style="margin:50px"></div>
-
-            </li>
-            <li class="dropdown user">
-
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-
-                    <span class="username">学生</span>
-
-                    <i class="icon-angle-down"></i>
-
-                </a>
-
-                <ul class="dropdown-menu">
-
-                    <li><a href="login.html"><i class="icon-key"></i>登出</a></li>
-
-                </ul>
-
-            </li>
-
-            <li class="active ">
-
-                <a href="javascript:;">
-
-                    <i class="icon-bookmark-empty"></i>
-
-                    <span class="title">团队管理</span>
-
-
-                    <span class="selected"></span>
-
-                    <span class="arrow open"></span>
-
-                </a>
-
-                <ul class="sub-menu">
-
-                    <li class="active">
-
-                        <a href="teacher_course.html">敏捷开发</a>
-
-                    </li>
-
-                </ul>
-
-            </li>
-
-
-
-        </ul>
-
-        <!-- END SIDEBAR MENU -->
-
-    </div>
-
+    <jsp:include page="student_sidebar.jsp"/>
 
     <!-- END SIDEBAR -->
 
@@ -236,7 +159,7 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="teacher_homepage.html">主页</a>
+                            <a href="student">主页</a>
 
                             <i class="icon-angle-right"></i>
 
@@ -246,7 +169,7 @@
 
                             <i class=""></i>
 
-                            <a href="#">团队管理</a>
+                            <a href="StudentGroupHome?cid=<%=group.getCid()%>">团队管理</a>
 
                             <i class="icon-angle-right"></i>
 
@@ -256,7 +179,7 @@
 
                             <i class=""></i>
 
-                            <a href="">我的团队</a>
+                            <a href="StudentMyGroup?gid=<%=group.getGid()%>">我的团队</a>
 
                         </li>
                     </ul>
@@ -288,28 +211,28 @@
                                 <div class="control-group">
                                     <label class="control-label" style=" font-weight:bolder">组名：</label>
                                     <div class="controls">
-                                        <span class="text">XXX</span>
+                                        <span class="text"><%=group.getGname()%></span>
                                     </div>
                                 </div>
 
                                 <div class="control-group">
                                     <label class="control-label" style=" font-weight:bolder">组长：</label>
                                     <div class="controls">
-                                        <span class="text">XXX</span>
+                                        <span class="text"><%=new StudentDao().findById(group.getManager_sid())%></span>
                                     </div>
                                 </div>
 
                                 <div class="control-group">
                                     <label class="control-label" style=" font-weight:bolder">人数：</label>
                                     <div class="controls">
-                                        <span class="text">7</span>
+                                        <span class="text"><%=students != null ? students.size() : 0%></span>
                                     </div>
                                 </div>
 
                                 <div class="control-group">
                                     <label class="control-label" style=" font-weight:bolder">课程：</label>
                                     <div class="controls">
-                                        <span class="text">敏捷开发</span>
+                                        <span class="text"><%=new CourseDao().findByCid(group.getCid()).getCname()%></span>
                                     </div>
                                 </div>
                             </form>
@@ -320,7 +243,6 @@
                                     <div class="caption"><i class="icon-cogs"></i>组员信息</div>
 
                                     <div class="actions">
-
 
                                     </div>
                                 </div>
@@ -346,45 +268,42 @@
 
                                         <tbody>
 
-                                        <tr>
+                                        <%
+                                            if (students != null && students.size() > 0) {
 
-                                            <td>13210000</td>
-
-                                            <td>张三</td>
-
-                                            <td class="numeric">男/女</td>
-
-
-
-
-                                        </tr>
+                                                for (Student student : students.keySet()) {
+                                        %>
 
                                         <tr>
 
-                                            <td>13210000</td>
+                                            <td><%=student.getSid()%>
+                                            </td>
 
-                                            <td>张三</td>
+                                            <td><%=student.getSname()%>
+                                            </td>
 
-                                            <td class="numeric">男/女</td>
-
-
-
-                                        </tr>
-                                        <tr>
-
-                                            <td>13210000</td>
-
-                                            <td>张三</td>
-
-                                            <td class="numeric">男/女</td>
+                                            <td class="numeric"><%=student.getSex().equalsIgnoreCase("f") ? "女" : "男"%>
+                                            </td>
 
                                         </tr>
+
+                                        <%
+                                                }
+                                            }
+                                        %>
+
                                         </tbody>
+
                                     </table>
 
                                 </div>
 
                             </div>
+
+                            <%
+                                if (request.getSession().getAttribute("sid").equals(group.getManager_sid())) {
+                            %>
+
                             <div class="portlet box purple">
 
                                 <div class="portlet-title">
@@ -392,6 +311,7 @@
                                     <div class="caption"><i class="icon-cogs"></i>团队贡献度</div>
 
                                     <div class="actions"></div>
+
                                 </div>
 
                                 <div class="portlet-body flip-scroll">
@@ -399,84 +319,87 @@
                                     <table class="table-bordered table-striped table-condensed flip-content">
 
                                         <thead class="flip-content">
+
                                         <tr>
+
                                             <th>学号</th>
 
                                             <th>姓名</th>
 
                                             <th class="numeric">团队贡献度</th>
+
                                         </tr>
+
                                         </thead>
 
                                         <tbody>
+
+                                        <%
+                                            if (students != null && students.size() > 0) {
+
+                                                for (Student student : students.keySet()) {
+                                        %>
+
                                         <tr>
 
-                                            <td>13210000</td>
+                                            <td><%=student.getSid()%>
+                                            </td>
 
-                                            <td>张三</td>
+                                            <td><%=student.getSname()%>
+                                            </td>
 
-                                            <td class="numeric"><input type="text"></td>
+                                            <td class="numeric"><input id="<%=student.getSid()%>" name="<%=student.getSid()%>" type="number" value="<%=students.get(student)%>">
+                                            </td>
+
                                         </tr>
+
+                                        <%
+                                                }
+                                            }
+                                        %>
+
                                         </tbody>
+
                                     </table>
-                                    <button class="btn green">确认提交贡献度</button>
+
+                                    <button onclick="updateStudentContribute()" class="btn green">确认提交贡献度</button>
+
                                 </div>
 
                             </div>
+
+                            <%
+                                }
+                            %>
 
                         </div>
 
                         <!-- END SAMPLE TABLE PORTLET-->
 
-
                     </div>
 
                     <!-- END SAMPLE TABLE PORTLET-->
                 </div>
+
             </div>
 
             <!-- END PAGE CONTENT-->
 
         </div>
+
     </div>
+
 </div>
 
 <!-- END PAGE CONTENT-->
 
-</div>
-
-
-<!-- END PAGE CONTAINER-->
-
-</div>
-
-
 <!-- END PAGE -->
-
 
 <!-- END CONTAINER -->
 
 <!-- BEGIN FOOTER -->
 
-<div class="footer">
-
-    <div class="footer-inner">
-
-        GAD group 16
-
-    </div>
-
-    <div class="footer-tools">
-
-			<span class="go-top">
-
-			<i class="icon-angle-up"></i>
-
-			</span>
-
-    </div>
-
-</div>
+<jsp:include page="footer.jsp"/>
 
 <!-- END FOOTER -->
 

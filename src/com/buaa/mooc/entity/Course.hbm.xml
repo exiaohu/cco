@@ -16,5 +16,7 @@
         <property name="address" type="string" column="address"/>
         <property name="outline" type="string" column="outline"/>
         <property name="fid" type="integer" column="fid"/>
+        <property name="group_mem_max" type="integer" column="group_mem_max"/>
+        <property name="group_mem_min" type="integer" column="group_mem_min"/>
     </class>
 </hibernate-mapping>  

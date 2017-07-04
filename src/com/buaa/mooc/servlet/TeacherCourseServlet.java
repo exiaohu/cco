@@ -16,8 +16,6 @@ import java.util.List;
  * Created by huxia on 2017/6/28.
  */
 public class TeacherCourseServlet extends HttpServlet {
-    private TeacherCourseDao teacherCourseDao = new TeacherCourseDao();
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -27,9 +25,10 @@ public class TeacherCourseServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
+        TeacherCourseDao teacherCourseDao = new TeacherCourseDao();
         Integer tid = (Integer) request.getSession().getAttribute("tid");
-
         List<Course> courses = teacherCourseDao.findByTid(tid);
+
         request.setAttribute("courses", courses);
         RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/teacher_course.jsp");
         rd.forward(request, response);

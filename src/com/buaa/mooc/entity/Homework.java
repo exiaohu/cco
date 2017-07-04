@@ -83,6 +83,11 @@ public class Homework {
         this.homeworkInformation = homeworkInformation;
     }
 
-    public Integer getProportion(){ return proportion; }
-    public void setProportion(Integer proportion) {this.proportion = proportion; }
+    public Integer getProportion() {
+        return proportion;
+    }
+
+    public void setProportion(Integer proportion) {
+        this.proportion = proportion;
+    }
 }

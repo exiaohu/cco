@@ -9,6 +9,7 @@ public class GroupRecruit {
     private String recruit_information;
     private String group_name;
     private Integer cid;
+    private Integer isSubmitted; // 0为未提交批准 1为已被老师批准
 
     public Integer getGrid() {
         return grid;
@@ -48,5 +49,13 @@ public class GroupRecruit {
 
     public void setCid(Integer cid) {
         this.cid = cid;
+    }
+
+    public Integer getIsSubmitted() {
+        return isSubmitted;
+    }
+
+    public void setIsSubmitted(Integer isSubmitted) {
+        this.isSubmitted = isSubmitted;
     }
 }

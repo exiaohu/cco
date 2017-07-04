@@ -189,7 +189,7 @@
                                     <% List<Course> courses = (List<Course>) request.getAttribute("courses"); %>
 
                                     <%
-                                        if (courses != null) {
+                                        if (courses != null&& courses.size()>0) {
                                             for (Course course : courses) {
                                     %>
                                     <tr class="">
@@ -207,7 +207,7 @@
                                         </td>
 
                                         <td>
-                                            <a href="#" class="btn mini green" style="margin-right:10px"><i
+                                            <a href="TeacherCourseInfo?cid=<%=course.getCid()%>" class="btn mini green" style="margin-right:10px"><i
                                                     class="icon-folder-open"></i> 查看信息</a>
                                             <a href="addCourseInfo?cid=<%=course.getCid()%>" class="btn mini green"><i
                                                     class="icon-plus"></i> 添加信息</a>

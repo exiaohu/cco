@@ -19,6 +19,7 @@ public class HomeworkSubmitPK implements Serializable {
 
     private Integer sid;
 
+
     public Integer getSid() {
         return sid;
     }
@@ -26,5 +27,4 @@ public class HomeworkSubmitPK implements Serializable {
     public void setSid(Integer sid) {
         this.sid = sid;
     }
-
 }

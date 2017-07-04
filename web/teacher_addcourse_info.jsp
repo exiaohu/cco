@@ -229,7 +229,7 @@
 
                                         <button type="submit" class="btn blue">确定</button>
 
-                                        <a href="teacher">
+                                        <a href="teacherCourse">
                                             <button type="button" class="btn">取消</button>
                                         </a>
 

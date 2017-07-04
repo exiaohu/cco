@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="com.buaa.mooc.entity.Message" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <html>
@@ -148,27 +150,80 @@
 
             <!-- BEGIN PAGE CONTENT-->
 
+            <!-- BEGIN PAGE CONTENT-->
             <div class="row-fluid">
 
-                <div class="portlet box blue calendar"></div>
+                <div class="span12">
+
+                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+
+                    <div class="portlet box blue">
+
+                        <div class="portlet-title">
+
+                            <div class="caption"><i class="icon-edit"></i>学生通知</div>
+
+                        </div>
+
+                        <div class="portlet-body">
+
+                            <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
+
+                                <thead>
+
+                                <tr>
+
+                                    <th>通知</th>
+
+                                    <th>时间</th>
+
+                                </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                <%
+                                    List<Message> messages = (List<Message>) request.getAttribute("messages");
+                                    if (messages != null && messages.size() > 0) {
+                                        for (Message message : messages) {
+                                %>
+                                <tr class="">
+
+                                    <td><%=message.getContent()%></td>
+
+                                    <td><%=message.getPk().getInsert_time()%></td>
+
+                                </tr>
+                                <%
+                                        }
+                                    }
+                                %>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                    <!-- END EXAMPLE TABLE PORTLET-->
+
+                </div>
 
             </div>
-
-            <!-- END PAGE CONTENT-->
+            <!-- END SAMPLE TABLE PORTLET-->
 
         </div>
 
-        <!-- END PAGE CONTAINER-->
-
     </div>
 
-    <!-- END PAGE -->
+    <!-- END PAGE CONTENT-->
+
+    <!-- END PAGE CONTENT-->
 
 </div>
-
-<!-- END CONTAINER -->
-
-<!-- BEGIN FOOTER -->
 
 <jsp:include page="footer.jsp"/>
 
