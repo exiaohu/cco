@@ -169,15 +169,18 @@
 
                                     <td><%=studentCourse.getPk().getSid()%></td>
 
-                                    <td><%=studentCourse.getGid()%></td>
+                                    <td><%=studentCourse.getGid()!=null ? studentCourse.getGid() : "暂无分组"%></td>
 
                                     <td><%=new StudentDao().findById(studentCourse.getPk().getSid()).getSname()%></td>
 
-                                    <td><%=groupScore.get(studentCourse.getGid())%></td>
+                                    <td><%=groupScore.get(studentCourse.getGid())!=null ?
+                                            groupScore.get(studentCourse.getGid()) : "暂无成绩"%></td>
 
-                                    <td><%=studentCourse.getGroup_contribute()%></td>
+                                    <td><%=studentCourse.getGroup_contribute() != null ?
+                                            studentCourse.getGroup_contribute() : "暂无团队贡献度"%></td>
 
-                                    <td><%=groupScore.get(studentCourse.getGid())*studentCourse.getGroup_contribute()%></td>
+                                    <td><%=(groupScore.get(studentCourse.getGid()) != null && studentCourse.getGroup_contribute() != null) ?
+                                            groupScore.get(studentCourse.getGid())*studentCourse.getGroup_contribute() : "暂无成绩"%></td>
 
 
                                 </tr>

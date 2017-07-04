@@ -75,73 +75,32 @@ public class TeacherGradeAllServlet extends HttpServlet {
             if (studentCourses != null && studentCourses.size() > 0) {
                 Map<Integer, Double> groupScore = new GroupScoreDao().findByCid(studentCourses.get(0).getPk().getCid());
                 for (StudentCourse studentCourse : studentCourses) {
-
-                    Integer sid = studentCourse.getPk().getSid();
-
-                    Integer gid = studentCourse.getGid();
-
+                    String sid = studentCourse.getPk().getSid().toString();
+                    String gid = (studentCourse.getGid() != null ? studentCourse.getGid().toString() : "暂无分组");
                     String sname = new StudentDao().findById(studentCourse.getPk().getSid()).getSname();
-
-                    Double score = groupScore.get(studentCourse.getGid());
-
-                    Double contribute = studentCourse.getGroup_contribute();
-
-                    Double personScore = groupScore.get(studentCourse.getGid()) * studentCourse.getGroup_contribute();
-
-
-//       List list = CreateSimpleExcelToDisk.getStudent();
-
-//        for (int i = 0; i < list.size(); i++)
-                    {
-                        row = sheet.createRow((int) i + 1);
-
-//            Student stu = (Student) list.get(i);
-                        // 第四步，创建单元格，并设置值
-                        row.createCell((short) 0).setCellValue(sid);
-                        row.createCell((short) 1).setCellValue(gid);
-                        row.createCell((short) 2).setCellValue(sname);
-                        row.createCell((short) 3).setCellValue(score);
-                        row.createCell((short) 4).setCellValue(contribute);
-                        row.createCell((short) 5).setCellValue(personScore);
-                        i++;
-
-//            cell = row.createCell((short) 5);
-//            cell.setCellValue();
+                    String score = (groupScore.get(studentCourse.getGid()) != null ?
+                            groupScore.get(studentCourse.getGid()).toString() : "暂无成绩");
+                    String contribute = (studentCourse.getGroup_contribute() != null ?
+                            studentCourse.getGroup_contribute().toString() : "暂无团队贡献度");
+                    String personScore = null;
+                    try {
+                        Double s = (groupScore.get(studentCourse.getGid()) * studentCourse.getGroup_contribute());
+                        personScore = s.toString();
+                    } catch (NullPointerException e) {
+                        personScore = "暂无成绩";
                     }
+                    row = sheet.createRow((int) i + 1);
+
+                    // 第四步，创建单元格，并设置值
+                    row.createCell(0).setCellValue(sid);
+                    row.createCell(1).setCellValue(gid);
+                    row.createCell(2).setCellValue(sname);
+                    row.createCell(3).setCellValue(score);
+                    row.createCell(4).setCellValue(contribute);
+                    row.createCell(5).setCellValue(personScore);
+                    i++;
                 }
             }
-            // 第六步，将文件存到指定位置
-//        try
-//        {
-//            FileOutputStream fout = new FileOutputStream("F:/students.xls");
-//            wb.write(fout);
-//            fout.close();
-//
-////            FileInputStream in = new FileInputStream("");
-////            OutputStream out = response.getOutputStream();
-////            byte buffer[] = new byte[1024];
-////            int len = 0;
-////            while((len=in.read(buffer))>0){
-////                out.write(buffer, 0, len);
-////            }
-////            in.close();
-////            out.close();
-//////            FileInputStream in = new FileInputStream(fullPath);
-//////            OutputStream out = response.getOutputStream();
-//////            byte buffer[] = new byte[1024];
-//////            int len = 0;
-//////            while((len=in.read(buffer))>0){
-//////                out.write(buffer, 0, len);
-//////            }
-//////            in.close();
-//////            out.close();
-//
-//
-//        }
-//        catch (Exception e)
-//        {
-//            e.printStackTrace();
-//        }
             String fileName = "学生成绩EXCEL";
             ByteArrayOutputStream os = new ByteArrayOutputStream();
             wb.write(os);

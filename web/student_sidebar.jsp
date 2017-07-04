@@ -38,7 +38,7 @@
         </div>
 
 
-        <li class="start active ">
+        <li class="">
 
             <a href="student">
 
@@ -53,7 +53,7 @@
         </li>
 
 
-        <li class=" ">
+        <li class="">
 
             <a href="#">
 

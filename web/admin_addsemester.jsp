@@ -202,8 +202,18 @@
 
                                     <div class="controls">
 
-                                        <input type="number" name="course" class="span6 m-wrap"/>
-
+                                        <%--<input type="number" name="course" class="span6 m-wrap" value="2017"/>--%>
+                                        <input onkeyup="if(this.value.length==1){
+                                                            this.value=this.value.replace(/[^1-9]/g,'')
+                                                        }else{
+                                                            this.value=this.value.replace(/\D/g,'')
+                                                        }"
+                                               onafterpaste="if(this.value.length==1){
+                                                                this.value=this.value.replace(/[^1-9]/g,'')
+                                                               }else{
+                                                               this.value=this.value.replace(/\D/g,'')
+                                                               }" name="course" value="2017" class="span6 m-wrap"
+                                                style="height:35; width:100">
                                     </div>
 
                                 </div>
@@ -234,12 +244,14 @@
                                     <div class="controls">
 
                                         <input name="startDate" class="m-wrap small" size="16" type="text"
-                                               value="07/01/2017" id="ui_date_picker_range_from"/>
+                                               value="07/01/2017" id="ui_date_picker_range_from"
+                                               style="height:35"/>
 
                                         <span class="text-inline">&nbsp;至&nbsp;</span>
 
                                         <input name="endDate" class="m-wrap small" size="16" type="text"
-                                               value="07/12/2017" id="ui_date_picker_range_to"/>
+                                               value="07/12/2017" id="ui_date_picker_range_to"
+                                               style="height:35"/>
 
                                     </div>
 
@@ -251,7 +263,18 @@
 
                                     <div class="controls">
 
-                                        <input type="number" name="weeks" class="span6 m-wrap"/>
+                                        <%--<input type="number" name="weeks" class="span6 m-wrap" value="16"/>--%>
+                                        <input onkeyup="if(this.value.length==1){
+                                                            this.value=this.value.replace(/[^1-9]/g,'')
+                                                        }else{
+                                                            this.value=this.value.replace(/\D/g,'')
+                                                        }"
+                                               onafterpaste="if(this.value.length==1){
+                                                                this.value=this.value.replace(/[^1-9]/g,'')
+                                                               }else{
+                                                               this.value=this.value.replace(/\D/g,'')
+                                                               }" name="weeks" value="16" class="span6 m-wrap" size="6"
+                                                        style="height:35; width:100">
 
                                         <span class="help-inline"></span>
 

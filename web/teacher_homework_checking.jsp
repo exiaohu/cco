@@ -3,6 +3,7 @@
 <%@ page import="com.buaa.mooc.dao.HomeworkDao" %>
 <%@ page import="com.buaa.mooc.entity.Student" %>
 <%@ page import="com.buaa.mooc.dao.StudentDao" %>
+<%@ page import="com.buaa.mooc.dao.CourseDao" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <head>
 
@@ -166,7 +167,7 @@
 
                             <ul class="unstyled">
 
-                                <li>软件开发实习</li>
+                                <li><%=new CourseDao().findByCid((Integer) request.getAttribute("cid")).getCname()%></li>
 
                             </ul>
 
@@ -178,7 +179,7 @@
 
                             <ul class="unstyled">
 
-                                <li><strong>作业名:</strong><%=request.getAttribute("sName")%></li>
+                                <li><strong>作业名:</strong><%=request.getAttribute("hName")%></li>
 
                                 <li><strong>开始时间：</strong><%=request.getAttribute("startDate")%></li>
 
@@ -196,11 +197,9 @@
 
                             <ul class="unstyled">
 
-                                <li><strong>姓名：</strong><%=request.getAttribute("hName")%></li>
+                                <li><strong>组名：</strong><%=request.getAttribute("sName")%></li>
 
-                                <li><strong>学号：</strong><%=request.getAttribute("sid")%></li>
-
-                                <li><strong>学院：</strong><%=request.getAttribute("major")%></li>
+                                <li><strong>组别：</strong><%=request.getAttribute("sid")%></li>
 
                             </ul>
 
@@ -293,7 +292,18 @@
 
                                                 <big>分数</big><span class="color-red">*</span>
 
-                                                <input type="text" class="span1" name="score" value="<%=request.getAttribute("score")%>">
+                                                <input type="text" class="span1" name="score" value="<%=request.getAttribute("score")==null?"":request.getAttribute("score")%>"
+                                                       onkeyup="if(this.value.length==1){
+                                                            this.value=this.value.replace(/[^1-9]/g,'')
+                                                        }else{
+                                                            this.value=this.value.replace(/\D/g,'')
+                                                        }"
+                                                       onafterpaste="if(this.value.length==1){
+                                                                this.value=this.value.replace(/[^1-9]/g,'')
+                                                               }else{
+                                                               this.value=this.value.replace(/\D/g,'')
+                                                               }"
+                                                >
 
                                                 <strong><big><big>/100</big></big></strong>
 
@@ -302,7 +312,7 @@
 
                                             <label><big>作业评价</big></label>
 
-                                            <textarea class="span10 m-wrap" rows="8" name="_value"><%=request.getAttribute("remark")%></textarea>
+                                            <textarea class="span10 m-wrap" rows="8" name="_value"><%=request.getAttribute("remark")==null?"":request.getAttribute("remark")%></textarea>
 
                                             <div class="form-actions">
                                                 <button type="submit" class="btn purple">提交</button>

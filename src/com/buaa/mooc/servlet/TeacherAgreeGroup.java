@@ -27,7 +27,7 @@ public class TeacherAgreeGroup extends HttpServlet {
         GroupRecruitDao groupRecruitDao = new GroupRecruitDao();
         GroupRecruit groupRecruit = groupRecruitDao.findByGridGR(grid);
         groupDao.InsertGroup(groupRecruit);
-        response.sendRedirect("teacher");
+        response.sendRedirect("TeacherManGroup?cid="+groupRecruit.getCid());
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

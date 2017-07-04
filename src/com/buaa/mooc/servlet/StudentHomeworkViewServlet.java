@@ -71,7 +71,7 @@ public class StudentHomeworkViewServlet extends HttpServlet {
             factory.setRepository(file);
             ServletFileUpload upload = new ServletFileUpload(factory);
             upload.setHeaderEncoding("UTF-8");
-            upload.setSizeMax(2048*1024*1024);
+            upload.setSizeMax(1024*1024*1024);
             List<FileItem> fileItems = upload.parseRequest(request);
             for (FileItem item : fileItems) {
                 if (!item.isFormField()) {
@@ -85,7 +85,7 @@ public class StudentHomeworkViewServlet extends HttpServlet {
                     item.write(uploadFile);
                 }
                 else if (item.getFieldName().equals("studentHWText")) {
-                    submitContent = item.getString();
+                    submitContent = new String(item.getString().getBytes("iso-8859-1"), "utf-8");
                 }
             }
         } catch (Exception e) {

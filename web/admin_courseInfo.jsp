@@ -219,33 +219,35 @@
 
                                             <input type="hidden" name="cid" value="<%=course.getCid()%>">
 
-                                            <div class="control-group">
+                                                <div class="control-group">
 
-                                                <label class="control-label">课程名：</label>
+                                                    <label class="control-label">课程名：</label>
 
-                                                <div class="controls">
+                                                    <div class="controls">
 
-                                                    <input name="cname" type="text" placeholder="" class="m-wrap large"
-                                                           value="<%=course.getCname()%>"/>
+                                                        <input name="cname" type="text" placeholder="" class="m-wrap large"
+                                                               value="<%=course.getCname()%>" style="height:35; width:150"/>
 
-                                                    <span class="help-inline"></span>
+                                                        <span class="help-inline"></span>
+
+                                                    </div>
 
                                                 </div>
 
-                                            </div>
+                                                <div class="control-group">
 
-                                            <div class="control-group">
+                                                    <label class="control-label">起始时间：</label>
 
-                                                <label class="control-label">起始时间：</label>
+                                                    <div class="controls">
 
-                                                <div class="controls">
+                                                        <input name="beginDate" type="date" placeholder=""
+                                                               class="m-wrap medium"
+                                                               value="<%=course.getBeginDate().toLocalDate().getMonthValue()%>/<%=course.getBeginDate().toLocalDate().getDayOfMonth()%>/<%=course.getBeginDate().toLocalDate().getYear()%>"
+                                                               style="height:35; width:200"/>
 
-                                                    <input name="beginDate" type="text" placeholder=""
-                                                           class="m-wrap small"
-                                                           value="<%=course.getBeginDate().toLocalDate().getMonthValue()%>/<%=course.getBeginDate().toLocalDate().getDayOfMonth()%>/<%=course.getBeginDate().toLocalDate().getYear()%>"/>
+                                                        <span class="help-inline"></span>
 
-                                                    <span class="help-inline"></span>
-
+                                                    </div>
                                                 </div>
                                                 <div class="control-group">
 
@@ -254,8 +256,9 @@
                                                     <div class="controls">
 
                                                         <input name="endDate" type="date" placeholder=""
-                                                               class="m-wrap small"
-                                                               value="<%=course.getEndDate().toLocalDate().getMonthValue()%>/<%=course.getEndDate().toLocalDate().getDayOfMonth()%>/<%=course.getEndDate().toLocalDate().getYear()%>"/>
+                                                               class="m-wrap medium"
+                                                               value="<%=course.getEndDate().toLocalDate().getMonthValue()%>/<%=course.getEndDate().toLocalDate().getDayOfMonth()%>/<%=course.getEndDate().toLocalDate().getYear()%>"
+                                                               style="height:35; width:200"/>
 
                                                         <span class="help-inline"></span>
 
@@ -268,8 +271,19 @@
 
                                                     <div class="controls">
 
-                                                        <input name="credit" type="date" placeholder=""
-                                                               class="m-wrap small" value="<%=course.getCredit()%>"/>
+                                                        <input name="credit" type="text" placeholder=""
+                                                               class="m-wrap small" value="<%=course.getCredit()%>"
+                                                               style="height:35; width:100"
+                                                               onkeyup="if(this.value.length==1){
+                                                                        this.value=this.value.replace(/[^1-9]/g,'')
+                                                                    }else{
+                                                                        this.value=this.value.replace(/\D/g,'')
+                                                                    }"
+                                                                        onafterpaste="if(this.value.length==1){
+                                                                        this.value=this.value.replace(/[^1-9]/g,'')
+                                                                           }else{
+                                                                        this.value=this.value.replace(/\D/g,'')
+                                                               }"/>
 
                                                         <span class="help-inline"></span>
 
@@ -324,7 +338,8 @@
                                                     <div class="controls">
 
                                                         <input name="address" type="text" placeholder=""
-                                                               class="m-wrap small" value="<%=course.getAddress()%>"/>
+                                                               class="m-wrap small" value="<%=course.getAddress()%>"
+                                                               style="height:35; width:150"/>
 
                                                         <span class="help-inline"></span>
 

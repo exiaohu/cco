@@ -2,7 +2,8 @@
 <%@ page import="com.buaa.mooc.dao.StudentCourseDao" %>
 <%@ page import="com.buaa.mooc.entity.StudentCourse" %>
 <%@ page import="com.buaa.mooc.entity.Student" %>
-<%@ page import="com.buaa.mooc.dao.StudentDao" %><%--
+<%@ page import="com.buaa.mooc.dao.StudentDao" %>
+<%@ page import="com.buaa.mooc.dao.GroupScoreDao" %><%--
   Created by IntelliJ IDEA.
   User: windrises
   Date: 2017/7/3
@@ -163,20 +164,33 @@
 
                                 <%  Integer sid = (Integer) request.getSession().getAttribute("sid");
                                     StudentCourseDao studentCourseDao = new StudentCourseDao();
+                                    Boolean flag = true;
                                     StudentCourse studentCourse = studentCourseDao.findBySidAndCid(sid,course.getCid());
-                                    if(studentCourse.getScore() != null){
-                                        Double groupScore = studentCourse.getScore();
-                                        Double contribute = studentCourse.getGroup_contribute();
-                                        Double score = studentCourse.getScore()*studentCourse.getGroup_contribute();
+                                    Double groupScore = null;
+                                    Double contribute = null;
+                                    Double score = null;
+                                    if(studentCourse == null){
+                                        flag = false;
+                                    }
+                                    else {
+                                        Integer gid = studentCourse.getGid();
+                                        groupScore = new GroupScoreDao().findByGid(gid);
+                                        contribute = studentCourse.getGroup_contribute();
+                                        if (groupScore == null || contribute == null) {
+                                            flag = false;
+                                        } else {
+                                            score = groupScore * contribute;
+                                        }
+                                    }
+                                    if(flag == true){
                                 %>
-
                                         <tr class="">
 
                                             <td><%=sid%></td>
 
-                                            <td><%=studentCourse.getGid()%></td>
-
                                             <td><%=new StudentDao().findById(sid).getSname()%></td>
+
+                                            <td><%=studentCourse.getGid()%></td>
 
                                             <td><%=groupScore%></td>
 
@@ -194,7 +208,7 @@
 
                                             <td><%=sid%></td>
 
-                                            <td></td>
+                                            <td><%=new StudentDao().findById(sid).getSname()%></td>
 
                                             <td></td>
 

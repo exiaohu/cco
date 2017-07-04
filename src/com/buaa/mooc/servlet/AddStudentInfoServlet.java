@@ -19,7 +19,7 @@ public class AddStudentInfoServlet extends HttpServlet {
         String studentIds = request.getParameter("StudentIds");
         try {
             StudentDao studentDao = new StudentDao();
-            String[] sids = studentIds.split(" |\n|,|;");
+            String[] sids = studentIds.split(" |\\n|,|;");
             JSONArray jsonArray = new JSONArray();
             if (sids.length > 0) {
                 for (String sid_s : sids) {

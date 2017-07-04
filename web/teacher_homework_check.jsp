@@ -3,6 +3,7 @@
 <%@ page import="com.buaa.mooc.dao.HomeworkDao" %>
 <%@ page import="com.buaa.mooc.entity.Student" %>
 <%@ page import="com.buaa.mooc.dao.StudentDao" %>
+<%@ page import="com.buaa.mooc.dao.GroupDao" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -175,13 +176,13 @@
 
                                     <th>作业名称</th>
 
-                                    <th>学号</th>
+                                    <th>组别</th>
 
-                                    <th>姓名</th>
+                                    <th>组名</th>
 
                                     <th class="hidden-480">提交日期</th>
 
-                                    <th>已阅（1已阅/0未阅）</th>
+                                    <th>批改情况</th>
 
                                     <th>操作</th>
 
@@ -202,13 +203,13 @@
 
                                     <td><%=homeworkSubmit.getPk().getSid()%></td>
 
-                                    <td><%=new StudentDao().findById(homeworkSubmit.getPk().getSid()).getSname()%></td>
+                                    <td><%=new GroupDao().findById(homeworkSubmit.getPk().getSid()).getGname()%></td>
 
                                     <td><%=homeworkSubmit.getSubmitTime()%></td>
 
-                                    <td><%=homeworkSubmit.getIsCorrect()%></td>
+                                    <td><%=homeworkSubmit.getIsCorrect()==0?"未批改":"已批改"%></td>
 
-                                    <td><a href="TeacherHomeworkChecking?hid=<%=homeworkSubmit.getPk().getHid()%>&sid=<%=homeworkSubmit.getPk().getSid()%>" class="btn mini yellow"><i class="icon-pencil"></i> 批改</a></td>
+                                    <td><a href="TeacherHomeworkChecking?hid=<%=homeworkSubmit.getPk().getHid()%>&cid=<%=request.getAttribute("cid")%>&sid=<%=homeworkSubmit.getPk().getSid()%>" class="btn mini yellow"><i class="icon-pencil"></i> 批改</a></td>
                                 </tr>
                                 <%
                                         }
