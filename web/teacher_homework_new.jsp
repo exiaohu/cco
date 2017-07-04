@@ -130,13 +130,13 @@
 
                         <li>
 
-                            <a href="TeacherHomework">作业管理</a>
+                            <a href="TeacherHomework?cid=<%=request.getAttribute("cid")%>">作业管理</a>
 
                             <span class="icon-angle-right"></span>
 
                         </li>
 
-                        <li><a href="AddHomework">添加作业</a></li>
+                        <li><a href="AddHomework?cid=<%=request.getAttribute("cid")%>">添加作业</a></li>
 
                     </ul>
 
@@ -178,7 +178,7 @@
 
                         <div class="portlet-body form">
 
-                            <form action="AddHomework" method="post" class="form-horizontal" id="submit_form">
+                            <form action="AddHomework?cid=<%=request.getAttribute("cid")%>" method="post" class="form-horizontal" id="submit_form">
 
                                 <div class="form-wizard">
 

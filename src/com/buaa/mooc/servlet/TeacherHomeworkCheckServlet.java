@@ -31,10 +31,13 @@ public class TeacherHomeworkCheckServlet extends HttpServlet {
             return;
         }
         Integer hid = Integer.parseInt(request.getParameterMap().get("hid")[0]);
+        Integer cid = Integer.parseInt(request.getParameterMap().get("cid")[0]);
         TeacherHomeworkCheckDao teacherHomeworkCheckDao = new TeacherHomeworkCheckDao();
         List<HomeworkSubmit> homeworkSubmits = teacherHomeworkCheckDao.findByHid(hid);
         request.setAttribute("homeworkSubmits", homeworkSubmits);
         request.setAttribute("hid",hid);
+        request.setAttribute("cid",cid);
+
 
         RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/teacher_homework_check.jsp");
         rd.forward(request, response);

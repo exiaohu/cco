@@ -1,6 +1,3 @@
-    <%@ page import="com.buaa.mooc.dao.CourseDao" %>
-<%@ page import="com.buaa.mooc.entity.Homework" %>
-<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -17,7 +14,7 @@
 
     <meta charset="utf-8"/>
 
-    <title>作业管理</title>
+    <title>添加新课程</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
@@ -49,7 +46,9 @@
 
     <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css"/>
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/chosen.css"/>
+
+    <link rel="stylesheet" type="text/css" href="media/css/jquery-ui-1.10.1.custom.min.css"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
@@ -63,11 +62,7 @@
 
 <body class="page-header-fixed">
 
-<!-- BEGIN HEADER -->
-
 <jsp:include page="teacher_header.jsp"/>
-
-<!-- END HEADER -->
 
 <!-- BEGIN CONTAINER -->
 
@@ -111,12 +106,9 @@
 
                 <div class="span12">
 
-                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
-
                     <h3 class="page-title">
 
-                        作业管理
-                        <small>课程作业添加、修改、批正</small>
+                        资源管理
 
                     </h3>
 
@@ -128,19 +120,21 @@
 
                             <a href="teacher">主页</a>
 
-                            <i class="icon-angle-right"></i>
-
-                            <a href="TeacherCourceHomework">作业管理</a>
-
-                            <i class="icon-angle-right"></i>
-
-                            <a href="TeacherHomework?cid=<%=request.getAttribute("cid")%>">该科作业管理</a>
+                            <span class="icon-angle-right"></span>
 
                         </li>
 
-                    </ul>
+                        <li>
 
-                    <!-- END PAGE TITLE & BREADCRUMB-->
+                            <a href="TeacherResource">资源管理</a>
+
+                            <span class="icon-angle-right"></span>
+
+                        </li>
+
+                        <li><a href="addCourseInfo">添加资源</a></li>
+
+                    </ul>
 
                 </div>
 
@@ -150,17 +144,18 @@
 
             <!-- BEGIN PAGE CONTENT-->
 
+
             <div class="row-fluid">
 
                 <div class="span12">
 
-                    <!-- BEGIN SAMPLE TABLE PORTLET-->
+                    <!-- BEGIN VALIDATION STATES-->
 
-                    <div class="portlet box purple">
+                    <div class="portlet box blue">
 
                         <div class="portlet-title">
 
-                            <div class="caption"><i class="icon-table"></i>作业列表</div>
+                            <div class="caption"><i class="icon-edit"></i>资源上传</div>
 
                             <div class="tools">
 
@@ -176,109 +171,95 @@
 
                         </div>
 
-                        <div class="portlet-body">
+                        <div class="portlet-body form">
 
-                            <div class="btn-group">
+                            <!-- BEGIN FORM-->
 
-                                <a href="AddHomework?cid=<%=request.getAttribute("cid")%>">
+                            <form action="AddResource" class="form-horizontal" method="post"
+                                  enctype="multipart/form-data">
 
-                                    <button id="sample_editable_1_new" class="btn green">
+                                <div class="alert alert-error hide">
 
-                                        添加 <i class="icon-plus"></i>
+                                    <button class="close" data-dismiss="alert"></button>
 
-                                    </button>
-                                </a>
+                                    You have some form errors. Please check below.
 
-                            </div>
+                                </div>
 
-                            <table class="table table-striped table-bordered table-hover" id="sample_2">
+                                <div class="alert alert-success hide">
 
-                                <thead>
+                                    <button class="close" data-dismiss="alert"></button>
 
-                                <tr>
+                                    Your form validation is successful!
 
-                                    <th><i class="icon-file-text"></i> 作业名称</th>
+                                </div>
 
-                                    <th><i class="icon-file-text"></i>课程名称</th>
+                                <input type="hidden" name="cid" value="<%=request.getParameter("cid")%>"/>
 
-                                    <th class="hidden-phone"><i class="icon-time"></i> 发布时间</th>
+                                <div class="control-group">
 
-                                    <th><i class="icon-bell"></i> 结束时间</th>
+                                    <label class="control-label">课程ID：</label>
 
-                                    <th></th>
+                                    <div class="controls">
 
-                                    <th></th>
+                                        <textarea name="course"></textarea>
 
+                                        <span for="course" class="help-inline ok valid" style=""></span>
+                                    </div>
 
-                                </tr>
+                                </div>
+                                <div class="control-group">
 
-                                </thead>
+                                    <div class="control-group">
 
-                                <tbody>
+                                        <label class="control-label">资源上传：</label>
 
-                                <% List<Homework> homeworks = (List<Homework>) request.getAttribute("homeworks"); %>
-                                <%
-                                    if (homeworks != null && homeworks.size() > 0) {
-                                        for (Homework homework : homeworks) {
-                                %>
+                                        <div class="controls">
 
-                                <tr>
+                                            <input type="file" name="files" class="display-value" size="2048"/>
 
-                                    <td class="highlight"><%=homework.getHomeworkName()%>
-                                    </td>
+                                            <span class="help-inline"></span>
 
-                                    <td class="highlight"><%=new CourseDao().findByCid(homework.getCourseId()).getCname()%>
-                                    </td>
+                                        </div>
 
-                                    <td class="hidden-phone"><%=homework.getStartTime().toLocalDateTime().toString()%>
-                                    </td>
+                                    </div>
+                                    <div class="form-actions">
 
-                                    <td><%=homework.getDeadLine().toLocalDateTime().toString()%>
-                                    </td>
+                                        <button type="submit" class="btn blue">确定</button>
 
-                                    <td><a href="TeacherHomeworkEdit?hid=<%=homework.getId()%>" class="btn mini purple"><i
-                                            class="icon-edit"></i> 编辑</a></td>
+                                        <a href="TeacherResource">
+                                            <button type="button" class="btn">取消</button>
+                                        </a>
 
-                                    <td><a href="TeacherHomeworkCheck?hid=<%=homework.getId()%>&cid=<%=homework.getCourseId()%>" class="btn mini blue"><i class="icon-pencil"></i> 批改</a></td>
+                                    </div>
 
+                                </div>
 
-                                    <td><a href="TeacherHomeworkDel?hid=<%=homework.getId()%>&cid=<%=request.getAttribute("cid")%>" class="icon-trash"><i
-                                            class="icon-edit">删除</i></a></td>
+                            </form>
 
-                                </tr>
-
-                                <%
-                                        }
-                                    }
-                                %>
-
-                                </tbody>
-
-                            </table>
+                            <!-- END FORM-->
 
                         </div>
 
                     </div>
 
-                    <!-- END SAMPLE TABLE PORTLET-->
+                    <!-- END VALIDATION STATES-->
 
                 </div>
 
-                <!-- END SAMPLE TABLE PORTLET-->
             </div>
+
+            <!-- END PAGE CONTENT-->
 
         </div>
 
-        <!-- END PAGE CONTENT-->
+        <!-- END PAGE CONTAINER-->
 
     </div>
 
-    <!-- END PAGE CONTAINER-->
+    <!-- END PAGE -->
 
 </div>
-
-<!-- END PAGE -->
-
 
 <!-- END CONTAINER -->
 
@@ -322,17 +303,25 @@
 
 <!-- BEGIN PAGE LEVEL PLUGINS -->
 
+<script type="text/javascript" src="media/js/jquery.validate.min.js"></script>
+
+<script type="text/javascript" src="media/js/additional-methods.min.js"></script>
+
 <script type="text/javascript" src="media/js/select2.min.js"></script>
 
-<script type="text/javascript" src="media/js/jquery.dataTables.min.js"></script>
-
-<script type="text/javascript" src="media/js/DT_bootstrap.js"></script>
+<script type="text/javascript" src="media/js/chosen.jquery.min.js"></script>
 
 <!-- END PAGE LEVEL PLUGINS -->
 
+<!-- BEGIN PAGE LEVEL STYLES -->
+
 <script src="media/js/app.js"></script>
 
-<script src="media/js/table-advanced.js"></script>
+<script src="media/js/form-validation.js"></script>
+
+<script src="media/js/ui-jqueryui.js"></script>
+
+<!-- END PAGE LEVEL STYLES -->
 
 <script>
 
@@ -342,14 +331,29 @@
 
         App.init();
 
-        TableAdvanced.init();
+        FormValidation.init();
+
+        UIJQueryUI.init();
 
     });
 
 </script>
 
+<!-- END JAVASCRIPTS -->
+<script type="text/javascript">  var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37564768-1']);
+_gaq.push(['_setDomainName', 'keenthemes.com']);
+_gaq.push(['_setAllowLinker', true]);
+_gaq.push(['_trackPageview']);
+(function () {
+    var ga = document.createElement('script');
+    ga.type = 'text/javascript';
+    ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(ga, s);
+})();</script>
 </body>
 
 <!-- END BODY -->
-
 </html>

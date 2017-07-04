@@ -102,25 +102,15 @@
 
                             <i class="icon-home"></i>
 
-                            <a href="student">主页</a>
+                            <a href="teacher">主页</a>
 
                             <i class="icon-angle-right"></i>
 
-                        </li>
-
-
-                        <li>
-
-                            <a href="StudentCourse?cid=<%=course.getCid()%>"><%=course.getCname()%>
-                            </a>
+                            <a href="TeacherCourceHomework">作业管理</a>
 
                             <i class="icon-angle-right"></i>
 
-                        </li>
-
-                        <li>
-
-                            <a href="studentHomework?cid=<%=course.getCid()%>">作业管理</a>
+                            <a href="TeacherHomework?cid=<%=request.getAttribute("cid")%>">该科作业管理</a>
 
                         </li>
 

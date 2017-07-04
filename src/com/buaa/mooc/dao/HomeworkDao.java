@@ -44,7 +44,7 @@ public class HomeworkDao {
         List<Homework> homeworks = null;
         try {
             homeworks = new ArrayList<>();
-            String hql = "select h from Homework as h where h.cid = :cid";
+            String hql = "from Homework as h where h.courseId = :cid";
             Query query = session.createQuery(hql);
             query.setParameter("cid",cid);
             results = query.list();

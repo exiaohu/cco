@@ -3,6 +3,7 @@ package com.buaa.mooc.servlet;
 import com.buaa.mooc.dao.HomeworkDao;
 import com.buaa.mooc.utils.Validation;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,9 +18,10 @@ public class TeacherHomeworkDelServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Integer hid = Integer.parseInt(request.getParameter("hid"));
+            Integer cid = Integer.parseInt(request.getParameter("cid"));
             HomeworkDao homeworkDao = new HomeworkDao();
             homeworkDao.delHomework(hid);
-            response.sendRedirect("TeacherHomework");
+            response.sendRedirect("TeacherHomework?cid="+cid);
         } catch (IllegalFormatException e) {
             e.printStackTrace();
             response.sendRedirect("AddSemester");

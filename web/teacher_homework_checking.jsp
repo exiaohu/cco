@@ -123,7 +123,7 @@
 
                         <li>
 
-                            <a href="TeacherHomework">作业管理</a>
+                            <a href="TeacherHomework?cid=<%=request.getAttribute("cid")%>">作业管理</a>
 
                             <i class="icon-angle-right"></i>
 
@@ -131,7 +131,7 @@
 
                         <li>
 
-                            <a href="TeacherHomeworkCheck?hid=<%=request.getAttribute("hid")%>">作业列表</a>
+                            <a href="TeacherHomeworkCheck?hid=<%=request.getAttribute("hid")%>&cid=<%=request.getAttribute("cid")%>">作业列表</a>
 
                             <i class="icon-angle-right"></i>
 
@@ -285,7 +285,7 @@
 
                                         <h3><strong>批示</strong></h3>
 
-                                        <form action="TeacherHomeworkChecking?hid=<%=request.getAttribute("hid")%>&sid=<%=request.getAttribute("sid")%>" method="post"
+                                        <form action="TeacherHomeworkChecking?hid=<%=request.getAttribute("hid")%>&sid=<%=request.getAttribute("sid")%>&cid=<%=request.getAttribute("cid")%>" method="post"
 
                                                class="form-horizontal">
 
@@ -307,7 +307,7 @@
                                             <div class="form-actions">
                                                 <button type="submit" class="btn purple">提交</button>
 
-                                                <a href="TeacherHomeworkCheck?hid=<%=request.getAttribute("hid")%>">
+                                                <a href="TeacherHomeworkCheck?hid=<%=request.getAttribute("hid")%>&cid=<%=request.getAttribute("cid")%>">
                                                      <button type="button" class="btn">取消</button>
                                                 </a>
                                             </div>

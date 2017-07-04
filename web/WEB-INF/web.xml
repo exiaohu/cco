@@ -155,6 +155,16 @@
         <servlet-name>SubmitGroupRecruit</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.SubmitGroupRecruitServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DownExcel</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.DownExcelServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherCourceHomework</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherCourceHomeworkServlet</servlet-class>
+    </servlet>
+
+
     <servlet-mapping>
         <servlet-name>AddCourseInfo</servlet-name>
         <url-pattern>/addCourseInfo</url-pattern>
@@ -223,6 +233,7 @@
         <servlet-name>StudentCourse</servlet-name>
         <url-pattern>/StudentCourse</url-pattern>
     </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>AddStudentInfo</servlet-name>
         <url-pattern>/AddStudentInfo</url-pattern>
@@ -298,5 +309,13 @@
     <servlet-mapping>
         <servlet-name>SubmitGroupRecruit</servlet-name>
         <url-pattern>/SubmitGroupRecruit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DownExcel</servlet-name>
+        <url-pattern>/DownExcel</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherCourceHomework</servlet-name>
+        <url-pattern>/TeacherCourceHomework</url-pattern>
     </servlet-mapping>
 </web-app>

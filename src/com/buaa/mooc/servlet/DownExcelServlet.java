@@ -1,12 +1,10 @@
 package com.buaa.mooc.servlet;
 
-import com.buaa.mooc.dao.CourseDao;
-import com.buaa.mooc.dao.TeacherCourseDao;
-import com.buaa.mooc.dao.TeacherHomeworkCheckDao;
-import com.buaa.mooc.entity.Course;
-import com.buaa.mooc.entity.HomeworkSubmit;
+import com.buaa.mooc.dao.StudentCourseDao;
+import com.buaa.mooc.entity.StudentCourse;
 import com.buaa.mooc.utils.Validation;
-
+import java.io.File;
+import java.io.FileInputStream;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,9 +15,9 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by lenovo on 2017/7/3.
+ * Created by lenovo on 2017/7/4.
  */
-public class TeacherGradeServlet extends HttpServlet {
+public class DownExcelServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -29,12 +27,13 @@ public class TeacherGradeServlet extends HttpServlet {
             response.sendRedirect("/login");
             return;
         }
-        TeacherCourseDao teacherCourseDao = new TeacherCourseDao();
-        Integer tid = (Integer) request.getSession().getAttribute("tid");
-        List<Course> courses = teacherCourseDao.findByTid(tid);
-        request.setAttribute("courses",courses);
+        Integer cid = Integer.parseInt(request.getParameterMap().get("cid")[0]);
+        StudentCourseDao studentCourseDao =new StudentCourseDao();
+        List<StudentCourse> studentCourses =studentCourseDao.findByCid(cid);
+        request.setAttribute("studentCources",studentCourses);
 
-        RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/teacher_grade.jsp");
+        RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/downExcel.jsp");
         rd.forward(request, response);
+
     }
 }

@@ -12,7 +12,7 @@
 
     <meta charset="utf-8" />
 
-    <title>学生成绩</title>
+    <title>作业管理</title>
 
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
@@ -75,7 +75,7 @@
 
                     <h3 class="page-title">
 
-                        成绩管理 <small>教师成绩管理页面</small>
+                        作业管理 <small>教师作业管理页面</small>
 
                     </h3>
 
@@ -89,7 +89,7 @@
 
                             <i class="icon-angle-right"></i>
 
-                            <a href="TeacherGrade">成绩管理</a>
+                            <a href="TeacherCourceHomework">作业管理</a>
 
                         </li>
 
@@ -127,7 +127,7 @@
 
                                     <th>上课地点</th>
 
-                                    <th>查看成绩</th>
+                                    <th>查看作业</th>
 
                                 </tr>
 
@@ -150,9 +150,9 @@
                                     <td><%=course.getAddress()%></td>
 
                                     <td>
-                                        <a href="TeacherGradeAll?cid=<%=course.getCid()%>&download=no"  class="btn mini green"  >
+                                        <a href="TeacherHomework?cid=<%=course.getCid()%>"  class="btn mini green"  >
 
-                                            查看成绩信息
+                                            查看作业信息
 
                                         </a>
                                     </td>
@@ -177,61 +177,61 @@
                 <!-- END BORDERED TABLE PORTLET--><!-- END PAGE HEADER-->
             </div>
 
-                <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+            <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
         </div>
 
     </div>
 
 </div>
 
-                <!-- BEGIN CORE PLUGINS -->
+<!-- BEGIN CORE PLUGINS -->
 
-                <script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+<script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
 
-                <script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 
-                <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
 
-                <script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
 
-                <script src="media/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="media/js/bootstrap.min.js" type="text/javascript"></script>
 
-                <!--[if lt IE 9]>
+<!--[if lt IE 9]>
 
-                <script src="media/js/excanvas.min.js"></script>
+<script src="media/js/excanvas.min.js"></script>
 
-                <script src="media/js/respond.min.js"></script>
+<script src="media/js/respond.min.js"></script>
 
-                <![endif]-->
+<![endif]-->
 
-                <script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+<script src="media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
 
-                <script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
+<script src="media/js/jquery.blockui.min.js" type="text/javascript"></script>
 
-                <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
+<script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-                <script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
 
-                <!-- END CORE PLUGINS -->
+<!-- END CORE PLUGINS -->
 
-                <!-- BEGIN PAGE LEVEL SCRIPTS -->
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
 
-                <script src="media/js/app.js" type="text/javascript"></script>
+<script src="media/js/app.js" type="text/javascript"></script>
 
-                <script src="media/js/index.js" type="text/javascript"></script>
+<script src="media/js/index.js" type="text/javascript"></script>
 
-                <!-- END PAGE LEVEL SCRIPTS -->
+<!-- END PAGE LEVEL SCRIPTS -->
 
-                <script>
+<script>
 
-                    jQuery(document).ready(function() {
+    jQuery(document).ready(function() {
 
-                        App.init();    // initlayout and core plugins
-                    });
+        App.init();    // initlayout and core plugins
+    });
 
-                </script>
+</script>
 
-                <!-- END JAVASCRIPTS -->
+<!-- END JAVASCRIPTS -->
 
 
 </body>

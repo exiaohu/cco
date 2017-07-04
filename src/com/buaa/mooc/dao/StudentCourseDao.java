@@ -2,6 +2,7 @@ package com.buaa.mooc.dao;
 
 
 import com.buaa.mooc.entity.Course;
+import com.buaa.mooc.entity.Student;
 import com.buaa.mooc.entity.StudentCourse;
 import com.buaa.mooc.entity.StudentCoursePK;
 import com.buaa.mooc.utils.HibernateUtils;
@@ -29,6 +30,50 @@ public class StudentCourseDao {
             HibernateUtils.closeSession(session);
         }
     }
+
+    public List<Student> getStudents(Integer cid) {
+        Session session = HibernateUtils.getSession();
+        List<Student> students = new ArrayList<>();
+        try {
+            String hql= "from StudentCourse as sc where sc.pk.cid = :cid";
+            Query query = session.createQuery(hql);
+            query.setParameter("cid", cid);
+            students = query.list();
+            return students;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return students;
+        } finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
+
+    public List<StudentCourse> findByCid(Integer cid){
+        Session session = HibernateUtils.getSession();
+        List results = null;
+        List<StudentCourse> studentCourses = null;
+        try {
+            studentCourses = new ArrayList<>();
+            String hql = "from StudentCourse as sc where sc.pk.cid = :cid";
+            Query query = session.createQuery(hql);
+            query.setParameter("cid", cid);
+            results = query.list();
+            if (results != null && results.size() > 0) {
+                StudentCourse t;
+                for (Object obj : results) {
+                    t = (StudentCourse) obj;
+                    studentCourses.add(t);
+                }
+            }
+            return studentCourses;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
+
 
     public boolean AddRelationSC(Integer sid, Integer cid) {
         Session session = HibernateUtils.getSession();

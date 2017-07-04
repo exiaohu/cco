@@ -5,19 +5,27 @@ import com.buaa.mooc.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by huxia on 2017/7/4.
  */
 public class GroupScoreDao {
-    public List<GroupScore> findByCid(Integer cid) {
+    public Map<Integer, Double> findByCid(Integer cid) {
         Session session = HibernateUtils.getSession();
         try {
+            Map<Integer, Double> retVal = new HashMap<>();
             String hql = "select gs from GroupScore as gs, Group as g where g.gid = gs.gid and g.cid = :cid";
             Query query = session.createQuery(hql);
             query.setParameter("cid", cid);
-            return query.list();
+            List result = query.list();
+            for (Object obj : result) {
+                GroupScore gs = (GroupScore) obj;
+                retVal.put(gs.getGid(), gs.getGroupScore());
+            }
+            return retVal;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -44,7 +52,5 @@ public class GroupScoreDao {
     public static void main(String[] args) {
         GroupScoreDao groupScoreDao = new GroupScoreDao();
         System.out.println(groupScoreDao.findByGid(1));
-        List<GroupScore> groupScores = groupScoreDao.findByCid(1);
-        System.out.println(groupScores.get(0).getGroupScore());
     }
 }

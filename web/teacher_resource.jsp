@@ -3,6 +3,8 @@
 <%@ page import="com.buaa.mooc.dao.HomeworkDao" %>
 <%@ page import="com.buaa.mooc.entity.Student" %>
 <%@ page import="com.buaa.mooc.dao.StudentDao" %>
+<%@ page import="com.buaa.mooc.entity.Resource" %>
+<%@ page import="com.buaa.mooc.dao.CourseDao" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!-- BEGIN HEAD -->
 
@@ -127,7 +129,7 @@
 
                         <li>
 
-                            <a href="TeacherResources">资源管理</a>
+                            <a href="TeacherResource">资源管理</a>
 
                         </li>
 
@@ -161,7 +163,7 @@
 
                             <div class="span5">
 
-                                <a href="teacher_sourceuploading.html"><span class="btn green fileinput-button">
+                                <a href="AddResource"><span class="btn green fileinput-button">
 
 									<i class="icon-plus icon-white"></i>
 
@@ -194,55 +196,43 @@
                                 </thead>
 
                                 <tbody>
+                                <%  List<Resource> resources = (List<Resource>)request.getAttribute("resources"); %>
+                                <%
+                                    if (resources != null && resources.size()>0) {
+                                        for (Resource resource :resources) {
+                                %>
+                                <tr>
+                                    <td><%=resource.getRname()%></td>
 
-                                <tr class="">
+                                    <td><%=new CourseDao().findByCid(resource.getCid()).getCname()%></td>
 
-                                    <td>Chp01_经济与管理概述</td>
+                                    <td><%=resource.getAttendTime()%></td>
 
-                                    <td>经济管理</td>
+                                    <td>
+                                        <a href="TeacherResourceDel?rid=<%=request.getAttribute("rid")%>" class="btn mini black" style="margin-right:10px"><i class="icon-trash"></i> 删除</a>
 
-                                    <td>2015-3-5</td>
+                                        <%--<a href="#" class="btn mini green"><i class="icon-download"></i> 下载</a>--%>
+                                        <div class="control-group">
 
-                                    <td><a href="#" class="btn mini black" style="margin-right:10px"><i class="icon-trash"></i> 删除</a><a href="#" class="btn mini green"><i class="icon-download"></i> 下载</a></td>
+                                            <div class="controls">
 
-                                </tr>
+                                                <a href="TeacherResourceDown?rid=<%=request.getAttribute("rid")%>">
+                                                    <label class="control-label" style=" font-weight:bolder">
+                                                        下载
+                                                    </label></a>
 
+                                            </div>
 
-                                <tr class="">
+                                        </div>
 
-                                    <td>Chp01_经济与管理概述</td>
-
-                                    <td>经济管理</td>
-
-                                    <td>2015-3-5</td>
-
-                                    <td><a href="#" class="btn mini black" style="margin-right:10px"><i class="icon-trash"></i> 删除</a><a href="#" class="btn mini green"><i class="icon-download"></i> 下载</a></td>
-
-                                </tr>
-
-                                <tr class="">
-
-                                    <td>Chp01_经济与管理概述</td>
-
-                                    <td>经济管理</td>
-
-                                    <td>2015-3-5</td>
-
-                                    <td><a href="#" class="btn mini black" style="margin-right:10px"><i class="icon-trash"></i> 删除</a><a href="#" class="btn mini green"><i class="icon-download"></i> 下载</a></td>
+                                    </td>
 
                                 </tr>
+                                <%
+                                        }
+                                    }
+                                %>
 
-                                <tr class="">
-
-                                    <td>Chp01_经济与管理概述</td>
-
-                                    <td>经济管理</td>
-
-                                    <td>2015-3-5</td>
-
-                                    <td><a href="#" class="btn mini black" style="margin-right:10px"><i class="icon-trash"></i> 删除</a><a href="#" class="btn mini green"><i class="icon-download"></i> 下载</a></td>
-
-                                </tr>
                                 </tbody>
 
                             </table>

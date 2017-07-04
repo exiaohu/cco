@@ -71,7 +71,7 @@
 
         <li class="">
 
-            <a href="TeacherHomework">
+            <a href="TeacherCourceHomework">
 
                 <i class="icon-file-text"></i>
 
@@ -93,17 +93,6 @@
 
         </li>
 
-        <li class="">
-
-            <a href = "TeacherGrade">
-
-                <i class ="icon-file-text"></i>
-
-                <span class="title">资源管理</span>
-
-            </a>
-
-        </li>
         <!--
 
         <li class="last ">

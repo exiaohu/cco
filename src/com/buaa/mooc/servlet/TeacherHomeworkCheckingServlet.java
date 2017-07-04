@@ -25,15 +25,14 @@ public class TeacherHomeworkCheckingServlet extends HttpServlet {
         try {
             int hid = Integer.parseInt(request.getParameterMap().get("hid")[0]);
             int sid = Integer.parseInt(request.getParameterMap().get("sid")[0]);
-            System.out.println(hid);
-            System.out.println(sid);
+            int cid = Integer.parseInt(request.getParameterMap().get("cid")[0]);
 
 
             Float score = Float.parseFloat(request.getParameter("score"));
             String remark = new String( request.getParameter("_value").getBytes("iso-8859-1"), "utf-8");
             TeacherHomeworkCheckDao checkDao =new TeacherHomeworkCheckDao();
             checkDao.EditHomeworkCheck(hid,sid,score,remark);
-            response.sendRedirect("TeacherHomeworkCheck?hid="+hid);
+            response.sendRedirect("TeacherHomeworkCheck?hid="+hid+"&cid="+cid);
         } catch (IllegalFormatException e) {
             e.printStackTrace();
             response.sendRedirect("AddSemester");
@@ -66,6 +65,7 @@ public class TeacherHomeworkCheckingServlet extends HttpServlet {
         String fname = new FileDao().getFileById(submit.getFid()).getFilename();
         fname = fname.substring(fname.lastIndexOf("\\") + 1);
         request.setAttribute("fname",fname);
+        request.setAttribute("cid",new HomeworkDao().findByHid(hid).getCourseId());
 
         // <!-- Homework homework = request.getParameter(Homework).getBytes();-->
         RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/teacher_homework_checking.jsp");

@@ -19,14 +19,13 @@ public class TeacherHomeworkEditServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             Integer hid = Integer.parseInt(request.getParameter("hid"));
+            Integer cid = Integer.parseInt(request.getParameter("cid"));
 
             String imformation = new String(request.getParameter("request").getBytes("iso-8859-1"), "utf-8");
             HomeworkDao homeworkDao = new HomeworkDao();
-
-            // homeworkDao.EditHomework(hid, hname, new Timestamp(startDate.getTime()), new Timestamp(endDate.getTime()), imformation);
             homeworkDao.EditHomework(hid, imformation);
-            //System.out.print(123413);
-            response.sendRedirect("TeacherHomework");
+
+            response.sendRedirect("TeacherHomework?cid="+cid);
         } catch (IllegalFormatException e) {
             e.printStackTrace();
             response.sendRedirect("AddSemester");
@@ -46,6 +45,7 @@ public class TeacherHomeworkEditServlet extends HttpServlet {
         request.setAttribute("startDate", homework.getStartTime());
         request.setAttribute("deadLine", homework.getDeadLine());
         request.setAttribute("imformation", homework.getHomeworkInformation());
+        request.setAttribute("cid",homework.getCourseId());
 
         // <!-- Homework homework = request.getParameter(Homework).getBytes();-->
         RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/teacher_homework_edit.jsp");

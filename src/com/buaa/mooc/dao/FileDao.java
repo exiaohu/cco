@@ -11,7 +11,6 @@ public class FileDao {
 
     public Integer AddFile(String filename, Integer id) {
         Session session = HibernateUtils.getSession();
-
         try {
             session.beginTransaction();
             File file = new File();

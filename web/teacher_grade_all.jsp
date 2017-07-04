@@ -1,12 +1,21 @@
 <%@ page import="com.buaa.mooc.entity.Homework" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.buaa.mooc.dao.HomeworkDao" %>
 <%@ page import="com.buaa.mooc.entity.Student" %>
-<%@ page import="com.buaa.mooc.dao.StudentDao" %>
 <%@ page import="com.buaa.mooc.entity.Course" %>
-<%@ page import="com.buaa.mooc.dao.TeacherHomeworkCheckDao" %>
+<%@ page import="com.buaa.mooc.entity.StudentCourse" %>
+<%@ page import="com.buaa.mooc.dao.*" %>
+<%@ page import="java.util.Map" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!-- BEGIN HEAD -->
+
+<%--<html xmlns:x="urn:schemas-microsoft-com:office:excel">--%>
+
+<%--<script type="text/javascript">--%>
+    <%--function exportExcel(){--%>
+        <%--window.open('teacher_grade_all.jsp?exportToExcel=YES');--%>
+    <%--}--%>
+
+<%--</script>--%>
 
 <head>
 
@@ -92,7 +101,7 @@
 
                             <i class="icon-angle-right"></i>
 
-                            <a href="TeacherGradeAll">该科成绩管理</a>
+                            <a href="TeacherGradeAll?cid=<%=request.getAttribute("cid")%>&download=no">该科成绩管理</a>
 
                         </li>
 
@@ -115,6 +124,16 @@
                         <div class="portlet-body">
 
                             <div style="padding:15px"></div>
+                            <%--<%--%>
+                                <%--String exportToExcel = request.getParameter("exportToExcel");--%>
+                                <%--if (exportToExcel != null--%>
+                                        <%--&& exportToExcel.equalsIgnoreCase("YES")) {--%>
+                                    <%--response.setContentType("application/vnd.ms-excel");--%>
+                                    <%--response.setHeader("Content-Disposition", "inline; filename="--%>
+                                            <%--+ "excel.xls");--%>
+
+                                <%--}--%>
+                            <%--%>--%>
 
                             <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
 
@@ -140,22 +159,25 @@
 
                                 <tbody>
 
-                                <%  List<Homework> homeworks = (List<Homework>)request.getAttribute("homeworks"); %>
+                                <%  List<StudentCourse> studentCourses = (List<StudentCourse>)request.getAttribute("studentCources"); %>
                                 <%
-                                    if (homeworks != null && homeworks.size()>0) {
-                                        for (Homework homework : homeworks) {
+                                    if (studentCourses != null && studentCourses.size()>0) {
+                                        Map<Integer, Double> groupScore = new GroupScoreDao().findByCid(studentCourses.get(0).getPk().getCid());
+                                        for (StudentCourse studentCourse : studentCourses) {
                                 %>
                                 <tr>
 
-                                    <%--<td><%=%></td>--%>
+                                    <td><%=studentCourse.getPk().getSid()%></td>
 
-                                    <%--<td><%=%></td>--%>
+                                    <td><%=studentCourse.getGid()%></td>
 
-                                    <%--<td><%=%></td>--%>
+                                    <td><%=new StudentDao().findById(studentCourse.getPk().getSid()).getSname()%></td>
 
-                                    <%--<td><%=%></td>--%>
+                                    <td><%=groupScore.get(studentCourse.getGid())%></td>
 
-                                    <%--<td><%=%></td>--%>
+                                    <td><%=studentCourse.getGroup_contribute()%></td>
+
+                                    <td><%=groupScore.get(studentCourse.getGid())*studentCourse.getGroup_contribute()%></td>
 
 
                                 </tr>
@@ -171,15 +193,14 @@
                             <!-- END SAMPLE TABLE PORTLET-->
 
                             <!-- END BORDERED TABLE PORTLET--><!-- END PAGE HEADER-->
-                            <td>
+                            <%--<%--%>
+                                <%--if (exportToExcel == null) {--%>
+                            <%--%>--%>
+                            <a href="TeacherGradeAll?cid=<%=request.getAttribute("cid")%>&download=yes">导出为Excel</a>
 
-                                <button id="out"  class="btn green" style="width:120px;height:30px;margin-top:10px; margin-left:850px;  margin-right:10px; margin-bottom:10px;">
-
-                                    导出学生成绩
-
-                                </button>
-
-                            </td>
+                            <%--<%--%>
+                                <%--}--%>
+                            <%--%>--%>
 
                         </div>
 

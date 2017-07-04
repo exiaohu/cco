@@ -189,7 +189,7 @@
                                     <% List<Course> courses = (List<Course>) request.getAttribute("courses"); %>
 
                                     <%
-                                        if (courses != null) {
+                                        if (courses != null&& courses.size()>0) {
                                             for (Course course : courses) {
                                     %>
                                     <tr class="">

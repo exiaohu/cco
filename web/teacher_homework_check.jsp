@@ -131,13 +131,13 @@
 
                         <li>
 
-                            <a href="TeacherHomework">作业管理</a>
+                            <a href="TeacherHomework?cid=<%=request.getAttribute("cid")%>">作业管理</a>
 
                             <i class="icon-angle-right"></i>
 
                         </li>
 
-                        <li><a href="TeacherHomeworkCheck?hid=<%=request.getAttribute("hid")%>">作业列表</a></li>
+                        <li><a href="TeacherHomeworkCheck?hid=<%=request.getAttribute("hid")%>&cid=<%=request.getAttribute("cid")%>">作业列表</a></li>
 
                     </ul>
 
