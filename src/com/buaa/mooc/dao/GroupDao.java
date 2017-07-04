@@ -1,12 +1,10 @@
 package com.buaa.mooc.dao;
 
-import com.buaa.mooc.entity.Group;
-import com.buaa.mooc.entity.Student;
-import com.buaa.mooc.entity.StudentCourse;
-import com.buaa.mooc.entity.StudentCoursePK;
+import com.buaa.mooc.entity.*;
 import com.buaa.mooc.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import sun.security.krb5.SCDynamicStoreConfig;
 
 import java.util.HashMap;
 import java.util.List;
@@ -67,6 +65,37 @@ public class GroupDao {
         } catch (Exception e) {
             session.getTransaction().rollback();
             return false;
+        } finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
+
+    public void InsertGroup(GroupRecruit gr) {
+        Session session = HibernateUtils.getSession();
+        try {
+            Group group = new Group();
+            group.setManager_sid(gr.getConvener());
+            group.setGname(gr.getGroup_name());
+            group.setInformation(gr.getRecruit_information());
+            group.setCid(gr.getCid());
+            session.beginTransaction();
+            session.save(group);
+            String hql = "select sc " +
+                    "from StudentCourse as sc, StudentJoinGroup as sjg " +
+                    "where sc.pk.cid = :cid and sc.pk.sid = sjg.pk.sid and sjg.pk.grid = :grid";
+            Query query = session.createQuery(hql);
+            query.setParameter("cid", gr.getCid());
+            query.setParameter("grid", gr.getGrid());
+            List<StudentCourse> scs = query.list();
+            for (StudentCourse sc : scs) {
+                sc.setGid(group.getGid());
+                session.update(sc);
+            }
+            session.delete(gr);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
         } finally {
             HibernateUtils.closeSession(session);
         }

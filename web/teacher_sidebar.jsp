@@ -81,6 +81,7 @@
 
 
         </li>
+
         <li class="">
 
             <a href = "TeacherGrade">
@@ -93,20 +94,18 @@
 
         </li>
 
-        <!--
+        <li class="">
 
-        <li class="last ">
+            <a href = "TeacherGroup">
 
-            <a href="teacher_resources.html">
+                <i class ="icon-file-text"></i>
 
-                <i class="icon-folder-open"></i>
-
-                <span class="title">资源管理</span>
+                <span class="title">团队管理</span>
 
             </a>
 
         </li>
-        -->
+
     </ul>
 
     <!-- END SIDEBAR MENU -->

@@ -165,6 +165,26 @@
     </servlet>
 
 
+    <servlet>
+        <servlet-name>TeacherManGroup</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherManGroup</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherRefuseGroup</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherRefuseGroup</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherAgreeGroup</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherAgreeGroup</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherGroup</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherGroupServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TeacherGroupInfo</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.TeacherGroupInfo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddCourseInfo</servlet-name>
         <url-pattern>/addCourseInfo</url-pattern>
@@ -233,7 +253,6 @@
         <servlet-name>StudentCourse</servlet-name>
         <url-pattern>/StudentCourse</url-pattern>
     </servlet-mapping>
-
     <servlet-mapping>
         <servlet-name>AddStudentInfo</servlet-name>
         <url-pattern>/AddStudentInfo</url-pattern>
@@ -317,5 +336,25 @@
     <servlet-mapping>
         <servlet-name>TeacherCourceHomework</servlet-name>
         <url-pattern>/TeacherCourceHomework</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherManGroup</servlet-name>
+        <url-pattern>/TeacherManGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherAgreeGroup</servlet-name>
+        <url-pattern>/TeacherAgreeGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherRefuseGroup</servlet-name>
+        <url-pattern>/TeacherRefuseGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherGroup</servlet-name>
+        <url-pattern>/TeacherGroup</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TeacherGroupInfo</servlet-name>
+        <url-pattern>/TeacherGroupInfo</url-pattern>
     </servlet-mapping>
 </web-app>
