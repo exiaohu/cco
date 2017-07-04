@@ -206,7 +206,7 @@
                                     else {
                                         File file = fileDao.getFileById(fid);
                                         String fileName = file.getFilename();
-                                        if (fileName.endsWith("\\")) {
+                                        if (fileName.endsWith("\\") || fileName.equals("")) {
                                             flag = false;
                                         }
                                         else{

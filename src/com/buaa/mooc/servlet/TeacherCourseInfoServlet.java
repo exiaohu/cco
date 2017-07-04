@@ -37,7 +37,14 @@ public class TeacherCourseInfoServlet extends HttpServlet {
         request.setAttribute("beginDate",course.getBeginDate());
         request.setAttribute("endDate",course.getEndDate());
         request.setAttribute("outline",course.getOutline());
-        request.setAttribute("accessory",new FileDao().getFileById(course.getFid()).getFilename());
+        String fileName = null;
+        try {
+            fileName = new FileDao().getFileById(course.getFid()).getFilename();
+            System.out.println(fileName);
+            //fileName = new String(fileName.getBytes("iso-8859-1"), "utf-8");
+        } catch (Throwable ignored) {
+        }
+        request.setAttribute("accessory", fileName);
         RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/teacher_course_info.jsp");
         rd.forward(request, response);
     }

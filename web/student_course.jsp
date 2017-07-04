@@ -199,6 +199,13 @@
                             <%=course.getAddress()%>
                         </h4>
 
+                        <h4>
+                            <%=
+                            (course.getGroup_mem_max()!=null ? "组队人数上限："+course.getGroup_mem_max() : "") + "\n" +
+                            (course.getGroup_mem_min()!=null ? "组队人数下限："+course.getGroup_mem_min() : "")
+                            %>
+                        </h4>
+
                     </div>
 
                 </div>

@@ -52,20 +52,6 @@
 
     <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
-    <style>
-        div.icon_head {
-            width: 105px;
-            height: 105px;
-            display: block;
-            position: relative;
-
-            padding: 0px;
-            margin-right: 55px;
-            margin-left: 55px;
-            margin-top: 50px;
-            margin-bottom: 100px;
-        }
-    </style>
 </head>
 
 <body class="page-header-fixed">

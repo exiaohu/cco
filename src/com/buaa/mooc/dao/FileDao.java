@@ -33,7 +33,8 @@ public class FileDao {
         Session session = null;
         try {
             session = HibernateUtils.getSession();
-            return session.load(File.class, fid);
+            File f = session.load(File.class, fid);
+            return f;
         } catch (Exception e) {
             e.printStackTrace();
             return null;

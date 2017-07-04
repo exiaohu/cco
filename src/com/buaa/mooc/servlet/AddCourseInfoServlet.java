@@ -36,6 +36,7 @@ public class AddCourseInfoServlet extends HttpServlet {
             factory.setRepository(new File(savePath));
 
             ServletFileUpload upload = new ServletFileUpload(factory);
+            upload.setHeaderEncoding("UTF-8");
             upload.setSizeMax(1024 * 1024 * 1024);
             List<FileItem> fileItems = upload.parseRequest(request);
             for (FileItem item : fileItems) {

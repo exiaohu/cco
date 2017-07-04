@@ -27,22 +27,23 @@ public class EduAdminCourseInfoServlet extends HttpServlet {
             Integer cid = Integer.parseInt(request.getParameter("cid"));
             String cname = new String(request.getParameter("cname").getBytes("iso-8859-1"), "utf-8");
             ParsePosition pos = new ParsePosition(0);
-            SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             java.util.Date beginDate = formatter.parse(request.getParameter("beginDate"), pos);
             pos = new ParsePosition(0);
-            formatter = new SimpleDateFormat("MM/dd/yyyy");
+            formatter = new SimpleDateFormat("yyyy-MM-dd");
             java.util.Date endDate = formatter.parse(request.getParameter("endDate"), pos);
             Integer credit = Integer.parseInt(request.getParameter("credit"));
             String address = new String(request.getParameter("address").getBytes("iso-8859-1"), "utf-8");
             String sids_s = request.getParameter("sids");
-            System.out.println(sids_s);
             StudentDao studentDao = new StudentDao();
-            String[] sids = sids_s.split(" |\n|,|;");
+            String[] sids = sids_s.split(" |[\\t\\n]|,|;");
             if (sids.length > 0) {
                 for (String sid_s : sids) {
+                    System.out.println(sid_s);
                     if (sid_s != null && !sid_s.isEmpty()) {
                         try {
                             Integer sid = Integer.parseInt(sid_s);
+                            System.out.println("+" + sid);
                             Student student = studentDao.findById(sid);
                             if (student != null) {
                                 StudentCourseDao studentCourseDao = new StudentCourseDao();

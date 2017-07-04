@@ -25,7 +25,7 @@
             </ul>
 
         </li>
-        <li class="start active ">
+        <li class="">
 
             <a href="eduadmin">
 

@@ -11,21 +11,22 @@
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
 
     <title>我的团队</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <meta content="" name="description" />
+    <meta content="" name="description"/>
 
-    <meta content="" name="author" />
+    <meta content="" name="author"/>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -49,13 +50,13 @@
 
     <!-- BEGIN PAGE LEVEL STYLES -->
 
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css"/>
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
 
     <!-- END PAGE LEVEL STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
 </head>
 
@@ -286,58 +287,66 @@
 
                                 </div>
 
-                                <div class="portlet-body flip-scroll">
+                                <form action="StudentUpdateGroupContribute" method="post">
 
-                                    <table class="table-bordered table-striped table-condensed flip-content">
+                                    <input hidden="hidden" name="gid" value="<%=group.getGid()%>" />
 
-                                        <thead class="flip-content">
+                                    <div class="portlet-body flip-scroll">
 
-                                        <tr>
+                                        <table class="table-bordered table-striped table-condensed flip-content">
 
-                                            <th>学号</th>
+                                            <thead class="flip-content">
 
-                                            <th>姓名</th>
+                                            <tr>
 
-                                            <th class="numeric">团队贡献度</th>
+                                                <th>学号</th>
 
-                                        </tr>
+                                                <th>姓名</th>
 
-                                        </thead>
+                                                <th class="numeric">团队贡献度</th>
 
-                                        <tbody>
+                                            </tr>
 
-                                        <%
-                                            if (students != null && students.size() > 0) {
+                                            </thead>
 
-                                                for (Student student : students.keySet()) {
-                                        %>
+                                            <tbody>
 
-                                        <tr>
+                                            <%
+                                                if (students != null && students.size() > 0) {
 
-                                            <td><%=student.getSid()%>
-                                            </td>
+                                                    for (Student student : students.keySet()) {
+                                            %>
 
-                                            <td><%=student.getSname()%>
-                                            </td>
+                                            <tr>
 
-                                            <td class="numeric"><input id="<%=student.getSid()%>" name="<%=student.getSid()%>" type="text"
-                                                                       onKeyUp="this.value=this.value.replace(/[^\d\.]/g,'')" value="<%=students.get(student)%>">
-                                            </td>
+                                                <td><%=student.getSid()%>
+                                                </td>
 
-                                        </tr>
+                                                <td><%=student.getSname()%>
+                                                </td>
 
-                                        <%
+                                                <td class="numeric"><input id="<%=student.getSid()%>"
+                                                                           name="<%=student.getSid()%>" type="text"
+                                                                           onKeyUp="this.value=this.value.replace(/[^\d\.]/g,'')"
+                                                                           value="<%=students.get(student)==null?"":students.get(student)%>">
+                                                </td>
+
+                                            </tr>
+
+                                            <%
+                                                    }
                                                 }
-                                            }
-                                        %>
+                                            %>
 
-                                        </tbody>
+                                            </tbody>
 
-                                    </table>
+                                        </table>
 
-                                    <button id="conSubmit" class="btn green">确认提交贡献度</button>
+                                        <input type="submit" class="btn green" value="确认提交贡献度" />
 
-                                </div>
+                                    </div>
+
+                                </form>
 
                             </div>
 
@@ -378,9 +387,6 @@
 
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 
-<script language="JavaScript">
-</script>
-
 <!-- BEGIN CORE PLUGINS -->
 
 <script src="media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
@@ -407,7 +413,7 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -424,36 +430,10 @@
 <script src="media/js/app.js"></script>
 
 <script src="media/js/table-advanced.js"></script>
-
+<!--
 <script>
 
-    $("#conSubmit").onclick = function () {
-        var data;
-        data.gid = <%=group.getGid()%>;
-        <%
-        if (students != null && students.size() > 0) {
-            for (Student student : students.keySet()) {
-        %>
-        data.<%=student.getSid()%> = $("#<%=student.getSid()%>").val();
-        <%
-            }
-        }
-        %>
-        $.ajax({
-            url: "StudentUpdateGroupContribute",
-            type: "POST",
-            data: data,
-            dataType: "json",
-            success: function (res) {
-                alert(res);
-            },
-            error: function (err) {
-                alert(err);
-            }
-        });
-    };
-
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         // initiate layout and plugins
 
@@ -464,7 +444,7 @@
     });
 
 </script>
-
+-->
 </body>
 
 <!-- END BODY -->

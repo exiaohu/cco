@@ -2,7 +2,9 @@ package com.buaa.mooc.servlet;
 
 import com.buaa.mooc.dao.CourseDao;
 import com.buaa.mooc.dao.GroupRecruitDao;
+import com.buaa.mooc.dao.MessageDao;
 import com.buaa.mooc.entity.Course;
+import com.buaa.mooc.entity.GroupRecruit;
 import com.buaa.mooc.entity.GroupRecruitView;
 import com.buaa.mooc.entity.StudentRecruitView;
 import com.buaa.mooc.utils.Validation;
@@ -32,6 +34,7 @@ public class SubmitGroupRecruitServlet extends HttpServlet {
             GroupRecruitDao groupRecruitDao = new GroupRecruitDao();
             List<StudentRecruitView> studentRecruitViews = groupRecruitDao.findByGridSRV(grid);
             GroupRecruitView groupRecruitView = groupRecruitDao.findByGridwithMemCount(grid);
+            GroupRecruit gr = groupRecruitDao.findByGridGR(grid);
             Course course = new CourseDao().findByCid(groupRecruitView.getCid());
             boolean flag = true;
             for (StudentRecruitView student : studentRecruitViews) {
@@ -45,6 +48,9 @@ public class SubmitGroupRecruitServlet extends HttpServlet {
             }
             if (flag) {
                 groupRecruitDao.submitGR(grid);
+            } else {
+                new MessageDao().InsertMessage(gr.getConvener(),
+                        "你的队伍提交请求失败，可能是因为你的队伍的人数不符合课程要求。");
             }
             response.sendRedirect("StudentGroupCheck?grid=" + grid);
         } catch (Throwable e) {

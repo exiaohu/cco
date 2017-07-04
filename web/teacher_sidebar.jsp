@@ -33,7 +33,7 @@
 
         </li>
 
-        <li class=" ">
+        <li class="">
 
             <a href="teacher">
 

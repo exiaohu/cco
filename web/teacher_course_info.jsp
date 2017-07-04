@@ -231,14 +231,14 @@
 
                                         <div class="controls">
 
-                                            <span class="help-inline"><%=request.getAttribute("accessory")%></span>
+                                            <span class="help-inline"><%=request.getAttribute("accessory")!=null?request.getAttribute("accessory"):"没有附件"%></span>
 
                                         </div>
 
                                     </div>
                                     <div class="form-actions">
 
-                                        <button type="submit" class="btn blue">确定</button>
+                                        <%--<button type="submit" class="btn blue">确定</button>--%>
 
                                         <a href="teacherCourse"><button type="button" class="btn">取消</button></a>
 
