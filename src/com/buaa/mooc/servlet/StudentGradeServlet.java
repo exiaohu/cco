@@ -10,12 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Created by windrises on 2017/6/30.
- */
-public class StudentResourcesServlet extends HttpServlet {
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+/**
+ * Created by windrises on 2017/7/3.
+ */
+public class StudentGradeServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +25,7 @@ public class StudentResourcesServlet extends HttpServlet {
         }
         Integer cid = Integer.parseInt(request.getParameterMap().get("cid")[0]);
         request.setAttribute("course", new CourseDao().findByCid(cid));
-        RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/student_resources.jsp");
+        RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/student_grade.jsp");
         rd.forward(request, response);
     }
 }

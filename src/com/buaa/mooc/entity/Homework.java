@@ -6,39 +6,40 @@ import java.sql.Timestamp;
  * Created by windrises on 2017/6/28.
  */
 public class Homework {
-    private int homeworkId;
-    private int courseId;
+    private Integer homeworkId;
+    private Integer courseId;
     private String homeworkName;
     private Timestamp startTime;
     private Timestamp deadLine;
-    private int submitMaxTimes;
+    private Integer submitMaxTimes;
     private String homeworkInformation;
+    private Integer proportion;
 
     public Homework() {
         super();
     }
 
-    public int getId() {
+    public Integer getId() {
         return homeworkId;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.homeworkId = id;
     }
 
-    public int getHomeworkId() {
+    public Integer getHomeworkId() {
         return homeworkId;
     }
 
-    public void setHomeworkId(int id) {
+    public void setHomeworkId(Integer id) {
         this.homeworkId = id;
     }
 
-    public int getCourseId() {
+    public Integer getCourseId() {
         return courseId;
     }
 
-    public void setCourseId(int id) {
+    public void setCourseId(Integer id) {
         this.courseId = id;
     }
 
@@ -66,11 +67,11 @@ public class Homework {
         this.deadLine = date;
     }
 
-    public int getSubmitMaxTimes() {
+    public Integer getSubmitMaxTimes() {
         return submitMaxTimes;
     }
 
-    public void setSubmitMaxTimes(int times) {
+    public void setSubmitMaxTimes(Integer times) {
         this.submitMaxTimes = times;
     }
 
@@ -81,4 +82,7 @@ public class Homework {
     public void setHomeworkInformation(String homeworkInformation) {
         this.homeworkInformation = homeworkInformation;
     }
+
+    public Integer getProportion(){ return proportion; }
+    public void setProportion(Integer proportion) {this.proportion = proportion; }
 }

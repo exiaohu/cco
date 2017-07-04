@@ -1,9 +1,6 @@
 package com.buaa.mooc.servlet;
 
-import com.buaa.mooc.dao.CourseDao;
-import com.buaa.mooc.dao.FileDao;
-import com.buaa.mooc.dao.HomeworkDao;
-import com.buaa.mooc.dao.StudentHWSubmitDao;
+import com.buaa.mooc.dao.*;
 import com.buaa.mooc.entity.Homework;
 import com.buaa.mooc.entity.HomeworkSubmit;
 import com.buaa.mooc.entity.HomeworkSubmitPK;
@@ -34,6 +31,7 @@ public class StudentHomeworkViewServlet extends HttpServlet {
         Integer cid = Integer.parseInt(request.getParameterMap().get("cid")[0]);
         Integer hid = Integer.parseInt(request.getParameterMap().get("hid")[0]);
         Integer sid = (Integer) request.getSession().getAttribute("sid");
+        Integer gid = new StudentCourseDao().findBySidAndCid(sid,cid).getGid();
 
         HomeworkDao homeworkDao = new HomeworkDao();
         Homework homework = homeworkDao.findByHid(hid);
@@ -53,14 +51,16 @@ public class StudentHomeworkViewServlet extends HttpServlet {
 
         // 上传文件的保存目录
         String savePath = getServletContext().getRealPath("");
+        String path = "";
 
         try {
             DiskFileItemFactory factory = new DiskFileItemFactory();
             factory.setSizeThreshold(2048*1024);
             File file = null;
-            String apd[] = {"upload",String.valueOf(cid),String.valueOf(hid),String.valueOf(sid)};
+            String apd[] = {"upload","\\" + cid,"\\" + hid,"\\" + gid};
             for(String str:apd) {
-                savePath += "/" + str;
+                path += str;
+                savePath += str;
                 file = new File(savePath);
                 //System.out.println(savePath);
                 if (!file.exists()) {
@@ -77,7 +77,11 @@ public class StudentHomeworkViewServlet extends HttpServlet {
                 if (!item.isFormField()) {
                     filename = item.getName();
                     filename = filename.substring(filename.lastIndexOf("\\") + 1, filename.length());
-                    File uploadFile = new File(savePath + "/" + filename);
+                    String fullPath = savePath + "\\" + filename;
+                    //System.out.println(filename + "-" + savePath + "-" + filename);
+                    path += "\\" + filename;
+                    //System.out.println(path);
+                    File uploadFile = new File(fullPath);
                     item.write(uploadFile);
                 }
                 else if (item.getFieldName().equals("studentHWText")) {
@@ -89,16 +93,16 @@ public class StudentHomeworkViewServlet extends HttpServlet {
         }
 
         FileDao fileDao = new FileDao();
-        Integer fid = fileDao.AddFile(filename, (Integer) request.getSession().getAttribute("sid"));
+        Integer fid = fileDao.AddFile(path, (Integer) request.getSession().getAttribute("sid"));
         StudentHWSubmitDao submitDao = new StudentHWSubmitDao();
-        HomeworkSubmit homeworkSubmit = submitDao.findHKSubmitByHidSid(hid,sid);
+        HomeworkSubmit homeworkSubmit = submitDao.findHKSubmitByHidSid(hid,gid);
         if(homeworkSubmit == null) {
-            submitDao.addHWSubmit(hid, sid, fid, now,
+            submitDao.addHWSubmit(hid, gid, fid, now,
                      submitContent, 0, null, null, 1);
             response.sendRedirect("/StudentHomework?cid="+ cid);
         }
         else if(homeworkSubmit.getSubmitTimes() < homework.getSubmitMaxTimes()){
-            submitDao.editHWSubmit(hid,sid,fid, now,
+            submitDao.editHWSubmit(hid, gid, fid, now,
                     submitContent, 0, null, null,
                     homeworkSubmit.getSubmitTimes() + 1);
             response.sendRedirect("/StudentHomework?cid="+ cid);
@@ -118,20 +122,54 @@ public class StudentHomeworkViewServlet extends HttpServlet {
         try {
             Integer sid = (Integer) request.getSession().getAttribute("sid");
             Integer hid = Integer.parseInt(request.getParameterMap().get("hid")[0]);
+            Integer cid = Integer.parseInt(request.getParameterMap().get("cid")[0]);
+            Integer gid = new StudentCourseDao().findBySidAndCid(sid,cid).getGid();
             StudentHWSubmitDao submitDao = new StudentHWSubmitDao();
-            HomeworkSubmit homeworkSubmit = submitDao.findHKSubmitByHidSid(hid,sid);
+            HomeworkSubmit homeworkSubmit = submitDao.findHKSubmitByHidSid(hid,gid);
             HomeworkDao homeworkDao = new HomeworkDao();
             Homework homework = homeworkDao.findByHid(hid);
+            Timestamp startTime = homework.getStartTime();
+            Timestamp deadLine = homework.getDeadLine();
+            Timestamp now = new Timestamp(System.currentTimeMillis());
+            if(now.before(startTime)){
+                request.setAttribute("status","作业还未开始");
+            }
+            else if(now.after(deadLine)){
+                request.setAttribute("status","作业已经结束");
+            }
+            else{
+                request.setAttribute("status","作业正在进行");
+            }
 
             if(homeworkSubmit != null){
                 request.setAttribute("submitContent", homeworkSubmit.getSubmitContent());
+                request.setAttribute("submitStatus", "已经提交");
+                FileDao fileDao = new FileDao();
+                String fname = fileDao.getFileById(homeworkSubmit.getFid()).getFilename();
+                fname = fname.substring(fname.lastIndexOf("\\") + 1);
+                request.setAttribute("fname",fname);
+                request.setAttribute("fid",homeworkSubmit.getFid());
             }
             else{
                 request.setAttribute("submitContent", "");
+                request.setAttribute("submitStatus", "未提交");
+                if(homeworkSubmit == null || homeworkSubmit.getIsCorrect() == 0){
+                    request.setAttribute("fname","");
+                }
+                else{
+                    request.setAttribute("fname","没有附件");
+                }
             }
             request.setAttribute("homework", homework);
             request.setAttribute("course", new CourseDao().findByCid(homework.getCourseId()));
-            RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/student_hwview.jsp");
+            RequestDispatcher rd = null;
+            if(homeworkSubmit == null || homeworkSubmit.getIsCorrect() == 0){
+                rd = getServletConfig().getServletContext().getRequestDispatcher("/student_hwview.jsp");
+            }
+            else{
+                request.setAttribute("comment",homeworkSubmit.getRemark());
+                rd = getServletConfig().getServletContext().getRequestDispatcher("/student_hw_submitInfo.jsp");
+            }
             rd.forward(request, response);
 
         } catch (Throwable e) {

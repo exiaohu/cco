@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.buaa.mooc.entity.Course" %>
+<%@ page import="com.buaa.mooc.dao.FileDao" %>
+<%@ page import="com.buaa.mooc.entity.File" %><%--
   Created by IntelliJ IDEA.
   User: windrises
   Date: 2017/6/30
@@ -76,6 +78,7 @@
 <div class="page-container row-fluid">
 
     <jsp:include page="student_sidebar.jsp"/>
+    <% Course course = (Course) request.getAttribute("course"); %>
 
     <!-- BEGIN PAGE -->
 
@@ -135,9 +138,8 @@
 
                         <li>
 
-                            <a href="student">敏捷开发</a>
-
-                            <!-- 数据库获取该课程名 -->
+                            <a href="StudentCourse?cid=<%=course.getCid()%>"><%=course.getCname()%>
+                            </a>
 
                             <i class="icon-angle-right"></i>
 
@@ -145,7 +147,7 @@
 
                         <li>
 
-                            <a href="studentResources">资源管理</a>
+                            <a href="StudentResources?cid=<%=course.getCid()%>">资源管理</a>
 
                         </li>
 
@@ -187,73 +189,60 @@
 
                                     <th>课程</th>
 
-                                    <th>日期</th>
-
-                                    <th>Delete</th>
+                                    <th>操作</th>
 
                                 </tr>
 
                                 </thead>
 
                                 <tbody>
+                                <%  FileDao fileDao = new FileDao();
+                                    Integer fid = course.getFid();
+                                    Boolean flag = true;
+                                    String name = null;
+                                    if(fid == null){
+                                        flag = false;
+                                    }
+                                    else {
+                                        File file = fileDao.getFileById(fid);
+                                        String fileName = file.getFilename();
+                                        if (fileName.endsWith("\\")) {
+                                            flag = false;
+                                        }
+                                        else{
+                                            name = fileName.substring(fileName.lastIndexOf("\\") + 1);
+                                        }
+                                    }
+                                    if(flag){
+                                %>
+                                    <tr class="">
 
-                                <tr class="">
+                                        <td><%=name%></td>
 
-                                    <td>Chp01_敏捷开发概述</td>
+                                        <td><%=course.getCname()%></td>
 
-                                    <td>敏捷开发</td>
+                                        <td>
+                                            <a href="DownloadFile?fid=<%=course.getFid()%>" class="btn mini green"><i class="icon-download"></i>下载</a>
+                                        </td>
 
-                                    <td>2017-3-5</td>
+                                    </tr>
+                                <%
+                                    }
+                                    else{
+                                %>
+                                    <tr class="">
 
-                                    <td><a href="student_sourceInfo.html" class="btn mini blue"
-                                           style="margin-right:10px"><i class="icon-eye-open"></i> 查看</a><a href="#"
-                                                                                                            class="btn mini green"><i
-                                            class="icon-download"></i> 下载</a></td>
+                                        <td>没有课程资源</td>
 
-                                </tr>
+                                        <td></td>
 
+                                        <td></td>
 
-                                <tr class="">
+                                    </tr>
+                                <%
+                                    }
+                                %>
 
-                                    <td>Chp01_敏捷开发概述</td>
-
-                                    <td>敏捷开发</td>
-
-                                    <td>2017-3-5</td>
-
-                                    <td><a href="#" class="btn mini blue" style="margin-right:10px"><i
-                                            class="icon-eye-open"></i> 查看</a><a href="#" class="btn mini green"><i
-                                            class="icon-download"></i> 下载</a></td>
-
-                                </tr>
-
-                                <tr class="">
-
-                                    <td>Chp01_敏捷开发概述</td>
-
-                                    <td>敏捷开发</td>
-
-                                    <td>2017-3-5</td>
-
-                                    <td><a href="#" class="btn mini blue" style="margin-right:10px"><i
-                                            class="icon-eye-open"></i> 查看</a><a href="#" class="btn mini green"><i
-                                            class="icon-download"></i> 下载</a></td>
-
-                                </tr>
-
-                                <tr class="">
-
-                                    <td>Chp01_敏捷开发概述</td>
-
-                                    <td>敏捷开发</td>
-
-                                    <td>2017-3-5</td>
-
-                                    <td><a href="#" class="btn mini blue" style="margin-right:10px"><i
-                                            class="icon-eye-open"></i> 查看</a><a href="#" class="btn mini green"><i
-                                            class="icon-download"></i> 下载</a></td>
-
-                                </tr>
                                 </tbody>
 
                             </table>
@@ -288,7 +277,7 @@
 
 <!-- BEGIN FOOTER -->
 
-<jsp:include page="footer/footer.jsp"></jsp:include>
+<jsp:include page="footer.jsp"></jsp:include>
 
 <!-- END FOOTER -->
 

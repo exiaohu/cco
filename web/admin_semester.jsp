@@ -188,8 +188,6 @@
 
                             <table class="table table-striped table-bordered table-hover" id="sample_editable_1">
 
-                                <thead>
-
                                 <tr>
 
                                     <th>学年</th>
@@ -205,8 +203,6 @@
                                     <th>删除</th>
 
                                 </tr>
-
-                                </thead>
 
                                 <tbody>
 
@@ -232,10 +228,12 @@
                                     </td>
 
                                     <td><%=(term.getWeeks() != null ? term.getWeeks() : "未设置")%>
-                                    </td
+                                    </td>
 
-                                    <td><a href="DeleteSemester?termId=<%=term.getTermId()%>" class="btn mini black"><i
-                                            class="icon-trash"></i> 删除</a></td>
+                                    <td>
+                                        <a href="DeleteSemester?termId=<%=term.getTermId()%>" class="btn mini black">
+                                        <i class="icon-trash"></i> 删除</a>
+                                    </td>
 
                                 </tr>
 

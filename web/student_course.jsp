@@ -182,6 +182,23 @@
                             %>
                         </h4>
 
+                        <h4>
+                            开始日期：
+                            <%=
+                            course.getBeginDate().toString()%>
+                        </h4>
+
+                        <h4>
+                            结束日期：
+                            <%=course.getEndDate().toString()
+                            %>
+                        </h4>
+
+                        <h4>
+                            上课地点：
+                            <%=course.getAddress()%>
+                        </h4>
+
                     </div>
 
                 </div>
@@ -209,7 +226,7 @@
                     </div>
                 </a>
 
-                <a href="StudentRecourse?cid=<%=course.getCid()%>">
+                <a href="StudentResources?cid=<%=course.getCid()%>">
 
                     <div class="tile double-down bg-purple">
 
@@ -232,8 +249,8 @@
 
                     </div>
                 </a>
-                <!--
-                <a href="student_chat.jsp">
+
+                <a href="StudentGrade?cid=<%=course.getCid()%>">
 
                     <div class="tile double-down2 bg-yellow">
 
@@ -247,16 +264,14 @@
 
                             <div class="name" style="font-size:large">
 
-                                讨论
+                                成绩
 
                             </div>
-
 
                         </div>
 
                     </div>
                 </a>
-                -->
 
                 <!-- END PAGE CONTENT-->
 

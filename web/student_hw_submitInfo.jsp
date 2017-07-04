@@ -1,35 +1,33 @@
 <%@ page import="com.buaa.mooc.entity.Course" %>
-<%@ page import="com.buaa.mooc.entity.Homework" %>
-<%@ page import="com.buaa.mooc.entity.HomeworkSubmit" %><%--
+<%@ page import="com.buaa.mooc.entity.Homework" %><%--
   Created by IntelliJ IDEA.
   User: windrises
-  Date: 2017/6/29
-  Time: 0:59
+  Date: 2017/7/3
+  Time: 0:46
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 
-<!--[if !IE]><!-->
-<html lang="en">
-<!--<![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 
 <!-- BEGIN HEAD -->
 
 <head>
 
-    <meta charset="utf-8"/>
+    <meta charset="utf-8" />
 
-    <title>作业上传</title>
+    <title>作业提交信息</title>
 
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-    <meta content="" name="description"/>
+    <meta content="" name="description" />
 
-    <meta content="" name="author"/>
+    <meta content="" name="author" />
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
 
@@ -51,43 +49,42 @@
 
     <!-- END GLOBAL MANDATORY STYLES -->
 
-    <link rel="shortcut icon" href="media/image/favicon.ico"/>
+    <link rel="shortcut icon" href="media/image/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="media/css/bootstrap-fileupload.css" />
 
-    <link rel="stylesheet" type="text/css" href="media/css/bootstrap-fileupload.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/jquery.gritter.css" />
 
-    <link rel="stylesheet" type="text/css" href="media/css/jquery.gritter.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/chosen.css" />
 
-    <link rel="stylesheet" type="text/css" href="media/css/chosen.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css" />
 
-    <link rel="stylesheet" type="text/css" href="media/css/select2_metro.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/jquery.tagsinput.css" />
 
-    <link rel="stylesheet" type="text/css" href="media/css/jquery.tagsinput.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/clockface.css" />
 
-    <link rel="stylesheet" type="text/css" href="media/css/clockface.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/bootstrap-wysihtml5.css" />
 
-    <link rel="stylesheet" type="text/css" href="media/css/bootstrap-wysihtml5.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/datepicker.css" />
 
-    <link rel="stylesheet" type="text/css" href="media/css/datepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/timepicker.css" />
 
-    <link rel="stylesheet" type="text/css" href="media/css/timepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/colorpicker.css" />
 
-    <link rel="stylesheet" type="text/css" href="media/css/colorpicker.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/bootstrap-toggle-buttons.css" />
 
-    <link rel="stylesheet" type="text/css" href="media/css/bootstrap-toggle-buttons.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/daterangepicker.css" />
 
-    <link rel="stylesheet" type="text/css" href="media/css/daterangepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/datetimepicker.css" />
 
-    <link rel="stylesheet" type="text/css" href="media/css/datetimepicker.css"/>
-
-    <link rel="stylesheet" type="text/css" href="media/css/multi-select-metro.css"/>
+    <link rel="stylesheet" type="text/css" href="media/css/multi-select-metro.css" />
 
     <link href="media/css/bootstrap-modal.css" rel="stylesheet" type="text/css"/>
 
-    <link rel="stylesheet" href="media/css/DT_bootstrap.css"/>
+    <link rel="stylesheet" href="media/css/DT_bootstrap.css" />
 
-    <link href="media/css/jquery.fancybox.css" rel="stylesheet"/>
+    <link href="media/css/jquery.fancybox.css" rel="stylesheet" />
 
-    <link href="media/css/jquery.fileupload-ui.css" rel="stylesheet"/>
+    <link href="media/css/jquery.fileupload-ui.css" rel="stylesheet" />
 
 </head>
 
@@ -97,13 +94,24 @@
 
 <body class="page-header-fixed">
 
+<!-- BEGIN HEADER -->
+
+<body class="page-header-fixed">
+
 <jsp:include page="student_header.jsp"/>
+
+<!-- END HEADER -->
 
 <!-- BEGIN CONTAINER -->
 
 <div class="page-container row-fluid">
 
+    <!-- BEGIN SIDEBAR -->
     <jsp:include page="student_sidebar.jsp"/>
+
+    <% Course course = (Course) request.getAttribute("course"); %>
+
+    <!-- END SIDEBAR -->
 
     <!-- BEGIN PAGE -->
 
@@ -145,8 +153,7 @@
 
                     <h3 class="page-title">
 
-                        作业管理
-                        <small>学生提交课程作业</small>
+                        作业管理 <small>学生提交课程作业</small>
 
                     </h3>
 
@@ -164,10 +171,10 @@
 
                         <li>
 
-                            <% Course course = (Course) request.getAttribute("course"); %>
-
                             <a href="StudentCourse?cid=<%=course.getCid()%>"><%=course.getCname()%>
                             </a>
+
+                            <!-- 数据库获取该课程名 -->
 
                             <i class="icon-angle-right"></i>
 
@@ -206,14 +213,12 @@
                     </div>
 
                     <div class="portlet-body form">
-
                         <%  Homework homework = (Homework) request.getAttribute("homework");
                             String submitContent = (String) request.getAttribute("submitContent");
                             String status = (String) request.getAttribute("status");
                         %>
 
                         <!-- BEGIN FORM-->
-
                         <form action="StudentHomeworkView?cid=<%=homework.getCourseId()%>&hid=<%=homework.getId()%>"
                               method="post" enctype="multipart/form-data">
 
@@ -297,14 +302,26 @@
                             <div class="row-fluid">
 
                                 <div class="span12 ">
+
+                                    <div class="control-group">
+
+                                        <label class="control-label" style=" font-weight:bolder">提交详情</label>
+
+                                        <div class="controls">
+
+                                            <span class="text" ><%=(String)request.getAttribute("submitStatus")%></span>
+
+                                        </div>
+
+                                    </div>
+
                                     <div class="control-group">
 
                                         <label class="control-label" style=" font-weight:bolder">作业</label>
 
                                         <div class="controls">
 
-                                            <textarea class="span12 wysihtml5 m-wrap" rows="6" name="studentHWText">
-                                                <%=submitContent%>
+                                            <textarea class="span12 wysihtml5 m-wrap" readonly type="text" rows="6" name="studentHWText"><%=submitContent%>
                                             </textarea>
 
                                         </div>
@@ -313,19 +330,30 @@
 
                                     <div class="control-group">
 
-                                        <label class="control-label">附件：</label>
+                                        <label class="control-label" style=" font-weight:bolder">附件:</label>
 
                                         <div class="controls">
 
-                                            <input type="file" name="files" class="display-value" size="2048"/>
-
-                                            <span class="help-inline"></span>
-
-                                        </div>
-                                        <a href="DownloadFile?fid=<%=request.getAttribute("fid")%>">
-                                            <label class="control-label" style=" font-weight:bolder">
+                                            <a href="DownloadFile?fid=<%=request.getAttribute("fid")%>">
+                                                <label class="control-label" style=" font-weight:bolder">
                                                 <%=(String)request.getAttribute("fname")%>
                                             </label></a>
+
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                                <div class="control-group">
+
+                                    <label class="control-label" style=" font-weight:bolder">评语</label>
+
+                                    <div class="controls">
+
+                                        <textarea class="span12 wysihtml5 m-wrap" readonly type="text" rows="6"><%=(String)request.getAttribute("comment")%>
+                                        </textarea>
 
                                     </div>
 
@@ -335,10 +363,8 @@
 
                             </div>
 
-
                             <div style="margin:20px"></div>
                             <!--/row-->
-
 
                             <!--/span-->
 
@@ -348,21 +374,18 @@
 
                         <div class="form-actions">
 
-                            <button type="submit" class="btn blue"><i class="icon-upload-alt"></i>提交</button>
-
                             <a href="StudentHomework?cid=<%=course.getCid()%>">
                                 <button type="button" class="btn">返回</button>
                             </a>
 
                         </div>
 
-                    </form>
+                    </div>
 
                     <!-- END FORM-->
 
                 </div>
 
-            </div>
             </div>
 
         </div>
@@ -379,7 +402,25 @@
 
 <!-- BEGIN FOOTER -->
 
-<jsp:include page="footer.jsp"/>
+<div class="footer">
+
+    <div class="footer-inner">
+
+        2017 BuaaSoftware Best Group GAD
+
+    </div>
+
+    <div class="footer-tools">
+
+			<span class="go-top">
+
+			<i class="icon-angle-up"></i>
+
+			</span>
+
+    </div>
+
+</div>
 
 <!-- END FOOTER -->
 
@@ -411,7 +452,7 @@
 
 <script src="media/js/jquery.cookie.min.js" type="text/javascript"></script>
 
-<script src="media/js/jquery.uniform.min.js" type="text/javascript"></script>
+<script src="media/js/jquery.uniform.min.js" type="text/javascript" ></script>
 
 <!-- END CORE PLUGINS -->
 
@@ -421,24 +462,15 @@
 
 <script> CKEDITOR.replace('studentHWText');</script>
 
-
 <script>
 
-    jQuery(document).ready(function () {
+    jQuery(document).ready(function() {
 
         // initiate layout and plugins
 
         App.init();
 
     });
-    var errori ='<%=request.getParameter("error")%>';
-    if(errori=='exceed'){
-        alert("提交失败，您的提交次数已达上限！");
-    }else if(errori=='early'){
-        alert("提交失败，作业还没有开始！");
-    }else if(errori=='late'){
-        alert("提交失败，作业已经结束！");
-    }
 
 </script>
 
@@ -449,5 +481,3 @@
 <!-- END BODY -->
 
 </html>
-
-

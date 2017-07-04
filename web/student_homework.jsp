@@ -3,6 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.buaa.mooc.dao.StudentHWSubmitDao" %>
 <%@ page import="com.buaa.mooc.entity.HomeworkSubmit" %>
+<%@ page import="com.buaa.mooc.dao.StudentCourseDao" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -108,7 +109,6 @@
 
                         </li>
 
-
                         <li>
 
                             <a href="StudentCourse?cid=<%=course.getCid()%>"><%=course.getCname()%>
@@ -120,7 +120,7 @@
 
                         <li>
 
-                            <a href="studentHomework?cid=<%=course.getCid()%>">作业管理</a>
+                            <a href="StudentHomework?cid=<%=course.getCid()%>">作业管理</a>
 
                         </li>
 
@@ -175,23 +175,31 @@
                                 <% List<Homework> homeworks = (List<Homework>) request.getAttribute("homeworks");
                                     StudentHWSubmitDao studentHWSubmitDao = new StudentHWSubmitDao();
                                     Integer sid = (Integer) request.getSession().getAttribute("sid");
+                                    Integer gid = new StudentCourseDao().findBySidAndCid(sid,course.getCid()).getGid();
                                     //System.out.println(sid);
                                 %>
 
                                 <%
                                     if (homeworks != null && homeworks.size() > 0) {
                                         for (Homework homework : homeworks) {
-                                            HomeworkSubmit homeworkSubmit = studentHWSubmitDao.findHKSubmitByHidSid(homework.getId(),sid);
+                                            HomeworkSubmit homeworkSubmit = studentHWSubmitDao.findHKSubmitByHidSid(homework.getId(),gid);
                                             Integer submitTimes = null;
                                             if(homeworkSubmit == null){
                                                 submitTimes = 0;
-                                                System.out.println("-------------");
+                                                //System.out.println("-------------");
                                             }
                                             else{
                                                 submitTimes = homeworkSubmit.getSubmitTimes();
-                                                System.out.println("-------" + submitTimes);
+                                                //System.out.println("-------" + submitTimes);
                                             }
                                             Integer submitMaxTimes = homework.getSubmitMaxTimes();
+                                            String score = null;
+                                            if(homeworkSubmit == null || homeworkSubmit.getIsCorrect() == 0){
+                                                score = "未批改";
+                                            }
+                                            else if(homeworkSubmit.getIsCorrect() == 1){
+                                                score = homeworkSubmit.getScore().toString();
+                                            }
                                 %>
                                 <tr class="">
 
@@ -209,7 +217,7 @@
 
                                     <td><%=submitTimes%>/<%=submitMaxTimes%></td>
 
-                                    <td></td>
+                                    <td><%=score%></td>
 
                                     <td><a href="StudentHomeworkView?cid=<%=course.getCid()%>&hid=<%=homework.getId()%>"
                                            class="btn mini green"><i class="icon-eye-open"></i> 查看</a>
