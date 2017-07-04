@@ -69,4 +69,23 @@ public class StudentCourseDao {
             HibernateUtils.closeSession(session);
         }
     }
+
+    public void SetGidBySidandCid(Integer sid, Integer cid, Integer gid) {
+        Session session = HibernateUtils.getSession();
+        try {
+            StudentCoursePK tcPK = new StudentCoursePK();
+            tcPK.setCid(cid);
+            tcPK.setSid(sid);
+            StudentCourse sc = session.load(StudentCourse.class, tcPK);
+            sc.setGid(gid);
+            session.beginTransaction();
+            session.update(sc);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        } finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
 }

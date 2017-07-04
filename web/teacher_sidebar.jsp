@@ -81,6 +81,7 @@
 
 
         </li>
+
         <li class="">
 
             <a href = "TeacherGrade">
@@ -95,6 +96,18 @@
 
         <li class="">
 
+            <a href = "TeacherGroup">
+
+                <i class ="icon-file-text"></i>
+
+                <span class="title">团队管理</span>
+
+            </a>
+
+        </li>
+        <!--
+        <li class="">
+
             <a href = "TeacherGrade">
 
                 <i class ="icon-file-text"></i>
@@ -104,7 +117,6 @@
             </a>
 
         </li>
-        <!--
 
         <li class="last ">
 

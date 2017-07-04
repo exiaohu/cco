@@ -1,9 +1,17 @@
 package com.buaa.mooc.dao;
 
+import com.buaa.mooc.entity.GroupRecruit;
 import com.buaa.mooc.entity.StudentJoinGroup;
 import com.buaa.mooc.entity.StudentJoinGroupPK;
+import com.buaa.mooc.entity.Student;
 import com.buaa.mooc.utils.HibernateUtils;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by huxia on 2017/7/2.
@@ -73,6 +81,23 @@ public class StudentJoinGroupDao {
             e.printStackTrace();
             session.getTransaction().rollback();
             return false;
+        } finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
+
+    public List<Student> findByGridwithMemName(Integer grid) {
+        Session session = HibernateUtils.getSession();
+        try {
+            String hql = "select s " +
+                    "from Student as s, StudentJoinGroup as sg " +
+                    "where s.sid = sg.pk.sid and sg.granted = 1 and sg.pk.grid = :grid";
+            Query query = session.createQuery(hql);
+            query.setParameter("grid", grid);
+            return query.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         } finally {
             HibernateUtils.closeSession(session);
         }
