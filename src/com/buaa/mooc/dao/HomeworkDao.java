@@ -38,6 +38,7 @@ public class HomeworkDao {
             HibernateUtils.closeSession(session);
         }
     }
+
     public List<Homework> findByCid(Integer cid) {
         Session session = HibernateUtils.getSession();
         List results = null;
@@ -46,7 +47,7 @@ public class HomeworkDao {
             homeworks = new ArrayList<>();
             String hql = "from Homework as h where h.courseId = :cid";
             Query query = session.createQuery(hql);
-            query.setParameter("cid",cid);
+            query.setParameter("cid", cid);
             results = query.list();
             if (results != null && results.size() > 0) {
                 Homework c;
@@ -64,7 +65,7 @@ public class HomeworkDao {
         }
     }
 
-    public void AddHomework(Integer cid, String hname, Timestamp startDate, Timestamp deadline, Integer _limit,Integer proportion) {
+    public void AddHomework(Integer cid, String hname, Timestamp startDate, Timestamp deadline, Integer _limit, Integer proportion) {
         Session session = HibernateUtils.getSession();
         try {
             session.beginTransaction();
@@ -127,32 +128,6 @@ public class HomeworkDao {
         } finally {
             HibernateUtils.closeSession(session);
 
-        }
-    }
-
-    public List<Homework> findByCid(Integer cid){
-        Session session = HibernateUtils.getSession();
-        List results = null;
-        List<Homework> homeworks = null;
-        try {
-            homeworks = new ArrayList<>();
-            String hql = "from Homework as h where h.courseId = :cid";
-            Query query = session.createQuery(hql);
-            query.setParameter("cid", cid);
-            results = query.list();
-            if (results != null && results.size() > 0) {
-                Homework c;
-                for (Object obj : results) {
-                    c = (Homework) obj;
-                    homeworks.add(c);
-                }
-            }
-            return homeworks;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        } finally {
-            HibernateUtils.closeSession(session);
         }
     }
 }
