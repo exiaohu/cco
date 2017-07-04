@@ -87,8 +87,8 @@
         <servlet-class>com.buaa.mooc.servlet.StudentCourseServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>StudentRecourse</servlet-name>
-        <servlet-class>com.buaa.mooc.servlet.StudentRecourseServlet</servlet-class>
+        <servlet-name>StudentTeamLeader</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.StudentTeamLeaderServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>StudentHomeworkView</servlet-name>
@@ -150,6 +150,10 @@
     <servlet>
         <servlet-name>StudentGroupAdmApl</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.StudentGroupAdmAplServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SubmitGroupRecruit</servlet-name>
+        <servlet-class>com.buaa.mooc.servlet.SubmitGroupRecruitServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>AddCourseInfo</servlet-name>
@@ -220,10 +224,6 @@
         <url-pattern>/StudentCourse</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>StudentRecourse</servlet-name>
-        <url-pattern>/StudentRecourse</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AddStudentInfo</servlet-name>
         <url-pattern>/AddStudentInfo</url-pattern>
     </servlet-mapping>
@@ -290,5 +290,13 @@
     <servlet-mapping>
         <servlet-name>StudentGroupAdmApl</servlet-name>
         <url-pattern>/StudentGroupAdmApl</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StudentTeamLeader</servlet-name>
+        <url-pattern>/StudentTeamLeader</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubmitGroupRecruit</servlet-name>
+        <url-pattern>/SubmitGroupRecruit</url-pattern>
     </servlet-mapping>
 </web-app>

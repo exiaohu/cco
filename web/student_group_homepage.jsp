@@ -3,6 +3,7 @@
 <%@ page import="com.buaa.mooc.entity.Teacher" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.buaa.mooc.entity.StudentRecruitView" %>
+<%@ page import="com.buaa.mooc.dao.GroupRecruitDao" %>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -218,6 +219,37 @@
                 } else if (studentRecruitView != null &&
                         studentRecruitView.getCid().equals(course.getCid()) &&
                         studentRecruitView.getPk().getSid().equals(request.getSession().getAttribute("sid"))) {
+
+                    if (request.getSession().getAttribute("sid").equals(studentRecruitView.getConvener()) && new GroupRecruitDao().findByGridGR(studentRecruitView.getPk().getGrid()).getIsSubmitted().equals(0)) {
+                %>
+
+                <a href="StudentTeamLeader?grid=<%=studentRecruitView.getPk().getGrid()%>">
+
+                    <div class="tile double-down bg-green">
+
+                        <div class="tile-body">
+
+                            <i class="icon-group"></i>
+
+                        </div>
+
+                        <div class="tile-object">
+
+                            <div class="name" style="font-size:large">
+
+                                我的团队
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+                <%
+                    } else  {
                 %>
 
                 <a href="StudentGroupCheck?grid=<%=studentRecruitView.getPk().getGrid()%>">
@@ -245,7 +277,10 @@
 
                 </a>
 
-                <% } else { %>
+                <%
+                    }
+                } else {
+                %>
 
                 <a href="StudentGroupAdmApl?cid=<%=course.getCid()%>">
 

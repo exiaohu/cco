@@ -27,7 +27,7 @@ public class StudentJoinToGroupServlet extends HttpServlet {
             Integer cid = Integer.parseInt(request.getParameterMap().get("cid")[0]);
 
             StudentJoinGroupDao studentJoinGroupDao = new StudentJoinGroupDao();
-            studentJoinGroupDao.AddRelationSGR(sid, grid);
+            studentJoinGroupDao.AddRelationSGR(sid, grid, 0);
 
             response.sendRedirect("StudentGroupHome?cid="+cid);
         } catch (Throwable e) {

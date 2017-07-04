@@ -77,6 +77,21 @@ public class GroupRecruitDao {
         }
     }
 
+    public void submitGR(Integer grid) {
+        Session session = HibernateUtils.getSession();
+        try {
+            GroupRecruit gr =  session.load(GroupRecruit.class, grid);
+            gr.setIsSubmitted(1);
+            session.beginTransaction();
+            session.update(gr);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            session.getTransaction().rollback();
+        } finally {
+            HibernateUtils.closeSession(session);
+        }
+    }
+
     public GroupRecruit AddGroupRecruit(Integer convener_sid, String group_name, String information, Integer cid) {
         Session session = HibernateUtils.getSession();
         try {
@@ -99,12 +114,18 @@ public class GroupRecruitDao {
         }
     }
 
-    public static void main(String[] args) {
-        GroupRecruitDao groupRecruitDao = new GroupRecruitDao();
-        List<StudentRecruitView> studentRecruitViews = groupRecruitDao.findByGridSRV(1);
-        for (StudentRecruitView studentRecruitView : studentRecruitViews) {
-            System.out.println(studentRecruitView.getGroup_name());
+    public GroupRecruitView findByGridwithMemCount(Integer grid) {
+        Session session = HibernateUtils.getSession();
+        try {
+            String hql = "select g from GroupRecruitView as g where g.grid = :grid";
+            Query query = session.createQuery(hql);
+            query.setParameter("grid", grid);
+            return (GroupRecruitView) query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            HibernateUtils.closeSession(session);
         }
-
     }
 }

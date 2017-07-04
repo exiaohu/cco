@@ -26,7 +26,7 @@ public class StudentGroupAdmAplServlet extends HttpServlet {
             GroupRecruitDao groupRecruitDao = new GroupRecruitDao();
             StudentJoinGroupDao studentJoinGroupDao = new StudentJoinGroupDao();
             GroupRecruit groupRecruit = groupRecruitDao.AddGroupRecruit(sid, group_name, information, cid);
-            studentJoinGroupDao.AddRelationSGR(sid, groupRecruit.getGrid());
+            studentJoinGroupDao.AddRelationSGR(sid, groupRecruit.getGrid(), 1);
             response.sendRedirect("StudentGroupHome?cid=" + cid);
         } catch (Throwable e) {
             e.printStackTrace();

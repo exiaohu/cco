@@ -13,6 +13,8 @@ public class Course {
     private String address;
     private String outline;
     private Integer fid;
+    private Integer group_mem_max;
+    private Integer group_mem_min;
 
     public Integer getCid() {
         return cid;
@@ -83,4 +85,20 @@ public class Course {
     }
 
     public void setFid(Integer fid) {this.fid = fid; }
+
+    public Integer getGroup_mem_max() {
+        return group_mem_max;
+    }
+
+    public void setGroup_mem_max(Integer group_mem_max) {
+        this.group_mem_max = group_mem_max;
+    }
+
+    public Integer getGroup_mem_min() {
+        return group_mem_min;
+    }
+
+    public void setGroup_mem_min(Integer group_mem_min) {
+        this.group_mem_min = group_mem_min;
+    }
 }
