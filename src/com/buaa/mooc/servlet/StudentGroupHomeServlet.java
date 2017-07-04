@@ -1,9 +1,6 @@
 package com.buaa.mooc.servlet;
 
-import com.buaa.mooc.dao.CourseDao;
-import com.buaa.mooc.dao.GroupDao;
-import com.buaa.mooc.dao.GroupRecruitDao;
-import com.buaa.mooc.dao.StudentCourseDao;
+import com.buaa.mooc.dao.*;
 import com.buaa.mooc.entity.*;
 import com.buaa.mooc.utils.Validation;
 
@@ -13,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 /**
  * Created by huxia on 2017/7/2.
@@ -40,10 +38,12 @@ public class StudentGroupHomeServlet extends HttpServlet {
             Integer gid = studentCourse.getGid();
             Group group = groupDao.findById(gid);
             StudentRecruitView studentRecruitView = groupRecruitDao.findBySidandCidSRV(sid, cid);
+            List<Teacher> teachers = new TeacherCourseDao().findByCid(cid);
 
             request.setAttribute("group", group);
             request.setAttribute("course", course);
             request.setAttribute("studentRecruitView", studentRecruitView);
+            request.setAttribute("teachers", teachers);
 
             RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/student_group_homepage.jsp");
             rd.forward(request, response);

@@ -139,11 +139,6 @@
         <servlet-class>com.buaa.mooc.servlet.TeacherGradeAllServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>DownloadFile</servlet-name>
-        <servlet-class>com.buaa.mooc.servlet.DownloadFileServlet</servlet-class>
-    </servlet>
-
-    <servlet>
         <servlet-name>StudentGroupCheck</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.StudentGroupCheckServlet</servlet-class>
     </servlet>
@@ -167,8 +162,6 @@
         <servlet-name>TeacherCourceHomework</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.TeacherCourceHomeworkServlet</servlet-class>
     </servlet>
-
-
     <servlet>
         <servlet-name>TeacherManGroup</servlet-name>
         <servlet-class>com.buaa.mooc.servlet.TeacherManGroup</servlet-class>
@@ -364,10 +357,6 @@
     <servlet-mapping>
         <servlet-name>TeacherGroupInfo</servlet-name>
         <url-pattern>/TeacherGroupInfo</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DownloadFile</servlet-name>
-        <url-pattern>/DownloadFile</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>StudentGrade</servlet-name>

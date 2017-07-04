@@ -57,34 +57,6 @@
 
     <link rel="shortcut icon" href="media/image/favicon.ico" />
 
-    <script language="JavaScript">
-        function updateStudentContribute() {
-            var data;
-            data.gid = <%=group.getGid()%>;
-            <%
-            if (students != null && students.size() > 0) {
-                for (Student student : students.keySet()) {
-            %>
-            data.<%=student.getSid()%> = $("#<%=student.getSid()%>").val();
-            <%
-                }
-            }
-            %>
-            $.ajax({
-                url: "StudentUpdateGroupContribute",
-                type: "POST",
-                data: data,
-                dataType: "json",
-                success: function (res) {
-                    alert(res);
-                },
-                error: function (err) {
-                    alert(err);
-                }
-            });
-        }
-    </script>
-
 </head>
 
 <!-- END HEAD -->
@@ -218,7 +190,7 @@
                                 <div class="control-group">
                                     <label class="control-label" style=" font-weight:bolder">组长：</label>
                                     <div class="controls">
-                                        <span class="text"><%=new StudentDao().findById(group.getManager_sid())%></span>
+                                        <span class="text"><%=new StudentDao().findById(group.getManager_sid()).getSname()%></span>
                                     </div>
                                 </div>
 
@@ -348,7 +320,8 @@
                                             <td><%=student.getSname()%>
                                             </td>
 
-                                            <td class="numeric"><input id="<%=student.getSid()%>" name="<%=student.getSid()%>" type="number" value="<%=students.get(student)%>">
+                                            <td class="numeric"><input id="<%=student.getSid()%>" name="<%=student.getSid()%>" type="text"
+                                                                       onKeyUp="this.value=this.value.replace(/[^\d\.]/g,'')" value="<%=students.get(student)%>">
                                             </td>
 
                                         </tr>
@@ -362,7 +335,7 @@
 
                                     </table>
 
-                                    <button onclick="updateStudentContribute()" class="btn green">确认提交贡献度</button>
+                                    <button id="conSubmit" class="btn green">确认提交贡献度</button>
 
                                 </div>
 
@@ -404,6 +377,9 @@
 <!-- END FOOTER -->
 
 <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+
+<script language="JavaScript">
+</script>
 
 <!-- BEGIN CORE PLUGINS -->
 
@@ -450,6 +426,32 @@
 <script src="media/js/table-advanced.js"></script>
 
 <script>
+
+    $("#conSubmit").onclick = function () {
+        var data;
+        data.gid = <%=group.getGid()%>;
+        <%
+        if (students != null && students.size() > 0) {
+            for (Student student : students.keySet()) {
+        %>
+        data.<%=student.getSid()%> = $("#<%=student.getSid()%>").val();
+        <%
+            }
+        }
+        %>
+        $.ajax({
+            url: "StudentUpdateGroupContribute",
+            type: "POST",
+            data: data,
+            dataType: "json",
+            success: function (res) {
+                alert(res);
+            },
+            error: function (err) {
+                alert(err);
+            }
+        });
+    };
 
     jQuery(document).ready(function() {
 
