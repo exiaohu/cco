@@ -34,14 +34,22 @@ public class MessageDao {
     public List<Message> findBySid(Integer sid) {
         Session session = HibernateUtils.getSession();
         try {
-            String hql = "select Message from Message where pk.sid = :sid";
+            String hql = "from Message as s where s.pk.sid = :sid";
             Query query = session.createQuery(hql);
+            query.setParameter("sid", sid);
             return query.list();
         }catch (Throwable e) {
             e.printStackTrace();
             return null;
         }finally {
             HibernateUtils.closeSession(session);
+        }
+    }
+
+    public static void main(String[] args) {
+        List<Message> messages = new MessageDao().findBySid(14211106);
+        for (Message mes : messages) {
+            System.out.println(mes.getContent());
         }
     }
 }

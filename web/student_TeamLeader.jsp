@@ -77,18 +77,14 @@
                     sid: sid
                 },
                 success: function () {//返回成功后执行的函数，result是返回的数据
-                    alert("success");
                     if (mes == 'y') {
                         $("#"+sid+"d").attr("class", "btn mini black hidden");
                         $("#"+sid+"a").attr("class", "btn mini blue disabled").attr("onClick",  "");
                     }
                     else {
                         $("#"+sid+"a").attr("class", "btn mini blue hidden");
-                        $("#"+sid+"d").attr("class", "btn mini black disabled").attr("onClick",  "");;
+                        $("#"+sid+"d").attr("class", "btn mini black disabled").attr("onClick",  "");
                     }
-                },
-                error: function (err) {
-                    alert("更新失败。"+err);
                 }
             });
         }

@@ -188,7 +188,7 @@
                                     if (messages != null && messages.size() > 0) {
                                         for (Message message : messages) {
                                 %>
-                                <tr class="">
+                                <tr class="text-center">
 
                                     <td><%=message.getContent()%></td>
 

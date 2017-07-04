@@ -44,7 +44,7 @@ public class AddCourseInfoServlet extends HttpServlet {
                     item.write(uploadFile);
                 } else {
                     if (item.getFieldName().equals("course")) {
-                        outline = item.getString();
+                        outline = new String(item.getString().getBytes("iso-8859-1"), "utf-8");
                     }
                     if (item.getFieldName().equals("cid")) {
                         cid = Integer.parseInt(item.getString());

@@ -48,7 +48,6 @@ public class TermDao {
         Session session = HibernateUtils.getSession();
         try {
             session.beginTransaction();
-
             Term term = (Term) session.load(Term.class, termId);
             session.delete(term);
             session.getTransaction().commit();
