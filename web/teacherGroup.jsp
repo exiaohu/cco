@@ -145,7 +145,7 @@
                                 <tbody>
 
                                 <%
-                                    List<Course> courses = (List<Course>) request.getAttribute("course");
+                                    List<Course> courses = (List<Course>) request.getAttribute("courses");
                                     if (courses != null && courses.size() > 0) {
                                         for (Course course : courses) {
                                 %>

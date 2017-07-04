@@ -124,16 +124,6 @@
                         <div class="portlet-body">
 
                             <div style="padding:15px"></div>
-                            <%--<%--%>
-                                <%--String exportToExcel = request.getParameter("exportToExcel");--%>
-                                <%--if (exportToExcel != null--%>
-                                        <%--&& exportToExcel.equalsIgnoreCase("YES")) {--%>
-                                    <%--response.setContentType("application/vnd.ms-excel");--%>
-                                    <%--response.setHeader("Content-Disposition", "inline; filename="--%>
-                                            <%--+ "excel.xls");--%>
-
-                                <%--}--%>
-                            <%--%>--%>
 
                             <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
 
@@ -177,7 +167,7 @@
 
                                     <td><%=studentCourse.getGroup_contribute()%></td>
 
-                                    <td><%=groupScore.get(studentCourse.getGid())*studentCourse.getGroup_contribute()%></td>
+                                    <td><%=groupScore.get(studentCourse.getGid()) * studentCourse.getGroup_contribute()%></td>
 
 
                                 </tr>
@@ -190,17 +180,8 @@
 
                             </table>
 
-                            <!-- END SAMPLE TABLE PORTLET-->
-
-                            <!-- END BORDERED TABLE PORTLET--><!-- END PAGE HEADER-->
-                            <%--<%--%>
-                                <%--if (exportToExcel == null) {--%>
-                            <%--%>--%>
-                            <a href="TeacherGradeAll?cid=<%=request.getAttribute("cid")%>&download=yes">导出为Excel</a>
-
-                            <%--<%--%>
-                                <%--}--%>
-                            <%--%>--%>
+                            <a href="TeacherGradeAll?cid=<%=request.getAttribute("cid")%>&download=yes" class="btn green" style="width:100px;height:25px;margin-top:10px; margin-left:850px;  margin-right:10px; margin-bottom:10px;">
+                                导出学生成绩</a>
 
                         </div>
 

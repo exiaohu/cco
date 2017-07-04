@@ -41,6 +41,7 @@ public class TeacherGradeAllServlet extends HttpServlet {
         request.setAttribute("cid",cid);
 
         String str = request.getParameterMap().get("download")[0];
+
         if(str.equals("yes")){
             // 第一步，创建一个webbook，对应一个Excel文件
             HSSFWorkbook wb = new HSSFWorkbook();

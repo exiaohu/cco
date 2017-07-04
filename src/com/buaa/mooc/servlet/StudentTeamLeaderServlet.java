@@ -1,8 +1,10 @@
 package com.buaa.mooc.servlet;
 
 import com.buaa.mooc.dao.GroupRecruitDao;
+import com.buaa.mooc.dao.MessageDao;
 import com.buaa.mooc.dao.StudentJoinGroupDao;
 import com.buaa.mooc.entity.GroupRecruit;
+import com.buaa.mooc.entity.Message;
 import com.buaa.mooc.entity.StudentRecruitView;
 import com.buaa.mooc.utils.Validation;
 
@@ -22,21 +24,21 @@ public class StudentTeamLeaderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws SecurityException, IOException {
         try {
             String message = request.getParameter("message");
+            MessageDao messageDao = new MessageDao();
+            Integer grid = Integer.parseInt(request.getParameter("grid"));
+            Integer sid = Integer.parseInt(request.getParameter("sid"));
+            GroupRecruit gr = new GroupRecruitDao().findByGridGR(grid);
             if (message.equalsIgnoreCase("y")) {
                 StudentJoinGroupDao studentJoinGroupDao = new StudentJoinGroupDao();
-                studentJoinGroupDao.AgreeJoin(Integer.parseInt(request.getParameter("grid")), Integer.parseInt(request.getParameter("sid")));
+                studentJoinGroupDao.AgreeJoin(grid, sid);
+                messageDao.InsertMessage(Integer.parseInt(request.getParameter("sid")), "你向队伍["+gr.getGroup_name()+"]的组队申请已被队伍负责人批准。");
             } else {
                 StudentJoinGroupDao studentJoinGroupDao = new StudentJoinGroupDao();
-                studentJoinGroupDao.DisAgreeJoin(Integer.parseInt(request.getParameter("'grid")), Integer.parseInt(request.getParameter("sid")));
+                messageDao.InsertMessage(Integer.parseInt(request.getParameter("sid")), "你向队伍["+gr.getGroup_name()+"]的组队申请已被队伍负责人拒绝。");
+                studentJoinGroupDao.DisAgreeJoin(grid, sid);
             }
-            response.getWriter().print(true);
-            response.getWriter().flush();
-            response.getWriter().close();
         } catch (IllegalFormatException e) {
             e.printStackTrace();
-            response.getWriter().print(true);
-            response.getWriter().flush();
-            response.getWriter().close();
         }
     }
 

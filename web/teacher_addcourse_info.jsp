@@ -212,6 +212,32 @@
                                 </div>
                                 <div class="control-group">
 
+                                    <label class="control-label">人数上限：</label>
+
+                                    <div class="controls">
+
+                                        <input class="span1" type="number" name="number_Max"/>
+
+                                        <span class="help-inline"></span>
+
+                                    </div>
+
+                                </div>
+                                <div class="control-group">
+
+                                    <label class="control-label">人数下限：</label>
+
+                                    <div class="controls">
+
+                                        <input class="span1" type="number" name="number_Min"/>
+
+                                        <span class="help-inline"></span>
+
+                                    </div>
+
+                                </div>
+                                <div class="control-group">
+
                                     <div class="control-group">
 
                                         <label class="control-label">附件：</label>

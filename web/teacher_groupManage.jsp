@@ -38,13 +38,6 @@
 
     <link rel="shortcut icon" href="media/image/favicon.ico"/>
 
-    <script language="JavaScript">
-        function showRefuseModel(grid) {
-            $("#form_modal2").attr("style", "margin-top: -105px; display: none;");
-            $("#refuseForm").attr("action", "TeacherRefuseGroup?grid=" + grid).attr("method", "post");
-        }
-    </script>
-
 </head>
 <body class="page-header-fixed">
 
@@ -162,8 +155,8 @@
                                     <td align="center"><%=key.getS_count() %>
                                     </td>
                                     <td align="center">
-                                        <a href="TeacherAgreeGroup?grid=<%=key.getGrid()%>">同意</a>
-                                        <a onclick="showRefuseModel(<%=key.getGrid()%>)">拒绝</a>
+                                        <a  href="TeacherAgreeGroup?grid=<%=key.getGrid()%>" class="btn mini green">同意</a>
+                                        <a href="#form_modal2" class="btn mini blue" onclick="showRefuseModel(<%=key.getGrid()%>)"  data-toggle="modal">拒绝</a>
                                     </td>
                                     <td align="center"><a href="TeacherGroupInfo?grid=<%=key.getGrid()%>">查看团队信息</a>
                                     </td>
@@ -192,13 +185,15 @@
 
                                 <div class="modal-body">
 
-                                    <form id="refuseForm" action="" class="form-horizontal">
+                                    <form action="TeacherRefuseGroup" method="post" class="form-horizontal">
 
                                         <div class="control-group">
 
                                             <div class="controls">
 
-                                                <input name="reason" type="text" class="span2 m-wrap"/>
+                                                <input type="hidden" id="refuGrid" name="grid" value="" />
+
+                                                <input name="reason"  style="height:35px;width: 200px;" type="text" class="span2 m-wrap page-full-width"/>
 
                                             </div>
 
@@ -206,8 +201,7 @@
 
                                         <div class="modal-footer">
 
-                                            <input type="submit" class="btn green btn-primary" data-dismiss="modal"
-                                                   value="提交"/>
+                                            <input type="submit" class="btn green btn-primary" value="提交"/>
 
                                             <button class="btn" data-dismiss="modal" aria-hidden="true">取消</button>
 
@@ -278,10 +272,14 @@
 
 <script>
 
-    jQuery(document).ready(function () {
+    function showRefuseModel(grid) {
+        $("#refuGrid").val(grid);
+    }
 
+    jQuery(document).ready(function () {
         App.init();
     })
+
 </script>
 
 <!-- END JAVASCRIPTS -->

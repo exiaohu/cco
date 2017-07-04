@@ -23,6 +23,8 @@ public class AddCourseInfoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String outline = null;
         Integer cid = null;
+        Integer number_Max = null;
+        Integer number_Min = null;
         String filename = null;
 
         // 上传文件的保存目录
@@ -38,13 +40,19 @@ public class AddCourseInfoServlet extends HttpServlet {
             List<FileItem> fileItems = upload.parseRequest(request);
             for (FileItem item : fileItems) {
                 if (!item.isFormField()) {
-                    filename = item.getName();
+                    filename = new String(item.getName().getBytes("iso-8859-1"), "utf-8");
                     filename = filename.substring(filename.lastIndexOf("\\") + 1, filename.length());
                     File uploadFile = new File(savePath + "/" + filename);
                     item.write(uploadFile);
                 } else {
                     if (item.getFieldName().equals("course")) {
-                        outline = item.getString();
+                        outline = new String(item.getString().getBytes("iso-8859-1"), "utf-8");
+                    }
+                    if (item.getFieldName().equals("number_Max")) {
+                        number_Max = Integer.parseInt(item.getString());
+                    }
+                    if (item.getFieldName().equals("number_Min")) {
+                        number_Min = Integer.parseInt(item.getString());
                     }
                     if (item.getFieldName().equals("cid")) {
                         cid = Integer.parseInt(item.getString());
@@ -58,7 +66,7 @@ public class AddCourseInfoServlet extends HttpServlet {
         FileDao fileDao = new FileDao();
         Integer fid = fileDao.AddFile(filename, (Integer) request.getSession().getAttribute("tid"));
         CourseDao courseDao = new CourseDao();
-        courseDao.editCourse(cid, outline, fid);
+        courseDao.editCourse(cid, outline, fid,number_Max,number_Min);
 
         response.sendRedirect("/teacherCourse");
     }

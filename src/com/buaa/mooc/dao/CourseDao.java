@@ -36,7 +36,7 @@ public class CourseDao {
     }
 
     //��ʦ�༭�γ̴��
-    public void editCourse(Integer cid, String outline, Integer fid) {
+    public void editCourse(Integer cid, String outline, Integer fid, Integer max, Integer min) {
         Session session = HibernateUtils.getSession();
         try {
             Course course;
@@ -44,6 +44,8 @@ public class CourseDao {
             course = (Course) session.get(Course.class, cid);
             course.setOutline(outline);
             course.setFid(fid);
+            course.setGroup_mem_max(max);
+            course.setGroup_mem_min(min);
             session.update(course);
             session.getTransaction().commit();
         } catch (Exception e) {

@@ -6,6 +6,8 @@ import com.buaa.mooc.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,6 +21,7 @@ public class MessageDao {
             Message message = new Message();
             MessagePK pk = new MessagePK();
             pk.setSid(sid);
+            pk.setInsert_time(new Timestamp(System.currentTimeMillis()));
             message.setPk(pk);
             message.setContent(text);
             session.save(message);

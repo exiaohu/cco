@@ -24,6 +24,7 @@ public class TeacherRefuseGroup extends HttpServlet {
         GroupRecruitDao groupRecruitDao = new GroupRecruitDao();
         List<StudentRecruitView> students = groupRecruitDao.findByGridSRV(grid);
         GroupRecruit gr = groupRecruitDao.findByGridGR(grid);
+        Integer cid = gr.getCid();
         MessageDao messageDao = new MessageDao();
         for (StudentRecruitView stu : students) {
             messageDao.InsertMessage(stu.getPk().getSid(),
@@ -31,7 +32,7 @@ public class TeacherRefuseGroup extends HttpServlet {
                             "原因是["+reason+"]。");
         }
         groupRecruitDao.deleteByGridGR(grid);
-        response.sendRedirect("teacher");
+        response.sendRedirect("TeacherManGroup?cid=" + cid);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
