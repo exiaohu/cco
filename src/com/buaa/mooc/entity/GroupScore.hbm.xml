@@ -4,13 +4,10 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.buaa.mooc.entity.Group" lazy="false" table="`group`">
+    <class name="com.buaa.mooc.entity.GroupScore" lazy="false" table="group_score">
         <id name="gid" type="integer" column="gid">
             <generator class="native"/>
         </id>
-        <property name="manager_sid" type="integer" column="manager"/>
-        <property name="information" type="string" column="information"/>
-        <property name="gname" type="string" column="gname"/>
-        <property name="cid" type="integer" column="cid"/>
+        <property name="groupScore" type="java.lang.Double" column="group_score"/>
     </class>
 </hibernate-mapping>

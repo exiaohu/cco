@@ -25,5 +25,6 @@
         <mapping resource="com/buaa/mooc/entity/GroupRecruitView.hbm.xml" />
         <mapping resource="com/buaa/mooc/entity/StudentRecruitView.hbm.xml"/>
         <mapping resource="com/buaa/mooc/entity/HomeworkSubmit.hbm.xml" />
+        <mapping resource="com/buaa/mooc/entity/GroupScore.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
