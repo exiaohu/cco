@@ -7,7 +7,6 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 /**

@@ -55,12 +55,12 @@
 
     <script language="JavaScript">
         function confirmSid() {
-            var StudentIds = $("#StudentIds").val();
+            var sids = $("#sids").val();
             $.ajax({
                 url: "AddStudentInfo",
                 type: "POST",
                 data: {
-                    'StudentIds': StudentIds
+                    'sids': sids
                 },
                 dataType: "json",
                 success: function (res) {
@@ -76,6 +76,7 @@
                             + item.major + '</td></tr>';
                     }
                     $('#stu_tbody').append(extra);
+                    $("#sids").val(sids);
                 }
             });
         }
@@ -241,8 +242,8 @@
                                                     <div class="controls">
 
                                                         <input name="beginDate" type="date" placeholder=""
-                                                               class="m-wrap medium"
-                                                               value="<%=course.getBeginDate().toLocalDate().getMonthValue()%>/<%=course.getBeginDate().toLocalDate().getDayOfMonth()%>/<%=course.getBeginDate().toLocalDate().getYear()%>"
+                                                               class="m-wrap medium" "yyyy-MM-dd"
+                                                               value="<%=course.getBeginDate().toLocalDate().getYear()%>-<%=course.getBeginDate().toLocalDate().getMonth()%>-<%=course.getBeginDate().toLocalDate().getDayOfMonth()%>"
                                                                style="height:35; width:200"/>
 
                                                         <span class="help-inline"></span>
@@ -257,7 +258,7 @@
 
                                                         <input name="endDate" type="date" placeholder=""
                                                                class="m-wrap medium"
-                                                               value="<%=course.getEndDate().toLocalDate().getMonthValue()%>/<%=course.getEndDate().toLocalDate().getDayOfMonth()%>/<%=course.getEndDate().toLocalDate().getYear()%>"
+                                                               value="<%=course.getEndDate().toLocalDate().getYear()%>-<%=course.getEndDate().toLocalDate().getMonth()%>-<%=course.getEndDate().toLocalDate().getDayOfMonth()%>"
                                                                style="height:35; width:200"/>
 
                                                         <span class="help-inline"></span>
@@ -361,7 +362,7 @@
                                                         <div class="control-group">
                                                             <label class="control-label">参与学生学号：</label>
                                                             <div class="controls">
-                                                                <textarea name="sids" id="StudentIds" class="m-wrap"
+                                                                <textarea name="sids" id="sids" class="m-wrap"
                                                                           rows="10"
                                                                           cols="100" style="width:80%"></textarea>
                                                             </div>
@@ -382,12 +383,7 @@
 
                                                         <a href="javascript:" class="collapse"></a>
 
-                                                        <a href="#portlet-config" data-toggle="modal"
-                                                           class="config"></a>
-
                                                         <a href="javascript:" class="reload"></a>
-
-                                                        <a href="javascript:" class=""></a>
 
                                                     </div>
 

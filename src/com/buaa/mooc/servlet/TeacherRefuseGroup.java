@@ -29,7 +29,7 @@ public class TeacherRefuseGroup extends HttpServlet {
         for (StudentRecruitView stu : students) {
             messageDao.InsertMessage(stu.getPk().getSid(),
                     "你向队伍["+gr.getGroup_name()+"]的组队申请已被老师拒绝。" +
-                            "原因是["+reason+"]。");
+                            "原因是["+new String(reason.getBytes("iso-8859-1"), "utf-8")+"]。");
         }
         groupRecruitDao.deleteByGridGR(grid);
         response.sendRedirect("TeacherManGroup?cid=" + cid);

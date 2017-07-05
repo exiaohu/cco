@@ -280,7 +280,7 @@
 
                                         <div class="controls">
 
-                                            <span class="text"><%=homework.getHomeworkInformation()%></span>
+                                            <span class="text"><%=homework.getHomeworkInformation()==null?"":homework.getHomeworkInformation()%></span>
 
                                         </div>
 

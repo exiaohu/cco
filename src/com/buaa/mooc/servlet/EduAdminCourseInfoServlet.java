@@ -6,6 +6,7 @@ import com.buaa.mooc.entity.Student;
 import com.buaa.mooc.entity.Teacher;
 import com.buaa.mooc.utils.Validation;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,16 +35,15 @@ public class EduAdminCourseInfoServlet extends HttpServlet {
             java.util.Date endDate = formatter.parse(request.getParameter("endDate"), pos);
             Integer credit = Integer.parseInt(request.getParameter("credit"));
             String address = new String(request.getParameter("address").getBytes("iso-8859-1"), "utf-8");
-            String sids_s = request.getParameter("sids");
             StudentDao studentDao = new StudentDao();
-            String[] sids = sids_s.split(" |[\\t\\n]|,|;");
+            String[] sids = request.getParameter("sids").split(" |[\\r\\n]|\\n|,|;");
+            System.out.println(request.getParameter("sids"));
             if (sids.length > 0) {
                 for (String sid_s : sids) {
-                    System.out.println(sid_s);
+                    System.out.println("-" + sid_s);
                     if (sid_s != null && !sid_s.isEmpty()) {
+                        Integer sid = Integer.parseInt(sid_s.trim());
                         try {
-                            Integer sid = Integer.parseInt(sid_s);
-                            System.out.println("+" + sid);
                             Student student = studentDao.findById(sid);
                             if (student != null) {
                                 StudentCourseDao studentCourseDao = new StudentCourseDao();
@@ -57,7 +57,9 @@ public class EduAdminCourseInfoServlet extends HttpServlet {
 
             CourseDao courseDao = new CourseDao();
             TermDao termDao = new TermDao();
-            courseDao.editCourseByAdmin(cid, termDao.FindLast().getTermId(), cname, new Date(beginDate.getTime()), new Date(endDate.getTime()), credit, address);
+            Date bDate = beginDate != null ? new Date(beginDate.getTime()) : null;
+            Date eDate = endDate != null ? new Date(endDate.getTime()) : null;
+            courseDao.editCourseByAdmin(cid, termDao.FindLast().getTermId(), cname, bDate, eDate, credit, address);
 
             String[] tids_s = request.getParameterValues("teacher");
             List<Integer> tids_true = new ArrayList<>();
@@ -82,7 +84,7 @@ public class EduAdminCourseInfoServlet extends HttpServlet {
 
         } catch (Throwable e) {
             e.printStackTrace();
-            response.sendRedirect("/eduadmin");
+            response.sendRedirect("/EduAdminCourse");
         }
     }
 

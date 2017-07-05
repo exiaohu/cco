@@ -97,6 +97,26 @@
 
                     <!-- END PAGE TITLE & BREADCRUMB-->
 
+                    <div class="">
+
+                        <div class="portlet-title">
+                            <!--课程中心-->
+                            <div class="textPanel">
+                                <div class="header" style="margin: 0.0px 0.0px 11.0px;padding: 0.0px;color: rgb(0,0,0);line-height: normal;font-size: 12.0px;"> <h3 style="margin: 0.0px;padding: 0.0px;color: rgb(66,66,66);line-height: 25.0px;font-size: 18.0px;">课程中心教师使用手册</h3> </div>  <div class="context" style="margin: 0.0px;padding: 0.0px;color: rgb(0,0,0);line-height: normal;font-size: 12.0px;"> <div class="content" style="margin: 0.0px;padding: 0.0px;overflow: hidden;">
+                                <p class="text-muted text-middle" style="margin: 0.0px;padding: 0.0px;color: rgb(128,128,128);line-height: 22.0px;font-size: 14.0px;">1、用户课程管理
+                                    点击首页左侧课程管理按钮，跳转到课程列表，里面显示的是该名教师所教的所有课程 </p>
+                                <p class="text-muted text-middle" style="margin: 0.0px;padding: 0.0px;color: rgb(128,128,128);line-height: 22.0px;font-size: 14.0px;">2、作业管理 用户点击作业管理按钮 ，会进入老师作业课程界面，在界面中，显示出的是该教室所教所以课程的列表 </p>
+                                <p class="text-muted text-middle" style="margin: 0.0px;padding: 0.0px;color: rgb(128,128,128);line-height: 22.0px;font-size: 14.0px;">3、成绩管理界面 老师点击成绩管理界面，会进入成绩管理界面，在该页面中会显示老师所有的课程信息 </p>
+                                <p class="text-muted text-middle" style="margin: 0.0px;padding: 0.0px;color: rgb(128,128,128);line-height: 22.0px;font-size: 14.0px;">4、团队管理 点击团地管理按钮，会进入团队管理界面，里面包括该老师所有教授的课程信息 </p>
+                            </div> </div>  <p style="margin: 0.0px;padding: 0.0px;text-align: center;color: rgb(51,51,51);text-transform: none;text-indent: 25.0px;letter-spacing: normal;word-spacing: 0.0px;white-space: normal;background-color: rgb(255,255,255);"> </p>  <p style="margin: 0.0px;padding: 0.0px;text-align: center;color: rgb(51,51,51);text-transform: none;text-indent: 25.0px;letter-spacing: normal;word-spacing: 0.0px;white-space: normal;background-color: rgb(255,255,255);"><span style="color: rgb(255,0,0);"></span></p>
+                                <p style="margin: 0.0px;padding: 0.0px;color: rgb(51,51,51);text-transform: none;text-indent: 25.0px;letter-spacing: normal;word-spacing: 0.0px;white-space: normal;background-color: rgb(255,255,255);"> </p>
+                            </div>
+
+                            <!-- 课程中心截得代码，比较乱-->
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>

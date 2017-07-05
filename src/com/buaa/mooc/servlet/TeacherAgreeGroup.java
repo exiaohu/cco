@@ -28,13 +28,14 @@ public class TeacherAgreeGroup extends HttpServlet {
         GroupDao groupDao = new GroupDao();
         GroupRecruitDao groupRecruitDao = new GroupRecruitDao();
         GroupRecruit groupRecruit = groupRecruitDao.findByGridGR(grid);
-        List<StudentRecruitView> students = groupRecruitDao.findByGridSRV(groupRecruit.getGrid());
-        MessageDao messageDao = new MessageDao();
-        for (StudentRecruitView stu : students) {
-            messageDao.InsertMessage(stu.getPk().getSid(), "你向队伍["+groupRecruit.getGroup_name()+"]的组队申请已被老师批准。");
-        }
-        Integer cid = groupRecruit.getCid();
+        List<StudentRecruitView> students = groupRecruitDao.findByGridSRV(grid);
         groupDao.InsertGroup(groupRecruit);
+        MessageDao messageDao = new MessageDao();
+        if (students != null && students.size() > 0) {
+            for (StudentRecruitView stu : students) {
+                messageDao.InsertMessage(stu.getPk().getSid(), "你向队伍["+groupRecruit.getGroup_name()+"]的申请已被老师批准。");
+            }
+        }
         response.sendRedirect("TeacherManGroup?cid="+groupRecruit.getCid());
     }
 

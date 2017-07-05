@@ -266,12 +266,12 @@
                                                 <div class="controls">
 
                                                     <input name="startDate" class="m-wrap" type="text" value=""
-                                                           id="ui_date_picker_range_from"/>
+                                                           id="ui_date_picker_range_from" style="height:35"/>
 
                                                     <span class="text-inline">&nbsp;至&nbsp;</span>
 
                                                     <input name="endDate" class="m-wrap" type="text" value=""
-                                                           id="ui_date_picker_range_to"/>
+                                                           id="ui_date_picker_range_to" style="height:35"/>
 
                                                 </div>
 

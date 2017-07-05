@@ -16,16 +16,16 @@ import java.io.IOException;
  */
 public class AddStudentInfoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String studentIds = request.getParameter("StudentIds");
+        String studentIds = request.getParameter("sids");
         try {
             StudentDao studentDao = new StudentDao();
-            String[] sids = studentIds.split(" |\\n|,|;");
+            String[] sids = studentIds.split(" |[\\r\\n]|\\n|,|;");
             JSONArray jsonArray = new JSONArray();
             if (sids.length > 0) {
                 for (String sid_s : sids) {
                     if (sid_s != null && !sid_s.isEmpty()) {
                         try {
-                            Integer sid = Integer.parseInt(sid_s);
+                            Integer sid = Integer.parseInt(sid_s.trim());
                             Student student = studentDao.findById(sid);
                             if (student != null) {
                                 JSONObject obj = new JSONObject();

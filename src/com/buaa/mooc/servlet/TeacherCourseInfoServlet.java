@@ -44,7 +44,12 @@ public class TeacherCourseInfoServlet extends HttpServlet {
             //fileName = new String(fileName.getBytes("iso-8859-1"), "utf-8");
         } catch (Throwable ignored) {
         }
-        request.setAttribute("accessory", fileName);
+        if(fileName != null) {
+            request.setAttribute("accessory", fileName.substring(fileName.lastIndexOf("\\") + 1));
+        }
+        else{
+            request.setAttribute("accessory", "没有附件");
+        }
         RequestDispatcher rd = getServletConfig().getServletContext().getRequestDispatcher("/teacher_course_info.jsp");
         rd.forward(request, response);
     }

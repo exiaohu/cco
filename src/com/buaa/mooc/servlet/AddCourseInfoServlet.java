@@ -30,6 +30,12 @@ public class AddCourseInfoServlet extends HttpServlet {
         // 上传文件的保存目录
         String savePath = getServletContext().getRealPath("/upload");
 
+        File file = new File(savePath);
+        //System.out.println(savePath);
+        if (!file.exists()) {
+            file.mkdir();
+        }
+
         try {
             DiskFileItemFactory factory = new DiskFileItemFactory();
             factory.setSizeThreshold(2048 * 1024);
@@ -65,7 +71,7 @@ public class AddCourseInfoServlet extends HttpServlet {
         }
 
         FileDao fileDao = new FileDao();
-        Integer fid = fileDao.AddFile(filename, (Integer) request.getSession().getAttribute("tid"));
+        Integer fid = fileDao.AddFile("upload\\" + filename, (Integer) request.getSession().getAttribute("tid"));
         CourseDao courseDao = new CourseDao();
         courseDao.editCourse(cid, outline, fid,number_Max,number_Min);
 

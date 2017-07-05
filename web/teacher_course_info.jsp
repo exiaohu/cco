@@ -231,7 +231,7 @@
 
                                         <div class="controls">
 
-                                            <span class="help-inline"><%=request.getAttribute("accessory")!=null?request.getAttribute("accessory"):"没有附件"%></span>
+                                            <span class="help-inline"><%=request.getAttribute("accessory")%></span>
 
                                         </div>
 

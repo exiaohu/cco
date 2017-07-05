@@ -2,6 +2,7 @@ package com.buaa.mooc.servlet;
 
 import com.buaa.mooc.dao.GroupRecruitDao;
 import com.buaa.mooc.dao.MessageDao;
+import com.buaa.mooc.dao.MessageDao;
 import com.buaa.mooc.dao.StudentJoinGroupDao;
 import com.buaa.mooc.entity.GroupRecruit;
 import com.buaa.mooc.entity.Message;
@@ -23,22 +24,29 @@ import java.util.List;
 public class StudentTeamLeaderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws SecurityException, IOException {
         try {
-            String message = request.getParameter("message");
-            MessageDao messageDao = new MessageDao();
             Integer grid = Integer.parseInt(request.getParameter("grid"));
             Integer sid = Integer.parseInt(request.getParameter("sid"));
+            MessageDao messageDao = new MessageDao();
             GroupRecruit gr = new GroupRecruitDao().findByGridGR(grid);
+            String message = request.getParameter("message");
             if (message.equalsIgnoreCase("y")) {
                 StudentJoinGroupDao studentJoinGroupDao = new StudentJoinGroupDao();
                 studentJoinGroupDao.AgreeJoin(grid, sid);
-                messageDao.InsertMessage(Integer.parseInt(request.getParameter("sid")), "你向队伍["+gr.getGroup_name()+"]的组队申请已被队伍负责人批准。");
+                studentJoinGroupDao.AgreeJoin(grid, sid);
+                messageDao.InsertMessage(sid, "你向队伍["+gr.getGroup_name()+"]的组队申请已被队伍负责人批准。");
             } else {
                 StudentJoinGroupDao studentJoinGroupDao = new StudentJoinGroupDao();
-                messageDao.InsertMessage(Integer.parseInt(request.getParameter("sid")), "你向队伍["+gr.getGroup_name()+"]的组队申请已被队伍负责人拒绝。");
                 studentJoinGroupDao.DisAgreeJoin(grid, sid);
+                messageDao.InsertMessage(sid, "你向队伍[" + gr.getGroup_name() + "]的申请已被负责人拒绝。");
             }
+            response.getWriter().print(true);
+            response.getWriter().flush();
+            response.getWriter().close();
         } catch (IllegalFormatException e) {
             e.printStackTrace();
+            response.getWriter().print(true);
+            response.getWriter().flush();
+            response.getWriter().close();
         }
     }
 
